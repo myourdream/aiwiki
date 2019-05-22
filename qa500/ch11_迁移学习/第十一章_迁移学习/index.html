@@ -1,0 +1,5557 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="AI Wiki 是一个编程竞赛知识整合站点，提供有趣又实用的编程竞赛知识以及其他有帮助的内容，帮助广大编程竞赛爱好者更快更深入地学习编程竞赛">
+      
+      
+        <link rel="canonical" href="https://hai5g.cn/aiwiki/qa500/ch11_迁移学习/第十一章_迁移学习/">
+      
+      
+        <meta name="author" content="AI Wiki Team">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.2.0">
+    
+    
+      
+        <title>第十一章_迁移学习 - AI Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.750b69bd.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.224b79ff.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:300,400,400i,700|Fira+Mono">
+        <style>body,input{font-family:"Fira Sans","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Fira Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+      <link rel="manifest" href="../../../manifest.webmanifest">
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ah@1.5.0/han.min.css">
+    
+      <link rel="stylesheet" href="../../../_static/css/extra.css?v=11">
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="red">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://hai5g.cn/aiwiki" title="AI Wiki" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">school</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              AI Wiki
+            </span>
+            <span class="md-header-nav__topic">
+              第十一章_迁移学习
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/myourdream/aiwiki/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    aiwiki
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../.." title="简介" class="md-tabs__link">
+          简介
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../basic/" title="特征工程" class="md-tabs__link">
+          特征工程
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../" title="深度学习500问" class="md-tabs__link md-tabs__link--active">
+          深度学习500问
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../dp/" title="经典算法" class="md-tabs__link">
+          经典算法
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../string/" title="集成学习算法" class="md-tabs__link">
+          集成学习算法
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../math/" title="CNN" class="md-tabs__link">
+          CNN
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../ds/" title="RNN" class="md-tabs__link">
+          RNN
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../graph/" title="GAN" class="md-tabs__link">
+          GAN
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../geometry/" title="计算机视觉" class="md-tabs__link">
+          计算机视觉
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../misc/" title="NLP" class="md-tabs__link">
+          NLP
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../misc/" title="推荐系统" class="md-tabs__link">
+          推荐系统
+        </a>
+      
+    </li>
+  
+
+      
+        
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://hai5g.cn/aiwiki" title="AI Wiki" class="md-nav__button md-logo">
+      
+        <i class="md-icon">school</i>
+      
+    </a>
+    AI Wiki
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/myourdream/aiwiki/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    aiwiki
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      简介
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        简介
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="Getting Started" class="md-nav__link">
+      Getting Started
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/mode/" title="AI 赛事与赛制" class="md-nav__link">
+      AI 赛事与赛制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/icpc/" title="ICPC/CCPC 赛事与赛制" class="md-nav__link">
+      ICPC/CCPC 赛事与赛制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/resources/" title="学习资源" class="md-nav__link">
+      学习资源
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/common-mistakes/" title="常见错误" class="md-nav__link">
+      常见错误
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/common-tricks/" title="常见技巧" class="md-nav__link">
+      常见技巧
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/non-traditional/" title="非传统题" class="md-nav__link">
+      非传统题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-8" type="checkbox" id="nav-1-8">
+    
+    <label class="md-nav__link" for="nav-1-8">
+      工具软件
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-1-8">
+        工具软件
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/judgers/" title="评测工具" class="md-nav__link">
+      评测工具
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/editors/" title="编辑工具" class="md-nav__link">
+      编辑工具
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/wsl/" title="WSL (Windows 10)" class="md-nav__link">
+      WSL (Windows 10)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/spj/" title="Special Judge" class="md-nav__link">
+      Special Judge
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-8-5" type="checkbox" id="nav-1-8-5">
+    
+    <label class="md-nav__link" for="nav-1-8-5">
+      Testlib
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-1-8-5">
+        Testlib
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/testlib/" title="Testlib 简介" class="md-nav__link">
+      Testlib 简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/testlib/general/" title="通用" class="md-nav__link">
+      通用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/testlib/generator/" title="Generator" class="md-nav__link">
+      Generator
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/testlib/validator/" title="Validator" class="md-nav__link">
+      Validator
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/testlib/interactor/" title="Interactor" class="md-nav__link">
+      Interactor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/testlib/checker/" title="Checker" class="md-nav__link">
+      Checker
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/docker-deploy/" title="Docker 部署" class="md-nav__link">
+      Docker 部署
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/about/" title="关于本项目" class="md-nav__link">
+      关于本项目
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/faq/" title="F.A.Q." class="md-nav__link">
+      F.A.Q.
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      特征工程
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        特征工程
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../basic/" title="基础部分简介" class="md-nav__link">
+      基础部分简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../basic/enumerate/" title="枚举" class="md-nav__link">
+      枚举
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../basic/simulate/" title="模拟" class="md-nav__link">
+      模拟
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../basic/divide-and-conquer/" title="递归 & 分治" class="md-nav__link">
+      递归 & 分治
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../basic/greedy/" title="贪心" class="md-nav__link">
+      贪心
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-6" type="checkbox" id="nav-2-6">
+    
+    <label class="md-nav__link" for="nav-2-6">
+      排序
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-6">
+        排序
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../basic/sort-intro/" title="排序简介" class="md-nav__link">
+      排序简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../basic/selection-sort/" title="选择排序" class="md-nav__link">
+      选择排序
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../basic/bubble-sort/" title="冒泡排序" class="md-nav__link">
+      冒泡排序
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../basic/insertion-sort/" title="插入排序" class="md-nav__link">
+      插入排序
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../basic/bucket-sort/" title="计数排序" class="md-nav__link">
+      计数排序
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../basic/quick-sort/" title="快速排序" class="md-nav__link">
+      快速排序
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../basic/merge-sort/" title="归并排序" class="md-nav__link">
+      归并排序
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../basic/heap-sort/" title="堆排序" class="md-nav__link">
+      堆排序
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../basic/radix-sort/" title="基数排序" class="md-nav__link">
+      基数排序
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../basic/shell-sort/" title="希尔排序" class="md-nav__link">
+      希尔排序
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../basic/stl-sort/" title="排序相关 STL" class="md-nav__link">
+      排序相关 STL
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../basic/use-of-sort/" title="排序应用" class="md-nav__link">
+      排序应用
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../basic/expression/" title="表达式求值" class="md-nav__link">
+      表达式求值
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../basic/binary/" title="二分" class="md-nav__link">
+      二分
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../basic/construction/" title="构造" class="md-nav__link">
+      构造
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../basic/prefix-sum/" title="前缀和 & 差分" class="md-nav__link">
+      前缀和 & 差分
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../basic/file-operation/" title="文件操作" class="md-nav__link">
+      文件操作
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      深度学习500问
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        深度学习500问
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../" title="简介" class="md-nav__link">
+      简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../content/" title="目录" class="md-nav__link">
+      目录
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ch01_math/ch01_math/" title="第一章_数学基础" class="md-nav__link">
+      第一章_数学基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ch02_机器学习基础/第二章_机器学习基础/" title="第二章_机器学习基础" class="md-nav__link">
+      第二章_机器学习基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ch03_深度学习基础/第三章_深度学习基础/" title="第三章_深度学习基础" class="md-nav__link">
+      第三章_深度学习基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ch04_经典网络/第四章_经典网络/" title="第四章_经典网络" class="md-nav__link">
+      第四章_经典网络
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ch05_卷积神经网络(CNN)/第五章 卷积神经网络（CNN）/" title="第五章 卷积神经网络（CNN）" class="md-nav__link">
+      第五章 卷积神经网络（CNN）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ch06_循环神经网络(RNN)/第六章_循环神经网络(RNN)/" title="第六章_循环神经网络(RNN)" class="md-nav__link">
+      第六章_循环神经网络(RNN)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ch07_生成对抗网络(GAN)/ch7/" title="第七章_生成对抗网络(GAN)" class="md-nav__link">
+      第七章_生成对抗网络(GAN)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ch08_目标检测/第八章_目标检测/" title="第八章_目标检测" class="md-nav__link">
+      第八章_目标检测
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ch09_图像分割/第九章_图像分割/" title="第九章_图像分割" class="md-nav__link">
+      第九章_图像分割
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ch10_强化学习/第十章_强化学习/" title="第十章_强化学习" class="md-nav__link">
+      第十章_强化学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        第十一章_迁移学习
+      </label>
+    
+    <a href="./" title="第十一章_迁移学习" class="md-nav__link md-nav__link--active">
+      第十一章_迁移学习
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#111" title="11.1 迁移学习基础知识" class="md-nav__link">
+    11.1 迁移学习基础知识
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1111" title="11.1.1 什么是迁移学习？" class="md-nav__link">
+    11.1.1 什么是迁移学习？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1112" title="11.1.2 为什么需要迁移学习？" class="md-nav__link">
+    11.1.2 为什么需要迁移学习？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1113" title="11.1.3 迁移学习的基本问题有哪些？" class="md-nav__link">
+    11.1.3 迁移学习的基本问题有哪些？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1114" title="11.1.4 迁移学习有哪些常用概念？" class="md-nav__link">
+    11.1.4 迁移学习有哪些常用概念？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1115" title="11.1.5 迁移学习与传统机器学习有什么区别？" class="md-nav__link">
+    11.1.5 迁移学习与传统机器学习有什么区别？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1116" title="11.1.6 迁移学习的核心及度量准则？" class="md-nav__link">
+    11.1.6 迁移学习的核心及度量准则？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1117" title="11.1.7 迁移学习与其他概念的区别？" class="md-nav__link">
+    11.1.7 迁移学习与其他概念的区别？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1118" title="11.1.8 什么是负迁移？产生负迁移的原因有哪些？" class="md-nav__link">
+    11.1.8 什么是负迁移？产生负迁移的原因有哪些？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1119" title="11.1.9 迁移学习的基本思路？" class="md-nav__link">
+    11.1.9 迁移学习的基本思路？
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#112" title="11.2 迁移学习的基本思路有哪些？" class="md-nav__link">
+    11.2 迁移学习的基本思路有哪些？
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1121" title="11.2.1 基于样本迁移" class="md-nav__link">
+    11.2.1 基于样本迁移
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1122" title="11.2.2 基于特征迁移" class="md-nav__link">
+    11.2.2 基于特征迁移
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1123" title="11.2.3 基于模型迁移" class="md-nav__link">
+    11.2.3 基于模型迁移
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1124" title="11.2.4 基于关系迁移" class="md-nav__link">
+    11.2.4 基于关系迁移
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#113" title="11.3 迁移学习的常用方法" class="md-nav__link">
+    11.3 迁移学习的常用方法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#113_1" title="11.3 迁移学习的常见方法有哪些？" class="md-nav__link">
+    11.3 迁移学习的常见方法有哪些？
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1131" title="11.3.1 数据分布自适应" class="md-nav__link">
+    11.3.1 数据分布自适应
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1132" title="11.3.2 边缘分布自适应" class="md-nav__link">
+    11.3.2 边缘分布自适应
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1133" title="11.3.3 条件分布自适应" class="md-nav__link">
+    11.3.3 条件分布自适应
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1134" title="11.3.4 联合分布自适应" class="md-nav__link">
+    11.3.4 联合分布自适应
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1134_1" title="11.3.4 概率分布自适应方法优劣性比较" class="md-nav__link">
+    11.3.4 概率分布自适应方法优劣性比较
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1136" title="11.3.6 特征选择" class="md-nav__link">
+    11.3.6 特征选择
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1135" title="11.3.5 统计特征对齐方法" class="md-nav__link">
+    11.3.5 统计特征对齐方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1136_1" title="11.3.6 流形学习方法" class="md-nav__link">
+    11.3.6 流形学习方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1137-finetune" title="11.3.7 什么是finetune？" class="md-nav__link">
+    11.3.7 什么是finetune？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1138-finetune" title="11.3.8 finetune为什么有效？" class="md-nav__link">
+    11.3.8 finetune为什么有效？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1139" title="11.3.9 什么是深度网络自适应？" class="md-nav__link">
+    11.3.9 什么是深度网络自适应？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11310-gan" title="11.3.10 GAN在迁移学习中的应用" class="md-nav__link">
+    11.3.10 GAN在迁移学习中的应用
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="参考文献" class="md-nav__link">
+    参考文献
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="评论" class="md-nav__link md-nav__link--active">
+            评论
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ch12_网络搭建及训练/第十二章_网络搭建及训练/" title="第十二章_网络搭建及训练" class="md-nav__link">
+      第十二章_网络搭建及训练
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ch13_优化算法/第十三章_优化算法/" title="第十三章_优化算法" class="md-nav__link">
+      第十三章_优化算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ch14_超参数调整/第十四章_超参数调整/" title="第十四章_超参数调整" class="md-nav__link">
+      第十四章_超参数调整
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ch15_GPU和框架选型/第十五章_异构运算、GPU及框架选型/" title="第十五章_异构运算、GPU及框架选型" class="md-nav__link">
+      第十五章_异构运算、GPU及框架选型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ch16_自然语言处理(NLP)/第十六章_NLP/" title="第十六章_NLP" class="md-nav__link">
+      第十六章_NLP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ch17_模型压缩、加速及移动端部署/第十七章_模型压缩、加速及移动端部署/" title="第十七章_模型压缩、加速及移动端部署" class="md-nav__link">
+      第十七章_模型压缩、加速及移动端部署
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ch18_后端架构选型、离线及实时计算/第十八章_后端架构选型、离线及实时计算/" title="第十八章_后端架构选型、离线及实时计算" class="md-nav__link">
+      第十八章_后端架构选型、离线及实时计算
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ch18_后端架构选型及应用场景/第十八章_后端架构选型及应用场景/" title="第十八章_后端架构选型及应用场景" class="md-nav__link">
+      第十八章_后端架构选型及应用场景
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      经典算法
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        经典算法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/" title="动态规划部分简介" class="md-nav__link">
+      动态规划部分简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/memo/" title="记忆化搜索" class="md-nav__link">
+      记忆化搜索
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/knapsack/" title="背包 DP" class="md-nav__link">
+      背包 DP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/interval/" title="区间 DP" class="md-nav__link">
+      区间 DP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/dag/" title="DAG 上的 DP" class="md-nav__link">
+      DAG 上的 DP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/tree/" title="树形 DP" class="md-nav__link">
+      树形 DP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/state/" title="状压 DP" class="md-nav__link">
+      状压 DP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/number/" title="数位 DP" class="md-nav__link">
+      数位 DP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/plug/" title="插头 DP" class="md-nav__link">
+      插头 DP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-10" type="checkbox" id="nav-4-10">
+    
+    <label class="md-nav__link" for="nav-4-10">
+      DP 优化
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-10">
+        DP 优化
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/optimizations/binary-knapsack/" title="二进制分组解多重背包" class="md-nav__link">
+      二进制分组解多重背包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/optimizations/monotonous-queue-stack/" title="单调队列/单调栈优化" class="md-nav__link">
+      单调队列/单调栈优化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/optimizations/convex-hull-optimization/" title="斜率优化" class="md-nav__link">
+      斜率优化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/optimizations/knuth-yao-quadrangle-inequality/" title="四边形不等式优化" class="md-nav__link">
+      四边形不等式优化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/optimizations/state-optimization/" title="状态设计优化" class="md-nav__link">
+      状态设计优化
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/misc/" title="其它 DP 方法" class="md-nav__link">
+      其它 DP 方法
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      集成学习算法
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        集成学习算法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/" title="字符串部分简介" class="md-nav__link">
+      字符串部分简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/lib-func/" title="标准库" class="md-nav__link">
+      标准库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/match/" title="字符串匹配" class="md-nav__link">
+      字符串匹配
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/hash/" title="哈希" class="md-nav__link">
+      哈希
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/prefix-function/" title="前缀函数与 KMP 算法" class="md-nav__link">
+      前缀函数与 KMP 算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/trie/" title="字典树 (Trie)" class="md-nav__link">
+      字典树 (Trie)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/pam/" title="回文自动机" class="md-nav__link">
+      回文自动机
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/sa/" title="后缀数组 (SA)" class="md-nav__link">
+      后缀数组 (SA)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/ac-automaton/" title="AC 自动机" class="md-nav__link">
+      AC 自动机
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/sam/" title="后缀自动机 (SAM)" class="md-nav__link">
+      后缀自动机 (SAM)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/suffix-tree/" title="后缀树" class="md-nav__link">
+      后缀树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/manacher/" title="Manacher" class="md-nav__link">
+      Manacher
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/minimal-string/" title="最小表示法" class="md-nav__link">
+      最小表示法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/z-function/" title="Z 函数（扩展 KMP）" class="md-nav__link">
+      Z 函数（扩展 KMP）
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      CNN
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        CNN
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/" title="数学部分简介" class="md-nav__link">
+      数学部分简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/base/" title="进制" class="md-nav__link">
+      进制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/bit/" title="位运算" class="md-nav__link">
+      位运算
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/bignum/" title="高精度" class="md-nav__link">
+      高精度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/quick-pow/" title="快速幂" class="md-nav__link">
+      快速幂
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-6" type="checkbox" id="nav-6-6">
+    
+    <label class="md-nav__link" for="nav-6-6">
+      整除及其性质
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-6">
+        整除及其性质
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/prime/" title="素数" class="md-nav__link">
+      素数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/gcd/" title="最大公约数" class="md-nav__link">
+      最大公约数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/euler/" title="欧拉函数" class="md-nav__link">
+      欧拉函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/sieve/" title="筛法" class="md-nav__link">
+      筛法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/fermat/" title="费马小定理" class="md-nav__link">
+      费马小定理
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-7" type="checkbox" id="nav-6-7">
+    
+    <label class="md-nav__link" for="nav-6-7">
+      同余方程相关
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-7">
+        同余方程相关
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/bezouts/" title="裴蜀定理" class="md-nav__link">
+      裴蜀定理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/inverse/" title="乘法逆元" class="md-nav__link">
+      乘法逆元
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/linear-equation/" title="线性同余方程" class="md-nav__link">
+      线性同余方程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/crt/" title="中国剩余定理" class="md-nav__link">
+      中国剩余定理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/bsgs/" title="BSGS" class="md-nav__link">
+      BSGS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/primitive-root/" title="原根" class="md-nav__link">
+      原根
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-8" type="checkbox" id="nav-6-8">
+    
+    <label class="md-nav__link" for="nav-6-8">
+      线性代数
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-8">
+        线性代数
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/matrix/" title="矩阵" class="md-nav__link">
+      矩阵
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/gauss/" title="高斯消元" class="md-nav__link">
+      高斯消元
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/basis/" title="线性基" class="md-nav__link">
+      线性基
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/complex/" title="复数" class="md-nav__link">
+      复数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/dictionary/" title="分段打表" class="md-nav__link">
+      分段打表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-11" type="checkbox" id="nav-6-11">
+    
+    <label class="md-nav__link" for="nav-6-11">
+      数论函数相关
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-11">
+        数论函数相关
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/mobius/" title="莫比乌斯反演" class="md-nav__link">
+      莫比乌斯反演
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/du-sieves/" title="杜教筛" class="md-nav__link">
+      杜教筛
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-12" type="checkbox" id="nav-6-12">
+    
+    <label class="md-nav__link" for="nav-6-12">
+      多项式
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-12">
+        多项式
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/poly/intro/" title="多项式部分简介" class="md-nav__link">
+      多项式部分简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/poly/lagrange-poly/" title="拉格朗日插值" class="md-nav__link">
+      拉格朗日插值
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/poly/fft/" title="快速傅里叶变换" class="md-nav__link">
+      快速傅里叶变换
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/poly/ntt/" title="快速数论变换" class="md-nav__link">
+      快速数论变换
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/poly/fwt/" title="快速沃尔什变换" class="md-nav__link">
+      快速沃尔什变换
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/poly/inv/" title="多项式求逆" class="md-nav__link">
+      多项式求逆
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/poly/sqrt/" title="多项式开方" class="md-nav__link">
+      多项式开方
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/poly/div-mod/" title="多项式除法|取模" class="md-nav__link">
+      多项式除法|取模
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/poly/ln-exp/" title="多项式对数函数|指数函数" class="md-nav__link">
+      多项式对数函数|指数函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/poly/newton/" title="多项式牛顿迭代" class="md-nav__link">
+      多项式牛顿迭代
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/poly/multipoint-eval-interpolation/" title="多项式多点求值|快速插值" class="md-nav__link">
+      多项式多点求值|快速插值
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/poly/tri-func/" title="多项式三角函数" class="md-nav__link">
+      多项式三角函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/poly/inv-tri-func/" title="多项式反三角函数" class="md-nav__link">
+      多项式反三角函数
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-13" type="checkbox" id="nav-6-13">
+    
+    <label class="md-nav__link" for="nav-6-13">
+      组合数学
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-13">
+        组合数学
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/combination/" title="排列组合" class="md-nav__link">
+      排列组合
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/catalan/" title="卡特兰数" class="md-nav__link">
+      卡特兰数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/stirling/" title="斯特林数" class="md-nav__link">
+      斯特林数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/cantor/" title="康托展开" class="md-nav__link">
+      康托展开
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/inclusion-exclusion-principle/" title="容斥原理" class="md-nav__link">
+      容斥原理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/drawer-principle/" title="抽屉原理" class="md-nav__link">
+      抽屉原理
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/expectation/" title="概率 & 期望" class="md-nav__link">
+      概率 & 期望
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/permutation-group/" title="置换群" class="md-nav__link">
+      置换群
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/integral/" title="数值积分" class="md-nav__link">
+      数值积分
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/linear-programming/" title="线性规划" class="md-nav__link">
+      线性规划
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/game-theory/" title="博弈论" class="md-nav__link">
+      博弈论
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/misc/" title="杂项" class="md-nav__link">
+      杂项
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      RNN
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        RNN
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/" title="数据结构部分简介" class="md-nav__link">
+      数据结构部分简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
+    
+    <label class="md-nav__link" for="nav-7-2">
+      STL
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-2">
+        STL
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/stl/" title="STL 简介" class="md-nav__link">
+      STL 简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/stl/vector/" title="vector" class="md-nav__link">
+      vector
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/stl/priority_queue/" title="priority_queue" class="md-nav__link">
+      priority_queue
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/stl/map/" title="map" class="md-nav__link">
+      map
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/stl/bitset/" title="bitset" class="md-nav__link">
+      bitset
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-3" type="checkbox" id="nav-7-3">
+    
+    <label class="md-nav__link" for="nav-7-3">
+      pb_ds
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-3">
+        pb_ds
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/pb-ds/" title="pb_ds 简介" class="md-nav__link">
+      pb_ds 简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/pb-ds/priority-queue/" title="__gnu_pbds::priority_queue" class="md-nav__link">
+      __gnu_pbds::priority_queue
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/stack/" title="栈" class="md-nav__link">
+      栈
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/queue/" title="队列" class="md-nav__link">
+      队列
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/linked-list/" title="链表" class="md-nav__link">
+      链表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/hash/" title="哈希表" class="md-nav__link">
+      哈希表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/dsu/" title="并查集" class="md-nav__link">
+      并查集
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-9" type="checkbox" id="nav-7-9">
+    
+    <label class="md-nav__link" for="nav-7-9">
+      堆
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-9">
+        堆
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/heap/" title="堆简介" class="md-nav__link">
+      堆简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/binary-heap/" title="二叉堆" class="md-nav__link">
+      二叉堆
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/pairing-heap/" title="配对堆" class="md-nav__link">
+      配对堆
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-10" type="checkbox" id="nav-7-10">
+    
+    <label class="md-nav__link" for="nav-7-10">
+      块状数据结构
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-10">
+        块状数据结构
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/square-root-decomposition/" title="分块思想" class="md-nav__link">
+      分块思想
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/block-list/" title="块状链表" class="md-nav__link">
+      块状链表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/block-array/" title="块状数组" class="md-nav__link">
+      块状数组
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/tree-decompose/" title="树分块" class="md-nav__link">
+      树分块
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/monotonous-stack/" title="单调栈" class="md-nav__link">
+      单调栈
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/monotonous-queue/" title="单调队列" class="md-nav__link">
+      单调队列
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/sparse-table/" title="倍增" class="md-nav__link">
+      倍增
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/bit/" title="树状数组" class="md-nav__link">
+      树状数组
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/segment/" title="线段树" class="md-nav__link">
+      线段树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/dividing/" title="划分树" class="md-nav__link">
+      划分树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-17" type="checkbox" id="nav-7-17">
+    
+    <label class="md-nav__link" for="nav-7-17">
+      平衡树
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-17">
+        平衡树
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/bst/" title="二叉搜索树简介" class="md-nav__link">
+      二叉搜索树简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/treap/" title="Treap" class="md-nav__link">
+      Treap
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/splay/" title="Splay" class="md-nav__link">
+      Splay
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/wblt/" title="WBLT" class="md-nav__link">
+      WBLT
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/sbt/" title="Size Balanced Tree" class="md-nav__link">
+      Size Balanced Tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/avl/" title="AVL 树" class="md-nav__link">
+      AVL 树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/scapegoat/" title="替罪羊树" class="md-nav__link">
+      替罪羊树
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-18" type="checkbox" id="nav-7-18">
+    
+    <label class="md-nav__link" for="nav-7-18">
+      树套树
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-18">
+        树套树
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/seg-in-seg/" title="线段树套线段树" class="md-nav__link">
+      线段树套线段树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/seg-in-balanced/" title="平衡树套线段树" class="md-nav__link">
+      平衡树套线段树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/balanced-in-seg/" title="线段树套平衡树" class="md-nav__link">
+      线段树套平衡树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/persistent-in-bit/" title="树状数组套主席树" class="md-nav__link">
+      树状数组套主席树
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/k-dtree/" title="K-Dtree" class="md-nav__link">
+      K-Dtree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-20" type="checkbox" id="nav-7-20">
+    
+    <label class="md-nav__link" for="nav-7-20">
+      可持久化数据结构
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-20">
+        可持久化数据结构
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/persistent/" title="可持久化数据结构简介" class="md-nav__link">
+      可持久化数据结构简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/persistent-seg/" title="可持久化线段树" class="md-nav__link">
+      可持久化线段树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/persistent-block-array/" title="可持久化块状数组" class="md-nav__link">
+      可持久化块状数组
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/persistent-balanced/" title="可持久化平衡树" class="md-nav__link">
+      可持久化平衡树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/persistent-trie/" title="可持久化字典树" class="md-nav__link">
+      可持久化字典树
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/odt/" title="珂朵莉树" class="md-nav__link">
+      珂朵莉树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/lct/" title="Link Cut Tree" class="md-nav__link">
+      Link Cut Tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/ett/" title="Euler Tour Tree" class="md-nav__link">
+      Euler Tour Tree
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      GAN
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        GAN
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/" title="图论部分简介" class="md-nav__link">
+      图论部分简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/basic/" title="图论基础" class="md-nav__link">
+      图论基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/traverse/" title="图的遍历" class="md-nav__link">
+      图的遍历
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-4" type="checkbox" id="nav-8-4">
+    
+    <label class="md-nav__link" for="nav-8-4">
+      树上问题
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-4">
+        树上问题
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/tree-basic/" title="树基础" class="md-nav__link">
+      树基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/lca/" title="最近公共祖先" class="md-nav__link">
+      最近公共祖先
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/dfs-order/" title="DFS 序" class="md-nav__link">
+      DFS 序
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/tree-misc/" title="树的其他问题" class="md-nav__link">
+      树的其他问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/tree-hash/" title="树哈希" class="md-nav__link">
+      树哈希
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/heavy-light-decomposition/" title="树链剖分" class="md-nav__link">
+      树链剖分
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/tree-divide/" title="树分治" class="md-nav__link">
+      树分治
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/dynamic-tree-divide/" title="动态树分治" class="md-nav__link">
+      动态树分治
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/virtual-tree/" title="虚树" class="md-nav__link">
+      虚树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/dsu-on-tree/" title="树上启发式合并" class="md-nav__link">
+      树上启发式合并
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/matrix-tree/" title="矩阵树定理" class="md-nav__link">
+      矩阵树定理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/dag/" title="有向无环图" class="md-nav__link">
+      有向无环图
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/topo/" title="拓扑排序" class="md-nav__link">
+      拓扑排序
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/mst/" title="最小生成树" class="md-nav__link">
+      最小生成树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/mdst/" title="最小树形图" class="md-nav__link">
+      最小树形图
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/shortest-path/" title="最短路" class="md-nav__link">
+      最短路
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/differential-constraints/" title="差分约束" class="md-nav__link">
+      差分约束
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/kth-path/" title="k 短路" class="md-nav__link">
+      k 短路
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-13" type="checkbox" id="nav-8-13">
+    
+    <label class="md-nav__link" for="nav-8-13">
+      连通性相关
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-13">
+        连通性相关
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/scc/" title="强连通分量" class="md-nav__link">
+      强连通分量
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/bcc/" title="双连通分量" class="md-nav__link">
+      双连通分量
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/bridge/" title="割点和桥" class="md-nav__link">
+      割点和桥
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/2-sat/" title="2-SAT" class="md-nav__link">
+      2-SAT
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/euler/" title="欧拉图" class="md-nav__link">
+      欧拉图
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/hamilton/" title="哈密顿图" class="md-nav__link">
+      哈密顿图
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/bi-graph/" title="二分图" class="md-nav__link">
+      二分图
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/min-circle/" title="最小环" class="md-nav__link">
+      最小环
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/planar/" title="平面图" class="md-nav__link">
+      平面图
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/color/" title="图的着色" class="md-nav__link">
+      图的着色
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-20" type="checkbox" id="nav-8-20">
+    
+    <label class="md-nav__link" for="nav-8-20">
+      网络流
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-20">
+        网络流
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/flow/" title="网络流简介" class="md-nav__link">
+      网络流简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/flow/node/" title="拆点" class="md-nav__link">
+      拆点
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/flow/max-flow/" title="最大流" class="md-nav__link">
+      最大流
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/flow/min-cut/" title="最小割" class="md-nav__link">
+      最小割
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/flow/min-cost/" title="费用流" class="md-nav__link">
+      费用流
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/flow/bound/" title="上下界网络流" class="md-nav__link">
+      上下界网络流
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/misc/" title="图论杂项" class="md-nav__link">
+      图论杂项
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      计算机视觉
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        计算机视觉
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../geometry/" title="计算几何部分简介" class="md-nav__link">
+      计算几何部分简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../geometry/2d/" title="二维计算几何基础" class="md-nav__link">
+      二维计算几何基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../geometry/3d/" title="三维计算几何基础" class="md-nav__link">
+      三维计算几何基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../geometry/distance/" title="距离" class="md-nav__link">
+      距离
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../geometry/pick/" title="Pick 定理" class="md-nav__link">
+      Pick 定理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../geometry/triangulation/" title="三角剖分" class="md-nav__link">
+      三角剖分
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../geometry/convex-hull/" title="凸包" class="md-nav__link">
+      凸包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../geometry/scanning/" title="扫描线" class="md-nav__link">
+      扫描线
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../geometry/rotating-calipers/" title="旋转卡壳" class="md-nav__link">
+      旋转卡壳
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../geometry/half-plane-intersection/" title="半平面交" class="md-nav__link">
+      半平面交
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../geometry/nearest-points/" title="平面最近点对" class="md-nav__link">
+      平面最近点对
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../geometry/magic/" title="计算几何杂项" class="md-nav__link">
+      计算几何杂项
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      NLP
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        NLP
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/" title="杂项简介" class="md-nav__link">
+      杂项简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/io/" title="读入、输出优化" class="md-nav__link">
+      读入、输出优化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/complexity/" title="复杂度" class="md-nav__link">
+      复杂度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/discrete/" title="离散化" class="md-nav__link">
+      离散化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10-5" type="checkbox" id="nav-10-5">
+    
+    <label class="md-nav__link" for="nav-10-5">
+      离线算法
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-10-5">
+        离线算法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/offline/" title="离线算法简介" class="md-nav__link">
+      离线算法简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/cdq-divide/" title="CDQ 分治" class="md-nav__link">
+      CDQ 分治
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/mo-algo/" title="莫队算法" class="md-nav__link">
+      莫队算法
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/fractional-programming/" title="分数规划" class="md-nav__link">
+      分数规划
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10-7" type="checkbox" id="nav-10-7">
+    
+    <label class="md-nav__link" for="nav-10-7">
+      随机化
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-10-7">
+        随机化
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/random/" title="随机函数" class="md-nav__link">
+      随机函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/hill-climbing/" title="爬山算法" class="md-nav__link">
+      爬山算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/simulated-annealing/" title="模拟退火" class="md-nav__link">
+      模拟退火
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/random-incremental/" title="随机增量法" class="md-nav__link">
+      随机增量法
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/largest-matrix/" title="悬线法" class="md-nav__link">
+      悬线法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/cc-basic/" title="计算理论基础" class="md-nav__link">
+      计算理论基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/endianness/" title="字节顺序" class="md-nav__link">
+      字节顺序
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11">
+    
+    <label class="md-nav__link" for="nav-11">
+      推荐系统
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-11">
+        推荐系统
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/" title="杂项简介" class="md-nav__link">
+      杂项简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/io/" title="读入、输出优化" class="md-nav__link">
+      读入、输出优化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/complexity/" title="复杂度" class="md-nav__link">
+      复杂度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/discrete/" title="离散化" class="md-nav__link">
+      离散化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11-5" type="checkbox" id="nav-11-5">
+    
+    <label class="md-nav__link" for="nav-11-5">
+      离线算法
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-11-5">
+        离线算法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/offline/" title="离线算法简介" class="md-nav__link">
+      离线算法简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/cdq-divide/" title="CDQ 分治" class="md-nav__link">
+      CDQ 分治
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/mo-algo/" title="莫队算法" class="md-nav__link">
+      莫队算法
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/fractional-programming/" title="分数规划" class="md-nav__link">
+      分数规划
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11-7" type="checkbox" id="nav-11-7">
+    
+    <label class="md-nav__link" for="nav-11-7">
+      随机化
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-11-7">
+        随机化
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/random/" title="随机函数" class="md-nav__link">
+      随机函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/hill-climbing/" title="爬山算法" class="md-nav__link">
+      爬山算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/simulated-annealing/" title="模拟退火" class="md-nav__link">
+      模拟退火
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/random-incremental/" title="随机增量法" class="md-nav__link">
+      随机增量法
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/largest-matrix/" title="悬线法" class="md-nav__link">
+      悬线法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/cc-basic/" title="计算理论基础" class="md-nav__link">
+      计算理论基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/endianness/" title="字节顺序" class="md-nav__link">
+      字节顺序
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../about/" title="关于" class="md-nav__link">
+      关于
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#111" title="11.1 迁移学习基础知识" class="md-nav__link">
+    11.1 迁移学习基础知识
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1111" title="11.1.1 什么是迁移学习？" class="md-nav__link">
+    11.1.1 什么是迁移学习？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1112" title="11.1.2 为什么需要迁移学习？" class="md-nav__link">
+    11.1.2 为什么需要迁移学习？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1113" title="11.1.3 迁移学习的基本问题有哪些？" class="md-nav__link">
+    11.1.3 迁移学习的基本问题有哪些？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1114" title="11.1.4 迁移学习有哪些常用概念？" class="md-nav__link">
+    11.1.4 迁移学习有哪些常用概念？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1115" title="11.1.5 迁移学习与传统机器学习有什么区别？" class="md-nav__link">
+    11.1.5 迁移学习与传统机器学习有什么区别？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1116" title="11.1.6 迁移学习的核心及度量准则？" class="md-nav__link">
+    11.1.6 迁移学习的核心及度量准则？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1117" title="11.1.7 迁移学习与其他概念的区别？" class="md-nav__link">
+    11.1.7 迁移学习与其他概念的区别？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1118" title="11.1.8 什么是负迁移？产生负迁移的原因有哪些？" class="md-nav__link">
+    11.1.8 什么是负迁移？产生负迁移的原因有哪些？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1119" title="11.1.9 迁移学习的基本思路？" class="md-nav__link">
+    11.1.9 迁移学习的基本思路？
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#112" title="11.2 迁移学习的基本思路有哪些？" class="md-nav__link">
+    11.2 迁移学习的基本思路有哪些？
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1121" title="11.2.1 基于样本迁移" class="md-nav__link">
+    11.2.1 基于样本迁移
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1122" title="11.2.2 基于特征迁移" class="md-nav__link">
+    11.2.2 基于特征迁移
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1123" title="11.2.3 基于模型迁移" class="md-nav__link">
+    11.2.3 基于模型迁移
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1124" title="11.2.4 基于关系迁移" class="md-nav__link">
+    11.2.4 基于关系迁移
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#113" title="11.3 迁移学习的常用方法" class="md-nav__link">
+    11.3 迁移学习的常用方法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#113_1" title="11.3 迁移学习的常见方法有哪些？" class="md-nav__link">
+    11.3 迁移学习的常见方法有哪些？
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1131" title="11.3.1 数据分布自适应" class="md-nav__link">
+    11.3.1 数据分布自适应
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1132" title="11.3.2 边缘分布自适应" class="md-nav__link">
+    11.3.2 边缘分布自适应
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1133" title="11.3.3 条件分布自适应" class="md-nav__link">
+    11.3.3 条件分布自适应
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1134" title="11.3.4 联合分布自适应" class="md-nav__link">
+    11.3.4 联合分布自适应
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1134_1" title="11.3.4 概率分布自适应方法优劣性比较" class="md-nav__link">
+    11.3.4 概率分布自适应方法优劣性比较
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1136" title="11.3.6 特征选择" class="md-nav__link">
+    11.3.6 特征选择
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1135" title="11.3.5 统计特征对齐方法" class="md-nav__link">
+    11.3.5 统计特征对齐方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1136_1" title="11.3.6 流形学习方法" class="md-nav__link">
+    11.3.6 流形学习方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1137-finetune" title="11.3.7 什么是finetune？" class="md-nav__link">
+    11.3.7 什么是finetune？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1138-finetune" title="11.3.8 finetune为什么有效？" class="md-nav__link">
+    11.3.8 finetune为什么有效？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1139" title="11.3.9 什么是深度网络自适应？" class="md-nav__link">
+    11.3.9 什么是深度网络自适应？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11310-gan" title="11.3.10 GAN在迁移学习中的应用" class="md-nav__link">
+    11.3.10 GAN在迁移学习中的应用
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="参考文献" class="md-nav__link">
+    参考文献
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="评论" class="md-nav__link md-nav__link--active">
+            评论
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/myourdream/aiwiki/blob/master/docs/qa500/ch11_迁移学习/第十一章_迁移学习.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <div class="toc">
+<ul>
+<li><a href="#_1">第十一章 迁移学习</a><ul>
+<li><a href="#111">11.1 迁移学习基础知识</a><ul>
+<li><a href="#1111">11.1.1 什么是迁移学习？</a></li>
+<li><a href="#1112">11.1.2 为什么需要迁移学习？</a></li>
+<li><a href="#1113">11.1.3 迁移学习的基本问题有哪些？</a></li>
+<li><a href="#1114">11.1.4 迁移学习有哪些常用概念？</a></li>
+<li><a href="#1115">11.1.5 迁移学习与传统机器学习有什么区别？</a></li>
+<li><a href="#1116">11.1.6 迁移学习的核心及度量准则？</a></li>
+<li><a href="#1117">11.1.7 迁移学习与其他概念的区别？</a></li>
+<li><a href="#1118">11.1.8 什么是负迁移？产生负迁移的原因有哪些？</a></li>
+<li><a href="#1119">11.1.9 迁移学习的基本思路？</a></li>
+</ul>
+</li>
+<li><a href="#112">11.2 迁移学习的基本思路有哪些？</a><ul>
+<li><a href="#1121">11.2.1 基于样本迁移</a></li>
+<li><a href="#1122">11.2.2 基于特征迁移</a></li>
+<li><a href="#1123">11.2.3 基于模型迁移</a></li>
+<li><a href="#1124">11.2.4 基于关系迁移</a></li>
+</ul>
+</li>
+<li><a href="#113">11.3 迁移学习的常用方法</a></li>
+<li><a href="#113_1">11.3 迁移学习的常见方法有哪些？</a><ul>
+<li><a href="#1131">11.3.1 数据分布自适应</a></li>
+<li><a href="#1132">11.3.2 边缘分布自适应</a></li>
+<li><a href="#1133">11.3.3 条件分布自适应</a></li>
+<li><a href="#1134">11.3.4 联合分布自适应</a></li>
+<li><a href="#1134_1">11.3.4 概率分布自适应方法优劣性比较</a></li>
+<li><a href="#1136">11.3.6 特征选择</a></li>
+<li><a href="#1135">11.3.5 统计特征对齐方法</a></li>
+<li><a href="#1136_1">11.3.6 流形学习方法</a></li>
+<li><a href="#1137-finetune">11.3.7 什么是finetune？</a></li>
+<li><a href="#1138-finetune">11.3.8 finetune为什么有效？</a></li>
+<li><a href="#1139">11.3.9 什么是深度网络自适应？</a></li>
+<li><a href="#11310-gan">11.3.10 GAN在迁移学习中的应用</a></li>
+</ul>
+</li>
+<li><a href="#_2">参考文献</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="_1">第十一章 迁移学习<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>​   本章主要简明地介绍了迁移学习的基本概念、迁移学习的必要性、研究领域和基本方法。重点介绍了几大类常用的迁移学习方法：数据分布自适应方法、特征选择方法、子空间学习方法、以及目前最热门的深度迁移学习方法。除此之外，我们也结合最近的一些研究成果对未来迁移学习进行了一些展望。并提供了一些迁移学习领域的常用学习资源，以方便感兴趣的读者快速开始学习。</p>
+<h2 id="111">11.1 迁移学习基础知识<a class="headerlink" href="#111" title="Permanent link">&para;</a></h2>
+<h3 id="1111">11.1.1 什么是迁移学习？<a class="headerlink" href="#1111" title="Permanent link">&para;</a></h3>
+<p>找到目标问题的相似性，迁移学习任务就是从相似性出发，将旧领域(domain)学习过的模型应用在新领域上。</p>
+<h3 id="1112">11.1.2 为什么需要迁移学习？<a class="headerlink" href="#1112" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>大数据与少标注的矛盾</strong>：虽然有大量的数据，但往往都是没有标注的，无法训练机器学习模型。人工进行数据标定太耗时。</li>
+<li><strong>大数据与弱计算的矛盾</strong>：普通人无法拥有庞大的数据量与计算资源。因此需要借助于模型的迁移。</li>
+<li><strong>普适化模型与个性化需求的矛盾</strong>：即使是在同一个任务上，一个模型也往往难以满足每个人的个性化需求，比如特定的隐私设置。这就需要在不同人之间做模型的适配。</li>
+<li><strong>特定应用（如冷启动）的需求</strong>。</li>
+</ol>
+<h3 id="1113">11.1.3 迁移学习的基本问题有哪些？<a class="headerlink" href="#1113" title="Permanent link">&para;</a></h3>
+<p>基本问题主要有3个：</p>
+<ul>
+<li><strong>How to transfer</strong>： 如何进行迁移学习？（设计迁移方法）</li>
+<li><strong>What to transfer</strong>： 给定一个目标领域，如何找到相对应的源领域，然后进行迁移？（源领域选择）</li>
+<li><strong>When to transfer</strong>： 什么时候可以进行迁移，什么时候不可以？（避免负迁移）</li>
+</ul>
+<h3 id="1114">11.1.4 迁移学习有哪些常用概念？<a class="headerlink" href="#1114" title="Permanent link">&para;</a></h3>
+<ul>
+<li>基本定义</li>
+<li><strong>域(Domain)</strong>：数据特征和特征分布组成，是学习的主体<ul>
+<li><strong>源域 (Source domain)</strong>：已有知识的域</li>
+<li><strong>目标域 (Target domain)</strong>：要进行学习的域</li>
+</ul>
+</li>
+<li><strong>任务 (Task)</strong>：由目标函数和学习结果组成，是学习的结果</li>
+<li>按特征空间分类</li>
+<li><strong>同构迁移学习（Homogeneous TL）</strong>： 源域和目标域的特征空间相同，<span><span class="MathJax_Preview">D_s=D_t</span><script type="math/tex">D_s=D_t</script></span></li>
+<li><strong>异构迁移学习（Heterogeneous TL）</strong>：源域和目标域的特征空间不同，<span><span class="MathJax_Preview">D_s\ne D_t</span><script type="math/tex">D_s\ne D_t</script></span></li>
+<li>按迁移情景分类</li>
+<li><strong>归纳式迁移学习（Inductive TL）</strong>：源域和目标域的学习任务不同</li>
+<li><strong>直推式迁移学习（Transductive TL)</strong>：源域和目标域不同，学习任务相同</li>
+<li><strong>无监督迁移学习（Unsupervised TL)</strong>：源域和目标域均没有标签</li>
+<li>按迁移方法分类</li>
+<li><strong>基于实例的迁移 (Instance based TL)</strong>：通过权重重用源域和目标域的样例进行迁移</li>
+<li><strong>基于特征的迁移 (Feature based TL)</strong>：将源域和目标域的特征变换到相同空间</li>
+<li><strong>基于模型的迁移 (Parameter based TL)</strong>：利用源域和目标域的参数共享模型</li>
+<li><strong>基于关系的迁移 (Relation based TL)</strong>：利用源域中的逻辑网络关系进行迁移</li>
+</ul>
+<p><img alt="1542972502781" src="../img/ch11/1542972502781.png" /></p>
+<p><img alt="1542974131814" src="../img/ch11/1542974131814.png" /></p>
+<h3 id="1115">11.1.5 迁移学习与传统机器学习有什么区别？<a class="headerlink" href="#1115" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>迁移学习</th>
+<th>传统机器学习</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据分布</td>
+<td>训练和测试数据不需要同分布</td>
+<td>训练和测试数据同分布</td>
+</tr>
+<tr>
+<td>数据标签</td>
+<td>不需要足够的数据标注</td>
+<td>足够的数据标注</td>
+</tr>
+<tr>
+<td>建模</td>
+<td>可以重用之前的模型</td>
+<td>每个任务分别建模</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="1542973960796" src="../img/ch11/1542973960796.png" /></p>
+<h3 id="1116">11.1.6 迁移学习的核心及度量准则？<a class="headerlink" href="#1116" title="Permanent link">&para;</a></h3>
+<p><strong>迁移学习的总体思路可以概括为</strong>：开发算法来最大限度地利用有标注的领域的知识，来辅助目标领域的知识获取和学习。</p>
+<p><strong>迁移学习的核心是</strong>：找到源领域和目标领域之间的相似性，并加以合理利用。这种相似性非常普遍。比如，不同人的身体构造是相似的；自行车和摩托车的骑行方式是相似的；国际象棋和中国象棋是相似的；羽毛球和网球的打球方式是相似的。这种相似性也可以理解为不变量。以不变应万变，才能立于不败之地。</p>
+<p><strong>有了这种相似性后，下一步工作就是， 如何度量和利用这种相似性。</strong>度量工作的目标有两点：一是很好地度量两个领域的相似性，不仅定性地告诉我们它们是否相似，更定量地给出相似程度。二是以度量为准则，通过我们所要采用的学习手段，增大两个领域之间的相似性，从而完成迁移学习。</p>
+<p><strong>一句话总结： 相似性是核心，度量准则是重要手段。</strong></p>
+<h3 id="1117">11.1.7 迁移学习与其他概念的区别？<a class="headerlink" href="#1117" title="Permanent link">&para;</a></h3>
+<ol>
+<li>迁移学习与多任务学习关系：</li>
+<li><strong>多任务学习</strong>：多个相关任务一起协同学习；</li>
+<li><strong>迁移学习</strong>：强调信息复用，从一个领域(domain)迁移到另一个领域。</li>
+<li>迁移学习与领域自适应：<strong>领域自适应</strong>：使两个特征分布不一致的domain一致。</li>
+<li>迁移学习与协方差漂移：<strong>协方差漂移</strong>：数据的条件概率分布发生变化。</li>
+</ol>
+<p>Reference： </p>
+<ol>
+<li><a href="https：//github.com/jindongwang/transferlearning-tutorial">王晋东，迁移学习简明手册</a></li>
+<li>Ben-David, S., Blitzer, J., Crammer, K., Kulesza, A., Pereira, F., &amp; Vaughan, J. W. (2010). A theory of learning from different domains. Machine learning, 79(1-2), 151-175.</li>
+<li>Tan, B., Song, Y., Zhong, E. and Yang, Q., 2015, August. Transitive transfer learning. In Proceedings of the 21th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (pp. 1155-1164). ACM.</li>
+</ol>
+<h3 id="1118">11.1.8 什么是负迁移？产生负迁移的原因有哪些？<a class="headerlink" href="#1118" title="Permanent link">&para;</a></h3>
+<p>负迁移(Negative Transfer)指的是，在源域上学习到的知识，对于目标域上的学习产生负面作用。</p>
+<p>产生负迁移的原因主要有：
+- 数据问题：源域和目标域压根不相似，谈何迁移？
+- 方法问题：源域和目标域是相似的，但是，迁移学习方法不够好，没找到可迁移的成分。</p>
+<p>负迁移给迁移学习的研究和应用带来了负面影响。在实际应用中，找到合理的相似性，并且选择或开发合理的迁移学习方法，能够避免负迁移现象。</p>
+<h3 id="1119">11.1.9 迁移学习的基本思路？<a class="headerlink" href="#1119" title="Permanent link">&para;</a></h3>
+<p>迁移学习的总体思路可以概括为：开发算法来最大限度地利用有标注的领域的知识，来辅助目标领域的知识获取和学习。</p>
+<ol>
+<li>找到目标问题的相似性，迁移学习任务就是从相似性出发，将旧领域(domain)学习过的模型应用在新领域上。</li>
+<li>迁移学习，是指利用数据、任务、或模型之间的相似性，将在旧领域学习过的模型，应用于新领域的一种学习过程。</li>
+<li>迁移学习<strong>最有用的场合</strong>是，如果你尝试优化任务B的性能，通常这个任务数据相对较少。
+   例如，在放射科中你知道很难收集很多射线扫描图来搭建一个性能良好的放射科诊断系统，所以在这种情况下，你可能会找一个相关但不同的任务，如图像识别，其中你可能用 1 百万张图片训练过了，并从中学到很多低层次特征，所以那也许能帮助网络在任务在放射科任务上做得更好，尽管任务没有这么多数据。</li>
+<li>迁移学习什么时候是有意义的？它确实可以<strong>显著提高</strong>你的<strong>学习任务的性能</strong>，但我有时候也见过有些场合使用迁移学习时，任务实际上数据量比任务要少， 这种情况下增益可能不多。<blockquote>
+<p>什么情况下可以使用迁移学习？</p>
+<p>假如两个领域之间的区别特别的大，<strong>不可以直接采用迁移学习</strong>，因为在这种情况下效果不是很好。在这种情况下，推荐使用[3]的工作，在两个相似度很低的domain之间一步步迁移过去（踩着石头过河）。</p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<ol>
+<li>迁移学习主要解决方案有哪些？</li>
+<li>除直接看infer的结果的Accurancy以外，如何衡量迁移学习学习效果？</li>
+<li>对抗网络是如何进行迁移的？</li>
+</ol>
+</blockquote>
+<p>Reference： </p>
+<ol>
+<li><a href="https：//github.com/jindongwang/transferlearning-tutorial">王晋东，迁移学习简明手册</a></li>
+<li>Ben-David, S., Blitzer, J., Crammer, K., Kulesza, A., Pereira, F., &amp; Vaughan, J. W. (2010). A theory of learning from different domains. Machine learning, 79(1-2), 151-175.</li>
+<li>Tan, B., Song, Y., Zhong, E. and Yang, Q., 2015, August. Transitive transfer learning. In Proceedings of the 21th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (pp. 1155-1164). ACM.</li>
+</ol>
+<h2 id="112">11.2 迁移学习的基本思路有哪些？<a class="headerlink" href="#112" title="Permanent link">&para;</a></h2>
+<p>​   迁移学习的基本方法可以分为四种。这四种基本的方法分别是：基于样本的迁移， 基于模型 的迁移， 基于特征的迁移，及基于关系的迁移。</p>
+<h3 id="1121">11.2.1 基于样本迁移<a class="headerlink" href="#1121" title="Permanent link">&para;</a></h3>
+<p>​   基于样本的迁移学习方法 (Instance based Transfer Learning) 根据一定的权重生成规则，对数据样本进行重用，来进行迁移学习。图<a href="#bookmark90">14</a>形象地表示了基于样本迁移方法的思想源域中存在不同种类的动物，如狗、鸟、猫等，目标域只有狗这一种类别。在迁移时，为了最大限度地和目标域相似，我们可以人为地提高源域中属于狗这个类别的样本权重。</p>
+<p><img alt="" src="../media/631e5aab4e0680c374793804817bfbb6.jpg" /></p>
+<p><center>图 14: 基于样本的迁移学习方法示意图</p>
+<p>​   在迁移学习中，对于源域D<sub>s</sub>和目标域D<sub>t</sub>，通常假定产生它们的概率分布是不同且未知的(P(X<sub>s</sub>) =P(X<sub>t</sub>))。另外，由于实例的维度和数量通常都非常大，因此，直接对 P(X<sub>s</sub>) 和P(X<sub>t</sub>) 进行估计是不可行的。因而，大量的研究工作 [<a href="#bookmark267">Khan and Heisterkamp,2016</a>, <a href="#bookmark319">Zadrozny, 2004</a>, <a href="#bookmark242">Cortes et al.,2008</a>, <a href="#bookmark243">Dai et al., 2007</a>, <a href="#bookmark302">Tan et al.,2015</a>, <a href="#bookmark303">Tan et al., 2017</a>] 着眼于对源域和目标域的分布比值进行估计(P(<strong>X</strong>t)/P(<strong>X</strong>s))。所估计得到的比值即为样本的权重。这些方法通常都假设P(<strong>x</strong>s) \&lt;并且源域和目标域的条件概率分布相同(P(y|x<sub>s</sub>)=<em>P</em>(y|x<sub>t</sub>))。特别地，上海交通大学Dai等人[<a href="#bookmark243">Dai et al.,2007</a>]提出了 TrAdaboost方法，将AdaBoost的思想应用于迁移学习中，提高有利于目标分类任务的实例权重、降低不利于目标分类任务的实例权重，并基于PAC理论推导了模型的泛化误差上界。TrAdaBoost方法是此方面的经典研究之一。文献 [<a href="#bookmark264">Huang et al., 2007</a>]提出核均值匹配方法 (Kernel Mean atching, KMM)对于概率分布进行估计，目标是使得加权后的源域和目标域的概率分布尽可能相近。在最新的研究成果中，香港科技大学的Tan等人扩展了实例迁移学习方法的应用场景，提出 了传递迁移学习方法(Transitive Transfer Learning, TTL) [<a href="#bookmark302">Tan etal., 2015</a>] 和远域迁移学习 (Distant Domain Transfer Learning,DDTL) [<a href="#bookmark303">Tan et al., 2017</a>]，利用联合矩阵分解和深度神经网络，将迁移学习应用于多个不相似的领域之间的知识共享，取得了良好的效果。</p>
+<p>​   虽然实例权重法具有较好的理论支撑、容易推导泛化误差上界，但这类方法通常只在领域间分布差异较小时有效，因此对自然语言处理、计算机视觉等任务效果并不理想。而基于特征表示的迁移学习方法效果更好,是我们研究的重点。</p>
+<h3 id="1122">11.2.2 基于特征迁移<a class="headerlink" href="#1122" title="Permanent link">&para;</a></h3>
+<p>​   基于特征的迁移方法 (Feature based Transfer Learning) 是指将通过特征变换的方式互相迁移 [<a href="#bookmark272">Liu et al., 2011</a>, <a href="#bookmark327">Zheng et al.,2008</a>, <a href="#bookmark263">Hu and Yang, 2011</a>],来减少源域和目标域之间的差距；或者将源域和目标域的数据特征变换到统一特征空间中 [<a href="#bookmark288">Pan et al.,2011</a>, <a href="#bookmark278">Long et al., 2014b</a>, <a href="#bookmark248">Duan et al.,2012</a>],然后利用传统的机器学习方法进行分类识别。根据特征的同构和异构性,又可以分为同构和异构迁移学习。图<a href="#bookmark93">15</a>很形象地表示了两种基于特 征的迁移学习方法。</p>
+<p><img alt="" src="../media/fa08900e89bfd53cc28345d21bc6aca0.jpg" /></p>
+<p><center>图 15: 基于特征的迁移学习方法示意图</p>
+<p>​   基于特征的迁移学习方法是迁移学习领域中最热门的研究方法,这类方法通常假设源域和目标域间有一些交叉的特征。香港科技大学的 Pan 等人 [<a href="#bookmark288">Pan et al.,2011</a>] 提出的迁移 成分分析方法 (Transfer Component Analysis, TCA)是其中较为典型的一个方法。该方法的 核心内容是以最大均值差异 (Maximum MeanDiscrepancy, MMD) [<a href="#bookmark236">Borgwardt et al., 2006</a>]作为度量准则,将不同数据领域中的分布差异最小化。加州大学伯克利分校的 Blitzer 等人 [<a href="#bookmark235">Blitzer et al., 2006</a>] 提出了一种基于结构对应的学习方法(Structural Corresponding Learning,SCL),该算法可以通过映射将一个空间中独有的一些特征变换到其他所有空间中的轴特征上,然后在该特征上使用机器学习的算法进行分类预测。清华大学龙明盛等人[<a href="#bookmark278">Long et al.,2014b</a>]提出在最小化分布距离的同时，加入实例选择的迁移联合匹配(Tran-fer Joint Matching, TJM) 方法,将实例和特征迁移学习方法进行了有机的结合。澳大利亚卧龙岗大学的 Jing Zhang 等人 [<a href="#bookmark321">Zhang et al., 2017a</a>]提出对于源域和目标域各自训练不同 的变换矩阵,从而达到迁移学习的目标。</p>
+<h3 id="1123">11.2.3 基于模型迁移<a class="headerlink" href="#1123" title="Permanent link">&para;</a></h3>
+<p>​   基于模型的迁移方法 (Parameter/Model based Transfer Learning) 是指从源域和目标域中找到他们之间共享的参数信息,以实现迁移的方法。这种迁移方式要求的假设条件是： 源域中的数据与目标域中的数据可以共享一些模型的参数。其中的代表性工作主要有［<a href="#bookmark324">Zhao et al., 2010</a>, <a href="#bookmark325">Zhao et al., 2011</a>, <a href="#bookmark287">Panet al., 2008b</a>, <a href="#bookmark286">Pan et al., 2008a</a>］。图<a href="#bookmark96">16</a>形象地 表示了基于模型的迁移学习方法的基本思想。</p>
+<p><img alt="" src="../media/602723a1d3ce0f3abe7c591a8e4bb6ec.jpg" /></p>
+<p><center>图 16: 基于模型的迁移学习方法示意图</p>
+<p>​   其中，中科院计算所的Zhao等人[<a href="#bookmark325">Zhao et al., 2011</a>]提出了TransEMDT方法。该方法首先针对已有标记的数据，利用决策树构建鲁棒性的行为识别模型，然后针对无标定数据，利用K-Means聚类方法寻找最优化的标定参数。西安邮电大学的Deng等人[<a href="#bookmark245">Deng et al.,2014</a>] 也用超限学习机做了类似的工作。香港科技大学的Pan等人[<a href="#bookmark286">Pan etal., 2008a</a>]利用HMM，针对Wifi室内定位在不同设备、不同时间和不同空间下动态变化的特点，进行不同分布下的室内定位研究。另一部分研究人员对支持向量机 SVM 进行了改进研究 [<a href="#bookmark285">Nater et al.,2011</a>, <a href="#bookmark269">Li et al., 2012</a>]。这些方法假定 SVM中的权重向量 <strong>w</strong> 可以分成两个部分： <strong>w</strong> = <strong>wo</strong>+<strong>v</strong>， 其中 <strong>w</strong>0代表源域和目标域的共享部分， <strong>v</strong> 代表了对于不同领域的特定处理。在最新的研究成果中，香港科技大学的 Wei 等人 [<a href="#bookmark313">Wei et al., 2016b</a>]将社交信息加入迁移学习方法的 正则项中，对方法进行了改进。清华大学龙明盛等人[<a href="#bookmark275">Long et al., 2015a</a>, <a href="#bookmark276">Long et al., 2016</a>, <a href="#bookmark280">Long etal., 2017</a>]改进了深度网络结构，通过在网络中加入概率分布适配层，进一步提高了深度迁移学习网络对于大数据的泛化能力。</p>
+<h3 id="1124">11.2.4 基于关系迁移<a class="headerlink" href="#1124" title="Permanent link">&para;</a></h3>
+<p>​   基于关系的迁移学习方法 (Relation Based Transfer Learning) 与上述三种方法具有截然不同的思路。这种方法比较关注源域和目标域的样本之间的关系。图<a href="#bookmark82">17</a>形象地表示了不 同领域之间相似的关系。</p>
+<p>​   就目前来说，基于关系的迁移学习方法的相关研究工作非常少，仅有几篇连贯式的文章讨论： [<a href="#bookmark283">Mihalkova et al., 2007</a>, <a href="#bookmark284">Mihalkova and Mooney,2008</a>, <a href="#bookmark244">Davis and Domingos, 2009</a>]。这些文章都借助于马尔科夫逻辑网络(Markov Logic Net)来挖掘不同领域之间的关系相似性。</p>
+<p>​   我们将重点讨论基于特征和基于模型的迁移学习方法，这也是目前绝大多数研究工作的热点。</p>
+<p><img alt="" src="../media/aa10d36f758430dd4ff72d2bf6a76a6c.jpg" /></p>
+<p><center>图 17: 基于关系的迁移学习方法示意图</p>
+<p><img alt="1542812440636" src="../media/1542812440636.png" /></p>
+<p><center>图 18: 基于马尔科夫逻辑网的关系迁移</p>
+<h2 id="113">11.3 迁移学习的常用方法<a class="headerlink" href="#113" title="Permanent link">&para;</a></h2>
+<h2 id="113_1">11.3 迁移学习的常见方法有哪些？<a class="headerlink" href="#113_1" title="Permanent link">&para;</a></h2>
+<h3 id="1131">11.3.1 数据分布自适应<a class="headerlink" href="#1131" title="Permanent link">&para;</a></h3>
+<p>​   数据分布自适应 (Distribution Adaptation) 是一类最常用的迁移学习方法。这种方法的基本思想是,由于源域和目标域的数据概率分布不同,那么最直接的方式就是通过一些变换,将不同的数据分布的距离拉近。</p>
+<p>​   图 <a href="#bookmark84">19</a>形象地表示了几种数据分布的情况。简单来说，数据的边缘分布不同，就是数据整体不相似。数据的条件分布不同，就是数据整体相似，但是具体到每个类里，都不太相似。</p>
+<p><img alt="1542812748062" src="../media/1542812748062.png" /></p>
+<p><center>图 19: 不同数据分布的目标域数据</p>
+<p>​   根据数据分布的性质,这类方法又可以分为边缘分布自适应、条件分布自适应、以及联合分布自适应。下面我们分别介绍每类方法的基本原理和代表性研究工作。介绍每类研究工作时,我们首先给出基本思路,然后介绍该类方法的核心,最后结合最近的相关工作介绍该类方法的扩展。</p>
+<h3 id="1132">11.3.2 边缘分布自适应<a class="headerlink" href="#1132" title="Permanent link">&para;</a></h3>
+<p>​   边缘分布自适应方法 (Marginal Distribution Adaptation) 的目标是减小源域和目标域的边缘概率分布的距离,从而完成迁移学习。从形式上来说,边缘分布自适应方法是用P(X<sub>s</sub>)和 P(X<sub>t</sub>)之间的距离来近似两个领域之间的差异。即：</p>
+<p>​   <span><span class="MathJax_Preview">DISTANCE(D~s~,D~t~)\approx\lVert P(X_s)-P(X_t)\Vert</span><script type="math/tex">DISTANCE(D~s~,D~t~)\approx\lVert P(X_s)-P(X_t)\Vert</script></span> (6.1)</p>
+<p>​   边缘分布自适应对应于图<a href="#bookmark84">19</a>中由图<a href="#bookmark101">19(a)</a>迁移到图<a href="#bookmark83">19(b)</a>的情形。</p>
+<h3 id="1133">11.3.3 条件分布自适应<a class="headerlink" href="#1133" title="Permanent link">&para;</a></h3>
+<p>​   条件分布自适应方法 (Conditional Distribution Adaptation) 的目标是减小源域和目标域的条件概率分布的距离，从而完成迁移学习。从形式上来说，条件分布自适应方法是用  P(y<sub>s</sub>|X<sub>s</sub>) 和 P (y<sub>t</sub>|X<sub>t</sub>) 之间的距离来近似两个领域之间的差异。即：</p>
+<p>​   <span><span class="MathJax_Preview">DISTANCE(D~s~,D~t~)\approx\lVert P(y_s|X_s)-P(y_t|X_t)\Vert</span><script type="math/tex">DISTANCE(D~s~,D~t~)\approx\lVert P(y_s|X_s)-P(y_t|X_t)\Vert</script></span>(6.8)</p>
+<p>​   条件分布自适应对应于图<a href="#bookmark84">19</a>中由图<a href="#bookmark101">19(a)</a>迁移到图<a href="#bookmark85">19&copy;</a>的情形。</p>
+<p>​   目前单独利用条件分布自适应的工作较少，这些工作主要可以在 [<a href="#bookmark292">Saito et al.,2017</a>] 中找到。最近，中科院计算所的 Wang 等人提出了 STL 方法(Stratified Transfer Learn­ing) [<a href="#bookmark309">Wang tal.,2018</a>]。作者提出了类内迁移 (Intra-class Transfer)的思想。指出现有的 绝大多数方法都只是学习一个全局的特征变换(Global DomainShift)，而忽略了类内的相 似性。类内迁移可以利用类内特征，实现更好的迁移效果。</p>
+<p>​   STL 方法的基本思路如图所示。首先利用大多数投票的思想，对无标定的位置行为生成伪标；然后在再生核希尔伯特空间中，利用类内相关性进行自适应地空间降维，使得不同情境中的行为数据之间的相关性增大；最后，通过二次标定，实现对未知标定数据的精准标定。</p>
+<p><img alt="1542817481582" src="../media/1542817481582.png" /></p>
+<p><center>图 21: STL 方法的示意图</p>
+<h3 id="1134">11.3.4 联合分布自适应<a class="headerlink" href="#1134" title="Permanent link">&para;</a></h3>
+<p>​   联合分布自适应方法 (Joint Distribution Adaptation) 的目标是减小源域和目标域的联合概率分布的距离，从而完成迁移学习。从形式上来说，联合分布自适应方法是用<em>P</em>(<strong>x</strong>s) 和P(<strong>x</strong>t)之间的距离、以及P(ys|<strong>x</strong>s)和P(yt|<strong>x</strong>t)之间的距离来近似两个领域之间的差异。即:</p>
+<p>​   <span><span class="MathJax_Preview">DISTANCE(D~s~,D~t~)\approx\lVert P(X_s)-P(X_t)\Vert-\lVert P(y_s|X_s)-P(y_t|X_t)\Vert</span><script type="math/tex">DISTANCE(D~s~,D~t~)\approx\lVert P(X_s)-P(X_t)\Vert-\lVert P(y_s|X_s)-P(y_t|X_t)\Vert</script></span>(6.10)</p>
+<p>​   联合分布自适应对应于图<a href="#bookmark84">19</a>中由图<a href="#bookmark101">19(a)</a>迁移到图<a href="#bookmark83">19(b)</a>的情形、以及图<a href="#bookmark101">19(a)</a>迁移到
+图<a href="#bookmark85">19&copy;</a>的情形。</p>
+<h3 id="1134_1">11.3.4 概率分布自适应方法优劣性比较<a class="headerlink" href="#1134_1" title="Permanent link">&para;</a></h3>
+<p>综合上述三种概率分布自适应方法，我们可以得出如下的结论：</p>
+<ol>
+<li>精度比较： BDA >JDA >TCA >条件分布自适应。</li>
+<li>将不同的概率分布自适应方法用于神经网络，是一个发展趋势。图<a href="#bookmark119">23</a>展示的结果表明将概率分布适配加入深度网络中，往往会取得比非深度方法更好的结果。</li>
+</ol>
+<p><img alt="1542823019007" src="../media/1542823019007.png" /></p>
+<p><center>图 22: BDA 方法的效果第二类方法：特征选择</p>
+<h3 id="1136">11.3.6 特征选择<a class="headerlink" href="#1136" title="Permanent link">&para;</a></h3>
+<p>​   特征选择法的基本假设是：源域和目标域中均含有一部分公共的特征，在这部分公共的特征，源领域和目标领域的数据分布是一致的。因此，此类方法的目标就是，通过机器学习方法，选择出这部分共享的特征，即可依据这些特征构建模型。</p>
+<p>​   图 <a href="#bookmark122">24</a>形象地表示了特征选择法的主要思路。</p>
+<p><img alt="1542823210556" src="../media/1542823210556.png" /></p>
+<p><center>图 23: 不同分布自适应方法的精度比较</p>
+<p><img alt="" src="../media/a3db84158d9b6454adff88dbe4fa5d28.jpg" /></p>
+<p><center>图 24: 特征选择法示意图</p>
+<p>​   这这个领域比较经典的一个方法是发表在 2006 年的 ECML-PKDD 会议上,作者提出了一个叫做 SCL 的方法 (Structural Correspondence Learning) [<a href="#bookmark235">Blitzer et al.,2006</a>]。这个方法的目标就是我们说的,找到两个领域公共的那些特征。作者将这些公共的特征叫做Pivot feature。找出来这些Pivot feature,就完成了迁移学习的任务。</p>
+<p><img alt="" src="../media/4abacd82901988c3e0a98bdb07b2abc6.jpg" /></p>
+<p><center>图 25: 特征选择法中的 Pivot feature 示意图</p>
+<p>​   图 <a href="#bookmark124">25</a>形象地展示了 Pivot feature 的含义。 Pivot feature指的是在文本分类中,在不同领域中出现频次较高的那些词。总结起来：</p>
+<ul>
+<li>特征选择法从源域和目标域中选择提取共享的特征,建立统一模型</li>
+<li>通常与分布自适应方法进行结合</li>
+<li>通常采用稀疏表示 ||<strong>A</strong>||2,1 实现特征选择</li>
+</ul>
+<h3 id="1135">11.3.5 统计特征对齐方法<a class="headerlink" href="#1135" title="Permanent link">&para;</a></h3>
+<p>​   统计特征对齐方法主要将数据的统计特征进行变换对齐。对齐后的数据，可以利用传统机器学习方法构建分类器进行学习。SA方法(Subspace Alignment，子空间对齐)[<a href="#bookmark249">Fernando et al.,2013</a>]是其中的代表性成果。SA方法直接寻求一个线性变换<strong>M</strong>，将不同的数据实现变换对齐。SA方法的优化目标如下：</p>
+<p><img alt="1542823438846" src="../media/1542823438846.png" /></p>
+<p>则变换 <strong>M</strong> 的值为：</p>
+<p><img alt="1542823455820" src="../media/1542823455820.png" /></p>
+<p>可以直接获得上述优化问题的闭式解：</p>
+<p><img alt="1542823474720" src="../media/1542823474720.png" /></p>
+<p>​   SA 方法实现简单，计算过程高效，是子空间学习的代表性方法。</p>
+<h3 id="1136_1">11.3.6 流形学习方法<a class="headerlink" href="#1136_1" title="Permanent link">&para;</a></h3>
+<p><strong>什么是流形学习</strong></p>
+<p>​   流形学习自从 2000 年在 Science 上被提出来以后,就成为了机器学习和数据挖掘领域的热门问题。它的基本假设是,现有的数据是从一个高维空间中采样出来的,所以,它具有高维空间中的低维流形结构。流形就是是一种几何对象（就是我们能想像能观测到的）。通俗点说就是,我们无法从原始的数据表达形式明显看出数据所具有的结构特征,那我把它想像成是处在一个高维空间,在这个高维空间里它是有个形状的。一个很好的例子就是星座。满天星星怎么描述？我们想像它们在一个更高维的宇宙空间里是有形状的,这就有了各自星座,比如织女座、猎户座。流形学习的经典方法有Isomap、locally linear embedding、 laplacian eigenmap 等。</p>
+<p>​   流形空间中的距离度量：两点之间什么最短？在二维上是直线（线段）,可在三维呢？地球上的两个点的最短距离可不是直线,它是把地球展开成二维平面后画的那条直线。那条线在三维的地球上就是一条曲线。这条曲线就表示了两个点之间的最短距离,我们叫它测地线。更通俗一点, 两点之间，测地线最短。在流形学习中,我们遇到测量距离的时候更多的时候用的就是这个测地线。在我们要介绍的 GFK 方法中,也是利用了这个测地线距离。比如在下面的图中,从 A 到 C 最短的距离在就是展开后的线段,但是在三维球体上看它却是一条曲线。</p>
+<p><img alt="" src="../media/fcbe02803e45f6455a4602b645b472c5.jpg" /></p>
+<p><center>图 28: 三维空间中两点之间的距离示意图</p>
+<p>​   由于在流形空间中的特征通常都有着很好的几何性质,可以避免特征扭曲,因此我们首先将原始空间下的特征变换到流形空间中。在众多已知的流形中, Grassmann 流形G（d） 可以通过将原始的 d 维子空间 （特征向量）看作它基础的元素,从而可以帮助学习分类 器。在 Grassmann流形中,特征变换和分布适配通常都有着有效的数值形式,因此在迁移学习问题中可以被很高效地表示和求解 [<a href="#bookmark260">Hamm and Lee,2008</a>]。因此,利用 Grassmann流形空间中来进行迁移学习是可行的。现存有很多方法可以将原始特征变换到流形空间 中[<a href="#bookmark257">Gopalan et al., 2011</a>, <a href="#bookmark230">Baktashmotlagh et al.,2014</a>]。</p>
+<p>​   在众多的基于流形变换的迁移学习方法中，GFK(Geodesic Flow Kernel)方法[<a href="#bookmark255">Gong et
+al., 2012</a>]是最为代表性的一个。GFK是在2011年发表在ICCV上的SGF方法[<a href="#bookmark257">Gopalan et al.,
+2011</a>]发展起来的。我们首先介绍SGF方法。</p>
+<p>​   SGF 方法从增量学习中得到启发：人类从一个点想到达另一个点，需要从这个点一步一步走到那一个点。那么，如果我们把源域和目标域都分别看成是高维空间中的两个点，由源域变换到目标域的过程不就完成了迁移学习吗？也就是说， 路是一步一步走出来的。</p>
+<p>​   于是 SGF 就做了这个事情。它是怎么做的呢？把源域和目标域分别看成高维空间 (即Grassmann流形)中的两个点，在这两个点的测地线距离上取d个中间点，然后依次连接起来。这样，源域和目标域就构成了一条测地线的路径。我们只需要找到合适的每一步的变换，就能从源域变换到目标域了。图 <a href="#bookmark133">29</a>是 SGF 方法的示意图。</p>
+<p><img alt="" src="../media/103de3658cbb97ad4c24bafe28f9d957.jpg" /></p>
+<p><center>图 29: SGF 流形迁移学习方法示意图</p>
+<p>​   SGF 方法的主要贡献在于：提出了这种变换的计算及实现了相应的算法。但是它有很明显的缺点：到底需要找几个中间点？ SGF也没能给出答案，就是说这个参数d是没法估计的，没有一个好的方法。这个问题在 GFK 中被回答了。</p>
+<p>​   GFK方法首先解决SGF的问题：如何确定中间点的个数d。它通过提出一种核学习的方法，利用路径上的无穷个点的积分，把这个问题解决了。这是第一个贡献。然后，它又解决了第二个问题：当有多个源域的时候，我们如何决定使用哪个源域跟目标域进行迁移？ GFK通过提出Rank of Domain度量，度量出跟目标域最近的源域，来解决这个问题。图 <a href="#bookmark134">30</a>是 GFK 方法的示意图。</p>
+<p><img alt="" src="../media/e654d14df0b44ee4e8a0e505c654044b.jpg" /></p>
+<p><center>图 30: GFK 流形迁移学习方法示意图</p>
+<p>​   用Ss和St分别表示源域和目标域经过主成分分析(PCA)之后的子空间，则G可以视为所有的d维子空间的集合。每一个d维的原始子空间都可以被看作G上的一个点。因此，在两点之间的测地线｛$(t) :0 \&lt; t \&lt;1｝可以在两个子空间之间构成一条路径。如果我 们令Ss = $(0)，St =$(1)，则寻找一条从$(0)到$(1)的测地线就等同于将原始的特征变换到一个无穷维度的空间中，最终减小域之间的漂移现象。这种方法可以被看作是一种从$(0)到$(1)的増量式“行走”方法。</p>
+<p>​   特别地，流形空间中的特征可以被表示为<strong>z</strong> =$(t)T<strong>x</strong>。变换后的特征<strong>Z</strong>i和<strong>Z</strong>j的内积定义了一个半正定 (positive semidefinite) 的测地线流式核</p>
+<p><img alt="1542823895008" src="../media/1542823895008.png" /></p>
+<p>​   GFK 方法详细的计算过程可以参考原始的文章，我们在这里不再赘述。</p>
+<h3 id="1137-finetune">11.3.7 什么是finetune？<a class="headerlink" href="#1137-finetune" title="Permanent link">&para;</a></h3>
+<p>​   深度网络的finetune也许是最简单的深度网络迁移方法。<strong>Finetune</strong>,也叫微调、fine-tuning, 是深度学习中的一个重要概念。简而言之，finetune就是利用别人己经训练好的网络，针对自己的任务再进行调整。从这个意思上看，我们不难理解finetune是迁移学习的一部分。</p>
+<p><strong>为什么需要已经训练好的网络？</strong></p>
+<p>​   在实际的应用中,我们通常不会针对一个新任务,就去从头开始训练一个神经网络。这样的操作显然是非常耗时的。尤其是，我们的训练数据不可能像ImageNet那么大，可以训练出泛化能力足够强的深度神经网络。即使有如此之多的训练数据,我们从头开始训练,其代价也是不可承受的。</p>
+<p>​   那么怎么办呢？迁移学习告诉我们,利用之前己经训练好的模型,将它很好地迁移到自己的任务上即可。</p>
+<p><strong>为什么需要 finetune？</strong></p>
+<p>​   因为别人训练好的模型,可能并不是完全适用于我们自己的任务。可能别人的训练数据和我们的数据之间不服从同一个分布；可能别人的网络能做比我们的任务更多的事情；可能别人的网络比较复杂,我们的任务比较简单。</p>
+<p>​   举一个例子来说,假如我们想训练一个猫狗图像二分类的神经网络,那么很有参考价值的就是在 CIFAR-100 上训练好的神经网络。但是 CIFAR-100 有 100 个类别,我们只需要 2个类别。此时,就需要针对我们自己的任务,固定原始网络的相关层,修改网络的输出层以使结果更符合我们的需要。</p>
+<p>​   图<a href="#bookmark148">36</a>展示了一个简单的finetune过程。从图中我们可以看到，我们采用的预训练好的网络非常复杂,如果直接拿来从头开始训练,则时间成本会非常高昂。我们可以将此网络进行改造,固定前面若干层的参数,只针对我们的任务,微调后面若干层。这样,网络训练速度会极大地加快,而且对提高我们任务的表现也具有很大的促进作用。</p>
+<p><img alt="" src="../media/b1630ca5d004d4b430672c8b8ce7fb90.jpg" /></p>
+<p><center>图 36: 一个简单的 finetune 示意图
+<strong>Finetune 的优势</strong></p>
+<p>​   Finetune 的优势是显然的，包括:</p>
+<ul>
+<li>不需要针对新任务从头开始训练网络，节省了时间成本；</li>
+<li>预训练好的模型通常都是在大数据集上进行的，无形中扩充了我们的训练数据，使得模型更鲁棒、泛化能力更好；</li>
+<li>Finetune 实现简单，使得我们只关注自己的任务即可。</li>
+</ul>
+<p><strong>Finetune 的扩展</strong></p>
+<p>​   在实际应用中，通常几乎没有人会针对自己的新任务从头开始训练一个神经网络。Fine-tune 是一个理想的选择。</p>
+<p>​   Finetune 并不只是针对深度神经网络有促进作用，对传统的非深度学习也有很好的效果。例如， finetune对传统的人工提取特征方法就进行了很好的替代。我们可以使用深度网络对原始数据进行训练，依赖网络提取出更丰富更有表现力的特征。然后，将这些特征作为传统机器学习方法的输入。这样的好处是显然的: 既避免了繁复的手工特征提取，又能自动地提取出更有表现力的特征。</p>
+<p>​   比如，图像领域的研究，一直是以 SIFT、SURF 等传统特征为依据的，直到 2014 年，伯克利的研究人员提出了 DeCAF特征提取方法［<a href="#bookmark246">Donahue et al.,2014</a>］，直接使用深度卷积神经网络进行特征提取。实验结果表明，该特征提取方法对比传统的图像特征，在精度上有着无可匹敌的优势。另外，也有研究人员用卷积神经网络提取的特征作为SVM分类器的输 入［<a href="#bookmark291">Razavian et al.,014</a>］，显著提升了图像分类的精度。</p>
+<h3 id="1138-finetune">11.3.8 finetune为什么有效？<a class="headerlink" href="#1138-finetune" title="Permanent link">&para;</a></h3>
+<p>​   随着 AlexNet [<a href="#bookmark268">Krizhevsky et al., 2012</a>] 在 2012 年的 ImageNet大赛上获得冠军，深度学习开始在机器学习的研究和应用领域大放异彩。尽管取得了很好的结果，但是神经网络本身就像一个黑箱子，看得见，摸不着，解释性不好。由于神经网络具有良好的层次结构很自然地就有人开始关注，能否通过这些层次结构来很好地解释网络？于是，有了我们熟知的例子：假设一个网络要识别一只猫，那么一开始它只能检测到一些边边角角的东西，和猫根本没有关系；然后可能会检测到一些线条和圆形；慢慢地，可以检测到有猫的区域；接着是猫腿、猫脸等等。图 <a href="#bookmark137">32</a>是一个简单的示例。</p>
+<p><img alt="1542824195602" src="../media/1542824195602.png" /></p>
+<p><center>图 32: 深度神经网络进行特征提取到分类的简单示例</p>
+<p>​   这表达了一个什么事实呢？概括来说就是：前面几层都学习到的是通用的特征（general feature）；随着网络层次的加深，后面的网络更偏重于学习任务特定的特征（specific feature）。
+这非常好理解，我们也都很好接受。那么问题来了：如何得知哪些层能够学习到 general feature，哪些层能够学习到specific feature。更进一步：如果应用于迁移学习，如何决定该迁移哪些层、固定哪些层？</p>
+<p>​   这个问题对于理解神经网络以及深度迁移学习都有着非常重要的意义。</p>
+<p>​   来自康奈尔大学的 Jason Yosinski 等人 [<a href="#bookmark318">Yosinski et al., 2014</a>]率先进行了深度神经网络可迁移性的研究，将成果发表在2014年机器学习领域顶级会议NIPS上并做了口头汇报。该论文是一篇实验性质的文章（通篇没有一个公式）。其目的就是要探究上面我们提到的几个关键性问题。因此，文章的全部贡献都来自于实验及其结果。（别说为啥做实验也能发文章：都是高考，我只上了个普通一本，我高中同学就上了清华）</p>
+<p>​   在ImageNet的1000类上，作者把1000类分成两份（A和B），每份500个类别。然后，分别对A和B基于Caffe训练了一个AlexNet网络。一个AlexNet网络一共有8层， 除去第8层是类别相关的网络无法迁移以外，作者在 1 到 7这 7层上逐层进行 finetune 实验，探索网络的可迁移性。</p>
+<p>​   为了更好地说明 finetune 的结果，作者提出了有趣的概念： AnB 和 BnB。</p>
+<p>​   迁移A网络的前n层到B （AnB） vs固定B网络的前n层（BnB）</p>
+<p>​   简单说一下什么叫AnB:（所有实验都是针对数据B来说的）将A网络的前n层拿来并将它frozen，剩下的8 - n层随机初始化，然后对B进行分类。</p>
+<p>​   相应地，有BnB:把训练好的B网络的前n层拿来并将它frozen，剩下的8 - n层随机初始化，然后对 B 进行分类。</p>
+<p>​   <strong>实验结果</strong></p>
+<p>​   实验结果如下图（图<a href="#bookmark145">33</a>） 所示:</p>
+<p>​   这个图说明了什么呢？我们先看蓝色的BnB和BnB+（就是BnB加上finetune）。对 BnB而言，原训练好的 B 模型的前 3 层直接拿来就可以用而不会对模型精度有什么损失到了第4 和第5 层，精度略有下降，不过还是可以接受。然而到了第6 第第7层，精度居然奇迹般地回升了！这是为什么？原因如下:对于一开始精度下降的第4 第 5 层来说，确</p>
+<p><img alt="1542824318155" src="../media/1542824318155.png" /></p>
+<p><center>图 33: 深度网络迁移实验结果 1</p>
+<p>实是到了这一步，feature变得越来越specific,所以下降了。那对于第6第7层为什么精度又不变了？那是因为，整个网络就8层，我们固定了第6第7层，这个网络还能学什么呢？所以很自然地，精度和原来的 B 网络几乎一致！</p>
+<p>​   对 BnB+ 来说，结果基本上都保持不变。说明 finetune 对模型结果有着很好的促进作用！</p>
+<p>​   我们重点关注AnB和AnB+。对AnB来说，直接将A网络的前3层迁移到B,貌似不会有什么影响，再一次说明，网络的前3层学到的几乎都是general feature!往后，到了第4第5层的时候，精度开始下降，我们直接说：一定是feature不general 了！然而，到了第6第7层，精度出现了小小的提升后又下降，这又是为什么？作者在这里提出两点co-adaptation和feature representation。就是说，第4第5层精度下降的时候，主要是由于A和B两个数据集的差异比较大，所以会下降；至I」了第6第7层，由于网络几乎不迭代了，学习能力太差，此时 feature 学不到，所以精度下降得更厉害。</p>
+<p>​   再看AnB+。加入了 finetune以后，AnB+的表现对于所有的n几乎都非常好，甚至 比baseB
+（最初的B）还要好一些！这说明：finetune对于深度迁移有着非常好的促进作用!</p>
+<p>​   把上面的结果合并就得到了下面一张图 （图<a href="#bookmark138">34</a>）：</p>
+<p>​   至此， AnB 和 BnB 基本完成。作者又想，是不是我分 A 和 B 数据的时候，里面存在一些比较相似的类使结果好了？比如说A里有猫，B里有狮子，所以结果会好？为了排除这些影响，作者又分了一下数据集，这次使得A和B里几乎没有相似的类别。在这个条件下再做AnB,与原来精度比较（0%为基准）得到了下图（图<a href="#bookmark139">35</a>）:</p>
+<p>​   这个图说明了什么呢？简单：随着可迁移层数的增加，模型性能下降。但是，前3层仍然还是可以迁移的！同时,与随机初始化所有权重比较,迁移学习的精度是很高的!总之：</p>
+<ul>
+<li>
+<p>深度迁移网络要比随机初始化权重效果好；</p>
+</li>
+<li>
+<p>网络层数的迁移可以加速网络的学习和优化。</p>
+</li>
+</ul>
+<h3 id="1139">11.3.9 什么是深度网络自适应？<a class="headerlink" href="#1139" title="Permanent link">&para;</a></h3>
+<p><strong>基本思路</strong></p>
+<p>​   深度网络的 finetune 可以帮助我们节省训练时间，提高学习精度。但是 finetune 有它的先天不足:它无法处理训练数据和测试数据分布不同的情况。而这一现象在实际应用中比比皆是。因为 finetune 的基本假设也是训练数据和测试数据服从相同的数据分布。这在迁移学习中也是不成立的。因此，我们需要更进一步，针对深度网络开发出更好的方法使之更好地完成迁移学习任务。</p>
+<p>​   以我们之前介绍过的数据分布自适应方法为参考，许多深度学习方法［<a href="#bookmark307">Tzeng et al.,2014</a>, <a href="#bookmark275">Long et al.,2015a</a>］都开发出了自适应层(AdaptationLayer)来完成源域和目标域数据的自适应。自适应能够使得源域和目标域的数据分布更加接近，从而使得网络的效果更好。</p>
+<p>​   从上述的分析我们可以得出，深度网络的自适应主要完成两部分的工作:</p>
+<p>​   一是哪些层可以自适应，这决定了网络的学习程度；</p>
+<p>​   二是采用什么样的自适应方法 (度量准则)，这决定了网络的泛化能力。</p>
+<p>​   深度网络中最重要的是网络损失的定义。绝大多数深度迁移学习方法都采用了以下的损失定义方式:</p>
+<p><img alt="1542824918145" src="../media/1542824918145.png" /></p>
+<p>​   其中，I表示网络的最终损失，lc(Ds,<strong>y</strong>s)表示网络在有标注的数据(大部分是源域)上的常规分类损失(这与普通的深度网络完全一致)，Ia(Ds,Dt)表示网络的自适应损失。最后一部分是传统的深度网络所不具有的、迁移学习所独有的。此部分的表达与我们先前讨论过的源域和目标域的分布差异，在道理上是相同的。式中的A是权衡两部分的权重参数。</p>
+<p>​   上述的分析指导我们设计深度迁移网络的基本准则：决定自适应层，然后在这些层加入自适应度量，最后对网络进行 finetune。</p>
+<h3 id="11310-gan">11.3.10 GAN在迁移学习中的应用<a class="headerlink" href="#11310-gan" title="Permanent link">&para;</a></h3>
+<p>生成对抗网络 GAN(Generative Adversarial Nets) [<a href="#bookmark256">Goodfellow et al.,2014</a>] 是目前人工智能领域最炙手可热的概念之一。其也被深度学习领军人物 Yann Lecun 评为近年来最令人欣喜的成就。由此发展而来的对抗网络，也成为了提升网络性能的利器。本小节介绍深度对抗网络用于解决迁移学习问题方面的基本思路以及代表性研究成果。</p>
+<p><strong>基本思路</strong></p>
+<p>​   GAN 受到自博弈论中的二人零和博弈 (two-player game) 思想的启发而提出。它一共包括两个部分：一部分为生成网络(Generative Network)，此部分负责生成尽可能地以假乱真的样本，这部分被成为生成器(Generator)；另一部分为判别网络(Discriminative Network), 此部分负责判断样本是真实的，还是由生成器生成的，这部分被成为判别器(Discriminator) 生成器和判别器的互相博弈，就完成了对抗训练。</p>
+<p>​   GAN 的目标很明确：生成训练样本。这似乎与迁移学习的大目标有些许出入。然而，由于在迁移学习中，天然地存在一个源领域，一个目标领域，因此，我们可以免去生成样本的过程，而直接将其中一个领域的数据 (通常是目标域) 当作是生成的样本。此时，生成器的职能发生变化，不再生成新样本，而是扮演了特征提取的功能：不断学习领域数据的特征使得判别器无法对两个领域进行分辨。这样，原来的生成器也可以称为特征提取器
+(Feature Extractor)。</p>
+<p>​   通常用 Gf 来表示特征提取器，用 Gd 来表示判别器。正是基于这样的领域对抗的思想，深度对抗网络可以被很好地运用于迁移学习问题中。与深度网络自适应迁移方法类似，深度对抗网络的损失也由两部分构成：网络训练的损失lc*和领域判别损失Id：</p>
+<p><img alt="1542826334834" src="../media/1542826334834.png" /></p>
+<p><strong>DANN</strong></p>
+<p>Yaroslav Ganin 等人 [<a href="#bookmark251">Ganin et al., 2016</a>]首先在神经网络的训练中加入了对抗机制，作者将他们的网络称之为DANN(Domain-Adversarial Neural Network)。在此研宄中，网络的学习目标是：生成的特征尽可能帮助区分两个领域的特征，同时使得判别器无法对两个领域的差异进行判别。该方法的领域对抗损失函数表示为：</p>
+<p><img alt="1542826461988" src="../media/1542826461988.png" /></p>
+<p>Id = max 其中的 Ld 表示为</p>
+<p><img alt="1542826475517" src="../media/1542826475517.png" /></p>
+<h2 id="_2">参考文献<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>王晋东，迁移学习简明手册</p>
+<p>[Baktashmotlagh et al., 2013] Baktashmotlagh, M., Harandi, M. T., Lovell, B. C.,and Salz- mann, M. (2013). Unsupervised domain adaptation by domain invariant projection. In <em>ICCV,</em> pages 769-776.</p>
+<p>[Baktashmotlagh et al., 2014] Baktashmotlagh, M., Harandi, M. T., Lovell, B. C., and Salz- mann, M. (2014). Domain adaptation on the statistical manifold. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition*,pages 2481-2488.</p>
+<p>[Ben-David et al., 2010] Ben-David, S., Blitzer, J., Crammer, K., Kulesza, A., Pereira, F., and Vaughan, J. W. (2010). A theory of learning from different domains. <em>Machine learning,</em> 79(1-2):151-175.</p>
+<p>[Ben-David et al., 2007] Ben-David, S., Blitzer, J., Crammer, K., and Pereira, F. (2007). Analysis of representations for domain adaptation. In <em>NIPS</em>, pages 137-144.</p>
+<p>[Blitzer et al., 2008] Blitzer, J., Crammer, K., Kulesza, A., Pereira, F., and Wortman, J. (2008). Learning bounds for domain adaptation. In <em>Advances in neural information processing systems</em>, pages 129-136.</p>
+<p>[Blitzer et al., 2006] Blitzer, J., McDonald, R., and Pereira, F. (2006). Domain adaptation with structural correspondence learning. In <em>Proceedings of the 2006 conference on empiri­cal methods in natural language processing</em>, pages 120-128. Association for Computational Linguistics.</p>
+<p>[Borgwardt et al., 2006] Borgwardt, K. M., Gretton, A., Rasch, M. J., Kriegel, H.-P., Scholkopf, B., and Smola, A. J. (2006). Integrating structured biological data by kernel maximum mean discrepancy. <em>Bioinformatics</em>, 22(14):e49-e57.</p>
+<p>[Bousmalis et al., 2016] Bousmalis, K., Trigeorgis, G., Silberman, N., Krishnan, D., and Erhan, D. (2016). Domain separation networks. In <em>Advances in Neural Information Processing Systems</em>, pages 343-351.</p>
+<p>[Cai et al., 2011] Cai, D., He, X., Han, J., and Huang, T. S. (2011). Graph regularized nonnegative matrix factorization for data representation. <em>IEEE Transactions on Pattern Analysis and Machine Intelligence</em>, 33(8):1548-1560.</p>
+<p>[Cao et al., 2017] Cao, Z., Long, M., Wang, J., and Jordan, M. I. (2017). Partial transfer learning with selective adversarial networks. <em>arXiv preprint arXiv:1707.07901</em>.</p>
+<p>[Carlucci et al., 2017] Carlucci, F. M., Porzi, L., Caputo, B., Ricci, E., and Bulo, S. R. (2017). Autodial: Automatic domain alignment layers. In International Conference on* Computer Vision.</p>
+<p>[Cook et al., 2013] Cook, D., Feuz, K. D., and Krishnan, N. C. (2013). Transfer learning for activity recognition: A survey. <em>Knowledge and information systems</em>, 36(3):537-556.</p>
+<p>[Cortes et al., 2008] Cortes, C., Mohri, M., Riley, M., and Rostamizadeh, A. (2008). Sample selection bias correction theory. In <em>International Conference on Algorithmic Learning Theory</em>, pages 38-53, Budapest, Hungary. Springer.</p>
+<p>[Dai et al., 2007] Dai, W., Yang, Q., Xue, G.-R., and Yu, Y. (2007). Boosting for transfer learning. In <em>ICML</em>, pages 193-200. ACM.</p>
+<p>[Davis and Domingos, 2009] Davis, J. and Domingos, P. (2009). Deep transfer via second- order markov logic. In <em>Proceedings of the 26<sup>th</sup> annual international conference on machine learning</em>, pages 217-224. ACM.</p>
+<p>[Denget al., 2014] Deng,W.,Zheng,Q.,andWang,Z.(2014).Cross-personactivityrecog-nition using reduced kernel extreme learning machine. <em>Neural Networks,</em> 53:1-7.</p>
+<p>[Donahue et al., 2014] Donahue, J., Jia, Y., et al. (2014). Decaf: A deep convolutional activation feature for generic visual recognition. In <em>ICML</em>, pages 647-655.</p>
+<p>[Dorri and Ghodsi, 2012] Dorri, F. and Ghodsi, A. (2012). Adapting component analysis. In <em>Data Mining (ICDM), 2012 IEEE 12<sup>th</sup> International Conference on</em>, pages 846-851. IEEE.</p>
+<p>[Duan et al., 2012] Duan, L., Tsang, I. W., and Xu, D. (2012). Domain transfer multi­ple kernel learning. <em>IEEE Transactions on Pattern Analysis and Machine Intelligence</em>, 34(3):465-479.</p>
+<p>[Fernando et al., 2013] Fernando, B., Habrard, A., Sebban, M., and Tuytelaars, T. (2013). Unsupervised visual domain adaptation using subspace alignment. In ICCV*, pages 2960­2967.</p>
+<p>[Fodor, 2002] Fodor, I. K. (2002). A survey of dimension reduction techniques. Center for Applied Scientific Computing, Lawrence Livermore National Laboratory*, 9:1-18.</p>
+<p>[Ganin et al., 2016] Ganin, Y., Ustinova, E., Ajakan, H., Germain, P., Larochelle, H., Lavi- olette, F., Marchand, M., and Lempitsky, V. (2016).Domain-adversarial training of neural networks. <em>Journal of Machine Learning
+Research</em>, 17(59):1-35.</p>
+<p>[Gao et al., 2012] Gao, C., Sang, N., and Huang, R. (2012). Online transfer boosting for object tracking. In <em>Pattern Recognition (ICPR), 2012 21<sup>st</sup> International Conference on</em>, pages 906-909. IEEE.</p>
+<p>[Ghifary et al., 2017] Ghifary, M., Balduzzi, D., Kleijn, W. B., and Zhang, M. (2017). Scat­ter component analysis: A unified framework for domain adaptation and domain general­ization. <em>IEEE transactions on pattern analysis and machine intelligence</em>, 39(7):1414-1430.</p>
+<p>[Ghifary et al., 2014] Ghifary, M., Kleijn, W. B., and Zhang, M. (2014). Domain adaptive neural networks for object recognition. In <em>PRICAI</em>, pages 898-904.</p>
+<p>[Gong et al., 2012] Gong, B., Shi, Y., Sha, F., and Grauman, K. (2012). Geodesic flow kernel for unsupervised domain adaptation. In <em>CVPR</em>, pages 2066-2073.</p>
+<p>[Goodfellow et al., 2014] Goodfellow, I., Pouget-Abadie, J., Mirza, M., Xu, B.,  Warde- Farley, D., Ozair, S., Courville, A., and Bengio, Y. (2014). Generative adversarial nets. In <em>Advances in neural information processing systems</em>, pages 2672-2680.</p>
+<p>[Gopalan et al., 2011] Gopalan, R., Li, R., and Chellappa, R. (2011). Domain adaptation for object recognition: An unsupervised approach. In <em>ICCV</em>, pages 999-1006. IEEE.</p>
+<p>[Gretton et al., 2012] Gretton, A., Sejdinovic, D., Strathmann, H., Balakrishnan, S., Pontil, M., Fukumizu, K., and Sriperumbudur, B. K. (2012). Optimal kernel choice for large- scale two-sample tests. In <em>Advances in neural information processing systems</em>, pages 1205-1213.</p>
+<p>[Gu et al., 2011] Gu, Q., Li, Z., Han, J., et al. (2011). Joint feature selection and subspace learning. In <em>IJCAI Proceedings-International Joint Conference on Artificial Intel ligence</em>, volume 22, page 1294.</p>
+<p>[Hamm and Lee, 2008] Hamm, J. and Lee, D. D. (2008). Grassmann discriminant analysis: a unifying view on subspace-based learning. In <em>ICML</em>, pages 376-383. ACM.</p>
+<p>[Hou et al., 2015] Hou, C.-A., Yeh, Y.-R., and Wang, Y.-C. F. (2015). An unsupervised domain adaptation approach for cross-domain visual classification. In <em>Advanced Video and Signal Based Surveil lance (AVSS), 2015 12<sup>th</sup> IEEE International Conference on</em>,pages 1-6. IEEE.</p>
+<p>[Hsiao et al., 2016] Hsiao, P.-H., Chang, F.-J., and Lin, Y.-Y. (2016). Learning discrim­inatively reconstructed source data for object recognition with few examples. <em>IEEE</em>Transactions on Image Processing*, 25(8):3518-3532.</p>
+<p>[Hu and Yang, 2011] Hu, D. H. and Yang, Q. (2011). Transfer learning for activity recog­nition via sensor mapping. In <em>IJCAI Proceedings-International Joint Conference on Artificial Intelligence</em>, volume 22, page 1962, Barcelona, Catalonia, Spain. IJCAI.</p>
+<p>[Huang et al., 2007] Huang, J., Smola, A. J., Gretton, A., Borgwardt, K. M., Scholkopf, B., et al. (2007). Correcting sample selection bias by unlabeled  data. <em>Advances in neural information processing systems</em>, 19:601.</p>
+<p>[Jaini et al., 2016] Jaini, P., Chen, Z., Carbajal, P., Law, E., Middleton, L., Regan, K., Schaekermann, M., Trimponias, G., Tung, J., and Poupart, P. (2016). Online bayesian transfer learning for sequential data modeling. In <em>ICLR 2017</em>.</p>
+<p>[Kermany et al., 2018] Kermany, D. S., Goldbaum, M., Cai, W., Valentim, C. C., Liang, H., Baxter, S. L., McKeown, A., Yang, G., Wu, X., Yan, F., et al. (2018). Identifying medical diagnoses and treatable diseases by image-based deep learning. <em>Cell</em>, 172(5):1122-1131.</p>
+<p>[Khan and Heisterkamp, 2016] Khan, M. N. A. and Heisterkamp, D. R. (2016). Adapting instance weights for unsupervised domain adaptation using quadratic mutual informa­tion and subspace learning. In <em>Pattern Recognition (ICPR), 2016 23<sup>rd</sup> International Conference on</em>, pages 1560-1565, Mexican City. IEEE.</p>
+<p>[Krizhevsky et al., 2012] Krizhevsky, A., Sutskever, I., and Hinton, G. E. (2012). Imagenet classification with deep convolutional neural networks. In Advances in neural information processing systems*, pages 1097-1105.</p>
+<p>[Li et al., 2012] Li, H., Shi, Y., Liu, Y., Hauptmann, A. G., and Xiong, Z. (2012). Cross­domain video concept detection: A joint discriminative and generative active learning approach. <em>Expert Systems with Applications</em>,
+39(15):12220-12228.</p>
+<p>[Li et al., 2016] Li, J., Zhao, J., and Lu, K. (2016). Joint feature selection and structure preservation for domain adaptation. In <em>Proceedings of the Twenty-Fifth International Joint Conference on Artificial Intelligence</em>, pages
+1697-1703. AAAI Press.</p>
+<p>[Li et al., 2018] Li, Y., Wang, N., Shi, J., Hou, X., and Liu, J. (2018). Adaptive batch normalization for practical domain adaptation. <em>Pattern Recognition</em>, 80:109-117.</p>
+<p>[Liu et al., 2011] Liu, J., Shah, M., Kuipers, B., and Savarese, S. (2011). Cross-view action recognition via view knowledge transfer. In <em>Computer Vision and Pattern Recognition (CVPR), 2011 IEEE Conference on</em>, pages 3209-3216, Colorado Springs, CO, USA. IEEE.</p>
+<p>[Liu and Tuzel, 2016] Liu, M.-Y. and Tuzel, O. (2016). Coupled generative adversarial networks. In <em>Advances in neural information processing systems</em>, pages 469-477.</p>
+<p>[Liu et al., 2017] Liu, T., Yang, Q., and Tao, D. (2017). Understanding how  feature struc­ture transfers in transfer learning. In <em>IJCAI</em>.</p>
+<p>[Long et al., 2015a] Long, M., Cao, Y., Wang, J., and Jordan, M. (2015a). Learning trans­ferable features with deep adaptation networks. In <em>ICML</em>, pages 97-105.</p>
+<p>[Long et al., 2016] Long, M., Wang, J., Cao, Y., Sun, J., and Philip, S. Y. (2016). Deep learning of transferable representation for scalable domain  adaptation. <em>IEEE Transac­tions on Knowledge and Data Engineering</em>,
+28(8):2027-2040.</p>
+<p>[Long et al., 2014a] Long, M., Wang, J., Ding, G., Pan, S. J., and Yu, P. S. (2014a). Adaptation regularization: A general framework for transfer learning.*IEEE TKDE, 26(5):1076-1089.</p>
+<p>[Long et al., 2014b] Long, M., Wang, J., Ding, G., Sun, J., and Yu, P. S. (2014b). Transfer joint matching for unsupervised domain adaptation. In *CVPR ,pages 1410-1417.</p>
+<p>[Long et al., 2013] Long, M., Wang, J., et al. (2013). Transfer feature learning with joint distribution adaptation. In <em>ICCV</em>, pages 2200-2207.</p>
+<p>[Long et al., 2017] Long, M., Wang, J., and Jordan, M. I. (2017). Deep transfer learning with joint adaptation networks. In <em>ICML</em>, pages 2208-2217.</p>
+<p>[Long et al., 2015b] Long, M., Wang, J., Sun, J., and Philip, S. Y. (2015b). Domain invari­ant transfer kernel learning. <em>IEEE Transactions on Knowledge and Data Engineering</em>, 27(6):1519-1532.</p>
+<p>[Luo et al., 2017] Luo, Z., Zou, Y., Hoffman, J., and Fei-Fei, L. F. (2017). Label efficient learning of transferable representations acrosss domains and tasks. In <em>Advances in Neural Information Processing Systems</em>, pages 164-176.</p>
+<p>[Mihalkova et al., 2007] Mihalkova, L., Huynh, T., and Mooney, R. J. (2007). Mapping and revising markov logic networks for transfer learning. In <em>AAAI</em>, volume 7, pages 608-614.</p>
+<p>[Mihalkova and Mooney, 2008] Mihalkova, L. and Mooney, R. J. (2008). Transfer learning by mapping with minimal target data. In <em>Proceedings of the AAAI-08 workshop on transfer learning for complex tasks</em>.</p>
+<p>[Nater et al., 2011] Nater, F., Tommasi, T., Grabner, H., Van Gool, L., and Caputo, B. (2011). Transferring activities: Updating human behavior analysis. In <em>Computer Vision Workshops (ICCV Workshops), 2011 IEEE International Conference on</em>, pages 1737­1744, Barcelona, Spain. IEEE.</p>
+<p>[Pan et al., 2008a] Pan, S. J., Kwok, J. T., and Yang, Q. (2008a). Transfer learning via dimensionality reduction. In <em>Proceedings of the 23<sup>rd</sup> AAAI conference on Artificial in­telligence</em>, volume 8, pages 677-682.</p>
+<p>[Pan et al., 2008b] Pan, S. J., Shen, D., Yang, Q., and Kwok, J. T. (2008b). Transferring localization models across space. In <em>Proceedings of the 23<sup>rd</sup> AAAI Conference on Artificial Intelligence</em>, pages 1383-1388.</p>
+<p>[Pan et al., 2011] Pan, S. J., Tsang, I. W., Kwok, J. T., and Yang, Q. (2011). Domain adaptation via transfer component analysis. <em>IEEE TNN</em>, 22(2):199-210.</p>
+<p>[PanandYang, 2010] Pan,S.J.andYang,Q.(2010). A survey on transfer learning. IEEE TKDE*, 22(10):1345-1359.</p>
+<p>[Patil and Phursule, 2013] Patil, D. M. and Phursule, R. (2013). Knowledge transfer using cost sensitive online learning classification. <em>International Journal of Science and Research</em>, pages 527-529.</p>
+<p>[Razavian et al., 2014] Razavian, A. S., Azizpour, H., Sullivan, J., and Carlsson, S. (2014). Cnn features off-the-shelf: an astounding baseline for recognition. In <em>Computer Vision and Pattern Recognition Workshops (CVPRW), 2014 IEEE Conference on</em>, pages 512­519. IEEE.</p>
+<p>[Saito et al., 2017] Saito, K., Ushiku, Y., and Harada, T. (2017). Asymmetric tri-training for unsupervised domain adaptation. In <em>International Conference on Machine Learning</em>.</p>
+<p>[Sener et al., 2016] Sener, O., Song, H. O., Saxena, A., and Savarese, S. (2016). Learning transferrable representations for unsupervised domain adaptation. In <em>Advances in Neural Information Processing Systems</em>, pages 2110-2118.</p>
+<p>[Shen et al., 2018] Shen, J., Qu, Y., Zhang, W., and Yu, Y. (2018). Wasserstein distance guided representation learning for domain adaptation. In <em>AAAI</em>.</p>
+<p>[Si et al., 2010] Si, S., Tao, D., and Geng, B. (2010). Bregman divergence-based regu­larization for transfer subspace learning. <em>IEEE Transactions on Knowledge and Data Engineering</em>, 22(7):929-942.</p>
+<p>[Silver et al., 2017] Silver, D., Schrittwieser, J., Simonyan, K., Antonoglou, I., Huang, A., Guez, A., Hubert, T., Baker, L., Lai, M., Bolton, A., et al. (2017). Mastering the game of go without human knowledge. <em>Nature</em>, 550(7676):354.</p>
+<p>[Stewart and Ermon, 2017] Stewart, R. and Ermon, S. (2017). Label-free supervision of neural networks with physics and domain knowledge. In <em>AAAI</em>, pages 2576-2582.</p>
+<p>[Sun et al., 2016] Sun, B., Feng, J., and Saenko, K. (2016). Return of frustratingly easy domain adaptation. In <em>AAAI</em>, volume 6, page 8.</p>
+<p>[Sun and Saenko, 2015] Sun, B. and Saenko, K. (2015). Subspace distribution alignment for unsupervised domain adaptation. In <em>BMVC</em>, pages 24-1.</p>
+<p>[Sun and Saenko, 2016] Sun, B. and Saenko, K. (2016). Deep coral: Correlation alignment for deep domain adaptation. In <em>European Conference on Computer Vision</em>, pages 443-450. Springer.</p>
+<p>[Tahmoresnezhad and Hashemi, 2016] Tahmoresnezhad, J. and Hashemi, S. (2016). Visual domain adaptation via transfer feature learning. <em>Knowledge and Information Systems</em>, pages 1-21.</p>
+<p>[Tan et al., 2015] Tan, B., Song, Y., Zhong, E., and Yang, Q. (2015). Transitive trans­fer learning. In <em>Proceedings of the 21th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining</em>, pages 1155-1164. ACM.</p>
+<p>[Tan et al., 2017] Tan, B., Zhang, Y., Pan, S. J., and Yang, Q. (2017). Distant domain transfer learning. In <em>Thirty-First AAAI Conference on Artificial Intelligence</em>.</p>
+<p>[Taylor and Stone, 2009] Taylor, M. E. and Stone, P. (2009). Transfer learning for reinforce­ment learning domains: A survey. <em>Journal of Machine Learning Research</em>, 10(Jul):1633- 1685.</p>
+<p>[Tzeng et al., 2015] Tzeng, E., Hoffman, J., Darrell, T., and Saenko, K. (2015). Simulta­neous deep transfer across domains and tasks. In <em>Proceedings of the IEEE International Conference on Computer Vision</em>, pages 4068-4076, Santiago, Chile. IEEE.</p>
+<p>[Tzeng et al., 2017] Tzeng, E., Hoffman, J., Saenko, K., and Darrell, T. (2017). Adversarial discriminative domain adaptation. In <em>CVPR</em>, pages 2962-2971.</p>
+<p>[Tzeng et al., 2014] Tzeng, E., Hoffman, J., Zhang, N., et al. (2014). Deep domain confu­sion: Maximizing for domain invariance. <em>arXiv preprint arXiv:1412.3474</em>.</p>
+<p>[Wang et al., 2017] Wang, J., Chen, Y., Hao, S., et al. (2017). Balanced distribution adap­tation for transfer learning. In <em>ICDM</em>, pages 1129-1134.</p>
+<p>[Wang et al., 2018] Wang, J., Chen, Y., Hu, L., Peng, X., and Yu, P. S. (2018). Strati­fied transfer learning for cross-domain activity recognition. In <em>2018 IEEE International Conference on Pervasive Computing and Communications (PerCom)</em>.</p>
+<p>[Wang et al., 2014] Wang, J., Zhao, P., Hoi, S. C., and Jin, R. (2014). Online feature selection and its applications. <em>IEEE Transactions on Knowledge and Data Engineering</em>, 26(3):698-710.</p>
+<p>[Wei et al., 2016a] Wei, P., Ke, Y., and Goh, C. K. (2016a). Deep nonlinearfeature coding for unsupervised domain adaptation. In <em>IJCAI</em>, pages 2189-2195.</p>
+<p>[Wei et al., 2017] Wei, Y., Zhang, Y., and Yang, Q. (2017). Learning totransfer. <em>arXiv</em> preprint arXiv:1708.05629*.</p>
+<p>[Wei et al., 2016b] Wei, Y., Zhu, Y., Leung, C. W.-k., Song, Y., and Yang, Q. (2016b). Instilling social to physical: Co-regularized heterogeneous transfer learning. In <em>Thirtieth</em> AAAI Conference on Artificial Intelligence*.</p>
+<p>[Weiss et al., 2016] Weiss, K., Khoshgoftaar, T. M., and Wang, D. (2016). A survey of transfer learning. <em>Journal of Big Data</em>, 3(1):1-40.</p>
+<p>[Wu et al., 2017] Wu, Q., Zhou, X., Yan, Y., Wu, H., and Min, H. (2017). Online transfer learning by leveraging multiple source domains. <em>Knowledge and Information Systems</em>, 52(3):687-707.</p>
+<p>[xinhua, 2016] xinhua (2016). <a href="http://mp.weixin.qq.com/s?__biz=MjM5ODYzNzAyMQ==">http://mp.weixin.qq.com/s?__biz=MjM5ODYzNzAyMQ==</a>&amp; mid=2651933920&amp;idx=1\&amp;sn=ae2866bd12000f1644eae1094497837e.</p>
+<p>[Yan et al., 2017] Yan, Y., Wu, Q., Tan, M., Ng, M. K., Min, H., and Tsang, I. W. (2017). Online heterogeneous transfer by hedge ensemble of offline and online decisions. <em>IEEE transactions on neural networks and learning systems</em>.</p>
+<p>[Yosinski et al., 2014] Yosinski, J., Clune, J., Bengio, Y., and Lipson, H. (2014). How transferable are features in deep neural networks? In <em>Advances in neural information processing systems</em>, pages 3320-3328.</p>
+<p>[Zadrozny, 2004] Zadrozny, B. (2004). Learning and evaluating classifiers under sample selection bias. In <em>Proceedings of the twenty-first international conference on Machine learning</em>, page 114, Alberta, Canada. ACM.</p>
+<p>[Zellinger et al., 2017] Zellinger, W., Grubinger, T., Lughofer, E., Natschlager, T., and Saminger-Platz, S. (2017). Central moment discrepancy (cmd) for domain-invariant rep­resentation learning. <em>arXiv preprint arXiv:1702.08811</em>.</p>
+<p>[Zhang et al., 2017a] Zhang, J., Li, W., and Ogunbona, P. (2017a). Joint geometrical and statistical alignment for visual domain adaptation. In <em>CVPR</em>.</p>
+<p>[Zhang et al., 2017b] Zhang, X., Zhuang, Y., Wang, W., and Pedrycz, W. (2017b). On­line feature transformation learning for cross-domain object category recognition. <em>IEEE transactions on neural networks and learning systems</em>.</p>
+<p>[Zhao and Hoi, 2010] Zhao, P. and Hoi, S. C. (2010). Otl: A framework of online transfer learning. In <em>Proceedings of the 27<sup>th</sup> international conference on machine learning (ICML- 10)</em>, pages 1231-1238.</p>
+<p>[Zhao et al., 2010] Zhao, Z., Chen, Y., Liu, J., and Liu, M. (2010). Cross-mobile elm based activity recognition. <em>International Journal of Engineering and Industries</em>, 1(1):30-38.</p>
+<p>[Zhao et al., 2011] Zhao, Z., Chen, Y., Liu, J., Shen, Z., and Liu, M. (2011). Cross-people mobile-phone based activity recognition. In <em>Proceedings of the Twenty-Second interna­tional joint conference on Artificial Intelligence (IJCAI)</em>, volume 11, pages 2545-2550. Citeseer.</p>
+<p>[Zheng et al., 2009] Zheng, V. W., Hu, D. H., and Yang, Q. (2009). Cross-domain activity recognition. In <em>Proceedings of the 11<sup>th</sup> international conference on Ubiquitous computing</em>, pages 61-70. ACM.</p>
+<p>[Zheng et al., 2008] Zheng, V. W., Pan, S. J., Yang, Q., and Pan, J. J. (2008). Transferring multi-device localization models using latent multi-task learning. In <em>AAAI</em>, volume 8, pages 1427-1432, Chicago, Illinois, USA. AAAI.</p>
+<p>[Zhuang et al., 2015] Zhuang, F., Cheng, X., Luo, P., Pan, S. J., and He, Q. (2015). Su­pervised representation learning: Transfer learning with deep autoencoders. In <em>IJCAI</em>,pages 4119-4125.</p>
+<p>[Zhuo et al., 2017] Zhuo, J., Wang, S., Zhang, W., and Huang, Q. (2017). Deep unsuper­vised convolutional domain adaptation. In <em>Proceedings of the 2017 ACM on Multimedia Conference</em>, pages 261-269. ACM.</p>
+                
+                  
+                
+              
+              
+                
+
+
+  <h2 id="__comments">评论</h2>
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://hai5g.cn/aiwiki/qa500/ch11_迁移学习/第十一章_迁移学习/";
+      this.page.identifier =
+        "/qa500/ch11_迁移学习/第十一章_迁移学习/";
+    };
+    (function() {
+      var d = document, s = d.createElement("script");
+      s.src = "//AI-Wiki.disqus.com/embed.js";
+      s.setAttribute("data-timestamp", +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../../ch10_强化学习/第十章_强化学习/" title="第十章_强化学习" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  后退
+                </span>
+                第十章_强化学习
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../ch12_网络搭建及训练/第十二章_网络搭建及训练/" title="第十二章_网络搭建及训练" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  前进
+                </span>
+                第十二章_网络搭建及训练
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 AI Wiki Team
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.39abc4af.js"></script>
+      
+        
+        
+          
+          <script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/ethantw/Han@3.3.0/dist/han.min.js"></script>
+      
+        <script src="../../../_static/js/extra.js?v=10"></script>
+      
+        <script src="https://cdnjs.loli.net/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

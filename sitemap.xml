@@ -2,1287 +2,1337 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
      <loc>https://hai5g.cn/aiwiki/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/intro/mode/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/intro/icpc/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/intro/resources/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/intro/common-mistakes/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/intro/common-tricks/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/intro/non-traditional/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/intro/judgers/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/intro/editors/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/intro/wsl/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/intro/spj/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/intro/testlib/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/intro/testlib/general/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/intro/testlib/generator/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/intro/testlib/validator/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/intro/testlib/interactor/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/intro/testlib/checker/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/intro/docker-deploy/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/intro/about/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/intro/faq/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/basic/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/basic/enumerate/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/basic/simulate/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/basic/divide-and-conquer/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/basic/greedy/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/basic/sort-intro/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/basic/selection-sort/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/basic/bubble-sort/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/basic/insertion-sort/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/basic/bucket-sort/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/basic/quick-sort/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/basic/merge-sort/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/basic/heap-sort/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/basic/radix-sort/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/basic/shell-sort/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/basic/stl-sort/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/basic/use-of-sort/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/basic/expression/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/basic/binary/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/basic/construction/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/basic/prefix-sum/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/basic/file-operation/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://hai5g.cn/aiwiki/search/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <loc>https://hai5g.cn/aiwiki/qa500/</loc>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://hai5g.cn/aiwiki/search/dfs/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <loc>https://hai5g.cn/aiwiki/qa500/content/</loc>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://hai5g.cn/aiwiki/search/bfs/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <loc>https://hai5g.cn/aiwiki/qa500/ch01_math/ch01_math/</loc>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://hai5g.cn/aiwiki/search/bidirectional/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <loc>https://hai5g.cn/aiwiki/qa500/ch02_机器学习基础/第二章_机器学习基础/</loc>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://hai5g.cn/aiwiki/search/heuristic/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <loc>https://hai5g.cn/aiwiki/qa500/ch03_深度学习基础/第三章_深度学习基础/</loc>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://hai5g.cn/aiwiki/search/astar/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <loc>https://hai5g.cn/aiwiki/qa500/ch04_经典网络/第四章_经典网络/</loc>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://hai5g.cn/aiwiki/search/iterative/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <loc>https://hai5g.cn/aiwiki/qa500/ch05_卷积神经网络(CNN)/第五章 卷积神经网络（CNN）/</loc>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://hai5g.cn/aiwiki/search/idastar/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <loc>https://hai5g.cn/aiwiki/qa500/ch06_循环神经网络(RNN)/第六章_循环神经网络(RNN)/</loc>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://hai5g.cn/aiwiki/search/backtracking/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <loc>https://hai5g.cn/aiwiki/qa500/ch07_生成对抗网络(GAN)/ch7/</loc>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://hai5g.cn/aiwiki/search/dlx/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <loc>https://hai5g.cn/aiwiki/qa500/ch08_目标检测/第八章_目标检测/</loc>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://hai5g.cn/aiwiki/search/optimization/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <loc>https://hai5g.cn/aiwiki/qa500/ch09_图像分割/第九章_图像分割/</loc>
+     <lastmod>2019-05-23</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://hai5g.cn/aiwiki/qa500/ch10_强化学习/第十章_强化学习/</loc>
+     <lastmod>2019-05-23</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://hai5g.cn/aiwiki/qa500/ch11_迁移学习/第十一章_迁移学习/</loc>
+     <lastmod>2019-05-23</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://hai5g.cn/aiwiki/qa500/ch12_网络搭建及训练/第十二章_网络搭建及训练/</loc>
+     <lastmod>2019-05-23</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://hai5g.cn/aiwiki/qa500/ch13_优化算法/第十三章_优化算法/</loc>
+     <lastmod>2019-05-23</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://hai5g.cn/aiwiki/qa500/ch14_超参数调整/第十四章_超参数调整/</loc>
+     <lastmod>2019-05-23</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://hai5g.cn/aiwiki/qa500/ch15_GPU和框架选型/第十五章_异构运算、GPU及框架选型/</loc>
+     <lastmod>2019-05-23</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://hai5g.cn/aiwiki/qa500/ch16_自然语言处理(NLP)/第十六章_NLP/</loc>
+     <lastmod>2019-05-23</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://hai5g.cn/aiwiki/qa500/ch17_模型压缩、加速及移动端部署/第十七章_模型压缩、加速及移动端部署/</loc>
+     <lastmod>2019-05-23</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://hai5g.cn/aiwiki/qa500/ch18_后端架构选型、离线及实时计算/第十八章_后端架构选型、离线及实时计算/</loc>
+     <lastmod>2019-05-23</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://hai5g.cn/aiwiki/qa500/ch18_后端架构选型及应用场景/第十八章_后端架构选型及应用场景/</loc>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/dp/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/dp/memo/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/dp/knapsack/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/dp/interval/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/dp/dag/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/dp/tree/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/dp/state/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/dp/number/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/dp/plug/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/dp/optimizations/binary-knapsack/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/dp/optimizations/monotonous-queue-stack/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/dp/optimizations/convex-hull-optimization/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/dp/optimizations/knuth-yao-quadrangle-inequality/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/dp/optimizations/state-optimization/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/dp/misc/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/string/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/string/lib-func/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/string/match/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/string/hash/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/string/prefix-function/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/string/trie/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/string/pam/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/string/sa/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/string/ac-automaton/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/string/sam/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/string/suffix-tree/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/string/manacher/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/string/minimal-string/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/string/z-function/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/base/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/bit/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/bignum/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/quick-pow/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/prime/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/gcd/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/euler/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/sieve/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/fermat/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/bezouts/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/inverse/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/linear-equation/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/crt/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/bsgs/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/primitive-root/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/matrix/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/gauss/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/basis/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/complex/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/dictionary/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/mobius/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/du-sieves/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/poly/intro/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/poly/lagrange-poly/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/poly/fft/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/poly/ntt/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/poly/fwt/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/poly/inv/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/poly/sqrt/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/poly/div-mod/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/poly/ln-exp/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/poly/newton/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/poly/multipoint-eval-interpolation/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/poly/tri-func/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/poly/inv-tri-func/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/combination/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/catalan/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/stirling/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/cantor/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/inclusion-exclusion-principle/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/drawer-principle/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/expectation/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/permutation-group/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/integral/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/linear-programming/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/game-theory/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/math/misc/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/stl/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/stl/vector/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/stl/priority_queue/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/stl/map/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/stl/bitset/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/pb-ds/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/pb-ds/priority-queue/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/stack/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/queue/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/linked-list/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/hash/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/dsu/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/heap/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/binary-heap/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/pairing-heap/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/square-root-decomposition/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/block-list/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/block-array/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/tree-decompose/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/monotonous-stack/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/monotonous-queue/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/sparse-table/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/bit/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/segment/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/dividing/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/bst/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/treap/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/splay/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/wblt/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/sbt/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/avl/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/scapegoat/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/seg-in-seg/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/seg-in-balanced/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/balanced-in-seg/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/persistent-in-bit/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/k-dtree/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/persistent/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/persistent-seg/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/persistent-block-array/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/persistent-balanced/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/persistent-trie/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/odt/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/lct/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/ds/ett/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/graph/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/graph/basic/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/graph/traverse/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/graph/tree-basic/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/graph/lca/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/graph/dfs-order/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/graph/tree-misc/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/graph/tree-hash/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/graph/heavy-light-decomposition/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/graph/tree-divide/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/graph/dynamic-tree-divide/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/graph/virtual-tree/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/graph/dsu-on-tree/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/graph/matrix-tree/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/graph/dag/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/graph/topo/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/graph/mst/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/graph/mdst/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/graph/shortest-path/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/graph/differential-constraints/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/graph/kth-path/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/graph/scc/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/graph/bcc/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/graph/bridge/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/graph/2-sat/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/graph/euler/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/graph/hamilton/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/graph/bi-graph/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/graph/min-circle/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/graph/planar/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/graph/color/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/graph/flow/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/graph/flow/node/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/graph/flow/max-flow/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/graph/flow/min-cut/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/graph/flow/min-cost/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/graph/flow/bound/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/graph/misc/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/geometry/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/geometry/2d/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/geometry/3d/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/geometry/distance/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/geometry/pick/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/geometry/triangulation/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/geometry/convex-hull/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/geometry/scanning/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/geometry/rotating-calipers/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/geometry/half-plane-intersection/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/geometry/nearest-points/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/geometry/magic/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/misc/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/misc/io/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/misc/complexity/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/misc/discrete/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/misc/offline/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/misc/cdq-divide/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/misc/mo-algo/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/misc/fractional-programming/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/misc/random/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/misc/hill-climbing/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/misc/simulated-annealing/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/misc/random-incremental/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/misc/largest-matrix/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/misc/cc-basic/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/misc/endianness/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/misc/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/misc/io/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/misc/complexity/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/misc/discrete/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/misc/offline/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/misc/cdq-divide/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/misc/mo-algo/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/misc/fractional-programming/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/misc/random/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/misc/hill-climbing/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/misc/simulated-annealing/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/misc/random-incremental/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/misc/largest-matrix/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/misc/cc-basic/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/misc/endianness/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://hai5g.cn/aiwiki/about/</loc>
-     <lastmod>2019-05-08</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>
