@@ -6,9 +6,9 @@ site_url: https://hai5g.cn/aiwiki
 strict: true
 
 # Repository
-repo_name: '24OI/AI-wiki'
+repo_name: 'aiwiki'
 repo_url: 'https://github.com/myourdream/aiwiki'
-edit_uri: 'aiwiki/master/docs/'
+edit_uri: 'blob/master/docs/'
 
 # Copyright
 copyright: 'Copyright &copy; 2019 AI Wiki Team'
@@ -17,6 +17,7 @@ copyright: 'Copyright &copy; 2019 AI Wiki Team'
 nav:
   - 简介:
     - Getting Started: index.md
+    - AI学习路线: intro/AI学习路线.md
     - AI 赛事与赛制: intro/mode.md
     - ICPC/CCPC 赛事与赛制: intro/icpc.md
     - 学习资源: intro/resources.md
@@ -38,42 +39,41 @@ nav:
     - Docker 部署: intro/docker-deploy.md
     - 关于本项目: intro/about.md
     - F.A.Q.: intro/faq.md
-  - 特征工程:
-    - 基础部分简介: basic/index.md
-    - 枚举: basic/enumerate.md
-    - 模拟: basic/simulate.md
-    - 递归 & 分治: basic/divide-and-conquer.md
-    - 贪心: basic/greedy.md
-    - 排序:
-      - 排序简介: basic/sort-intro.md
-      - 选择排序: basic/selection-sort.md
-      - 冒泡排序: basic/bubble-sort.md
-      - 插入排序: basic/insertion-sort.md
-      - 计数排序: basic/bucket-sort.md
-      - 快速排序: basic/quick-sort.md
-      - 归并排序: basic/merge-sort.md
-      - 堆排序: basic/heap-sort.md
-      - 基数排序: basic/radix-sort.md
-      - 希尔排序: basic/shell-sort.md
-      - 排序相关 STL: basic/stl-sort.md
-      - 排序应用: basic/use-of-sort.md
-    - 表达式求值: basic/expression.md
-    - 二分: basic/binary.md
-    - 构造: basic/construction.md
-    - 前缀和 & 差分: basic/prefix-sum.md
-    - 文件操作: basic/file-operation.md
-  - 模型评估:
-    - 搜索部分简介: search/index.md
-    - DFS: search/dfs.md
-    - BFS: search/bfs.md
-    - 双向搜索: search/bidirectional.md
-    - 启发式搜索: search/heuristic.md
-    - A*: search/astar.md
-    - 迭代加深搜索: search/iterative.md
-    - IDA*: search/idastar.md
-    - 回溯法: search/backtracking.md
-    - Dancing Links: search/dlx.md
-    - 优化: search/optimization.md
+  - Machine Learning:
+    - 简介: Coursera_ML_AndrewNg/markdown/SUMMARY.md
+    - 数学基础: Coursera_ML_AndrewNg/markdown/math.md
+    - week1: Coursera_ML_AndrewNg/markdown/week1.md
+    - week2: Coursera_ML_AndrewNg/markdown/week2.md
+    - week3: Coursera_ML_AndrewNg/markdown/week3.md
+    - week4: Coursera_ML_AndrewNg/markdown/week4.md
+    - week5: Coursera_ML_AndrewNg/markdown/week5.md
+    - week6: Coursera_ML_AndrewNg/markdown/week6.md
+    - week7: Coursera_ML_AndrewNg/markdown/week7.md
+    - week8: Coursera_ML_AndrewNg/markdown/week8.md
+    - week9: Coursera_ML_AndrewNg/markdown/week9.md
+    - week10: Coursera_ML_AndrewNg/markdown/week10.md
+  - 深度学习500问:
+    - 简介: qa500/index.md
+    - 目录: qa500/content.md
+    - 第一章_数学基础: qa500/ch01_math/ch01_math.md
+    - 第二章_机器学习基础: qa500/ch02_机器学习基础/第二章_机器学习基础.md
+    - 第三章_深度学习基础: qa500/ch03_深度学习基础/第三章_深度学习基础.md
+    - 第四章_经典网络: qa500/ch04_经典网络/第四章_经典网络.md
+    - 第五章 卷积神经网络（CNN）: qa500/ch05_卷积神经网络(CNN)/第五章 卷积神经网络（CNN）.md
+    - 第六章_循环神经网络(RNN): qa500/ch06_循环神经网络(RNN)/第六章_循环神经网络(RNN).md
+    - 第七章_生成对抗网络(GAN): qa500/ch07_生成对抗网络(GAN)/ch7.md
+    - 第八章_目标检测: qa500/ch08_目标检测/第八章_目标检测.md
+    - 第九章_图像分割: qa500/ch09_图像分割/第九章_图像分割.md
+    - 第十章_强化学习: qa500/ch10_强化学习/第十章_强化学习.md
+    - 第十一章_迁移学习: qa500/ch11_迁移学习/第十一章_迁移学习.md
+    - 第十二章_网络搭建及训练: qa500/ch12_网络搭建及训练/第十二章_网络搭建及训练.md
+    - 第十三章_优化算法: qa500/ch13_优化算法/第十三章_优化算法.md
+    - 第十四章_超参数调整: qa500/ch14_超参数调整/第十四章_超参数调整.md
+    - 第十五章_异构运算、GPU及框架选型: qa500/ch15_GPU和框架选型/第十五章_异构运算、GPU及框架选型.md
+    - 第十六章_NLP: qa500/ch16_自然语言处理(NLP)/第十六章_NLP.md
+    - 第十七章_模型压缩、加速及移动端部署: qa500/ch17_模型压缩、加速及移动端部署/第十七章_模型压缩、加速及移动端部署.md
+    - 第十八章_后端架构选型、离线及实时计算: qa500/ch18_后端架构选型、离线及实时计算/第十八章_后端架构选型、离线及实时计算.md
+    - 第十八章_后端架构选型及应用场景: qa500/ch18_后端架构选型及应用场景/第十八章_后端架构选型及应用场景.md
   - 经典算法:
     - 动态规划部分简介: dp/index.md
     - 记忆化搜索: dp/memo.md
