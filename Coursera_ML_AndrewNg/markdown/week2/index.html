@@ -1,0 +1,5366 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="AI Wiki 是一个编程竞赛知识整合站点，提供有趣又实用的编程竞赛知识以及其他有帮助的内容，帮助广大编程竞赛爱好者更快更深入地学习编程竞赛">
+      
+      
+        <link rel="canonical" href="https://hai5g.cn/aiwiki/Coursera_ML_AndrewNg/markdown/week2/">
+      
+      
+        <meta name="author" content="AI Wiki Team">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.2.0">
+    
+    
+      
+        <title>week2 - AI Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.750b69bd.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.224b79ff.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:300,400,400i,700|Fira+Mono">
+        <style>body,input{font-family:"Fira Sans","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Fira Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+      <link rel="manifest" href="../../../manifest.webmanifest">
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ah@1.5.0/han.min.css">
+    
+      <link rel="stylesheet" href="../../../_static/css/extra.css?v=11">
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="red">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#2" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://hai5g.cn/aiwiki" title="AI Wiki" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">school</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              AI Wiki
+            </span>
+            <span class="md-header-nav__topic">
+              week2
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/myourdream/aiwiki/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    aiwiki
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../.." title="简介" class="md-tabs__link">
+          简介
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../SUMMARY/" title="Machine Learning" class="md-tabs__link md-tabs__link--active">
+          Machine Learning
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../qa500/" title="深度学习500问" class="md-tabs__link">
+          深度学习500问
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../dp/" title="经典算法" class="md-tabs__link">
+          经典算法
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../string/" title="集成学习算法" class="md-tabs__link">
+          集成学习算法
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../math/" title="CNN" class="md-tabs__link">
+          CNN
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../ds/" title="RNN" class="md-tabs__link">
+          RNN
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../graph/" title="GAN" class="md-tabs__link">
+          GAN
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../geometry/" title="计算机视觉" class="md-tabs__link">
+          计算机视觉
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../misc/" title="NLP" class="md-tabs__link">
+          NLP
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../misc/" title="推荐系统" class="md-tabs__link">
+          推荐系统
+        </a>
+      
+    </li>
+  
+
+      
+        
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://hai5g.cn/aiwiki" title="AI Wiki" class="md-nav__button md-logo">
+      
+        <i class="md-icon">school</i>
+      
+    </a>
+    AI Wiki
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/myourdream/aiwiki/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    aiwiki
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      简介
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        简介
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="Getting Started" class="md-nav__link">
+      Getting Started
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/AI学习路线/" title="AI学习路线" class="md-nav__link">
+      AI学习路线
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/mode/" title="AI 赛事与赛制" class="md-nav__link">
+      AI 赛事与赛制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/icpc/" title="ICPC/CCPC 赛事与赛制" class="md-nav__link">
+      ICPC/CCPC 赛事与赛制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/resources/" title="学习资源" class="md-nav__link">
+      学习资源
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/common-mistakes/" title="常见错误" class="md-nav__link">
+      常见错误
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/common-tricks/" title="常见技巧" class="md-nav__link">
+      常见技巧
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/non-traditional/" title="非传统题" class="md-nav__link">
+      非传统题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-9" type="checkbox" id="nav-1-9">
+    
+    <label class="md-nav__link" for="nav-1-9">
+      工具软件
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-1-9">
+        工具软件
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/judgers/" title="评测工具" class="md-nav__link">
+      评测工具
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/editors/" title="编辑工具" class="md-nav__link">
+      编辑工具
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/wsl/" title="WSL (Windows 10)" class="md-nav__link">
+      WSL (Windows 10)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/spj/" title="Special Judge" class="md-nav__link">
+      Special Judge
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-9-5" type="checkbox" id="nav-1-9-5">
+    
+    <label class="md-nav__link" for="nav-1-9-5">
+      Testlib
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-1-9-5">
+        Testlib
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/testlib/" title="Testlib 简介" class="md-nav__link">
+      Testlib 简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/testlib/general/" title="通用" class="md-nav__link">
+      通用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/testlib/generator/" title="Generator" class="md-nav__link">
+      Generator
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/testlib/validator/" title="Validator" class="md-nav__link">
+      Validator
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/testlib/interactor/" title="Interactor" class="md-nav__link">
+      Interactor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/testlib/checker/" title="Checker" class="md-nav__link">
+      Checker
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/docker-deploy/" title="Docker 部署" class="md-nav__link">
+      Docker 部署
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/about/" title="关于本项目" class="md-nav__link">
+      关于本项目
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/faq/" title="F.A.Q." class="md-nav__link">
+      F.A.Q.
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Machine Learning
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Machine Learning
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../SUMMARY/" title="简介" class="md-nav__link">
+      简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../math/" title="数学基础" class="md-nav__link">
+      数学基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../week1/" title="week1" class="md-nav__link">
+      week1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        week2
+      </label>
+    
+    <a href="./" title="week2" class="md-nav__link md-nav__link--active">
+      week2
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#linear-regression-with-multiple-variables" title="四、多变量线性回归(Linear Regression with Multiple Variables)" class="md-nav__link">
+    四、多变量线性回归(Linear Regression with Multiple Variables)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" title="4.1 多维特征" class="md-nav__link">
+    4.1 多维特征
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" title="4.2 多变量梯度下降" class="md-nav__link">
+    4.2 多变量梯度下降
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-1-" title="4.3 梯度下降法实践1-特征缩放" class="md-nav__link">
+    4.3 梯度下降法实践1-特征缩放
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-2-" title="4.4 梯度下降法实践2-学习率" class="md-nav__link">
+    4.4 梯度下降法实践2-学习率
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45" title="4.5 特征和多项式回归" class="md-nav__link">
+    4.5 特征和多项式回归
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46" title="4.6 正规方程" class="md-nav__link">
+    4.6 正规方程
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#47" title="4.7 正规方程及不可逆性（可选）" class="md-nav__link">
+    4.7 正规方程及不可逆性（可选）
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#octaveoctave-tutorial" title="五、Octave教程(Octave Tutorial)" class="md-nav__link">
+    五、Octave教程(Octave Tutorial)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" title="5.1 基本操作" class="md-nav__link">
+    5.1 基本操作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" title="5.2 移动数据" class="md-nav__link">
+    5.2 移动数据
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" title="5.3 计算数据" class="md-nav__link">
+    5.3 计算数据
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54" title="5.4 绘图数据" class="md-nav__link">
+    5.4 绘图数据
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-forwhileif" title="5.5 控制语句：for，while，if语句" class="md-nav__link">
+    5.5 控制语句：for，while，if语句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56" title="5.6 向量化" class="md-nav__link">
+    5.6 向量化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#57" title="5.7 工作和提交的编程练习" class="md-nav__link">
+    5.7 工作和提交的编程练习
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="评论" class="md-nav__link md-nav__link--active">
+            评论
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../week3/" title="week3" class="md-nav__link">
+      week3
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../week4/" title="week4" class="md-nav__link">
+      week4
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../week5/" title="week5" class="md-nav__link">
+      week5
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../week6/" title="week6" class="md-nav__link">
+      week6
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../week7/" title="week7" class="md-nav__link">
+      week7
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../week8/" title="week8" class="md-nav__link">
+      week8
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../week9/" title="week9" class="md-nav__link">
+      week9
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../week10/" title="week10" class="md-nav__link">
+      week10
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      深度学习500问
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        深度学习500问
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/" title="简介" class="md-nav__link">
+      简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/content/" title="目录" class="md-nav__link">
+      目录
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch01_math/ch01_math/" title="第一章_数学基础" class="md-nav__link">
+      第一章_数学基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch02_机器学习基础/第二章_机器学习基础/" title="第二章_机器学习基础" class="md-nav__link">
+      第二章_机器学习基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch03_深度学习基础/第三章_深度学习基础/" title="第三章_深度学习基础" class="md-nav__link">
+      第三章_深度学习基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch04_经典网络/第四章_经典网络/" title="第四章_经典网络" class="md-nav__link">
+      第四章_经典网络
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch05_卷积神经网络(CNN)/第五章 卷积神经网络（CNN）/" title="第五章 卷积神经网络（CNN）" class="md-nav__link">
+      第五章 卷积神经网络（CNN）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch06_循环神经网络(RNN)/第六章_循环神经网络(RNN)/" title="第六章_循环神经网络(RNN)" class="md-nav__link">
+      第六章_循环神经网络(RNN)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch07_生成对抗网络(GAN)/ch7/" title="第七章_生成对抗网络(GAN)" class="md-nav__link">
+      第七章_生成对抗网络(GAN)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch08_目标检测/第八章_目标检测/" title="第八章_目标检测" class="md-nav__link">
+      第八章_目标检测
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch09_图像分割/第九章_图像分割/" title="第九章_图像分割" class="md-nav__link">
+      第九章_图像分割
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch10_强化学习/第十章_强化学习/" title="第十章_强化学习" class="md-nav__link">
+      第十章_强化学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch11_迁移学习/第十一章_迁移学习/" title="第十一章_迁移学习" class="md-nav__link">
+      第十一章_迁移学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch12_网络搭建及训练/第十二章_网络搭建及训练/" title="第十二章_网络搭建及训练" class="md-nav__link">
+      第十二章_网络搭建及训练
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch13_优化算法/第十三章_优化算法/" title="第十三章_优化算法" class="md-nav__link">
+      第十三章_优化算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch14_超参数调整/第十四章_超参数调整/" title="第十四章_超参数调整" class="md-nav__link">
+      第十四章_超参数调整
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch15_GPU和框架选型/第十五章_异构运算、GPU及框架选型/" title="第十五章_异构运算、GPU及框架选型" class="md-nav__link">
+      第十五章_异构运算、GPU及框架选型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch16_自然语言处理(NLP)/第十六章_NLP/" title="第十六章_NLP" class="md-nav__link">
+      第十六章_NLP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch17_模型压缩、加速及移动端部署/第十七章_模型压缩、加速及移动端部署/" title="第十七章_模型压缩、加速及移动端部署" class="md-nav__link">
+      第十七章_模型压缩、加速及移动端部署
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch18_后端架构选型、离线及实时计算/第十八章_后端架构选型、离线及实时计算/" title="第十八章_后端架构选型、离线及实时计算" class="md-nav__link">
+      第十八章_后端架构选型、离线及实时计算
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch18_后端架构选型及应用场景/第十八章_后端架构选型及应用场景/" title="第十八章_后端架构选型及应用场景" class="md-nav__link">
+      第十八章_后端架构选型及应用场景
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      经典算法
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        经典算法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/" title="动态规划部分简介" class="md-nav__link">
+      动态规划部分简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/memo/" title="记忆化搜索" class="md-nav__link">
+      记忆化搜索
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/knapsack/" title="背包 DP" class="md-nav__link">
+      背包 DP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/interval/" title="区间 DP" class="md-nav__link">
+      区间 DP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/dag/" title="DAG 上的 DP" class="md-nav__link">
+      DAG 上的 DP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/tree/" title="树形 DP" class="md-nav__link">
+      树形 DP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/state/" title="状压 DP" class="md-nav__link">
+      状压 DP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/number/" title="数位 DP" class="md-nav__link">
+      数位 DP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/plug/" title="插头 DP" class="md-nav__link">
+      插头 DP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-10" type="checkbox" id="nav-4-10">
+    
+    <label class="md-nav__link" for="nav-4-10">
+      DP 优化
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-10">
+        DP 优化
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/optimizations/binary-knapsack/" title="二进制分组解多重背包" class="md-nav__link">
+      二进制分组解多重背包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/optimizations/monotonous-queue-stack/" title="单调队列/单调栈优化" class="md-nav__link">
+      单调队列/单调栈优化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/optimizations/convex-hull-optimization/" title="斜率优化" class="md-nav__link">
+      斜率优化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/optimizations/knuth-yao-quadrangle-inequality/" title="四边形不等式优化" class="md-nav__link">
+      四边形不等式优化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/optimizations/state-optimization/" title="状态设计优化" class="md-nav__link">
+      状态设计优化
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/misc/" title="其它 DP 方法" class="md-nav__link">
+      其它 DP 方法
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      集成学习算法
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        集成学习算法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/" title="字符串部分简介" class="md-nav__link">
+      字符串部分简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/lib-func/" title="标准库" class="md-nav__link">
+      标准库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/match/" title="字符串匹配" class="md-nav__link">
+      字符串匹配
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/hash/" title="哈希" class="md-nav__link">
+      哈希
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/prefix-function/" title="前缀函数与 KMP 算法" class="md-nav__link">
+      前缀函数与 KMP 算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/trie/" title="字典树 (Trie)" class="md-nav__link">
+      字典树 (Trie)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/pam/" title="回文自动机" class="md-nav__link">
+      回文自动机
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/sa/" title="后缀数组 (SA)" class="md-nav__link">
+      后缀数组 (SA)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/ac-automaton/" title="AC 自动机" class="md-nav__link">
+      AC 自动机
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/sam/" title="后缀自动机 (SAM)" class="md-nav__link">
+      后缀自动机 (SAM)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/suffix-tree/" title="后缀树" class="md-nav__link">
+      后缀树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/manacher/" title="Manacher" class="md-nav__link">
+      Manacher
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/minimal-string/" title="最小表示法" class="md-nav__link">
+      最小表示法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/z-function/" title="Z 函数（扩展 KMP）" class="md-nav__link">
+      Z 函数（扩展 KMP）
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      CNN
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        CNN
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/" title="数学部分简介" class="md-nav__link">
+      数学部分简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/base/" title="进制" class="md-nav__link">
+      进制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/bit/" title="位运算" class="md-nav__link">
+      位运算
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/bignum/" title="高精度" class="md-nav__link">
+      高精度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/quick-pow/" title="快速幂" class="md-nav__link">
+      快速幂
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-6" type="checkbox" id="nav-6-6">
+    
+    <label class="md-nav__link" for="nav-6-6">
+      整除及其性质
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-6">
+        整除及其性质
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/prime/" title="素数" class="md-nav__link">
+      素数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/gcd/" title="最大公约数" class="md-nav__link">
+      最大公约数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/euler/" title="欧拉函数" class="md-nav__link">
+      欧拉函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/sieve/" title="筛法" class="md-nav__link">
+      筛法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/fermat/" title="费马小定理" class="md-nav__link">
+      费马小定理
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-7" type="checkbox" id="nav-6-7">
+    
+    <label class="md-nav__link" for="nav-6-7">
+      同余方程相关
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-7">
+        同余方程相关
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/bezouts/" title="裴蜀定理" class="md-nav__link">
+      裴蜀定理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/inverse/" title="乘法逆元" class="md-nav__link">
+      乘法逆元
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/linear-equation/" title="线性同余方程" class="md-nav__link">
+      线性同余方程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/crt/" title="中国剩余定理" class="md-nav__link">
+      中国剩余定理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/bsgs/" title="BSGS" class="md-nav__link">
+      BSGS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/primitive-root/" title="原根" class="md-nav__link">
+      原根
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-8" type="checkbox" id="nav-6-8">
+    
+    <label class="md-nav__link" for="nav-6-8">
+      线性代数
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-8">
+        线性代数
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/matrix/" title="矩阵" class="md-nav__link">
+      矩阵
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/gauss/" title="高斯消元" class="md-nav__link">
+      高斯消元
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/basis/" title="线性基" class="md-nav__link">
+      线性基
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/complex/" title="复数" class="md-nav__link">
+      复数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/dictionary/" title="分段打表" class="md-nav__link">
+      分段打表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-11" type="checkbox" id="nav-6-11">
+    
+    <label class="md-nav__link" for="nav-6-11">
+      数论函数相关
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-11">
+        数论函数相关
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/mobius/" title="莫比乌斯反演" class="md-nav__link">
+      莫比乌斯反演
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/du-sieves/" title="杜教筛" class="md-nav__link">
+      杜教筛
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-12" type="checkbox" id="nav-6-12">
+    
+    <label class="md-nav__link" for="nav-6-12">
+      多项式
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-12">
+        多项式
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/poly/intro/" title="多项式部分简介" class="md-nav__link">
+      多项式部分简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/poly/lagrange-poly/" title="拉格朗日插值" class="md-nav__link">
+      拉格朗日插值
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/poly/fft/" title="快速傅里叶变换" class="md-nav__link">
+      快速傅里叶变换
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/poly/ntt/" title="快速数论变换" class="md-nav__link">
+      快速数论变换
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/poly/fwt/" title="快速沃尔什变换" class="md-nav__link">
+      快速沃尔什变换
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/poly/inv/" title="多项式求逆" class="md-nav__link">
+      多项式求逆
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/poly/sqrt/" title="多项式开方" class="md-nav__link">
+      多项式开方
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/poly/div-mod/" title="多项式除法|取模" class="md-nav__link">
+      多项式除法|取模
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/poly/ln-exp/" title="多项式对数函数|指数函数" class="md-nav__link">
+      多项式对数函数|指数函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/poly/newton/" title="多项式牛顿迭代" class="md-nav__link">
+      多项式牛顿迭代
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/poly/multipoint-eval-interpolation/" title="多项式多点求值|快速插值" class="md-nav__link">
+      多项式多点求值|快速插值
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/poly/tri-func/" title="多项式三角函数" class="md-nav__link">
+      多项式三角函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/poly/inv-tri-func/" title="多项式反三角函数" class="md-nav__link">
+      多项式反三角函数
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-13" type="checkbox" id="nav-6-13">
+    
+    <label class="md-nav__link" for="nav-6-13">
+      组合数学
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-13">
+        组合数学
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/combination/" title="排列组合" class="md-nav__link">
+      排列组合
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/catalan/" title="卡特兰数" class="md-nav__link">
+      卡特兰数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/stirling/" title="斯特林数" class="md-nav__link">
+      斯特林数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/cantor/" title="康托展开" class="md-nav__link">
+      康托展开
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/inclusion-exclusion-principle/" title="容斥原理" class="md-nav__link">
+      容斥原理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/drawer-principle/" title="抽屉原理" class="md-nav__link">
+      抽屉原理
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/expectation/" title="概率 & 期望" class="md-nav__link">
+      概率 & 期望
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/permutation-group/" title="置换群" class="md-nav__link">
+      置换群
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/integral/" title="数值积分" class="md-nav__link">
+      数值积分
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/linear-programming/" title="线性规划" class="md-nav__link">
+      线性规划
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/game-theory/" title="博弈论" class="md-nav__link">
+      博弈论
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/misc/" title="杂项" class="md-nav__link">
+      杂项
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      RNN
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        RNN
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/" title="数据结构部分简介" class="md-nav__link">
+      数据结构部分简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
+    
+    <label class="md-nav__link" for="nav-7-2">
+      STL
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-2">
+        STL
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/stl/" title="STL 简介" class="md-nav__link">
+      STL 简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/stl/vector/" title="vector" class="md-nav__link">
+      vector
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/stl/priority_queue/" title="priority_queue" class="md-nav__link">
+      priority_queue
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/stl/map/" title="map" class="md-nav__link">
+      map
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/stl/bitset/" title="bitset" class="md-nav__link">
+      bitset
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-3" type="checkbox" id="nav-7-3">
+    
+    <label class="md-nav__link" for="nav-7-3">
+      pb_ds
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-3">
+        pb_ds
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/pb-ds/" title="pb_ds 简介" class="md-nav__link">
+      pb_ds 简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/pb-ds/priority-queue/" title="__gnu_pbds::priority_queue" class="md-nav__link">
+      __gnu_pbds::priority_queue
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/stack/" title="栈" class="md-nav__link">
+      栈
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/queue/" title="队列" class="md-nav__link">
+      队列
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/linked-list/" title="链表" class="md-nav__link">
+      链表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/hash/" title="哈希表" class="md-nav__link">
+      哈希表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/dsu/" title="并查集" class="md-nav__link">
+      并查集
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-9" type="checkbox" id="nav-7-9">
+    
+    <label class="md-nav__link" for="nav-7-9">
+      堆
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-9">
+        堆
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/heap/" title="堆简介" class="md-nav__link">
+      堆简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/binary-heap/" title="二叉堆" class="md-nav__link">
+      二叉堆
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/pairing-heap/" title="配对堆" class="md-nav__link">
+      配对堆
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-10" type="checkbox" id="nav-7-10">
+    
+    <label class="md-nav__link" for="nav-7-10">
+      块状数据结构
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-10">
+        块状数据结构
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/square-root-decomposition/" title="分块思想" class="md-nav__link">
+      分块思想
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/block-list/" title="块状链表" class="md-nav__link">
+      块状链表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/block-array/" title="块状数组" class="md-nav__link">
+      块状数组
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/tree-decompose/" title="树分块" class="md-nav__link">
+      树分块
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/monotonous-stack/" title="单调栈" class="md-nav__link">
+      单调栈
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/monotonous-queue/" title="单调队列" class="md-nav__link">
+      单调队列
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/sparse-table/" title="倍增" class="md-nav__link">
+      倍增
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/bit/" title="树状数组" class="md-nav__link">
+      树状数组
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/segment/" title="线段树" class="md-nav__link">
+      线段树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/dividing/" title="划分树" class="md-nav__link">
+      划分树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-17" type="checkbox" id="nav-7-17">
+    
+    <label class="md-nav__link" for="nav-7-17">
+      平衡树
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-17">
+        平衡树
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/bst/" title="二叉搜索树简介" class="md-nav__link">
+      二叉搜索树简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/treap/" title="Treap" class="md-nav__link">
+      Treap
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/splay/" title="Splay" class="md-nav__link">
+      Splay
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/wblt/" title="WBLT" class="md-nav__link">
+      WBLT
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/sbt/" title="Size Balanced Tree" class="md-nav__link">
+      Size Balanced Tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/avl/" title="AVL 树" class="md-nav__link">
+      AVL 树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/scapegoat/" title="替罪羊树" class="md-nav__link">
+      替罪羊树
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-18" type="checkbox" id="nav-7-18">
+    
+    <label class="md-nav__link" for="nav-7-18">
+      树套树
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-18">
+        树套树
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/seg-in-seg/" title="线段树套线段树" class="md-nav__link">
+      线段树套线段树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/seg-in-balanced/" title="平衡树套线段树" class="md-nav__link">
+      平衡树套线段树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/balanced-in-seg/" title="线段树套平衡树" class="md-nav__link">
+      线段树套平衡树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/persistent-in-bit/" title="树状数组套主席树" class="md-nav__link">
+      树状数组套主席树
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/k-dtree/" title="K-Dtree" class="md-nav__link">
+      K-Dtree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-20" type="checkbox" id="nav-7-20">
+    
+    <label class="md-nav__link" for="nav-7-20">
+      可持久化数据结构
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-20">
+        可持久化数据结构
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/persistent/" title="可持久化数据结构简介" class="md-nav__link">
+      可持久化数据结构简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/persistent-seg/" title="可持久化线段树" class="md-nav__link">
+      可持久化线段树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/persistent-block-array/" title="可持久化块状数组" class="md-nav__link">
+      可持久化块状数组
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/persistent-balanced/" title="可持久化平衡树" class="md-nav__link">
+      可持久化平衡树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/persistent-trie/" title="可持久化字典树" class="md-nav__link">
+      可持久化字典树
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/odt/" title="珂朵莉树" class="md-nav__link">
+      珂朵莉树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/lct/" title="Link Cut Tree" class="md-nav__link">
+      Link Cut Tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/ett/" title="Euler Tour Tree" class="md-nav__link">
+      Euler Tour Tree
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      GAN
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        GAN
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/" title="图论部分简介" class="md-nav__link">
+      图论部分简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/basic/" title="图论基础" class="md-nav__link">
+      图论基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/traverse/" title="图的遍历" class="md-nav__link">
+      图的遍历
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-4" type="checkbox" id="nav-8-4">
+    
+    <label class="md-nav__link" for="nav-8-4">
+      树上问题
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-4">
+        树上问题
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/tree-basic/" title="树基础" class="md-nav__link">
+      树基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/lca/" title="最近公共祖先" class="md-nav__link">
+      最近公共祖先
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/dfs-order/" title="DFS 序" class="md-nav__link">
+      DFS 序
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/tree-misc/" title="树的其他问题" class="md-nav__link">
+      树的其他问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/tree-hash/" title="树哈希" class="md-nav__link">
+      树哈希
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/heavy-light-decomposition/" title="树链剖分" class="md-nav__link">
+      树链剖分
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/tree-divide/" title="树分治" class="md-nav__link">
+      树分治
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/dynamic-tree-divide/" title="动态树分治" class="md-nav__link">
+      动态树分治
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/virtual-tree/" title="虚树" class="md-nav__link">
+      虚树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/dsu-on-tree/" title="树上启发式合并" class="md-nav__link">
+      树上启发式合并
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/matrix-tree/" title="矩阵树定理" class="md-nav__link">
+      矩阵树定理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/dag/" title="有向无环图" class="md-nav__link">
+      有向无环图
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/topo/" title="拓扑排序" class="md-nav__link">
+      拓扑排序
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/mst/" title="最小生成树" class="md-nav__link">
+      最小生成树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/mdst/" title="最小树形图" class="md-nav__link">
+      最小树形图
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/shortest-path/" title="最短路" class="md-nav__link">
+      最短路
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/differential-constraints/" title="差分约束" class="md-nav__link">
+      差分约束
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/kth-path/" title="k 短路" class="md-nav__link">
+      k 短路
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-13" type="checkbox" id="nav-8-13">
+    
+    <label class="md-nav__link" for="nav-8-13">
+      连通性相关
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-13">
+        连通性相关
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/scc/" title="强连通分量" class="md-nav__link">
+      强连通分量
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/bcc/" title="双连通分量" class="md-nav__link">
+      双连通分量
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/bridge/" title="割点和桥" class="md-nav__link">
+      割点和桥
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/2-sat/" title="2-SAT" class="md-nav__link">
+      2-SAT
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/euler/" title="欧拉图" class="md-nav__link">
+      欧拉图
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/hamilton/" title="哈密顿图" class="md-nav__link">
+      哈密顿图
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/bi-graph/" title="二分图" class="md-nav__link">
+      二分图
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/min-circle/" title="最小环" class="md-nav__link">
+      最小环
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/planar/" title="平面图" class="md-nav__link">
+      平面图
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/color/" title="图的着色" class="md-nav__link">
+      图的着色
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-20" type="checkbox" id="nav-8-20">
+    
+    <label class="md-nav__link" for="nav-8-20">
+      网络流
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-20">
+        网络流
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/flow/" title="网络流简介" class="md-nav__link">
+      网络流简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/flow/node/" title="拆点" class="md-nav__link">
+      拆点
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/flow/max-flow/" title="最大流" class="md-nav__link">
+      最大流
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/flow/min-cut/" title="最小割" class="md-nav__link">
+      最小割
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/flow/min-cost/" title="费用流" class="md-nav__link">
+      费用流
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/flow/bound/" title="上下界网络流" class="md-nav__link">
+      上下界网络流
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/misc/" title="图论杂项" class="md-nav__link">
+      图论杂项
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      计算机视觉
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        计算机视觉
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../geometry/" title="计算几何部分简介" class="md-nav__link">
+      计算几何部分简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../geometry/2d/" title="二维计算几何基础" class="md-nav__link">
+      二维计算几何基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../geometry/3d/" title="三维计算几何基础" class="md-nav__link">
+      三维计算几何基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../geometry/distance/" title="距离" class="md-nav__link">
+      距离
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../geometry/pick/" title="Pick 定理" class="md-nav__link">
+      Pick 定理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../geometry/triangulation/" title="三角剖分" class="md-nav__link">
+      三角剖分
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../geometry/convex-hull/" title="凸包" class="md-nav__link">
+      凸包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../geometry/scanning/" title="扫描线" class="md-nav__link">
+      扫描线
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../geometry/rotating-calipers/" title="旋转卡壳" class="md-nav__link">
+      旋转卡壳
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../geometry/half-plane-intersection/" title="半平面交" class="md-nav__link">
+      半平面交
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../geometry/nearest-points/" title="平面最近点对" class="md-nav__link">
+      平面最近点对
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../geometry/magic/" title="计算几何杂项" class="md-nav__link">
+      计算几何杂项
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      NLP
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        NLP
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/" title="杂项简介" class="md-nav__link">
+      杂项简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/io/" title="读入、输出优化" class="md-nav__link">
+      读入、输出优化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/complexity/" title="复杂度" class="md-nav__link">
+      复杂度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/discrete/" title="离散化" class="md-nav__link">
+      离散化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10-5" type="checkbox" id="nav-10-5">
+    
+    <label class="md-nav__link" for="nav-10-5">
+      离线算法
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-10-5">
+        离线算法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/offline/" title="离线算法简介" class="md-nav__link">
+      离线算法简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/cdq-divide/" title="CDQ 分治" class="md-nav__link">
+      CDQ 分治
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/mo-algo/" title="莫队算法" class="md-nav__link">
+      莫队算法
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/fractional-programming/" title="分数规划" class="md-nav__link">
+      分数规划
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10-7" type="checkbox" id="nav-10-7">
+    
+    <label class="md-nav__link" for="nav-10-7">
+      随机化
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-10-7">
+        随机化
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/random/" title="随机函数" class="md-nav__link">
+      随机函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/hill-climbing/" title="爬山算法" class="md-nav__link">
+      爬山算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/simulated-annealing/" title="模拟退火" class="md-nav__link">
+      模拟退火
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/random-incremental/" title="随机增量法" class="md-nav__link">
+      随机增量法
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/largest-matrix/" title="悬线法" class="md-nav__link">
+      悬线法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/cc-basic/" title="计算理论基础" class="md-nav__link">
+      计算理论基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/endianness/" title="字节顺序" class="md-nav__link">
+      字节顺序
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11">
+    
+    <label class="md-nav__link" for="nav-11">
+      推荐系统
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-11">
+        推荐系统
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/" title="杂项简介" class="md-nav__link">
+      杂项简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/io/" title="读入、输出优化" class="md-nav__link">
+      读入、输出优化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/complexity/" title="复杂度" class="md-nav__link">
+      复杂度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/discrete/" title="离散化" class="md-nav__link">
+      离散化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11-5" type="checkbox" id="nav-11-5">
+    
+    <label class="md-nav__link" for="nav-11-5">
+      离线算法
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-11-5">
+        离线算法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/offline/" title="离线算法简介" class="md-nav__link">
+      离线算法简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/cdq-divide/" title="CDQ 分治" class="md-nav__link">
+      CDQ 分治
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/mo-algo/" title="莫队算法" class="md-nav__link">
+      莫队算法
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/fractional-programming/" title="分数规划" class="md-nav__link">
+      分数规划
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11-7" type="checkbox" id="nav-11-7">
+    
+    <label class="md-nav__link" for="nav-11-7">
+      随机化
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-11-7">
+        随机化
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/random/" title="随机函数" class="md-nav__link">
+      随机函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/hill-climbing/" title="爬山算法" class="md-nav__link">
+      爬山算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/simulated-annealing/" title="模拟退火" class="md-nav__link">
+      模拟退火
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/random-incremental/" title="随机增量法" class="md-nav__link">
+      随机增量法
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/largest-matrix/" title="悬线法" class="md-nav__link">
+      悬线法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/cc-basic/" title="计算理论基础" class="md-nav__link">
+      计算理论基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/endianness/" title="字节顺序" class="md-nav__link">
+      字节顺序
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../about/" title="关于" class="md-nav__link">
+      关于
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#linear-regression-with-multiple-variables" title="四、多变量线性回归(Linear Regression with Multiple Variables)" class="md-nav__link">
+    四、多变量线性回归(Linear Regression with Multiple Variables)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" title="4.1 多维特征" class="md-nav__link">
+    4.1 多维特征
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" title="4.2 多变量梯度下降" class="md-nav__link">
+    4.2 多变量梯度下降
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-1-" title="4.3 梯度下降法实践1-特征缩放" class="md-nav__link">
+    4.3 梯度下降法实践1-特征缩放
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-2-" title="4.4 梯度下降法实践2-学习率" class="md-nav__link">
+    4.4 梯度下降法实践2-学习率
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45" title="4.5 特征和多项式回归" class="md-nav__link">
+    4.5 特征和多项式回归
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46" title="4.6 正规方程" class="md-nav__link">
+    4.6 正规方程
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#47" title="4.7 正规方程及不可逆性（可选）" class="md-nav__link">
+    4.7 正规方程及不可逆性（可选）
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#octaveoctave-tutorial" title="五、Octave教程(Octave Tutorial)" class="md-nav__link">
+    五、Octave教程(Octave Tutorial)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" title="5.1 基本操作" class="md-nav__link">
+    5.1 基本操作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" title="5.2 移动数据" class="md-nav__link">
+    5.2 移动数据
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" title="5.3 计算数据" class="md-nav__link">
+    5.3 计算数据
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54" title="5.4 绘图数据" class="md-nav__link">
+    5.4 绘图数据
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-forwhileif" title="5.5 控制语句：for，while，if语句" class="md-nav__link">
+    5.5 控制语句：for，while，if语句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56" title="5.6 向量化" class="md-nav__link">
+    5.6 向量化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#57" title="5.7 工作和提交的编程练习" class="md-nav__link">
+    5.7 工作和提交的编程练习
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="评论" class="md-nav__link md-nav__link--active">
+            评论
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/myourdream/aiwiki/blob/master/docs/Coursera_ML_AndrewNg/markdown/week2.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="2">第2周<a class="headerlink" href="#2" title="Permanent link">&para;</a></h1>
+<div class="toc">
+<ul>
+<li><a href="#2">第2周</a><ul>
+<li><a href="#linear-regression-with-multiple-variables">四、多变量线性回归(Linear Regression with Multiple Variables)</a><ul>
+<li><a href="#41">4.1 多维特征</a></li>
+<li><a href="#42">4.2 多变量梯度下降</a></li>
+<li><a href="#43-1-">4.3 梯度下降法实践1-特征缩放</a></li>
+<li><a href="#44-2-">4.4 梯度下降法实践2-学习率</a></li>
+<li><a href="#45">4.5 特征和多项式回归</a></li>
+<li><a href="#46">4.6 正规方程</a></li>
+<li><a href="#47">4.7 正规方程及不可逆性（可选）</a></li>
+</ul>
+</li>
+<li><a href="#octaveoctave-tutorial">五、Octave教程(Octave Tutorial)</a><ul>
+<li><a href="#51">5.1 基本操作</a></li>
+<li><a href="#52">5.2 移动数据</a></li>
+<li><a href="#53">5.3 计算数据</a></li>
+<li><a href="#54">5.4 绘图数据</a></li>
+<li><a href="#55-forwhileif">5.5 控制语句：for，while，if语句</a></li>
+<li><a href="#56">5.6 向量化</a></li>
+<li><a href="#57">5.7 工作和提交的编程练习</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="linear-regression-with-multiple-variables">四、多变量线性回归(Linear Regression with Multiple Variables)<a class="headerlink" href="#linear-regression-with-multiple-variables" title="Permanent link">&para;</a></h2>
+<h3 id="41">4.1 多维特征<a class="headerlink" href="#41" title="Permanent link">&para;</a></h3>
+<p>参考视频: 4 - 1 - Multiple Features (8 min).mkv</p>
+<p>目前为止，我们探讨了单变量/特征的回归模型，现在我们对房价模型增加更多的特征，例如房间数楼层等，构成一个含有多个变量的模型，模型中的特征为<span><span class="MathJax_Preview">\left( {x_{1}},{x_{2}},...,{x_{n}} \right)</span><script type="math/tex">\left( {x_{1}},{x_{2}},...,{x_{n}} \right)</script></span>。</p>
+<p><img alt="" src="../../images/591785837c95bca369021efa14a8bb1c.png" /></p>
+<p>增添更多特征后，我们引入一系列新的注释：</p>
+<p><span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> 代表特征的数量</p>
+<p><span><span class="MathJax_Preview">{x^{\left( i \right)}}</span><script type="math/tex">{x^{\left( i \right)}}</script></span>代表第 <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 个训练实例，是特征矩阵中的第<span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>行，是一个<strong>向量</strong>（<strong>vector</strong>）。</p>
+<p>比方说，上图的</p>
+<p><span><span class="MathJax_Preview">{x}^{(2)}\text{=}\begin{bmatrix} 1416\\\ 3\\\ 2\\\ 40 \end{bmatrix}</span><script type="math/tex">{x}^{(2)}\text{=}\begin{bmatrix} 1416\\\ 3\\\ 2\\\ 40 \end{bmatrix}</script></span>，</p>
+<p><span><span class="MathJax_Preview">{x}_{j}^{\left( i \right)}</span><script type="math/tex">{x}_{j}^{\left( i \right)}</script></span>代表特征矩阵中第 <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 行的第 <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> 个特征，也就是第 <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 个训练实例的第 <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> 个特征。</p>
+<p>如上图的<span><span class="MathJax_Preview">x_{2}^{\left( 2 \right)}=3,x_{3}^{\left( 2 \right)}=2</span><script type="math/tex">x_{2}^{\left( 2 \right)}=3,x_{3}^{\left( 2 \right)}=2</script></span>，</p>
+<p>支持多变量的假设 <span><span class="MathJax_Preview">h</span><script type="math/tex">h</script></span> 表示为：<span><span class="MathJax_Preview">h_{\theta}\left( x \right)={\theta_{0}}+{\theta_{1}}{x_{1}}+{\theta_{2}}{x_{2}}+...+{\theta_{n}}{x_{n}}</span><script type="math/tex">h_{\theta}\left( x \right)={\theta_{0}}+{\theta_{1}}{x_{1}}+{\theta_{2}}{x_{2}}+...+{\theta_{n}}{x_{n}}</script></span>，</p>
+<p>这个公式中有<span><span class="MathJax_Preview">n+1</span><script type="math/tex">n+1</script></span>个参数和<span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>个变量，为了使得公式能够简化一些，引入<span><span class="MathJax_Preview">x_{0}=1</span><script type="math/tex">x_{0}=1</script></span>，则公式转化为：<span><span class="MathJax_Preview">h_{\theta} \left( x \right)={\theta_{0}}{x_{0}}+{\theta_{1}}{x_{1}}+{\theta_{2}}{x_{2}}+...+{\theta_{n}}{x_{n}}</span><script type="math/tex">h_{\theta} \left( x \right)={\theta_{0}}{x_{0}}+{\theta_{1}}{x_{1}}+{\theta_{2}}{x_{2}}+...+{\theta_{n}}{x_{n}}</script></span></p>
+<p>此时模型中的参数是一个<span><span class="MathJax_Preview">n+1</span><script type="math/tex">n+1</script></span>维的向量，任何一个训练实例也都是<span><span class="MathJax_Preview">n+1</span><script type="math/tex">n+1</script></span>维的向量，特征矩阵<span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span>的维度是 <span><span class="MathJax_Preview">m*(n+1)</span><script type="math/tex">m*(n+1)</script></span>。 因此公式可以简化为：<span><span class="MathJax_Preview">h_{\theta} \left( x \right)={\theta^{T}}X</span><script type="math/tex">h_{\theta} \left( x \right)={\theta^{T}}X</script></span>，其中上标<span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>代表矩阵转置。</p>
+<h3 id="42">4.2 多变量梯度下降<a class="headerlink" href="#42" title="Permanent link">&para;</a></h3>
+<p>参考视频: 4 - 2 - Gradient Descent for Multiple Variables (5 min).mkv</p>
+<p>与单变量线性回归类似，在多变量线性回归中，我们也构建一个代价函数，则这个代价函数是所有建模误差的平方和，即：<span><span class="MathJax_Preview">J\left( {\theta_{0}},{\theta_{1}}...{\theta_{n}} \right)=\frac{1}{2m}\sum\limits_{i=1}^{m}{{{\left( h_{\theta} \left({x}^{\left( i \right)} \right)-{y}^{\left( i \right)} \right)}^{2}}}</span><script type="math/tex">J\left( {\theta_{0}},{\theta_{1}}...{\theta_{n}} \right)=\frac{1}{2m}\sum\limits_{i=1}^{m}{{{\left( h_{\theta} \left({x}^{\left( i \right)} \right)-{y}^{\left( i \right)} \right)}^{2}}}</script></span> ，</p>
+<p>其中：<span><span class="MathJax_Preview">h_{\theta}\left( x \right)=\theta^{T}X={\theta_{0}}+{\theta_{1}}{x_{1}}+{\theta_{2}}{x_{2}}+...+{\theta_{n}}{x_{n}}</span><script type="math/tex">h_{\theta}\left( x \right)=\theta^{T}X={\theta_{0}}+{\theta_{1}}{x_{1}}+{\theta_{2}}{x_{2}}+...+{\theta_{n}}{x_{n}}</script></span> ，</p>
+<p>我们的目标和单变量线性回归问题中一样，是要找出使得代价函数最小的一系列参数。
+多变量线性回归的批量梯度下降算法为：</p>
+<p><img alt="" src="../../images/41797ceb7293b838a3125ba945624cf6.png" /></p>
+<p>即：</p>
+<p><img alt="" src="../../images/6bdaff07783e37fcbb1f8765ca06b01b.png" /></p>
+<p>求导数后得到：</p>
+<p><img alt="" src="../../images/dd33179ceccbd8b0b59a5ae698847049.png" /></p>
+<p>当<span><span class="MathJax_Preview">n&gt;=1</span><script type="math/tex">n>=1</script></span>时，
+<span><span class="MathJax_Preview">{{\theta }_{0}}:={{\theta }_{0}}-a\frac{1}{m}\sum\limits_{i=1}^{m}{({{h}_{\theta }}({{x}^{(i)}})-{{y}^{(i)}})}x_{0}^{(i)}</span><script type="math/tex">{{\theta }_{0}}:={{\theta }_{0}}-a\frac{1}{m}\sum\limits_{i=1}^{m}{({{h}_{\theta }}({{x}^{(i)}})-{{y}^{(i)}})}x_{0}^{(i)}</script></span></p>
+<p><span><span class="MathJax_Preview">{{\theta }_{1}}:={{\theta }_{1}}-a\frac{1}{m}\sum\limits_{i=1}^{m}{({{h}_{\theta }}({{x}^{(i)}})-{{y}^{(i)}})}x_{1}^{(i)}</span><script type="math/tex">{{\theta }_{1}}:={{\theta }_{1}}-a\frac{1}{m}\sum\limits_{i=1}^{m}{({{h}_{\theta }}({{x}^{(i)}})-{{y}^{(i)}})}x_{1}^{(i)}</script></span></p>
+<p><span><span class="MathJax_Preview">{{\theta }_{2}}:={{\theta }_{2}}-a\frac{1}{m}\sum\limits_{i=1}^{m}{({{h}_{\theta }}({{x}^{(i)}})-{{y}^{(i)}})}x_{2}^{(i)}</span><script type="math/tex">{{\theta }_{2}}:={{\theta }_{2}}-a\frac{1}{m}\sum\limits_{i=1}^{m}{({{h}_{\theta }}({{x}^{(i)}})-{{y}^{(i)}})}x_{2}^{(i)}</script></span></p>
+<p>我们开始随机选择一系列的参数值，计算所有的预测结果后，再给所有的参数一个新的值，如此循环直到收敛。</p>
+<p>代码示例：</p>
+<p>计算代价函数
+<span><span class="MathJax_Preview">J\left( \theta  \right)=\frac{1}{2m}\sum\limits_{i=1}^{m}{{{\left( {h_{\theta}}\left( {x^{(i)}} \right)-{y^{(i)}} \right)}^{2}}}</span><script type="math/tex">J\left( \theta  \right)=\frac{1}{2m}\sum\limits_{i=1}^{m}{{{\left( {h_{\theta}}\left( {x^{(i)}} \right)-{y^{(i)}} \right)}^{2}}}</script></span>
+其中：<span><span class="MathJax_Preview">{h_{\theta}}\left( x \right)={\theta^{T}}X={\theta_{0}}{x_{0}}+{\theta_{1}}{x_{1}}+{\theta_{2}}{x_{2}}+...+{\theta_{n}}{x_{n}}</span><script type="math/tex">{h_{\theta}}\left( x \right)={\theta^{T}}X={\theta_{0}}{x_{0}}+{\theta_{1}}{x_{1}}+{\theta_{2}}{x_{2}}+...+{\theta_{n}}{x_{n}}</script></span></p>
+<p><strong>Python</strong> 代码：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">computeCost</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theta</span><span class="p">):</span>
+    <span class="n">inner</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(((</span><span class="n">X</span> <span class="o">*</span> <span class="n">theta</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">inner</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+</pre></div>
+</td></tr></table>
+
+<h3 id="43-1-">4.3 梯度下降法实践1-特征缩放<a class="headerlink" href="#43-1-" title="Permanent link">&para;</a></h3>
+<p>参考视频: 4 - 3 - Gradient Descent in Practice I - Feature Scaling (9 min).mkv</p>
+<p>在我们面对多维特征问题的时候，我们要保证这些特征都具有相近的尺度，这将帮助梯度下降算法更快地收敛。</p>
+<p>以房价问题为例，假设我们使用两个特征，房屋的尺寸和房间的数量，尺寸的值为 0-2000平方英尺，而房间数量的值则是0-5，以两个参数分别为横纵坐标，绘制代价函数的等高线图能，看出图像会显得很扁，梯度下降算法需要非常多次的迭代才能收敛。</p>
+<p><img alt="" src="../../images/966e5a9b00687678374b8221fdd33475.jpg" /></p>
+<p>解决的方法是尝试将所有特征的尺度都尽量缩放到-1到1之间。如图：</p>
+<p><img alt="" src="../../images/b8167ff0926046e112acf789dba98057.png" /></p>
+<p>最简单的方法是令：<span><span class="MathJax_Preview">{{x}_{n}}=\frac{{{x}_{n}}-{{\mu}_{n}}}{{{s}_{n}}}</span><script type="math/tex">{{x}_{n}}=\frac{{{x}_{n}}-{{\mu}_{n}}}{{{s}_{n}}}</script></span>，其中 <span><span class="MathJax_Preview">{\mu_{n}}</span><script type="math/tex">{\mu_{n}}</script></span>是平均值，<span><span class="MathJax_Preview">{s_{n}}</span><script type="math/tex">{s_{n}}</script></span>是标准差。</p>
+<h3 id="44-2-">4.4 梯度下降法实践2-学习率<a class="headerlink" href="#44-2-" title="Permanent link">&para;</a></h3>
+<p>参考视频: 4 - 4 - Gradient Descent in Practice II - Learning Rate (9 min).mkv</p>
+<p>梯度下降算法收敛所需要的迭代次数根据模型的不同而不同，我们不能提前预知，我们可以绘制迭代次数和代价函数的图表来观测算法在何时趋于收敛。</p>
+<p><img alt="" src="../../images/cd4e3df45c34f6a8e2bb7cd3a2849e6c.jpg" /></p>
+<p>也有一些自动测试是否收敛的方法，例如将代价函数的变化值与某个阀值（例如0.001）进行比较，但通常看上面这样的图表更好。</p>
+<p>梯度下降算法的每次迭代受到学习率的影响，如果学习率<span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span>过小，则达到收敛所需的迭代次数会非常高；如果学习率<span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span>过大，每次迭代可能不会减小代价函数，可能会越过局部最小值导致无法收敛。</p>
+<p>通常可以考虑尝试些学习率：</p>
+<p><span><span class="MathJax_Preview">\alpha=0.01，0.03，0.1，0.3，1，3，10</span><script type="math/tex">\alpha=0.01，0.03，0.1，0.3，1，3，10</script></span></p>
+<h3 id="45">4.5 特征和多项式回归<a class="headerlink" href="#45" title="Permanent link">&para;</a></h3>
+<p>参考视频: 4 - 5 - Features and Polynomial Regression (8 min).mkv</p>
+<p>如房价预测问题，</p>
+<p><img alt="" src="../../images/8ffaa10ae1138f1873bc65e1e3657bd4.png" /></p>
+<p><span><span class="MathJax_Preview">h_{\theta}\left( x \right)={\theta_{0}}+{\theta_{1}}\times{frontage}+{\theta_{2}}\times{depth}</span><script type="math/tex">h_{\theta}\left( x \right)={\theta_{0}}+{\theta_{1}}\times{frontage}+{\theta_{2}}\times{depth}</script></span> </p>
+<p><span><span class="MathJax_Preview">{x_{1}}=frontage</span><script type="math/tex">{x_{1}}=frontage</script></span>（临街宽度），<span><span class="MathJax_Preview">{x_{2}}=depth</span><script type="math/tex">{x_{2}}=depth</script></span>（纵向深度），<span><span class="MathJax_Preview">x=frontage*depth=area</span><script type="math/tex">x=frontage*depth=area</script></span>（面积），则：<span><span class="MathJax_Preview">{h_{\theta}}\left( x \right)={\theta_{0}}+{\theta_{1}}x</span><script type="math/tex">{h_{\theta}}\left( x \right)={\theta_{0}}+{\theta_{1}}x</script></span>。
+线性回归并不适用于所有数据，有时我们需要曲线来适应我们的数据，比如一个二次方模型：<span><span class="MathJax_Preview">h_{\theta}\left( x \right)={\theta_{0}}+{\theta_{1}}{x_{1}}+{\theta_{2}}{x_{2}^2}</span><script type="math/tex">h_{\theta}\left( x \right)={\theta_{0}}+{\theta_{1}}{x_{1}}+{\theta_{2}}{x_{2}^2}</script></span>
+ 或者三次方模型： <span><span class="MathJax_Preview">h_{\theta}\left( x \right)={\theta_{0}}+{\theta_{1}}{x_{1}}+{\theta_{2}}{x_{2}^2}+{\theta_{3}}{x_{3}^3}</span><script type="math/tex">h_{\theta}\left( x \right)={\theta_{0}}+{\theta_{1}}{x_{1}}+{\theta_{2}}{x_{2}^2}+{\theta_{3}}{x_{3}^3}</script></span> </p>
+<p><img alt="" src="../../images/3a47e15258012b06b34d4e05fb3af2cf.jpg" /></p>
+<p>通常我们需要先观察数据然后再决定准备尝试怎样的模型。 另外，我们可以令：</p>
+<p><span><span class="MathJax_Preview">{{x}_{2}}=x_{2}^{2},{{x}_{3}}=x_{3}^{3}</span><script type="math/tex">{{x}_{2}}=x_{2}^{2},{{x}_{3}}=x_{3}^{3}</script></span>，从而将模型转化为线性回归模型。</p>
+<p>根据函数图形特性，我们还可以使：</p>
+<p><span><span class="MathJax_Preview">{{{h}}_{\theta}}(x)={{\theta }_{0}}\text{+}{{\theta }_{1}}(size)+{{\theta}_{2}}{{(size)}^{2}}</span><script type="math/tex">{{{h}}_{\theta}}(x)={{\theta }_{0}}\text{+}{{\theta }_{1}}(size)+{{\theta}_{2}}{{(size)}^{2}}</script></span></p>
+<p>或者:</p>
+<p><span><span class="MathJax_Preview">{{{h}}_{\theta}}(x)={{\theta }_{0}}\text{+}{{\theta }_{1}}(size)+{{\theta }_{2}}\sqrt{size}</span><script type="math/tex">{{{h}}_{\theta}}(x)={{\theta }_{0}}\text{+}{{\theta }_{1}}(size)+{{\theta }_{2}}\sqrt{size}</script></span></p>
+<p>注：如果我们采用多项式回归模型，在运行梯度下降算法前，特征缩放非常有必要。</p>
+<h3 id="46">4.6 正规方程<a class="headerlink" href="#46" title="Permanent link">&para;</a></h3>
+<p>参考视频: 4 - 6 - Normal Equation (16 min).mkv</p>
+<p>到目前为止，我们都在使用梯度下降算法，但是对于某些线性回归问题，正规方程方法是更好的解决方案。如：</p>
+<p><img alt="" src="../../images/a47ec797d8a9c331e02ed90bca48a24b.png" /></p>
+<p>正规方程是通过求解下面的方程来找出使得代价函数最小的参数的：<span><span class="MathJax_Preview">\frac{\partial}{\partial{\theta_{j}}}J\left( {\theta_{j}} \right)=0</span><script type="math/tex">\frac{\partial}{\partial{\theta_{j}}}J\left( {\theta_{j}} \right)=0</script></span> 。
+ 假设我们的训练集特征矩阵为 <span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span>（包含了 <span><span class="MathJax_Preview">{{x}_{0}}=1</span><script type="math/tex">{{x}_{0}}=1</script></span>）并且我们的训练集结果为向量 <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>，则利用正规方程解出向量 <span><span class="MathJax_Preview">\theta ={{\left( {X^T}X \right)}^{-1}}{X^{T}}y</span><script type="math/tex">\theta ={{\left( {X^T}X \right)}^{-1}}{X^{T}}y</script></span> 。
+上标<strong>T</strong>代表矩阵转置，上标-1 代表矩阵的逆。设矩阵<span><span class="MathJax_Preview">A={X^{T}}X</span><script type="math/tex">A={X^{T}}X</script></span>，则：<span><span class="MathJax_Preview">{{\left( {X^T}X \right)}^{-1}}={A^{-1}}</span><script type="math/tex">{{\left( {X^T}X \right)}^{-1}}={A^{-1}}</script></span>
+以下表示数据为例：</p>
+<p><img alt="" src="../../images/261a11d6bce6690121f26ee369b9e9d1.png" /></p>
+<p>即：</p>
+<p><img alt="" src="../../images/c8eedc42ed9feb21fac64e4de8d39a06.png" /></p>
+<p>运用正规方程方法求解参数：</p>
+<p><img alt="" src="../../images/b62d24a1f709496a6d7c65f87464e911.jpg" /></p>
+<p>在 <strong>Octave</strong> 中，正规方程写作：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>pinv(X&#39;*X)*X&#39;*y
+</pre></div>
+</td></tr></table>
+
+<p>注：对于那些不可逆的矩阵（通常是因为特征之间不独立，如同时包含英尺为单位的尺寸和米为单位的尺寸两个特征，也有可能是特征数量大于训练集的数量），正规方程方法是不能用的。</p>
+<p>梯度下降与正规方程的比较：</p>
+<table>
+<thead>
+<tr>
+<th>梯度下降</th>
+<th>正规方程</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>需要选择学习率<span><span class="MathJax_Preview">\alpha</span><script type="math/tex">\alpha</script></span></td>
+<td>不需要</td>
+</tr>
+<tr>
+<td>需要多次迭代</td>
+<td>一次运算得出</td>
+</tr>
+<tr>
+<td>当特征数量<span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>大时也能较好适用</td>
+<td>需要计算<span><span class="MathJax_Preview">{{\left( {{X}^{T}}X \right)}^{-1}}</span><script type="math/tex">{{\left( {{X}^{T}}X \right)}^{-1}}</script></span> 如果特征数量n较大则运算代价大，因为矩阵逆的计算时间复杂度为<span><span class="MathJax_Preview">O\left( {{n}^{3}} \right)</span><script type="math/tex">O\left( {{n}^{3}} \right)</script></span>，通常来说当<span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>小于10000 时还是可以接受的</td>
+</tr>
+<tr>
+<td>适用于各种类型的模型</td>
+<td>只适用于线性模型，不适合逻辑回归模型等其他模型</td>
+</tr>
+</tbody>
+</table>
+<p>总结一下，只要特征变量的数目并不大，标准方程是一个很好的计算参数$\theta $的替代方法。具体地说，只要特征变量数量小于一万，我通常使用标准方程法，而不使用梯度下降法。</p>
+<p>随着我们要讲的学习算法越来越复杂，例如，当我们讲到分类算法，像逻辑回归算法，我们会看到，实际上对于那些算法，并不能使用标准方程法。对于那些更复杂的学习算法，我们将不得不仍然使用梯度下降法。因此，梯度下降法是一个非常有用的算法，可以用在有大量特征变量的线性回归问题。或者我们以后在课程中，会讲到的一些其他的算法，因为标准方程法不适合或者不能用在它们上。但对于这个特定的线性回归模型，标准方程法是一个比梯度下降法更快的替代算法。所以，根据具体的问题，以及你的特征变量的数量，这两种算法都是值得学习的。</p>
+<p>正规方程的<strong>python</strong>实现：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+ <span class="k">def</span> <span class="nf">normalEqn</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+
+   <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="nd">@X</span><span class="p">)</span><span class="nd">@X.T@y</span> <span class="c1">#X.T@X等价于X.T.dot(X)</span>
+
+   <span class="k">return</span> <span class="n">theta</span>
+</pre></div>
+</td></tr></table>
+
+<h3 id="47">4.7 正规方程及不可逆性（可选）<a class="headerlink" href="#47" title="Permanent link">&para;</a></h3>
+<p>参考视频: 4 - 7 - Normal Equation Noninvertibility (Optional) (6 min).mkv</p>
+<p>在这段视频中谈谈正规方程 ( <strong>normal equation</strong> )，以及它们的不可逆性。
+由于这是一种较为深入的概念，并且总有人问我有关这方面的问题，因此，我想在这里来讨论它，由于概念较为深入，所以对这段可选材料大家放轻松吧，也许你可能会深入地探索下去，并且会觉得理解以后会非常有用。但即使你没有理解正规方程和线性回归的关系，也没有关系。</p>
+<p>我们要讲的问题如下：<span><span class="MathJax_Preview">\theta ={{\left( {X^{T}}X \right)}^{-1}}{X^{T}}y</span><script type="math/tex">\theta ={{\left( {X^{T}}X \right)}^{-1}}{X^{T}}y</script></span> </p>
+<p>备注：本节最后我把推导过程写下。</p>
+<p>有些同学曾经问过我，当计算 <span><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span>=<code>inv(X'X ) X'y</code> ，那对于矩阵<span><span class="MathJax_Preview">X'X</span><script type="math/tex">X'X</script></span>的结果是不可逆的情况咋办呢?
+如果你懂一点线性代数的知识，你或许会知道，有些矩阵可逆，而有些矩阵不可逆。我们称那些不可逆矩阵为奇异或退化矩阵。
+问题的重点在于<span><span class="MathJax_Preview">X'X</span><script type="math/tex">X'X</script></span>的不可逆的问题很少发生，在<strong>Octave</strong>里，如果你用它来实现<span><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span>的计算，你将会得到一个正常的解。在<strong>Octave</strong>里，有两个函数可以求解矩阵的逆，一个被称为<code>pinv()</code>，另一个是<code>inv()</code>，这两者之间的差异是些许计算过程上的，一个是所谓的伪逆，另一个被称为逆。使用<code>pinv()</code> 函数可以展现数学上的过程，这将计算出<span><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span>的值，即便矩阵<span><span class="MathJax_Preview">X'X</span><script type="math/tex">X'X</script></span>是不可逆的。</p>
+<p>在<code>pinv()</code> 和 <code>inv()</code> 之间，又有哪些具体区别呢 ?</p>
+<p>其中<code>inv()</code> 引入了先进的数值计算的概念。例如，在预测住房价格时，如果<span><span class="MathJax_Preview">{x_{1}}</span><script type="math/tex">{x_{1}}</script></span>是以英尺为尺寸规格计算的房子，<span><span class="MathJax_Preview">{x_{2}}</span><script type="math/tex">{x_{2}}</script></span>是以平方米为尺寸规格计算的房子，同时，你也知道1米等于3.28英尺 ( 四舍五入到两位小数 )，这样，你的这两个特征值将始终满足约束：<span><span class="MathJax_Preview">{x_{1}}={x_{2}}*{{\left( 3.28 \right)}^{2}}</span><script type="math/tex">{x_{1}}={x_{2}}*{{\left( 3.28 \right)}^{2}}</script></span>。
+实际上，你可以用这样的一个线性方程，来展示那两个相关联的特征值，矩阵<span><span class="MathJax_Preview">X'X</span><script type="math/tex">X'X</script></span>将是不可逆的。</p>
+<p>第二个原因是，在你想用大量的特征值，尝试实践你的学习算法的时候，可能会导致矩阵<span><span class="MathJax_Preview">X'X</span><script type="math/tex">X'X</script></span>的结果是不可逆的。
+具体地说，在<span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>小于或等于n的时候，例如，有<span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>等于10个的训练样本也有<span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>等于100的特征数量。要找到适合的<span><span class="MathJax_Preview">(n +1)</span><script type="math/tex">(n +1)</script></span> 维参数矢量<span><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span>，这将会变成一个101维的矢量，尝试从10个训练样本中找到满足101个参数的值，这工作可能会让你花上一阵子时间，但这并不总是一个好主意。因为，正如我们所看到你只有10个样本，以适应这100或101个参数，数据还是有些少。</p>
+<p>稍后我们将看到，如何使用小数据样本以得到这100或101个参数，通常，我们会使用一种叫做正则化的线性代数方法，通过删除某些特征或者是使用某些技术，来解决当<span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>比<span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>小的时候的问题。即使你有一个相对较小的训练集，也可使用很多的特征来找到很多合适的参数。
+总之当你发现的矩阵<span><span class="MathJax_Preview">X'X</span><script type="math/tex">X'X</script></span>的结果是奇异矩阵，或者找到的其它矩阵是不可逆的，我会建议你这么做。</p>
+<p>首先，看特征值里是否有一些多余的特征，像这些<span><span class="MathJax_Preview">{x_{1}}</span><script type="math/tex">{x_{1}}</script></span>和<span><span class="MathJax_Preview">{x_{2}}</span><script type="math/tex">{x_{2}}</script></span>是线性相关的，互为线性函数。同时，当有一些多余的特征时，可以删除这两个重复特征里的其中一个，无须两个特征同时保留，将解决不可逆性的问题。因此，首先应该通过观察所有特征检查是否有多余的特征，如果有多余的就删除掉，直到他们不再是多余的为止，如果特征数量实在太多，我会删除些 用较少的特征来反映尽可能多内容，否则我会考虑使用正规化方法。
+如果矩阵<span><span class="MathJax_Preview">X'X</span><script type="math/tex">X'X</script></span>是不可逆的，（通常来说，不会出现这种情况），如果在<strong>Octave</strong>里，可以用伪逆函数<code>pinv()</code> 来实现。这种使用不同的线性代数库的方法被称为伪逆。即使<span><span class="MathJax_Preview">X'X</span><script type="math/tex">X'X</script></span>的结果是不可逆的，但算法执行的流程是正确的。总之，出现不可逆矩阵的情况极少发生，所以在大多数实现线性回归中，出现不可逆的问题不应该过多的关注<span><span class="MathJax_Preview">{X^{T}}X</span><script type="math/tex">{X^{T}}X</script></span>是不可逆的。</p>
+<p><strong>增加内容：</strong></p>
+<p><span><span class="MathJax_Preview">\theta ={{\left( {X^{T}}X \right)}^{-1}}{X^{T}}y</span><script type="math/tex">\theta ={{\left( {X^{T}}X \right)}^{-1}}{X^{T}}y</script></span> 的推导过程：</p>
+<p><span><span class="MathJax_Preview">J\left( \theta  \right)=\frac{1}{2m}\sum\limits_{i=1}^{m}{{{\left( {h_{\theta}}\left( {x^{(i)}} \right)-{y^{(i)}} \right)}^{2}}}</span><script type="math/tex">J\left( \theta  \right)=\frac{1}{2m}\sum\limits_{i=1}^{m}{{{\left( {h_{\theta}}\left( {x^{(i)}} \right)-{y^{(i)}} \right)}^{2}}}</script></span>
+其中：<span><span class="MathJax_Preview">{h_{\theta}}\left( x \right)={\theta^{T}}X={\theta_{0}}{x_{0}}+{\theta_{1}}{x_{1}}+{\theta_{2}}{x_{2}}+...+{\theta_{n}}{x_{n}}</span><script type="math/tex">{h_{\theta}}\left( x \right)={\theta^{T}}X={\theta_{0}}{x_{0}}+{\theta_{1}}{x_{1}}+{\theta_{2}}{x_{2}}+...+{\theta_{n}}{x_{n}}</script></span></p>
+<p>将向量表达形式转为矩阵表达形式，则有<span><span class="MathJax_Preview">J(\theta )=\frac{1}{2}{{\left( X\theta -y\right)}^{2}}</span><script type="math/tex">J(\theta )=\frac{1}{2}{{\left( X\theta -y\right)}^{2}}</script></span> ，其中<span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span>为<span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>行<span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>列的矩阵（<span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>为样本个数，<span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>为特征个数），<span><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span>为<span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>行1列的矩阵，<span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>为<span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>行1列的矩阵，对<span><span class="MathJax_Preview">J(\theta )</span><script type="math/tex">J(\theta )</script></span>进行如下变换</p>
+<p><span><span class="MathJax_Preview">J(\theta )=\frac{1}{2}{{\left( X\theta -y\right)}^{T}}\left( X\theta -y \right)</span><script type="math/tex">J(\theta )=\frac{1}{2}{{\left( X\theta -y\right)}^{T}}\left( X\theta -y \right)</script></span></p>
+<p>​     <span><span class="MathJax_Preview">=\frac{1}{2}\left( {{\theta }^{T}}{{X}^{T}}-{{y}^{T}} \right)\left(X\theta -y \right)</span><script type="math/tex">=\frac{1}{2}\left( {{\theta }^{T}}{{X}^{T}}-{{y}^{T}} \right)\left(X\theta -y \right)</script></span></p>
+<p>​     <span><span class="MathJax_Preview">=\frac{1}{2}\left( {{\theta }^{T}}{{X}^{T}}X\theta -{{\theta}^{T}}{{X}^{T}}y-{{y}^{T}}X\theta -{{y}^{T}}y \right)</span><script type="math/tex">=\frac{1}{2}\left( {{\theta }^{T}}{{X}^{T}}X\theta -{{\theta}^{T}}{{X}^{T}}y-{{y}^{T}}X\theta -{{y}^{T}}y \right)</script></span></p>
+<p>接下来对<span><span class="MathJax_Preview">J(\theta )</span><script type="math/tex">J(\theta )</script></span>偏导，需要用到以下几个矩阵的求导法则:</p>
+<p><span><span class="MathJax_Preview">\frac{dAB}{dB}={{A}^{T}}</span><script type="math/tex">\frac{dAB}{dB}={{A}^{T}}</script></span> </p>
+<p><span><span class="MathJax_Preview">\frac{d{{X}^{T}}AX}{dX}=2AX</span><script type="math/tex">\frac{d{{X}^{T}}AX}{dX}=2AX</script></span>                            </p>
+<p>所以有:</p>
+<p><span><span class="MathJax_Preview">\frac{\partial J\left( \theta  \right)}{\partial \theta }=\frac{1}{2}\left(2{{X}^{T}}X\theta -{{X}^{T}}y -{}({{y}^{T}}X )^{T}-0 \right)</span><script type="math/tex">\frac{\partial J\left( \theta  \right)}{\partial \theta }=\frac{1}{2}\left(2{{X}^{T}}X\theta -{{X}^{T}}y -{}({{y}^{T}}X )^{T}-0 \right)</script></span></p>
+<p><span><span class="MathJax_Preview">=\frac{1}{2}\left(2{{X}^{T}}X\theta -{{X}^{T}}y -{{X}^{T}}y -0 \right)</span><script type="math/tex">=\frac{1}{2}\left(2{{X}^{T}}X\theta -{{X}^{T}}y -{{X}^{T}}y -0 \right)</script></span></p>
+<p>​           <span><span class="MathJax_Preview">={{X}^{T}}X\theta -{{X}^{T}}y</span><script type="math/tex">={{X}^{T}}X\theta -{{X}^{T}}y</script></span></p>
+<p>令<span><span class="MathJax_Preview">\frac{\partial J\left( \theta  \right)}{\partial \theta }=0</span><script type="math/tex">\frac{\partial J\left( \theta  \right)}{\partial \theta }=0</script></span>,</p>
+<p>则有<span><span class="MathJax_Preview">\theta ={{\left( {X^{T}}X \right)}^{-1}}{X^{T}}y</span><script type="math/tex">\theta ={{\left( {X^{T}}X \right)}^{-1}}{X^{T}}y</script></span></p>
+<h2 id="octaveoctave-tutorial">五、Octave教程(Octave Tutorial)<a class="headerlink" href="#octaveoctave-tutorial" title="Permanent link">&para;</a></h2>
+<h3 id="51">5.1 基本操作<a class="headerlink" href="#51" title="Permanent link">&para;</a></h3>
+<p>参考视频: 5 - 1 - Basic Operations (14 min).mkv</p>
+<p>在这段视频中，我将教你一种编程语言：<strong>Octave</strong>语言。你能够用它来非常迅速地实现这门课中我们已经学过的，或者将要学的机器学习算法。</p>
+<p>过去我一直尝试用不同的编程语言来教授机器学习，包括<strong>C++</strong>、<strong>Java</strong>、<strong>Python</strong>、<strong>Numpy</strong>和<strong>Octave</strong>。我发现当使用像<strong>Octave</strong>这样的高级语言时，学生能够更快更好地学习并掌握这些算法。事实上，在硅谷，我经常看到进行大规模的机器学习项目的人，通常使用的程序语言就是<strong>Octave</strong>。(编者注：这是当时的情况，现在主要是用<strong>Python</strong>)</p>
+<p><strong>Octave</strong>是一种很好的原始语言(<strong>prototyping language</strong>)，使用<strong>Octave</strong>你能快速地实现你的算法，剩下的事情，你只需要进行大规模的资源配置，你只用再花时间用<strong>C++</strong>或<strong>Java</strong>这些语言把算法重新实现就行了。开发项目的时间是很宝贵的，机器学习的时间也是很宝贵的。所以，如果你能让你的学习算法在<strong>Octave</strong>上快速的实现，基本的想法实现以后，再用<strong>C++</strong>或者<strong>Java</strong>去改写，这样你就能节省出大量的时间。</p>
+<p>据我所见，人们使用最多的用于机器学习的原始语言是<strong>Octave</strong>、<strong>MATLAB</strong>、<strong>Python</strong>、<strong>NumPy</strong> 和<strong>R</strong>。</p>
+<p><strong>Octave</strong>很好，因为它是开源的。当然<strong>MATLAB</strong>也很好，但它不是每个人都买得起的。(貌似国内学生喜欢用收费的<strong>matlab</strong>，<strong>matlab</strong>功能要比<strong>Octave</strong>强大的多，网上有各种<strong>D</strong>版可以下载)。这次机器学习课的作业也是用<strong>matlab</strong>的。如果你能够使用<strong>matlab</strong>，你也可以在这门课里面使用。</p>
+<p>如果你会<strong>Python</strong>、<strong>NumPy</strong>或者<strong>R</strong>语言，我也见过有人用 <strong>R</strong>的，据我所知，这些人不得不中途放弃了，因为这些语言在开发上比较慢，而且，因为这些语言如：<strong>Python</strong>、<strong>NumPy</strong>的语法相较于<strong>Octave</strong>来说，还是更麻烦一点。正因为这样，所以我强烈建议不要用<strong>NumPy</strong>或者<strong>R</strong>来完整这门课的作业，我建议在这门课中用<strong>Octave</strong>来写程序。</p>
+<p>本视频将快速地介绍一系列的命令，目标是迅速地展示，通过这一系列<strong>Octave</strong>的命令，让你知道<strong>Octave</strong>能用来做什么。</p>
+<p>启动<strong>Octave</strong>：</p>
+<p>现在打开<strong>Octave</strong>，这是<strong>Octave</strong>命令行。</p>
+<p><img alt="" src="../../images/e2c2dcc31f19ac255566fa616799d496.png" /></p>
+<p>现在让我示范最基本的<strong>Octave</strong>代码：</p>
+<p>输入5 + 6，然后得到11。</p>
+<p>输入3 – 2、5×8、&frac12;、2^6等等，得到相应答案。</p>
+<p><img alt="" src="../../images/6dcdf4a7c0d56787648d4a1902034150.png" /></p>
+<p>这些都是基本的数学运算。</p>
+<p><img alt="" src="../../images/f8507899953ed2de68e6b2b83554f9ea.png" /></p>
+<p>你也可以做逻辑运算，例如 1==2，计算结果为 <strong>false</strong> (<strong>假</strong>)，这里的百分号命令表示注释，1==2 计算结果为假，这里用0表示。</p>
+<p>请注意，不等于符号的写法是这个波浪线加上等于符号 ( ~= )，而不是等于感叹号加等号( != )，这是和其他一些编程语言中不太一样的地方。</p>
+<p><img alt="" src="../../images/126b2a5c4b5bfb24e5c21cd080159530.png" /></p>
+<p>让我们看看逻辑运算 1 &amp;&amp; 0，使用双&amp;符号表示逻辑与，1 &amp;&amp; 0判断为假，1和0的或运算 1 || 0，其计算结果为真。</p>
+<p><img alt="" src="../../images/fec0936e2a78c0fe8c9e3ed107614a31.png" /></p>
+<p>还有异或运算 如<code>XOR ( 1, 0 )</code>，其返回值为1</p>
+<p>从左向右写着 <strong>Octave 324.x</strong>版本，是默认的<strong>Octave</strong>提示，它显示了当前<strong>Octave</strong>的版本，以及相关的其它信息。</p>
+<p>如果你不想看到那个提示，这里有一个隐藏的命令：</p>
+<p>输入命令</p>
+<p><img alt="" src="../../images/8d63fe546c12a7e9eb658118d76288f7.png" /></p>
+<p>现在命令提示已经变得简化了。</p>
+<p>接下来，我们将谈到<strong>Octave</strong>的变量。</p>
+<p>现在写一个变量，对变量<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>赋值为3，并按下回车键，显示变量<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>等于3。</p>
+<p><img alt="" src="../../images/a537df35ccc9ff83a3c7518362e2f729.png" /></p>
+<p>如果你想分配一个变量，但不希望在屏幕上显示结果，你可以在命令后加一个分号，可以抑制打印输出，敲入回车后，不打印任何东西。</p>
+<p><img alt="" src="../../images/c11786828c587189891a9ef02f041ab7.png" /></p>
+<p>其中这句命令不打印任何东西。</p>
+<p>现在举一个字符串的例子：变量<span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span>等于"<strong>hi</strong>"。</p>
+<p><img alt="" src="../../images/4b67374499c0d38ed8670ba74ff892d0.png" /></p>
+<p><span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span>等于3大于等于1，所以，现在<span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span>变量的值是真。</p>
+<p><img alt="" src="../../images/acedf91b6b39d551e62a89f2e0955628.png" /></p>
+<p>如果你想打印出变量，或显示一个变量，你可以像下面这么做：</p>
+<p>设置<span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span>等于圆周率<span><span class="MathJax_Preview">π</span><script type="math/tex">π</script></span>，如果我要打印该值，那么只需键入<code>a</code>像这样 就打印出来了。</p>
+<p><img alt="" src="../../images/2cdc09b8bf67e546df7284ba74601c66.png" /></p>
+<p>对于更复杂的屏幕输出，也可以用<strong>DISP</strong>命令显示：</p>
+<p><img alt="" src="../../images/dfcd1d37526824726d85a655f8951249.png" /></p>
+<p>这是一种，旧风格的<strong>C语言</strong>语法，对于之前就学过<strong>C语言</strong>的同学来说，你可以使用这种基本的语法来将结果打印到屏幕。</p>
+<p>例如 ^{T}命令的六个小数：0.6%f ,a，这应该打印<span><span class="MathJax_Preview">π</span><script type="math/tex">π</script></span>的6位小数形式。</p>
+<p>也有一些控制输出长短格式的快捷命令：</p>
+<p><img alt="" src="../../images/ba8f0c3d2d8f017e0f7a611aa5be75d6.png" /></p>
+<p>下面，让我们来看看向量和矩阵：</p>
+<p>比方说 建立一个矩阵<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>：</p>
+<p><img alt="" src="../../images/693ebb444501838dd9b69520fff54be0.png" /></p>
+<p>对<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>矩阵进行赋值，考虑到这是一个三行两列的矩阵，你同样可以用向量。</p>
+<p>建立向量<span><span class="MathJax_Preview">V</span><script type="math/tex">V</script></span>并赋值1 2 3，<span><span class="MathJax_Preview">V</span><script type="math/tex">V</script></span>是一个行向量，或者说是一个3 ( 列 )×1 ( 行 )的向量，或者说，一行三列的矩阵。</p>
+<p>如果我想，分配一个列向量，我可以写“1;2;3”，现在便有了一个3 行 1 列的向量，同时这是一个列向量。</p>
+<p>下面是一些更为有用的符号，如：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">V</span><span class="p">=</span><span class="mi">1</span>：<span class="mf">0.1</span>：<span class="mi">2</span>
+</pre></div>
+</td></tr></table>
+
+<p>这个该如何理解呢：这个集合<span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>是一组值，从数值1开始，增量或说是步长为0.1，直到增加到2，按照这样的方法对向量<span><span class="MathJax_Preview">V</span><script type="math/tex">V</script></span>操作，可以得到一个行向量，这是一个1行11列的矩阵，其矩阵的元素是1
+1.1 1.2 1.3，依此类推，直到数值2。</p>
+<p>我也可以建立一个集合<span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>并用命令“1:6”进行赋值，这样<span><span class="MathJax_Preview">V</span><script type="math/tex">V</script></span>就被赋值了1至6的六个整数。</p>
+<p><img alt="" src="../../images/1cdbd87db83a4184098cd6d5ee3c6a87.png" /></p>
+<p>这里还有一些其他的方法来生成矩阵</p>
+<p>例如“<code>ones(2, 3)</code>”，也可以用来生成矩阵：</p>
+<p><img alt="" src="../../images/5d2b25d4078a276091b9c00812674fa9.png" /></p>
+<p>元素都为2，两行三列的矩阵，就可以使用这个命令：</p>
+<p><img alt="" src="../../images/21985f8690965598d4a17e3a6e7fee94.png" /></p>
+<p>你可以把这个方法当成一个生成矩阵的快速方法。</p>
+<p><span><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span>为一个一行三列的零矩阵，一行三列的<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>矩阵里的元素全部是零：</p>
+<p><img alt="" src="../../images/846b48ec79c9fcee05b20767dcc89558.png" /></p>
+<p>还有很多的方式来生成矩阵。</p>
+<p>如果我对<span><span class="MathJax_Preview">W</span><script type="math/tex">W</script></span>进行赋值，用<strong>Rand</strong>命令建立一个一行三列的矩阵，因为使用了<strong>Rand</strong>命令，则其一行三列的元素均为随机值，如“<code>rand(3,3)</code>”命令，这就生成了一个3×3的矩阵，并且其所有元素均为随机。</p>
+<p><img alt="" src="../../images/0de6e7054e869a82060cefa9968cd56b.png" /></p>
+<p>数值介于0和1之间，所以，正是因为这一点，我们可以得到数值均匀介于0和1之间的元素。</p>
+<p>如果，你知道什么是高斯随机变量，或者，你知道什么是正态分布的随机变量，你可以设置集合<span><span class="MathJax_Preview">W</span><script type="math/tex">W</script></span>，使其等于一个一行三列的<span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>矩阵，并且，来自三个值，一个平均值为0的高斯分布，方差或者等于1的标准偏差。</p>
+<p><img alt="" src="../../images/048f3cac1c32e3dc56160849c4dd60b0.png" /></p>
+<p>还可以设置地更复杂：</p>
+<p>并用<strong>hist</strong>命令绘制直方图。</p>
+<p><img alt="" src="../../images/10c06cc39058da2c5eef696d75e65a2c.png" /></p>
+<p>绘制单位矩阵：</p>
+<p><img alt="" src="../../images/08d11f870c5b30536f1965507fa7e7dc.png" /></p>
+<p>如果对命令不清楚，建议用<strong>help</strong>命令：</p>
+<p><img alt="" src="../../images/79b55d71cf434126f3d8457a3a615d18.png" /></p>
+<p>以上讲解的内容都是<strong>Octave</strong>的基本操作。希望你能通过上面的讲解，自己练习一些矩阵、乘、加等操作，将这些操作在<strong>Octave</strong>中熟练运用。</p>
+<p>在接下来的视频中，将会涉及更多复杂的命令，并使用它们在<strong>Octave</strong>中对数据进行更多的操作。</p>
+<h3 id="52">5.2 移动数据<a class="headerlink" href="#52" title="Permanent link">&para;</a></h3>
+<p>参考视频: 5 - 2 - Moving Data Around (16 min).mkv</p>
+<p>在这段关于 <strong>Octave</strong>的辅导课视频中，我将开始介绍如何在 <strong>Octave</strong> 中移动数据。</p>
+<p>如果你有一个机器学习问题，你怎样把数据加载到 <strong>Octave</strong> 中？</p>
+<p>怎样把数据存入一个矩阵？</p>
+<p>如何对矩阵进行相乘？</p>
+<p>如何保存计算结果？</p>
+<p>如何移动这些数据并用数据进行操作？</p>
+<p>进入我的 <strong>Octave</strong> 窗口，</p>
+<p>我键入<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>，得到我们之前构建的矩阵 <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>，也就是用这个命令生成的：</p>
+<p><code>A = [1 2; 3 4; 5 6]</code></p>
+<p>这是一个3行2列的矩阵，<strong>Octave</strong> 中的 <code>size()</code> 命令返回矩阵的尺寸。</p>
+<p>所以 <code>size(A)</code> 命令返回3 2</p>
+<p><img alt="" src="../../images/0f1fe8638058e229f1fc6c5b9cd4520c.png" /></p>
+<p>实际上，<code>size()</code> 命令返回的是一个 1×2 的矩阵，我们可以用 <span><span class="MathJax_Preview">sz</span><script type="math/tex">sz</script></span> 来存放。</p>
+<p>设置 <code>sz = size(A)</code></p>
+<p>因此 <span><span class="MathJax_Preview">sz</span><script type="math/tex">sz</script></span> 就是一个1×2的矩阵，第一个元素是3，第二个元素是2。</p>
+<p>所以如果键入 <code>size(sz)</code> 看看 <span><span class="MathJax_Preview">sz</span><script type="math/tex">sz</script></span> 的尺寸，返回的是1 2，表示是一个1×2的矩阵，1 和 2分别表示矩阵<span><span class="MathJax_Preview">sz</span><script type="math/tex">sz</script></span>的维度 。</p>
+<p>你也可以键入 <code>size(A, 1)</code>，将返回3，这个命令会返回<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>矩阵的第一个元素，<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>矩阵的第一个维度的尺寸，也就是 <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> 矩阵的行数。</p>
+<p>同样，命令 <code>size(A, 2)</code>，将返回2，也就是 <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> 矩阵的列数。</p>
+<p>如果你有一个向量 <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>，假如 <code>v = [1 2 3 4]</code>，然后键入<code>length(v)</code>，这个命令将返回最大维度的大小，返回4。</p>
+<p>你也可以键入<code>length(A)</code>，由于矩阵<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>是一个3×2的矩阵，因此最大的维度应该是3，因此该命令会返回3。</p>
+<p>但通常我们还是对向量使用 <span><span class="MathJax_Preview">length</span><script type="math/tex">length</script></span> 命令，而不是对矩阵使用 <code>length</code> 命令，比如
+<code>length([1;2;3;4;5])</code>，返回5。</p>
+<p>如何在系统中加载数据和寻找数据：</p>
+<p>当我们打开 <strong>Octave</strong> 时，我们通常已经在一个默认路径中，这个路径是 <strong>Octave</strong>的安装位置，<code>pwd</code> 命令可以显示出<strong>Octave</strong> 当前所处路径。</p>
+<p><code>cd</code>命令，意思是改变路径，我可以把路径改为<strong>C:\Users\ang\Desktop</strong>，这样当前目录就变为了桌面。</p>
+<p>如果键入 <code>ls</code>，<strong>ls</strong> 来自于一个 <strong>Unix</strong> 或者 <strong>Linux</strong> 命令，<strong>ls</strong>命令将列出我桌面上的所有路径。</p>
+<p><img alt="" src="../../images/0de527966203108b7efa1b6730bd966c.png" /></p>
+<p>事实上，我的桌面上有两个文件：<strong>featuresX.dat</strong> 和<strong>priceY.dat</strong>，是两个我想解决的机器学习问题。</p>
+<p><strong>featuresX</strong>文件如这个窗口所示，是一个含有两列数据的文件，其实就是我的房屋价格数据，数据集中有47行，第一个房子样本，面积是2104平方英尺，有3个卧室，第二套房子面积为1600，有3个卧室等等。</p>
+<p><img alt="" src="../../images/e4080d69119a0e408581c81a66e133c8.png" /></p>
+<p><strong>priceY</strong>这个文件就是训练集中的价格数据，所以 <strong>featuresX</strong> 和<strong>priceY</strong>就是两个存放数据的文档，那么应该怎样把数据读入 <strong>Octave</strong> 呢？我们只需要键入<code>featuresX.dat</code>，这样我将加载了 <strong>featuresX</strong> 文件。同样地我可以加载<code>priceY.dat</code>。其实有好多种办法可以完成，如果你把命令写成字符串的形式<code>load('featureX.dat')</code>，也是可以的，这跟刚才的命令效果是相同的，只不过是把文件名写成了一个字符串的形式，现在文件名被存在一个字符串中。<strong>Octave</strong>中使用引号来表示字符串。</p>
+<p>另外 <code>who</code> 命令，能显示出 在我的 <strong>Octave</strong>工作空间中的所有变量</p>
+<p><img alt="" src="../../images/7e85f313f721f53f3ae74664210a7a25.png" /></p>
+<p>所以我可以键入<code>featuresX</code> 回车，来显示 <strong>featuresX</strong></p>
+<p><img alt="" src="../../images/e49f56ceddd34dce986ae1dbdc399762.png" /></p>
+<p>这些就是存在里面的数据。</p>
+<p>还可以键入 <code>size(featuresX)</code>，得出的结果是 47 2，代表这是一个47×2的矩阵。</p>
+<p>类似地，输入 <code>size(priceY)</code>，结果是 47
+1，表示这是一个47维的向量，是一个列矩阵，存放的是训练集中的所有价格<span><span class="MathJax_Preview">Y</span><script type="math/tex">Y</script></span> 的值。</p>
+<p><code>who</code> 函数能让你看到当前工作空间中的所有变量，同样还有另一个 <code>whos</code>命令，能更详细地进行查看。</p>
+<p><img alt="" src="../../images/e8207c74976c4443d1ea25ec2a3b8477.png" /></p>
+<p>同样也列出我所有的变量，不仅如此，还列出了变量的维度。</p>
+<p><strong>double</strong> 意思是双精度浮点型，这也就是说，这些数都是实数，是浮点数。</p>
+<p>如果你想删除某个变量，你可以使用 <code>clear</code> 命令，我们键入 <code>clear featuresX</code>，然后再输入 <code>whos</code> 命令，你会发现 <strong>featuresX</strong> 消失了。</p>
+<p>另外，我们怎么储存数据呢？</p>
+<p>我们设变量 <code>V= priceY(1:10)</code></p>
+<p>这表示的是将向量 $Y $的前10个元素存入 <span><span class="MathJax_Preview">V</span><script type="math/tex">V</script></span>中。</p>
+<p><img alt="" src="../../images/a8c3b363f13820b4fc6463c7520ab58c.png" /></p>
+<p>假如我们想把它存入硬盘，那么用 <code>save hello.mat v</code> 命令，这个命令会将变量<span><span class="MathJax_Preview">V</span><script type="math/tex">V</script></span>存成一个叫 <strong>hello.mat</strong> 的文件，让我们回车，现在我的桌面上就出现了一个新文件，名为<strong>hello.mat</strong>。</p>
+<p>由于我的电脑里同时安装了 <strong>MATLAB</strong>，所以这个图标上面有 <strong>MATLAB</strong>的标识，因为操作系统把文件识别为 <strong>MATLAB</strong>文件。如果在你的电脑上图标显示的不一样的话，也没有关系。</p>
+<p>现在我们清除所有变量，直接键入<code>clear</code>，这样将删除工作空间中的所有变量，所以现在工作空间中啥都没了。</p>
+<p>但如果我载入 <strong>hello.mat</strong> 文件，我又重新读取了变量 <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>，因为我之前把变量<span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>存入了<strong>hello.mat</strong> 文件中，所以我们刚才用 <code>save</code>命令做了什么。这个命令把数据按照二进制形式储存，或者说是更压缩的二进制形式，因此，如果<span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>是很大的数据，那么压缩幅度也更大，占用空间也更小。如果你想把数据存成一个人能看懂的形式，那么可以键入：</p>
+<p><code>save hello.txt v -ascii</code></p>
+<p>这样就会把数据存成一个文本文档，或者将数据的 <strong>ascii 码</strong>存成文本文档。</p>
+<p>我键入了这个命令以后，我的桌面上就有了 <strong>hello.txt</strong>文件。如果打开它，我们可以发现这个文本文档存放着我们的数据。</p>
+<p>这就是读取和储存数据的方法。</p>
+<p>接下来我们再来讲讲操作数据的方法：</p>
+<p>假如 <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> 还是那个矩阵</p>
+<p><img alt="" src="../../images/b39bf4e9212442464fe2f568dbe4fa0c.png" /></p>
+<p>跟刚才一样还是那个 3×2 的矩阵，现在我们加上索引值，比如键入 <code>A(3,2)</code></p>
+<p>这将索引到<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> 矩阵的 (3,2) 元素。这就是我们通常书写矩阵的形式，写成 <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> 32，3和2分别表示矩阵的第三行和第二列对应的元素，因此也就对应 6。</p>
+<p>我也可以键入<code>A(2,:)</code> 来返回第二行的所有元素，冒号表示该行或该列的所有元素。</p>
+<p>类似地，如果我键入 <code>A(:,2)</code>，这将返回 <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> 矩阵第二列的所有元素，这将得到 2 4 6。</p>
+<p>这表示返回<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> 矩阵的第二列的所有元素。</p>
+<p>你也可以在运算中使用这些较为复杂的索引。</p>
+<p>我再给你展示几个例子，可能你也不会经常使用，但我还是输入给你看 <code>A([1 3],:)</code>，这个命令意思是取 <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> 矩阵第一个索引值为1或3的元素，也就是说我取的是A矩阵的第一行和第三行的每一列，冒号表示的是取这两行的每一列元素，即：</p>
+<p><img alt="" src="../../images/d1d551d0c540449d457e312a34434355.png" /></p>
+<p>可能这些比较复杂一点的索引操作你会经常用到。</p>
+<p>我们还能做什么呢？依然是 <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> 矩阵，<code>A(:,2)</code> 命令返回第二列。</p>
+<p>你也可以为它赋值，我可以取 <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> 矩阵的第二列，然后将它赋值为10 11 12，我实际上是取出了 <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> 的第二列，然后把一个列向量[10;11;12]赋给了它，因此现在 <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> 矩阵的第一列还是 1 3 5，第二列就被替换为 10 11 12。</p>
+<p><img alt="" src="../../images/f47bda45fd9beef6c600ebd48d163617.png" /></p>
+<p>接下来一个操作，让我们把 $A $设为<code>A = [A, [100, 101,102]]</code>，这样做的结果是在原矩阵的右边附加了一个新的列矩阵，就是把 <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>矩阵设置为原来的 <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> 矩阵再在右边附上一个新添加的列矩阵。</p>
+<p><img alt="" src="../../images/2e1c68a99a23d993674f08151e77dd44.png" /></p>
+<p>最后，还有一个小技巧，如果你就输入 <code>A(:)</code>，这是一个很特别的语法结构，意思是把 <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>中的所有元素放入一个单独的列向量，这样我们就得到了一个 9×1 的向量，这些元素都是<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> 中的元素排列起来的。</p>
+<p>再来几个例子：</p>
+<p>我还是把 A 重新设为 [1 2; 3 4; 5 6]，我再设一个 <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>为[11 12; 13 14; 15 16]，我可以新建一个矩阵 <span><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span>，<code>C = [A B]</code>，这个意思就是把这两个矩阵直接连在一起，矩阵<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> 在左边，矩阵<span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span> 在右边，这样组成了 <span><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span>矩阵，就是直接把<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>和 <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span> 合起来。</p>
+<p><img alt="" src="../../images/e07db429512d4b3b5d641c52e606159d.png" /></p>
+<p>我还可以设<code>C = [A; B]</code>，这里的分号表示把分号后面的东西放到下面。所以，<code>[A;B]</code>的作用依然还是把两个矩阵放在一起，只不过现在是上下排列，所以现在 <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> 在上面 <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>在下面，<span><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span> 就是一个 6×2 矩阵。</p>
+<p><img alt="" src="../../images/7f11aa788b1b75c5a534d030b3ebc624.png" /></p>
+<p>简单地说，分号的意思就是换到下一行，所以 C 就包括上面的A，然后换行到下面，然后在下面放上一个 <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>。</p>
+<p>另外顺便说一下，这个<code>[A B]</code>命令跟 <code>[A, B]</code> 是一样的，这两种写法的结果是相同的。</p>
+<p>通过以上这些操作，希望你现在掌握了怎样构建矩阵，也希望我展示的这些命令能让你很快地学会怎样把矩阵放到一起，怎样取出矩阵，并且把它们放到一起，组成更大的矩阵。</p>
+<p>通过几句简单的代码，<strong>Octave</strong>能够很方便地很快速地帮助我们组合复杂的矩阵以及对数据进行移动。这就是移动数据这一节课。</p>
+<p>我认为对你来讲，最好的学习方法是，下课后复习一下我键入的这些代码好好地看一看，从课程的网上把代码的副本下载下来，重新好好看看这些副本，然后自己在<strong>Octave</strong> 中把这些命令重新输一遍，慢慢开始学会使用这些命令。</p>
+<p>当然，没有必要把这些命令都记住，你也不可能记得住。你要做的就是，了解一下你可以用哪些命令，做哪些事。这样在你今后需要编写学习算法时，如果你要找到某个<strong>Octave</strong>中的命令，你可能回想起你之前在这里学到过，然后你就可以查找课程中提供的程序副本，这样就能很轻松地找到你想使用的命令了。</p>
+<h3 id="53">5.3 计算数据<a class="headerlink" href="#53" title="Permanent link">&para;</a></h3>
+<p>参考视频: 5 - 3 - Computing on Data (13 min).mkv</p>
+<p>现在，你已经学会了在<strong>Octave</strong>中如何加载或存储数据，如何把数据存入矩阵等等。在这段视频中，我将介绍如何对数据进行运算，稍后我们将使用这些运算操作来实现我们的学习算法。</p>
+<p>这是我的 <strong>Octave</strong>窗口，我现在快速地初始化一些变量。比如设置<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>为一个3×2的矩阵，设置<span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span>为一个3 ×2矩阵，设置<span><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span>为2 × 2矩阵。</p>
+<p>我想算两个矩阵的乘积，比如说 <span><span class="MathJax_Preview">A × C</span><script type="math/tex">A × C</script></span>，我只需键入<code>A×C</code>，这是一个 3×2 矩阵乘以 2×2矩阵，得到这样一个3×2矩阵。</p>
+<p><img alt="" src="../../images/8ee5c7c05865e90f75feda99b9131319.png" /></p>
+<p><img alt="" src="../../images/38c956acb3bedf4362f40e6c5e8a692f.png" /></p>
+<p>你也可以对每一个元素，做运算 方法是做点乘运算<code>A.*B</code>，这么做Octave将矩阵 <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>中的每一个元素与矩阵 <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span> 中的对应元素相乘:<code>A.*B</code></p>
+<p>这里第一个元素1乘以11得到11，第二个元素2乘以12得到24，这就是两个矩阵的元素位运算。通常来说，在<strong>Octave</strong>中点号一般用来表示元素位运算。</p>
+<p><img alt="" src="../../images/646de38bffd4f7f6601167d0c0686970.png" /></p>
+<p>这里是一个矩阵<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>，这里我输入<code>A.^2</code>，这将对矩阵<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>中每一个元素平方。</p>
+<p><img alt="" src="../../images/d456e7501d7aaa9fa2ef8a89e89fa7e1.png" /></p>
+<p>我们设<span><span class="MathJax_Preview">V</span><script type="math/tex">V</script></span>为 [1; 2; 3] 是列向量，你也可以输入<code>1./V</code>，得到每一个元素的倒数，所以这样一来，就会分别算出 1/1 &frac12; &#8531;。</p>
+<p>矩阵也可以这样操作，<code>1./A</code> 得到<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>中每一个元素的倒数。</p>
+<p>同样地，这里的点号还是表示对每一个元素进行操作。</p>
+<p>我们还可以进行求对数运算，也就是对每个元素进行求对数运算。</p>
+<p><img alt="" src="../../images/0c7c1d7726c09ffb45152cf153614003.png" /></p>
+<p>还有自然数<span><span class="MathJax_Preview">e</span><script type="math/tex">e</script></span>的幂次运算，就是以<span><span class="MathJax_Preview">e</span><script type="math/tex">e</script></span>为底，以这些元素为幂的运算。</p>
+<p><img alt="" src="../../images/a36506049248948c82e598c8c254dc31.png" /></p>
+<p>我还可以用 <strong>abs</strong>来对 <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> 的每一个元素求绝对值，当然这里 <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>都是正数。我们换成另一个这样对每个元素求绝对值，得到的结果就是这些非负的元素。还有<span><span class="MathJax_Preview">–v</span><script type="math/tex">–v</script></span>，给出<span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>中每个元素的相反数，这等价于 -1 乘以 <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>，一般就直接用 <span><span class="MathJax_Preview">-v</span><script type="math/tex">-v</script></span>
+就好了，其实就等于 <span><span class="MathJax_Preview">-1*v</span><script type="math/tex">-1*v</script></span>。</p>
+<p>还有一个技巧，比如说我们想对<span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>中的每个元素都加1，那么我们可以这么做，首先构造一个3行1列的1向量，然后把这个1向量跟原来的向量相加，因此<span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>向量从[1 2 3] 增至 [2 3 4]。我用了一个，<code>length(v)</code>命令，因此这样一来，<code>ones(length(v) ,1)</code> 就相当于<code>ones(3,1)</code>，然后我做的是<code>v +ones(3,1)</code>，也就是将 <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> 的各元素都加上这些1，这样就将<span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> 的每个元素增加了1。</p>
+<p><img alt="" src="../../images/9432bbcbfde53c7e0dcb1c7317b01c0c.png" /></p>
+<p>另一种更简单的方法是直接用 <code>v+1</code>，<code>v + 1</code> 也就等于把 <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> 中的每一个元素都加上1。</p>
+<p><img alt="" src="../../images/e02eec3ca4688ff1cb9126c8eb13bfed.png" /></p>
+<p>现在，让我们来谈谈更多的操作。</p>
+<p>矩阵<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> 如果你想要求它的转置，那么方法是用A’,将得出 A 的转置矩阵。当然，如果我写<code>(A')'</code>，也就是 <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> 转置两次，那么我又重新得到矩阵 <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>。</p>
+<p>还有一些有用的函数，比如： <code>a=[1 15 2 0.5]</code>，这是一个1行4列矩阵，<code>val=max(a)</code>，这将返回<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>矩阵中的最大值15。</p>
+<p>我还可以写 <code>[val, ind] =max(a)</code>，这将返回<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>矩阵中的最大值存入<span><span class="MathJax_Preview">val</span><script type="math/tex">val</script></span>，以及该值对应的索引，元素15对应的索引值为2,存入<span><span class="MathJax_Preview">ind</span><script type="math/tex">ind</script></span>，所以 <span><span class="MathJax_Preview">ind =2</span><script type="math/tex">ind =2</script></span>。</p>
+<p>特别注意一下，如果你用命令 <code>max(A)</code>，<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>是一个矩阵的话，这样做就是对每一列求最大值。</p>
+<p>我们还是用这个例子，这个 <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> 矩阵<code>a=[1 15 2 0.5]</code>，如果输入<code>a&lt;3</code>，这将进行逐元素的运算，所以元素小于3的返回1，否则返回0。</p>
+<p><img alt="" src="../../images/fc04d42876c9d7d7bed51bade2077649.png" /></p>
+<p>因此，返回[1 1 0 1]。也就是说，对<span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span>矩阵的每一个元素与3进行比较，然后根据每一个元素与3的大小关系，返回1和0表示真与假。</p>
+<p>如果我写 <code>find(a&lt;3)</code>，这将告诉我<span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> 中的哪些元素是小于3的。</p>
+<p><img alt="" src="../../images/ac9ad10f115d2d1cd15a0514c8ceeafa.png" /></p>
+<p>设<code>A = magic(3)</code>，<strong>magic 函数</strong>将返回一个矩阵，称为魔方阵或幻方 (<strong>magic squares</strong>)，它们具有以下这样的数学性质：它们所有的行和列和对角线加起来都等于相同的值。</p>
+<p>当然据我所知，这在机器学习里基本用不上，但我可以用这个方法很方便地生成一个3行3列的矩阵，而这个魔方矩阵这神奇的方形屏幕。每一行、每一列、每一个对角线三个数字加起来都是等于同一个数。</p>
+<p><img alt="" src="../../images/f8c7f4f36183ef4b36bce427be2fce6f.png" /></p>
+<p>在其他有用的机器学习应用中，这个矩阵其实没多大作用。</p>
+<p>如果我输入 <code>[r,c] = find(A&gt;=7)</code>，这将找出所有<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>矩阵中大于等于7的元素，因此，<span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span> 和<span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span>分别表示行和列，这就表示，第一行第一列的元素大于等于7，第三行第二列的元素大于等于7，第二行第三列的元素大于等于7。</p>
+<p><img alt="" src="../../images/409a04487d1d7f039acfd61b3787f6aa.png" /></p>
+<p>顺便说一句，其实我从来都不去刻意记住这个 <strong>find 函数</strong>，到底是怎么用的，我只需要会用<strong>help函数</strong>就可以了，每当我在使用这个函数，忘记怎么用的时候，我就可以用 <strong>help函数</strong>，键入 <code>help find</code> 来找到帮助文档。</p>
+<p>最后再讲两个内容，一个是求和函数，这是 <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> 矩阵：</p>
+<p><img alt="" src="../../images/d7221c981ecc7730465710a0d8b49b34.png" /></p>
+<p>键入 <code>sum(a)</code>，就把 a 中所有元素加起来了。</p>
+<p>如果我想把它们都乘起来，键入 <code>prod(a)</code>，<strong>prod</strong> 意思是<strong>product(乘积)</strong>，它将返回这四个元素的乘积。</p>
+<p><code>floor(a)</code> 是向下四舍五入，因此对于 <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> 中的元素0.5将被下舍入变成0。</p>
+<p>还有 <code>ceil(a)</code>，表示向上四舍五入，所以0.5将上舍入变为最接近的整数，也就是1。</p>
+<p>键入 <code>type(3)</code>，这通常得到一个3×3的矩阵，如果键入 <code>max(rand(3),rand(3))</code>，这样做的结果是返回两个3×3的随机矩阵，并且逐元素比较取最大值。</p>
+<p>假如我输入<code>max(A,[],1)</code>，这样做会得到每一列的最大值。</p>
+<p>所以第一列的最大值就是8，第二列是9，第三列的最大值是7，这里的1表示取A矩阵第一个维度的最大值。</p>
+<p>相对地，如果我键入<code>max(A,[],2)</code>，这将得到每一行的最大值，所以，第一行的最大值是等于8，第二行最大值是7，第三行是9。</p>
+<p><img alt="" src="../../images/31bc524d1a19b4e9d8ea0974517a512e.png" /></p>
+<p>所以你可以用这个方法来求得每一行或每一列的最值，另外，你要知道，默认情况下<code>max(A)</code>返回的是每一列的最大值，如果你想要找出整个矩阵A的最大值，你可以输入<code>max(max(A))</code>，或者你可以将<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> 矩阵转成一个向量，然后键入 <code>max(A(:))</code>，这样做就是把 <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> 当做一个向量，并返回 <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>向量中的最大值。</p>
+<p>最后，让我们把 <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>设为一个9行9列的魔方阵，魔方阵具有的特性是每行每列和对角线的求和都是相等的。</p>
+<p>这是一个9×9的魔方阵，我们来求一个 <code>sum(A,1)</code>，这样就得到每一列的总和，这也验证了一个9×9的魔方阵确实每一列加起来都相等，都为369。</p>
+<p><img alt="" src="../../images/0b9753a3e10bbdce0f26c3d44d61ae26.png" /></p>
+<p>现在我们来求每一行的和，键入<code>sum(A,2)</code>，这样就得到了<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> 中每一行的和加起来还是369。</p>
+<p>现在我们来算$A $的对角线元素的和。我们现在构造一个9×9 的单位矩阵，键入 <code>eye(9)</code>,</p>
+<p>然后我们要用 <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>逐点乘以这个单位矩阵，除了对角线元素外，其他元素都会得到0。</p>
+<p>键入<code>sum(sum(A.*eye(9))</code></p>
+<p>这实际上是求得了，这个矩阵对角线元素的和确实是369。</p>
+<p>你也可以求另一条对角线的和也是是369。</p>
+<p><strong>flipup/flipud</strong> 表示向上/向下翻转。</p>
+<p>同样地，如果你想求这个矩阵的逆矩阵，键入<code>pinv(A)</code>，通常称为伪逆矩阵，你就把它看成是矩阵 <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> 求逆，因此这就是 <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>矩阵的逆矩阵。</p>
+<p>设 <code>temp = pinv(A)</code>，然后再用<span><span class="MathJax_Preview">temp</span><script type="math/tex">temp</script></span> 乘以<span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>，这实际上得到的就是单位矩阵，对角线为1，其他元素为0。</p>
+<p>如何对矩阵中的数字进行各种操作，在运行完某个学习算法之后，通常一件最有用的事情是看看你的结果，或者说让你的结果可视化，在接下来的视频中，我会非常迅速地告诉你，如何很快地画图，如何只用一两行代码，你就可以快速地可视化你的数据，这样你就能更好地理解你使用的学习算法。</p>
+<h3 id="54">5.4 绘图数据<a class="headerlink" href="#54" title="Permanent link">&para;</a></h3>
+<p>参考视频: 5 - 4 - Plotting Data (10 min).mkv</p>
+<p>当开发学习算法时，往往几个简单的图，可以让你更好地理解算法的内容，并且可以完整地检查下算法是否正常运行，是否达到了算法的目的。</p>
+<p>例如在之前的视频中，我谈到了绘制成本函数<span><span class="MathJax_Preview">J(\theta)</span><script type="math/tex">J(\theta)</script></span>，可以帮助确认梯度下降算法是否收敛。通常情况下，绘制数据或学习算法所有输出，也会启发你如何改进你的学习算法。幸运的是，<strong>Octave</strong>有非常简单的工具用来生成大量不同的图。当我用学习算法时，我发现绘制数据、绘制学习算法等，往往是我获得想法来改进算法的重要部分。在这段视频中，我想告诉你一些<strong>Octave</strong>的工具来绘制和可视化你的数据。</p>
+<p>我们先来快速生成一些数据用来绘图。</p>
+<p><img alt="" src="../../images/4514b422525aaac1e99add67e44882ee.png" /></p>
+<p>如果我想绘制正弦函数，这是很容易的，我只需要输入<code>plot(t,y1)</code>，并回车，就出现了这个图：</p>
+<p><img alt="C:\Users\风度78\AppData\Roaming\Tencent\Users\10822884\QQ\WinTemp\RichOle\8~NJ7J5F0JE7}UOS%)(JN_G.png" src="../../images/ff08dcc5b9718aa9c744e13fcc4fd607.png" /></p>
+<p>横轴是<span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>变量，纵轴是<span><span class="MathJax_Preview">y1</span><script type="math/tex">y1</script></span>，也就是我们刚刚所输出的正弦函数。</p>
+<p>让我们设置<span><span class="MathJax_Preview">y2</span><script type="math/tex">y2</script></span></p>
+<p><img alt="" src="../../images/2d32a23ab895a8e765caf90a7679817e.png" /></p>
+<p><strong>Octave</strong>将会消除之前的正弦图，并且用这个余弦图来代替它，这里纵轴<span><span class="MathJax_Preview">cos(x)</span><script type="math/tex">cos(x)</script></span>从1开始，</p>
+<p><img alt="" src="../../images/38969cc85853190ff3eac4f06398bc1b.png" /></p>
+<p>如果我要同时表示正弦和余弦曲线。</p>
+<p>我要做的就是，输入：<code>plot(t, y1)</code>，得到正弦函数，我使用函数<strong>hold on</strong>，<strong>hold on</strong>函数的功能是将新的图像绘制在旧的之上。</p>
+<p>我现在绘制<span><span class="MathJax_Preview">y2</span><script type="math/tex">y2</script></span>，输入：<code>plot(t, y2)</code>。</p>
+<p>我要以不同的颜色绘制余弦函数，所以我在这里输入带引号的r绘制余弦函数，<span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span>表示所使用的颜色：<code>plot(t,y2,’r’)</code>，再加上命令<code>xlabel('time')</code>，
+来标记X轴即水平轴，输入<code>ylabel('value')</code>，来标记垂直轴的值。</p>
+<p><img alt="" src="../../images/9eb4e496f34a801fd7ba5e85c4eec66b.png" /></p>
+<p>同时我也可以来标记我的两条函数曲线，用这个命令 <code>legend('sin','cos')</code>将这个图例放在右上方，表示这两条曲线表示的内容。最后输入<code>title('myplot')</code>，在图像的顶部显示这幅图的标题。</p>
+<p><img alt="" src="../../images/23594175efe66d5b9b1e687375a2dbda.png" /></p>
+<p><img alt="" src="../../images/c765aeee9c53e0e77d01d1e73cabd9b4.png" /></p>
+<p>如果你想保存这幅图像，你输入<code>print –dpng 'myplot.png'</code>，<strong>png</strong>是一个图像文件格式，如果你这样做了，它可以让你保存为一个文件。</p>
+<p><strong>Octave</strong>也可以保存为很多其他的格式，你可以键入<code>help plot</code>。</p>
+<p>最后如果你想，删掉这个图像，用命令<strong>close</strong>会让这个图像关掉。</p>
+<p><strong>Octave</strong>也可以让你为图像标号</p>
+<p>你键入<code>figure(1); plot(t, y1);</code>将显示第一张图，绘制了变量<span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> <span><span class="MathJax_Preview">y1</span><script type="math/tex">y1</script></span>。</p>
+<p>键入<code>figure(2); plot(t, y2);</code> 将显示第一张图，绘制了变量<span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> <span><span class="MathJax_Preview">y2</span><script type="math/tex">y2</script></span>。</p>
+<p><strong>subplot</strong>命令，我们要使用<code>subplot(1,2,1)</code>，它将图像分为一个1*2的格子，也就是前两个参数，然后它使用第一个格子，也就是最后一个参数1的意思。</p>
+<p><img alt="" src="../../images/a786b8ed82ddd182f4595de2173cc84b.png" /></p>
+<p>我现在使用第一个格子，如果键入<code>plot(t,y1)</code>，现在这个图显示在第一个格子。如果我键入<code>subplot(1,2,2)</code>，那么我就要使用第二个格子，键入<code>plot(t,y2)</code>；现在y2显示在右边，也就是第二个格子。</p>
+<p>最后一个命令，你可以改变轴的刻度，比如改成[0.5 1 -1 1]，输入命令：<code>axis([0.5 1 -1 1])</code>也就是设置了右边图的<span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>轴和<span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>轴的范围。具体而言，它将右图中的横轴的范围调整至0.5到1，竖轴的范围为-1到1。</p>
+<p><img alt="" src="../../images/f13993f4784d01e7da769b4ec2545cd7.png" /></p>
+<p>你不需要记住所有这些命令，如果你需要改变坐标轴，或者需要知道<strong>axis</strong>命令，你可以用<strong>Octave</strong>中用<strong>help</strong>命令了解细节。</p>
+<p>最后，还有几个命令。</p>
+<p><code>Clf</code>（清除一幅图像）。</p>
+<p>让我们设置A等于一个5×5的<strong>magic</strong>方阵：</p>
+<p><img alt="" src="../../images/82a990a5832ae2618d768551b90470dc.png" /></p>
+<p>我有时用一个巧妙的方法来可视化矩阵，也就是<code>imagesc(A</code>)命令，它将会绘制一个5*5的矩阵，一个5*5的彩色格图，不同的颜色对应A矩阵中的不同值。</p>
+<p>我还可以使用函数<strong>colorbar</strong>，让我用一个更复杂的命令 <code>imagesc(A)，colorbar，colormap gray</code>。这实际上是在同一时间运行三个命令：运行<code>imagesc</code>，然后运行，<code>colorbar</code>，然后运行<code>colormap gray</code>。</p>
+<p>它生成了一个颜色图像，一个灰度分布图，并在右边也加入一个颜色条。所以这个颜色条显示不同深浅的颜色所对应的值。</p>
+<p><img alt="" src="../../images/881986ec5af9d86b6b14b260fb3b3618.png" /></p>
+<p>你可以看到在不同的方格，它对应于一个不同的灰度。</p>
+<p>输入<code>imagesc(magic(15))，colorbar，colormap gray</code></p>
+<p><img alt="" src="../../images/22a9a9536d4db17b6d64603fb54dce9e.png" /></p>
+<p>这将会是一幅15*15的<strong>magic</strong>方阵值的图。</p>
+<p>最后，总结一下这段视频。你看到我所做的是使用逗号连接函数调用。如果我键入<span><span class="MathJax_Preview">a=1</span><script type="math/tex">a=1</script></span>,<span><span class="MathJax_Preview">b=2</span><script type="math/tex">b=2</script></span>,<span><span class="MathJax_Preview">c=3</span><script type="math/tex">c=3</script></span>然后按<strong>Enter</strong>键，其实这是将这三个命令同时执行，或者是将三个命令一个接一个执行，它将输出所有这三个结果。</p>
+<p>这很像<span><span class="MathJax_Preview">a=1</span><script type="math/tex">a=1</script></span>; <span><span class="MathJax_Preview">b=2</span><script type="math/tex">b=2</script></span>;<span><span class="MathJax_Preview">c=3</span><script type="math/tex">c=3</script></span>;如果我用分号来代替逗号，则没有输出出任何东西。</p>
+<p>这里我们称之为逗号连接的命令或函数调用。</p>
+<p><img alt="" src="../../images/c0e8b7a19ced9a1dd006ed87d6323c9b.png" /></p>
+<p>用逗号连接是另一种<strong>Octave</strong>中更便捷的方式，将多条命令例如<code>imagesc colorbar colormap</code>，将这多条命令写在同一行中。</p>
+<p>现在你知道如何绘制<strong>Octave</strong>中不同的图像，在下面的视频中，我将告诉你怎样在Octave中，写控制语句，比如<strong>if while for</strong>语句，并且定义和使用函数。</p>
+<h3 id="55-forwhileif">5.5 控制语句：for，while，if语句<a class="headerlink" href="#55-forwhileif" title="Permanent link">&para;</a></h3>
+<p>参考视频: 5 - 5 - Control Statements_ for, while, if statements (13 min).mkv</p>
+<p>在这段视频中，我想告诉你怎样为你的 <strong>Octave</strong> 程序写控制语句。诸如："<strong>for</strong>" "<strong>while</strong>" "<strong>if</strong>" 这些语句，并且如何定义和使用方程。</p>
+<p>我先告诉你如何使用 “<strong>for</strong>” 循环。</p>
+<p>首先，我要将 <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> 值设为一个10行1列的零向量。</p>
+<p><img alt="" src="../../images/26a912d550af9fd43a7ae62e3b610e97.png" /></p>
+<p>接着我要写一个 “<strong>for</strong>" 循环，让 <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 等于 1 到 10，写出来就是 <code>i = 1:10</code>。我要设$ v(i)$的值等于 2 的 <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 次方，循环最后写上“<strong>end</strong>”。</p>
+<p>向量<span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> 的值就是这样一个集合 2的一次方、2的二次方，依此类推。这就是我的 <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 等于 1 到 10的语句结构，让 <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 遍历 1 到 10的值。</p>
+<p><img alt="" src="../../images/890f6ea8f857f22002f98c20d52b3bb8.png" /></p>
+<p>另外，你还可以通过设置你的 indices (索引) 等于 1一直到10，来做到这一点。这时<strong>indices</strong> 就是一个从1到10的序列。</p>
+<p>你也可以写 <code>i = indices</code>，这实际上和我直接把 i 写到 1 到 10 是一样。你可以写 <code>disp(i)</code>，也能得到一样的结果。所以 这就是一个 “<strong>for</strong>” 循环。</p>
+<p><img alt="" src="../../images/fc956ae1291dc7d3b819e471d1962398.png" /></p>
+<p>如果你对 “<strong>break</strong>” 和 “<strong>continue</strong>” 语句比较熟悉，<strong>Octave</strong>里也有 “<strong>break</strong>” 和 “<strong>continue</strong>”语句，你也可以在 <strong>Octave</strong>环境里使用那些循环语句。</p>
+<p>但是首先让我告诉你一个 <strong>while</strong> 循环是如何工作的：</p>
+<p><img alt="" src="../../images/1b37f81896a59145576ae996c9dd4d16.png" /></p>
+<p>这是什么意思呢：我让 <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 取值从 1 开始，然后我要让 <span><span class="MathJax_Preview">v(i)</span><script type="math/tex">v(i)</script></span> 等于 100，再让 <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 递增 1，直到<span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 大于 5停止。</p>
+<p>现在来看一下结果，我现在已经取出了向量的前五个元素，把他们用100覆盖掉，这就是一个<strong>while</strong>循环的句法结构。</p>
+<p>现在我们来分析另外一个例子：</p>
+<p><img alt="" src="../../images/279cfbda6b4d9a2ced1332f086db4d9e.png" /></p>
+<p>这里我将向你展示如何使用<strong>break</strong>语句。比方说 <code>v(i) = 999</code>，然后让 <code>i = i+1</code>，当 <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 等于6的时候 <strong>break</strong> (停止循环)，结束 (<strong>end</strong>)。</p>
+<p>当然这也是我们第一次使用一个 <strong>if</strong> 语句，所以我希望你们可以理解这个逻辑，让 <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 等于1 然后开始下面的增量循环，<strong>while</strong>语句重复设置 <span><span class="MathJax_Preview">v(i)</span><script type="math/tex">v(i)</script></span> 等于999，不断让<span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>增加，然后当 <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 达到6，做一个中止循环的命令，尽管有<strong>while</strong>循环，语句也就此中止。所以最后的结果是取出向量 <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> 的前5个元素，并且把它们设置为999。</p>
+<p>所以，这就是<strong>if</strong> 语句和 <strong>while</strong> 语句的句法结构。并且要注意要有<strong>end</strong>，上面的例子里第一个 <strong>end</strong> 结束的是 <strong>if</strong>
+语句，第二个 <strong>end</strong> 结束的是 <strong>while</strong> 语句。</p>
+<p>现在让我告诉你使用 <strong>if-else</strong> 语句：</p>
+<p><img alt="" src="../../images/3fce4367c960bb6fbc492a3b8f9ddc5d.png" /></p>
+<p>最后，提醒一件事：如果你需要退出 <strong>Octave</strong>，你可以键入<code>exit</code>命令然后回车就会退出 <strong>Octave</strong>，或者命令<code>quit</code>也可以。</p>
+<p>最后，让我们来说说函数 (<strong>functions</strong>)，如何定义和调用函数。</p>
+<p>我在桌面上存了一个预先定义的文件名为 “<strong>squarethisnumber.m</strong>”，这就是在 <strong>Octave</strong> 环境下定义的函数。</p>
+<p>让我们打开这个文件。请注意，我使用的是微软的写字板程序来打开这个文件，我只是想建议你，如果你也使用微软的<strong>Windows</strong>系统，那么可以使用写字板程序，而不是记事本来打开这些文件。如果你有别的什么文本编辑器也可以，记事本有时会把代码的间距弄得很乱。如果你只有记事本程序，那也能用。我建议你用写字板或者其他可以编辑函数的文本编辑器。</p>
+<p>现在我们来说如何在 <strong>Octave</strong> 里定义函数：</p>
+<p>这个文件只有三行：</p>
+<p><img alt="" src="../../images/247f96f4e7ab7a259ac9ef1eebe0b503.png" /></p>
+<p>第一行写着 <code>function y = squareThisNumber(x)</code>，这就告诉 <strong>Octave</strong>，我想返回一个 y值，我想返回一个值，并且返回的这个值将被存放于变量 <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span> 里。另外，它告诉了<strong>Octave</strong>这个函数有一个参数，就是参数 <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>，还有定义的函数体，也就是 <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span> 等于 <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> 的平方。</p>
+<p>还有一种更高级的功能，这只是对那些知道“<strong>search path</strong> (<strong>搜索路径</strong>)”这个术语的人使用的。所以如果你想要修改
+<strong>Octave</strong>的搜索路径，你可以把下面这部分作为一个进阶知识，或者选学材料，仅适用于那些熟悉编程语言中搜索路径概念的同学。</p>
+<p>你可以使用<strong>addpath</strong> 命令添加路径，添加路径“<strong>C:\Users\ang\desktop</strong>”将该目录添加到<strong>Octav</strong>e的搜索路径，这样即使你跑到其他路径底下，<strong>Octave</strong>依然知道会在 <strong>Users\ang\desktop</strong>目录下寻找函数。这样，即使我现在在不同的目录下，它仍然知道在哪里可以找到“<strong>SquareThisNumber</strong>” 这个函数。</p>
+<p>但是，如果你不熟悉搜索路径的概念，不用担心，只要确保在执行函数之前，先用 <code>cd</code>命令设置到你函数所在的目录下，实际上也是一样的效果。</p>
+<p><strong>Octave</strong>还有一个其他许多编程语言都没有的概念，那就是它可以允许你定义一个函数，使得返回值是多个值或多个参数。这里就是一个例子，定义一个函数叫：</p>
+<p>“<code>SquareAndCubeThisNumber(x)</code>” (<span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>的平方以及<span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>的立方)</p>
+<p>这说的就是函数返回值是两个： <span><span class="MathJax_Preview">y1</span><script type="math/tex">y1</script></span> 和 <span><span class="MathJax_Preview">y2</span><script type="math/tex">y2</script></span>，接下来就是<span><span class="MathJax_Preview">y1</span><script type="math/tex">y1</script></span>是被平方后的结果，<span><span class="MathJax_Preview">y2</span><script type="math/tex">y2</script></span>是被立方后的结果，这就是说，函数会真的返回2个值。</p>
+<p>有些同学可能会根据你使用的编程语言，比如你们可能熟悉的<strong>C</strong>或<strong>C++</strong>，通常情况下，认为作为函数返回值只能是一个值，但<strong>Octave</strong> 的语法结构就不一样，可以返回多个值。</p>
+<p>如果我键入 <code>[a,b] = SquareAndCubeThisNumber(5)</code>，然后，<span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span>就等于25，<span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span> 就等于5的立方125。</p>
+<p>所以说如果你需要定义一个函数并且返回多个值，这一点常常会带来很多方便。</p>
+<p>最后，我来给大家演示一下一个更复杂一点的函数的例子。</p>
+<p>比方说，我有一个数据集，像这样，数据点为[1,1], [2,2],[3,3]，我想做的事是定义一个 <strong>Octave</strong> 函数来计算代价函数 <span><span class="MathJax_Preview">J(\theta)</span><script type="math/tex">J(\theta)</script></span>，就是计算不同 <span><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span>值所对应的代价函数值<span><span class="MathJax_Preview">J</span><script type="math/tex">J</script></span>。</p>
+<p>首先让我们把数据放到 <strong>Octave</strong> 里，我把我的矩阵设置为<code>X = [1 1; 1 2; 1 3];</code></p>
+<p><img alt="" src="../../images/3c857152ef3f0d6b374e4863289d1c60.png" /></p>
+<p>请仔细看一下这个函数的定义，确保你明白了定义中的每一步。</p>
+<p><img alt="" src="../../images/e01d6da07890e32d46d0616741a3fe64.png" /></p>
+<p>现在当我在 <strong>Octave</strong> 里运行时，我键入 <code>J = costFunctionJ (X, y, theta)</code>，它就计算出 <span><span class="MathJax_Preview">J</span><script type="math/tex">J</script></span>等于0，这是因为如果我的数据集<span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> 为 [1;2;3]， <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span> 也为 [1;2;3] 然后设置 <span><span class="MathJax_Preview">\theta_0</span><script type="math/tex">\theta_0</script></span> 等于0，<span><span class="MathJax_Preview">\theta_1</span><script type="math/tex">\theta_1</script></span>等于1，这给了我恰好45度的斜线，这条线是可以完美拟合我的数据集的。</p>
+<p>而相反地，如果我设置<span><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span> 等于[0;0]，那么这个假设就是0是所有的预测值，和刚才一样，设置<span><span class="MathJax_Preview">\theta_0</span><script type="math/tex">\theta_0</script></span> = 0，<span><span class="MathJax_Preview">\theta_1</span><script type="math/tex">\theta_1</script></span>也等于0，然后我计算的代价函数，结果是2.333。实际上，他就等于1的平方，也就是第一个样本的平方误差，加上2的平方，加上3的平方，然后除以<span><span class="MathJax_Preview">2m</span><script type="math/tex">2m</script></span>，也就是训练样本数的两倍，这就是2.33。</p>
+<p><img alt="" src="../../images/885b5d19c33f545292ccc1b69976c789.png" /></p>
+<p>因此这也反过来验证了我们这里的函数，计算出了正确的代价函数。这些就是我们用简单的训练样本尝试的几次试验，这也可以作为我们对定义的代价函数<span><span class="MathJax_Preview">J</span><script type="math/tex">J</script></span>进行了完整性检查。确实是可以计算出正确的代价函数的。至少基于这里的 <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>和 <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>是成立的。也就是我们这几个简单的训练集，至少是成立的。</p>
+<p>现在你知道如何在 <strong>Octave</strong> 环境下写出正确的控制语句，比如 <strong>for 循环</strong>、<strong>while 循环</strong>和 <strong>if语句</strong>，以及如何定义和使用函数。</p>
+<p>在接下来的<strong>Octave</strong> 教程视频里，我会讲解一下向量化，这是一种可以使你的 <strong>Octave</strong>程序运行非常快的思想。</p>
+<h3 id="56">5.6 向量化<a class="headerlink" href="#56" title="Permanent link">&para;</a></h3>
+<p>参考视频: 5 - 6 - Vectorization (14 min).mkv</p>
+<p>在这段视频中，我将介绍有关向量化的内容，无论你是用<strong>Octave</strong>，还是别的语言，比如<strong>MATLAB</strong>或者你正在用<strong>Python</strong>、<strong>NumPy</strong> 或 <strong>Java C C++</strong>，所有这些语言都具有各种线性代数库，这些库文件都是内置的，容易阅读和获取，他们通常写得很好，已经经过高度优化，通常是数值计算方面的博士或者专业人士开发的。</p>
+<p>而当你实现机器学习算法时，如果你能好好利用这些线性代数库，或者数值线性代数库，并联合调用它们，而不是自己去做那些函数库可以做的事情。如果是这样的话，那么通常你会发现：首先，这样更有效，也就是说运行速度更快，并且更好地利用你的计算机里可能有的一些并行硬件系统等等；其次，这也意味着你可以用更少的代码来实现你需要的功能。因此，实现的方式更简单，代码出现问题的有可能性也就越小。</p>
+<p>举个具体的例子：与其自己写代码做矩阵乘法。如果你只在<strong>Octave</strong>中输入<span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span>乘以<span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span>就是一个非常有效的两个矩阵相乘的程序。有很多例子可以说明，如果你用合适的向量化方法来实现，你就会有一个简单得多，也有效得多的代码。</p>
+<p>让我们来看一些例子：这是一个常见的线性回归假设函数：<span><span class="MathJax_Preview">{{h}_{\theta }}(x)=\sum\limits_{j=0}^{n}{{{\theta }_{j}}{{x}_{j}}}</span><script type="math/tex">{{h}_{\theta }}(x)=\sum\limits_{j=0}^{n}{{{\theta }_{j}}{{x}_{j}}}</script></span></p>
+<p>如果你想要计算<span><span class="MathJax_Preview">h_\theta(x)</span><script type="math/tex">h_\theta(x)</script></span> ，注意到右边是求和，那么你可以自己计算<span><span class="MathJax_Preview">j = 0</span><script type="math/tex">j = 0</script></span> 到$ j = n$ 的和。但换另一种方式来想想，把 <span><span class="MathJax_Preview">h_\theta(x)</span><script type="math/tex">h_\theta(x)</script></span> 看作<span><span class="MathJax_Preview">\theta^Tx</span><script type="math/tex">\theta^Tx</script></span>，那么你就可以写成两个向量的内积，其中<span><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span>就是<span><span class="MathJax_Preview">\theta_0</span><script type="math/tex">\theta_0</script></span>、<span><span class="MathJax_Preview">\theta_1</span><script type="math/tex">\theta_1</script></span>、<span><span class="MathJax_Preview">\theta_2</span><script type="math/tex">\theta_2</script></span>，如果你有两个特征量，如果 <span><span class="MathJax_Preview">n = 2</span><script type="math/tex">n = 2</script></span>，并且如果你把 <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> 看作<span><span class="MathJax_Preview">x_0</span><script type="math/tex">x_0</script></span>、<span><span class="MathJax_Preview">x_1</span><script type="math/tex">x_1</script></span>、<span><span class="MathJax_Preview">x_2</span><script type="math/tex">x_2</script></span>，这两种思考角度，会给你两种不同的实现方式。</p>
+<p><img alt="" src="../../images/7fefb92d8680e4a15f947cd2ca24a9ac.png" /></p>
+<p>比如说，这是未向量化的代码实现方式：</p>
+<p><img alt="" src="../../images/125c07019cb39675085fe3b80b85fca5.png" /></p>
+<p>计算<span><span class="MathJax_Preview">h_\theta(x)</span><script type="math/tex">h_\theta(x)</script></span>是未向量化的，我们可能首先要初始化变量 <span><span class="MathJax_Preview">prediction</span><script type="math/tex">prediction</script></span> 的值为0.0，而这个变量<span><span class="MathJax_Preview">prediction</span><script type="math/tex">prediction</script></span> 的最终结果就是<span><span class="MathJax_Preview">h_\theta(x)</span><script type="math/tex">h_\theta(x)</script></span>，然后我要用一个 <strong>for</strong> 循环，<span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> 取值 0 到<span><span class="MathJax_Preview">n+1</span><script type="math/tex">n+1</script></span>，变量<span><span class="MathJax_Preview">prediction</span><script type="math/tex">prediction</script></span> 每次就通过自身加上$ theta(j) $乘以 <span><span class="MathJax_Preview">x(j)</span><script type="math/tex">x(j)</script></span>更新值，这个就是算法的代码实现。</p>
+<p>顺便我要提醒一下，这里的向量我用的下标是0，所以我有<span><span class="MathJax_Preview">\theta_0</span><script type="math/tex">\theta_0</script></span>、<span><span class="MathJax_Preview">\theta_1</span><script type="math/tex">\theta_1</script></span>、<span><span class="MathJax_Preview">\theta_2</span><script type="math/tex">\theta_2</script></span>，但因为<strong>MATLAB</strong>的下标从1开始，在 <strong>MATLAB</strong> 中<span><span class="MathJax_Preview">\theta_0</span><script type="math/tex">\theta_0</script></span>，我们可能会用 <span><span class="MathJax_Preview">theta(1)</span><script type="math/tex">theta(1)</script></span> 来表示，这第二个元素最后就会变成，<span><span class="MathJax_Preview">theta(2</span><script type="math/tex">theta(2</script></span>) 而第三个元素，最终可能就用<span><span class="MathJax_Preview">theta(3)</span><script type="math/tex">theta(3)</script></span>表示，因为<strong>MATLAB</strong>中的下标从1开始，这就是为什么这里我的 <strong>for 循环</strong>，<span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>取值从 1 直到<span><span class="MathJax_Preview">n+1</span><script type="math/tex">n+1</script></span>，而不是从 0 到 <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>。这是一个未向量化的代码实现方式，我们用一个 <strong>for 循环</strong>对 <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> 个元素进行加和。</p>
+<p>作为比较，接下来是向量化的代码实现：</p>
+<p><img alt="" src="../../images/829e153c119919f80c058d1bc703a08b.png" /></p>
+<p>你把x和<span><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span>看做向量，而你只需要令变量<span><span class="MathJax_Preview">prediction</span><script type="math/tex">prediction</script></span>等于<span><span class="MathJax_Preview">theta</span><script type="math/tex">theta</script></span>转置乘以<span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>，你就可以这样计算。与其写所有这些for循环的代码，你只需要一行代码，这行代码就是利用 <strong>Octave</strong> 的高度优化的数值，线性代数算法来计算两个向量<span><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span>以及<span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>的内积，这样向量化的实现更简单，它运行起来也将更加高效。这就是 <strong>Octave</strong> 所做的而向量化的方法，在其他编程语言中同样可以实现。</p>
+<p>让我们来看一个<strong>C++</strong> 的例子：</p>
+<p><img alt="" src="../../images/987fc9372da3b167fd16d7a19722405b.png" /></p>
+<p>与此相反，使用较好的<strong>C++</strong>数值线性代数库，你可以写出像右边这样的代码，因此取决于你的数值线性代数库的内容。你只需要在<strong>C++</strong>中将两个向量相乘，根据你所使用的数值和线性代数库的使用细节的不同，你最终使用的代码表达方式可能会有些许不同，但是通过一个库来做内积，你可以得到一段更简单、更有效的代码。</p>
+<p>现在，让我们来看一个更为复杂的例子，这是线性回归算法梯度下降的更新规则：</p>
+<p><img alt="" src="../../images/6ad266a30f955db5b905905670aabfc5.png" /></p>
+<p>我们用这条规则对$ j$ 等于 0、1、2等等的所有值，更新对象<span><span class="MathJax_Preview">\theta_j</span><script type="math/tex">\theta_j</script></span>，我只是用<span><span class="MathJax_Preview">\theta_0</span><script type="math/tex">\theta_0</script></span>、<span><span class="MathJax_Preview">\theta_1</span><script type="math/tex">\theta_1</script></span>、<span><span class="MathJax_Preview">\theta_2</span><script type="math/tex">\theta_2</script></span>来写方程，假设我们有两个特征量，所以<span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>等于2，这些都是我们需要对<span><span class="MathJax_Preview">\theta_0</span><script type="math/tex">\theta_0</script></span>、<span><span class="MathJax_Preview">\theta_1</span><script type="math/tex">\theta_1</script></span>、<span><span class="MathJax_Preview">\theta_2</span><script type="math/tex">\theta_2</script></span>进行更新，这些都应该是同步更新，我们用一个向量化的代码实现，这里是和之前相同的三个方程，只不过写得小一点而已。</p>
+<p>你可以想象实现这三个方程的方式之一，就是用一个 <strong>for 循环</strong>，就是让 <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>等于0、等于1、等于2，来更新<span><span class="MathJax_Preview">\theta_j</span><script type="math/tex">\theta_j</script></span>。但让我们用向量化的方式来实现，看看我们是否能够有一个更简单的方法。基本上用三行代码或者一个<strong>for 循环</strong>，一次实现这三个方程。让我们来看看怎样能用这三步，并将它们压缩成一行向量化的代码来实现。做法如下：</p>
+<p>我打算把<span><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span>看做一个向量，然后我用<span><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span>-<span><span class="MathJax_Preview">\alpha</span><script type="math/tex">\alpha</script></span> 乘以某个别的向量<span><span class="MathJax_Preview">\delta</span><script type="math/tex">\delta</script></span> 来更新<span><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span>。</p>
+<p>这里的 <span><span class="MathJax_Preview">\delta</span><script type="math/tex">\delta</script></span>  等于</p>
+<p><img alt="" src="../../images/fa662ec6d5703d85c314f5e4792a7468.png" /></p>
+<p>让我解释一下是怎么回事：我要把<span><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span>看作一个向量，有一个 <span><span class="MathJax_Preview">n+1</span><script type="math/tex">n+1</script></span> 维向量，<span><span class="MathJax_Preview">\alpha</span><script type="math/tex">\alpha</script></span> 是一个实数，<span><span class="MathJax_Preview">\delta</span><script type="math/tex">\delta</script></span>在这里是一个向量。</p>
+<p><img alt="" src="../../images/20bc912bae44e66125f8bfcec6e720c7.png" /></p>
+<p>所以这个减法运算是一个向量减法，因为 <span><span class="MathJax_Preview">\alpha</span><script type="math/tex">\alpha</script></span> 乘以 δ是一个向量，所以<span><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span>就是<span><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span> - <span><span class="MathJax_Preview">\alpha \delta</span><script type="math/tex">\alpha \delta</script></span>得到的向量。</p>
+<p>那么什么是向量 <span><span class="MathJax_Preview">\delta</span><script type="math/tex">\delta</script></span> 呢 ?</p>
+<p><img alt="" src="../../images/541b9f097a8e1357c2a75e4f64e53b54.png" /></p>
+<p><span><span class="MathJax_Preview">X^{(i)}</span><script type="math/tex">X^{(i)}</script></span>是一个向量</p>
+<p><img alt="" src="../../images/0a03d239f2f1d1af057d492bcce276f4.png" /></p>
+<p>你就会得到这些不同的式子，然后作加和。</p>
+<p><img alt="" src="../../images/8d10103bf172a889090690a00037ffa1.png" /></p>
+<p>实际上，在以前的一个小测验，如果你要解这个方程，我们说过为了向量化这段代码，我们会令<code>u = 2v +5w</code>因此，我们说向量<span><span class="MathJax_Preview">u</span><script type="math/tex">u</script></span>等于2乘以向量<span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>加上5乘以向量<span><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span>。用这个例子说明，如何对不同的向量进行相加，这里的求和是同样的道理。</p>
+<p><img alt="" src="../../images/c84012101afc6836a3396893695d9669.png" /></p>
+<p>这就是为什么我们能够向量化地实现线性回归。</p>
+<p>所以，我希望步骤是有逻辑的。请务必看视频，并且保证你确实能理解它。如果你实在不能理解它们数学上等价的原因，你就直接实现这个算法，也是能得到正确答案的。所以即使你没有完全理解为何是等价的，如果只是实现这种算法，你仍然能实现线性回归算法。如果你能弄清楚为什么这两个步骤是等价的，那我希望你可以对向量化有一个更好的理解，如果你在实现线性回归的时候，使用一个或两个以上的特征量。</p>
+<p>有时我们使用几十或几百个特征量来计算线性归回，当你使用向量化地实现线性回归，通常运行速度就会比你以前用你的<strong>for循环</strong>快的多，也就是自己写代码更新<span><span class="MathJax_Preview">\theta_0</span><script type="math/tex">\theta_0</script></span>、<span><span class="MathJax_Preview">\theta_1</span><script type="math/tex">\theta_1</script></span>、<span><span class="MathJax_Preview">\theta_2</span><script type="math/tex">\theta_2</script></span>。</p>
+<p>因此使用向量化实现方式，你应该是能够得到一个高效得多的线性回归算法。而当你向量化我们将在之后的课程里面学到的算法，这会是一个很好的技巧，无论是对于Octave 或者一些其他的语言 如C++、Java 来让你的代码运行得更高效。</p>
+<h3 id="57">5.7 工作和提交的编程练习<a class="headerlink" href="#57" title="Permanent link">&para;</a></h3>
+<p>参考视频: 5 - 7 - Working on and Submitting Programming Exercises (4 min).mkv</p>
+<p>在这段视频中，我想很快地介绍一下这门课程做作业的流程，以及如何使用作业提交系统。这个提交系统可以即时检验你的机器学习程序答案是否正确。</p>
+<p><img alt="" src="../../images/feddafffd2937841222e6e8e2cfb9401.png" /></p>
+<p>在'ml-class-ex1'目录中，我们提供了大量的文件，其中有一些需要由你自己来编辑，因此第一个文件应该符合编程练习中pdf文件的要求，其中一个我们要求你编写的文件是warmUpExercise.m这个文件，这个文件只是为了确保你熟悉提交系统。</p>
+<p>你需要做的就是提交一个5×5的矩阵，就是<code>A = eye(5)</code>这将修改该函数以产生5×5的单位矩阵，现在<code>warmUpExercise()</code>这个方程就实现了返回5x5的单位矩阵，将它保存一下，所以我已经完成了作业的第一部分。</p>
+<p><img alt="" src="../../images/d29dc95c23570991ae49d262ce351d7e.png" /></p>
+<p>现在回到我的 <strong>Octave</strong> 窗口，现在来到我的目录<strong>C:\Users\ang\Desktop\ml-class-ex1</strong>如果我想确保我已经实现了程序 像这样输入<code>warmUpExercise()</code>好了它返回了我们用刚才写的代码创建的一个5x5的单位矩阵。</p>
+<p><img alt="" src="../../images/c1db5363de0286d223444d6a9225a393.png" /></p>
+<p>我现在可以按如下步骤提交代码，我要在这里目录下键入<code>submit()</code>。我要提交第一部分 所以我选择输入'<code>1</code>'。这时它问我的电子邮件地址，我们打开课程网站，输入用户名密码。</p>
+<p><img alt="" src="../../images/3663f8b6d0612a40204450dcf0df2257.png" /></p>
+<p>按下回车键，它连接到服务器，并将其提交，然后它就会立刻告诉你：恭喜您！已成功完成作业1第1部分。这就确认了你已经做对了第一部分练习，如果你提交的答案不正确，那么它会给你一条消息，说明你没有完全答对，您还可以继续使用此提交密码，也可以生成新密码。你的密码是否会显示出来取决于你使用的操作系统。
+这就是提交作业的方法，你完成家庭作业的时候，我希望你都能答对。 </p>
+                
+                  
+                
+              
+              
+                
+
+
+  <h2 id="__comments">评论</h2>
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://hai5g.cn/aiwiki/Coursera_ML_AndrewNg/markdown/week2/";
+      this.page.identifier =
+        "/Coursera_ML_AndrewNg/markdown/week2/";
+    };
+    (function() {
+      var d = document, s = d.createElement("script");
+      s.src = "//AI-Wiki.disqus.com/embed.js";
+      s.setAttribute("data-timestamp", +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../week1/" title="week1" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  后退
+                </span>
+                week1
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../week3/" title="week3" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  前进
+                </span>
+                week3
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 AI Wiki Team
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.39abc4af.js"></script>
+      
+        
+        
+          
+          <script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/ethantw/Han@3.3.0/dist/han.min.js"></script>
+      
+        <script src="../../../_static/js/extra.js?v=10"></script>
+      
+        <script src="https://cdnjs.loli.net/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

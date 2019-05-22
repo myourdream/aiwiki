@@ -1,0 +1,5162 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="AI Wiki 是一个编程竞赛知识整合站点，提供有趣又实用的编程竞赛知识以及其他有帮助的内容，帮助广大编程竞赛爱好者更快更深入地学习编程竞赛">
+      
+      
+        <link rel="canonical" href="https://hai5g.cn/aiwiki/Coursera_ML_AndrewNg/markdown/week3/">
+      
+      
+        <meta name="author" content="AI Wiki Team">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.2.0">
+    
+    
+      
+        <title>week3 - AI Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.750b69bd.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.224b79ff.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:300,400,400i,700|Fira+Mono">
+        <style>body,input{font-family:"Fira Sans","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Fira Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+      <link rel="manifest" href="../../../manifest.webmanifest">
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ah@1.5.0/han.min.css">
+    
+      <link rel="stylesheet" href="../../../_static/css/extra.css?v=11">
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="red">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#3" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://hai5g.cn/aiwiki" title="AI Wiki" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">school</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              AI Wiki
+            </span>
+            <span class="md-header-nav__topic">
+              week3
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/myourdream/aiwiki/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    aiwiki
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../.." title="简介" class="md-tabs__link">
+          简介
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../SUMMARY/" title="Machine Learning" class="md-tabs__link md-tabs__link--active">
+          Machine Learning
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../qa500/" title="深度学习500问" class="md-tabs__link">
+          深度学习500问
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../dp/" title="经典算法" class="md-tabs__link">
+          经典算法
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../string/" title="集成学习算法" class="md-tabs__link">
+          集成学习算法
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../math/" title="CNN" class="md-tabs__link">
+          CNN
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../ds/" title="RNN" class="md-tabs__link">
+          RNN
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../graph/" title="GAN" class="md-tabs__link">
+          GAN
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../geometry/" title="计算机视觉" class="md-tabs__link">
+          计算机视觉
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../misc/" title="NLP" class="md-tabs__link">
+          NLP
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../misc/" title="推荐系统" class="md-tabs__link">
+          推荐系统
+        </a>
+      
+    </li>
+  
+
+      
+        
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://hai5g.cn/aiwiki" title="AI Wiki" class="md-nav__button md-logo">
+      
+        <i class="md-icon">school</i>
+      
+    </a>
+    AI Wiki
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/myourdream/aiwiki/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    aiwiki
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      简介
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        简介
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="Getting Started" class="md-nav__link">
+      Getting Started
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/AI学习路线/" title="AI学习路线" class="md-nav__link">
+      AI学习路线
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/mode/" title="AI 赛事与赛制" class="md-nav__link">
+      AI 赛事与赛制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/icpc/" title="ICPC/CCPC 赛事与赛制" class="md-nav__link">
+      ICPC/CCPC 赛事与赛制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/resources/" title="学习资源" class="md-nav__link">
+      学习资源
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/common-mistakes/" title="常见错误" class="md-nav__link">
+      常见错误
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/common-tricks/" title="常见技巧" class="md-nav__link">
+      常见技巧
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/non-traditional/" title="非传统题" class="md-nav__link">
+      非传统题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-9" type="checkbox" id="nav-1-9">
+    
+    <label class="md-nav__link" for="nav-1-9">
+      工具软件
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-1-9">
+        工具软件
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/judgers/" title="评测工具" class="md-nav__link">
+      评测工具
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/editors/" title="编辑工具" class="md-nav__link">
+      编辑工具
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/wsl/" title="WSL (Windows 10)" class="md-nav__link">
+      WSL (Windows 10)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/spj/" title="Special Judge" class="md-nav__link">
+      Special Judge
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-9-5" type="checkbox" id="nav-1-9-5">
+    
+    <label class="md-nav__link" for="nav-1-9-5">
+      Testlib
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-1-9-5">
+        Testlib
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/testlib/" title="Testlib 简介" class="md-nav__link">
+      Testlib 简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/testlib/general/" title="通用" class="md-nav__link">
+      通用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/testlib/generator/" title="Generator" class="md-nav__link">
+      Generator
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/testlib/validator/" title="Validator" class="md-nav__link">
+      Validator
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/testlib/interactor/" title="Interactor" class="md-nav__link">
+      Interactor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/testlib/checker/" title="Checker" class="md-nav__link">
+      Checker
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/docker-deploy/" title="Docker 部署" class="md-nav__link">
+      Docker 部署
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/about/" title="关于本项目" class="md-nav__link">
+      关于本项目
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/faq/" title="F.A.Q." class="md-nav__link">
+      F.A.Q.
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Machine Learning
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Machine Learning
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../SUMMARY/" title="简介" class="md-nav__link">
+      简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../math/" title="数学基础" class="md-nav__link">
+      数学基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../week1/" title="week1" class="md-nav__link">
+      week1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../week2/" title="week2" class="md-nav__link">
+      week2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        week3
+      </label>
+    
+    <a href="./" title="week3" class="md-nav__link md-nav__link--active">
+      week3
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#logistic-regression" title="六、逻辑回归(Logistic Regression)" class="md-nav__link">
+    六、逻辑回归(Logistic Regression)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" title="6.1 分类问题" class="md-nav__link">
+    6.1 分类问题
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" title="6.2 假说表示" class="md-nav__link">
+    6.2 假说表示
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63" title="6.3 判定边界" class="md-nav__link">
+    6.3 判定边界
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64" title="6.4 代价函数" class="md-nav__link">
+    6.4 代价函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65" title="6.5 简化的成本函数和梯度下降" class="md-nav__link">
+    6.5 简化的成本函数和梯度下降
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#66" title="6.6 高级优化" class="md-nav__link">
+    6.6 高级优化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#67" title="6.7 多类别分类：一对多" class="md-nav__link">
+    6.7 多类别分类：一对多
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regularization" title="七、正则化(Regularization)" class="md-nav__link">
+    七、正则化(Regularization)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71" title="7.1 过拟合的问题" class="md-nav__link">
+    7.1 过拟合的问题
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72" title="7.2 代价函数" class="md-nav__link">
+    7.2 代价函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73" title="7.3 正则化线性回归" class="md-nav__link">
+    7.3 正则化线性回归
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74" title="7.4 正则化的逻辑回归模型" class="md-nav__link">
+    7.4 正则化的逻辑回归模型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="评论" class="md-nav__link md-nav__link--active">
+            评论
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../week4/" title="week4" class="md-nav__link">
+      week4
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../week5/" title="week5" class="md-nav__link">
+      week5
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../week6/" title="week6" class="md-nav__link">
+      week6
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../week7/" title="week7" class="md-nav__link">
+      week7
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../week8/" title="week8" class="md-nav__link">
+      week8
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../week9/" title="week9" class="md-nav__link">
+      week9
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../week10/" title="week10" class="md-nav__link">
+      week10
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      深度学习500问
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        深度学习500问
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/" title="简介" class="md-nav__link">
+      简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/content/" title="目录" class="md-nav__link">
+      目录
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch01_math/ch01_math/" title="第一章_数学基础" class="md-nav__link">
+      第一章_数学基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch02_机器学习基础/第二章_机器学习基础/" title="第二章_机器学习基础" class="md-nav__link">
+      第二章_机器学习基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch03_深度学习基础/第三章_深度学习基础/" title="第三章_深度学习基础" class="md-nav__link">
+      第三章_深度学习基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch04_经典网络/第四章_经典网络/" title="第四章_经典网络" class="md-nav__link">
+      第四章_经典网络
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch05_卷积神经网络(CNN)/第五章 卷积神经网络（CNN）/" title="第五章 卷积神经网络（CNN）" class="md-nav__link">
+      第五章 卷积神经网络（CNN）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch06_循环神经网络(RNN)/第六章_循环神经网络(RNN)/" title="第六章_循环神经网络(RNN)" class="md-nav__link">
+      第六章_循环神经网络(RNN)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch07_生成对抗网络(GAN)/ch7/" title="第七章_生成对抗网络(GAN)" class="md-nav__link">
+      第七章_生成对抗网络(GAN)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch08_目标检测/第八章_目标检测/" title="第八章_目标检测" class="md-nav__link">
+      第八章_目标检测
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch09_图像分割/第九章_图像分割/" title="第九章_图像分割" class="md-nav__link">
+      第九章_图像分割
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch10_强化学习/第十章_强化学习/" title="第十章_强化学习" class="md-nav__link">
+      第十章_强化学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch11_迁移学习/第十一章_迁移学习/" title="第十一章_迁移学习" class="md-nav__link">
+      第十一章_迁移学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch12_网络搭建及训练/第十二章_网络搭建及训练/" title="第十二章_网络搭建及训练" class="md-nav__link">
+      第十二章_网络搭建及训练
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch13_优化算法/第十三章_优化算法/" title="第十三章_优化算法" class="md-nav__link">
+      第十三章_优化算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch14_超参数调整/第十四章_超参数调整/" title="第十四章_超参数调整" class="md-nav__link">
+      第十四章_超参数调整
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch15_GPU和框架选型/第十五章_异构运算、GPU及框架选型/" title="第十五章_异构运算、GPU及框架选型" class="md-nav__link">
+      第十五章_异构运算、GPU及框架选型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch16_自然语言处理(NLP)/第十六章_NLP/" title="第十六章_NLP" class="md-nav__link">
+      第十六章_NLP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch17_模型压缩、加速及移动端部署/第十七章_模型压缩、加速及移动端部署/" title="第十七章_模型压缩、加速及移动端部署" class="md-nav__link">
+      第十七章_模型压缩、加速及移动端部署
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch18_后端架构选型、离线及实时计算/第十八章_后端架构选型、离线及实时计算/" title="第十八章_后端架构选型、离线及实时计算" class="md-nav__link">
+      第十八章_后端架构选型、离线及实时计算
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch18_后端架构选型及应用场景/第十八章_后端架构选型及应用场景/" title="第十八章_后端架构选型及应用场景" class="md-nav__link">
+      第十八章_后端架构选型及应用场景
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      经典算法
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        经典算法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/" title="动态规划部分简介" class="md-nav__link">
+      动态规划部分简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/memo/" title="记忆化搜索" class="md-nav__link">
+      记忆化搜索
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/knapsack/" title="背包 DP" class="md-nav__link">
+      背包 DP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/interval/" title="区间 DP" class="md-nav__link">
+      区间 DP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/dag/" title="DAG 上的 DP" class="md-nav__link">
+      DAG 上的 DP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/tree/" title="树形 DP" class="md-nav__link">
+      树形 DP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/state/" title="状压 DP" class="md-nav__link">
+      状压 DP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/number/" title="数位 DP" class="md-nav__link">
+      数位 DP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/plug/" title="插头 DP" class="md-nav__link">
+      插头 DP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-10" type="checkbox" id="nav-4-10">
+    
+    <label class="md-nav__link" for="nav-4-10">
+      DP 优化
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-10">
+        DP 优化
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/optimizations/binary-knapsack/" title="二进制分组解多重背包" class="md-nav__link">
+      二进制分组解多重背包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/optimizations/monotonous-queue-stack/" title="单调队列/单调栈优化" class="md-nav__link">
+      单调队列/单调栈优化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/optimizations/convex-hull-optimization/" title="斜率优化" class="md-nav__link">
+      斜率优化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/optimizations/knuth-yao-quadrangle-inequality/" title="四边形不等式优化" class="md-nav__link">
+      四边形不等式优化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/optimizations/state-optimization/" title="状态设计优化" class="md-nav__link">
+      状态设计优化
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../dp/misc/" title="其它 DP 方法" class="md-nav__link">
+      其它 DP 方法
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      集成学习算法
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        集成学习算法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/" title="字符串部分简介" class="md-nav__link">
+      字符串部分简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/lib-func/" title="标准库" class="md-nav__link">
+      标准库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/match/" title="字符串匹配" class="md-nav__link">
+      字符串匹配
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/hash/" title="哈希" class="md-nav__link">
+      哈希
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/prefix-function/" title="前缀函数与 KMP 算法" class="md-nav__link">
+      前缀函数与 KMP 算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/trie/" title="字典树 (Trie)" class="md-nav__link">
+      字典树 (Trie)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/pam/" title="回文自动机" class="md-nav__link">
+      回文自动机
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/sa/" title="后缀数组 (SA)" class="md-nav__link">
+      后缀数组 (SA)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/ac-automaton/" title="AC 自动机" class="md-nav__link">
+      AC 自动机
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/sam/" title="后缀自动机 (SAM)" class="md-nav__link">
+      后缀自动机 (SAM)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/suffix-tree/" title="后缀树" class="md-nav__link">
+      后缀树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/manacher/" title="Manacher" class="md-nav__link">
+      Manacher
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/minimal-string/" title="最小表示法" class="md-nav__link">
+      最小表示法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../string/z-function/" title="Z 函数（扩展 KMP）" class="md-nav__link">
+      Z 函数（扩展 KMP）
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      CNN
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        CNN
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/" title="数学部分简介" class="md-nav__link">
+      数学部分简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/base/" title="进制" class="md-nav__link">
+      进制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/bit/" title="位运算" class="md-nav__link">
+      位运算
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/bignum/" title="高精度" class="md-nav__link">
+      高精度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/quick-pow/" title="快速幂" class="md-nav__link">
+      快速幂
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-6" type="checkbox" id="nav-6-6">
+    
+    <label class="md-nav__link" for="nav-6-6">
+      整除及其性质
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-6">
+        整除及其性质
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/prime/" title="素数" class="md-nav__link">
+      素数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/gcd/" title="最大公约数" class="md-nav__link">
+      最大公约数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/euler/" title="欧拉函数" class="md-nav__link">
+      欧拉函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/sieve/" title="筛法" class="md-nav__link">
+      筛法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/fermat/" title="费马小定理" class="md-nav__link">
+      费马小定理
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-7" type="checkbox" id="nav-6-7">
+    
+    <label class="md-nav__link" for="nav-6-7">
+      同余方程相关
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-7">
+        同余方程相关
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/bezouts/" title="裴蜀定理" class="md-nav__link">
+      裴蜀定理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/inverse/" title="乘法逆元" class="md-nav__link">
+      乘法逆元
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/linear-equation/" title="线性同余方程" class="md-nav__link">
+      线性同余方程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/crt/" title="中国剩余定理" class="md-nav__link">
+      中国剩余定理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/bsgs/" title="BSGS" class="md-nav__link">
+      BSGS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/primitive-root/" title="原根" class="md-nav__link">
+      原根
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-8" type="checkbox" id="nav-6-8">
+    
+    <label class="md-nav__link" for="nav-6-8">
+      线性代数
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-8">
+        线性代数
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/matrix/" title="矩阵" class="md-nav__link">
+      矩阵
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/gauss/" title="高斯消元" class="md-nav__link">
+      高斯消元
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/basis/" title="线性基" class="md-nav__link">
+      线性基
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/complex/" title="复数" class="md-nav__link">
+      复数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/dictionary/" title="分段打表" class="md-nav__link">
+      分段打表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-11" type="checkbox" id="nav-6-11">
+    
+    <label class="md-nav__link" for="nav-6-11">
+      数论函数相关
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-11">
+        数论函数相关
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/mobius/" title="莫比乌斯反演" class="md-nav__link">
+      莫比乌斯反演
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/du-sieves/" title="杜教筛" class="md-nav__link">
+      杜教筛
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-12" type="checkbox" id="nav-6-12">
+    
+    <label class="md-nav__link" for="nav-6-12">
+      多项式
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-12">
+        多项式
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/poly/intro/" title="多项式部分简介" class="md-nav__link">
+      多项式部分简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/poly/lagrange-poly/" title="拉格朗日插值" class="md-nav__link">
+      拉格朗日插值
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/poly/fft/" title="快速傅里叶变换" class="md-nav__link">
+      快速傅里叶变换
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/poly/ntt/" title="快速数论变换" class="md-nav__link">
+      快速数论变换
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/poly/fwt/" title="快速沃尔什变换" class="md-nav__link">
+      快速沃尔什变换
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/poly/inv/" title="多项式求逆" class="md-nav__link">
+      多项式求逆
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/poly/sqrt/" title="多项式开方" class="md-nav__link">
+      多项式开方
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/poly/div-mod/" title="多项式除法|取模" class="md-nav__link">
+      多项式除法|取模
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/poly/ln-exp/" title="多项式对数函数|指数函数" class="md-nav__link">
+      多项式对数函数|指数函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/poly/newton/" title="多项式牛顿迭代" class="md-nav__link">
+      多项式牛顿迭代
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/poly/multipoint-eval-interpolation/" title="多项式多点求值|快速插值" class="md-nav__link">
+      多项式多点求值|快速插值
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/poly/tri-func/" title="多项式三角函数" class="md-nav__link">
+      多项式三角函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/poly/inv-tri-func/" title="多项式反三角函数" class="md-nav__link">
+      多项式反三角函数
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-13" type="checkbox" id="nav-6-13">
+    
+    <label class="md-nav__link" for="nav-6-13">
+      组合数学
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-13">
+        组合数学
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/combination/" title="排列组合" class="md-nav__link">
+      排列组合
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/catalan/" title="卡特兰数" class="md-nav__link">
+      卡特兰数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/stirling/" title="斯特林数" class="md-nav__link">
+      斯特林数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/cantor/" title="康托展开" class="md-nav__link">
+      康托展开
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/inclusion-exclusion-principle/" title="容斥原理" class="md-nav__link">
+      容斥原理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/drawer-principle/" title="抽屉原理" class="md-nav__link">
+      抽屉原理
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/expectation/" title="概率 & 期望" class="md-nav__link">
+      概率 & 期望
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/permutation-group/" title="置换群" class="md-nav__link">
+      置换群
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/integral/" title="数值积分" class="md-nav__link">
+      数值积分
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/linear-programming/" title="线性规划" class="md-nav__link">
+      线性规划
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/game-theory/" title="博弈论" class="md-nav__link">
+      博弈论
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/misc/" title="杂项" class="md-nav__link">
+      杂项
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      RNN
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        RNN
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/" title="数据结构部分简介" class="md-nav__link">
+      数据结构部分简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
+    
+    <label class="md-nav__link" for="nav-7-2">
+      STL
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-2">
+        STL
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/stl/" title="STL 简介" class="md-nav__link">
+      STL 简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/stl/vector/" title="vector" class="md-nav__link">
+      vector
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/stl/priority_queue/" title="priority_queue" class="md-nav__link">
+      priority_queue
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/stl/map/" title="map" class="md-nav__link">
+      map
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/stl/bitset/" title="bitset" class="md-nav__link">
+      bitset
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-3" type="checkbox" id="nav-7-3">
+    
+    <label class="md-nav__link" for="nav-7-3">
+      pb_ds
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-3">
+        pb_ds
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/pb-ds/" title="pb_ds 简介" class="md-nav__link">
+      pb_ds 简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/pb-ds/priority-queue/" title="__gnu_pbds::priority_queue" class="md-nav__link">
+      __gnu_pbds::priority_queue
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/stack/" title="栈" class="md-nav__link">
+      栈
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/queue/" title="队列" class="md-nav__link">
+      队列
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/linked-list/" title="链表" class="md-nav__link">
+      链表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/hash/" title="哈希表" class="md-nav__link">
+      哈希表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/dsu/" title="并查集" class="md-nav__link">
+      并查集
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-9" type="checkbox" id="nav-7-9">
+    
+    <label class="md-nav__link" for="nav-7-9">
+      堆
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-9">
+        堆
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/heap/" title="堆简介" class="md-nav__link">
+      堆简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/binary-heap/" title="二叉堆" class="md-nav__link">
+      二叉堆
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/pairing-heap/" title="配对堆" class="md-nav__link">
+      配对堆
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-10" type="checkbox" id="nav-7-10">
+    
+    <label class="md-nav__link" for="nav-7-10">
+      块状数据结构
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-10">
+        块状数据结构
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/square-root-decomposition/" title="分块思想" class="md-nav__link">
+      分块思想
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/block-list/" title="块状链表" class="md-nav__link">
+      块状链表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/block-array/" title="块状数组" class="md-nav__link">
+      块状数组
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/tree-decompose/" title="树分块" class="md-nav__link">
+      树分块
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/monotonous-stack/" title="单调栈" class="md-nav__link">
+      单调栈
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/monotonous-queue/" title="单调队列" class="md-nav__link">
+      单调队列
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/sparse-table/" title="倍增" class="md-nav__link">
+      倍增
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/bit/" title="树状数组" class="md-nav__link">
+      树状数组
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/segment/" title="线段树" class="md-nav__link">
+      线段树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/dividing/" title="划分树" class="md-nav__link">
+      划分树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-17" type="checkbox" id="nav-7-17">
+    
+    <label class="md-nav__link" for="nav-7-17">
+      平衡树
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-17">
+        平衡树
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/bst/" title="二叉搜索树简介" class="md-nav__link">
+      二叉搜索树简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/treap/" title="Treap" class="md-nav__link">
+      Treap
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/splay/" title="Splay" class="md-nav__link">
+      Splay
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/wblt/" title="WBLT" class="md-nav__link">
+      WBLT
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/sbt/" title="Size Balanced Tree" class="md-nav__link">
+      Size Balanced Tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/avl/" title="AVL 树" class="md-nav__link">
+      AVL 树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/scapegoat/" title="替罪羊树" class="md-nav__link">
+      替罪羊树
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-18" type="checkbox" id="nav-7-18">
+    
+    <label class="md-nav__link" for="nav-7-18">
+      树套树
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-18">
+        树套树
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/seg-in-seg/" title="线段树套线段树" class="md-nav__link">
+      线段树套线段树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/seg-in-balanced/" title="平衡树套线段树" class="md-nav__link">
+      平衡树套线段树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/balanced-in-seg/" title="线段树套平衡树" class="md-nav__link">
+      线段树套平衡树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/persistent-in-bit/" title="树状数组套主席树" class="md-nav__link">
+      树状数组套主席树
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/k-dtree/" title="K-Dtree" class="md-nav__link">
+      K-Dtree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-20" type="checkbox" id="nav-7-20">
+    
+    <label class="md-nav__link" for="nav-7-20">
+      可持久化数据结构
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-20">
+        可持久化数据结构
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/persistent/" title="可持久化数据结构简介" class="md-nav__link">
+      可持久化数据结构简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/persistent-seg/" title="可持久化线段树" class="md-nav__link">
+      可持久化线段树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/persistent-block-array/" title="可持久化块状数组" class="md-nav__link">
+      可持久化块状数组
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/persistent-balanced/" title="可持久化平衡树" class="md-nav__link">
+      可持久化平衡树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/persistent-trie/" title="可持久化字典树" class="md-nav__link">
+      可持久化字典树
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/odt/" title="珂朵莉树" class="md-nav__link">
+      珂朵莉树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/lct/" title="Link Cut Tree" class="md-nav__link">
+      Link Cut Tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../ds/ett/" title="Euler Tour Tree" class="md-nav__link">
+      Euler Tour Tree
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      GAN
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        GAN
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/" title="图论部分简介" class="md-nav__link">
+      图论部分简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/basic/" title="图论基础" class="md-nav__link">
+      图论基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/traverse/" title="图的遍历" class="md-nav__link">
+      图的遍历
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-4" type="checkbox" id="nav-8-4">
+    
+    <label class="md-nav__link" for="nav-8-4">
+      树上问题
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-4">
+        树上问题
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/tree-basic/" title="树基础" class="md-nav__link">
+      树基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/lca/" title="最近公共祖先" class="md-nav__link">
+      最近公共祖先
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/dfs-order/" title="DFS 序" class="md-nav__link">
+      DFS 序
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/tree-misc/" title="树的其他问题" class="md-nav__link">
+      树的其他问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/tree-hash/" title="树哈希" class="md-nav__link">
+      树哈希
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/heavy-light-decomposition/" title="树链剖分" class="md-nav__link">
+      树链剖分
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/tree-divide/" title="树分治" class="md-nav__link">
+      树分治
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/dynamic-tree-divide/" title="动态树分治" class="md-nav__link">
+      动态树分治
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/virtual-tree/" title="虚树" class="md-nav__link">
+      虚树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/dsu-on-tree/" title="树上启发式合并" class="md-nav__link">
+      树上启发式合并
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/matrix-tree/" title="矩阵树定理" class="md-nav__link">
+      矩阵树定理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/dag/" title="有向无环图" class="md-nav__link">
+      有向无环图
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/topo/" title="拓扑排序" class="md-nav__link">
+      拓扑排序
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/mst/" title="最小生成树" class="md-nav__link">
+      最小生成树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/mdst/" title="最小树形图" class="md-nav__link">
+      最小树形图
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/shortest-path/" title="最短路" class="md-nav__link">
+      最短路
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/differential-constraints/" title="差分约束" class="md-nav__link">
+      差分约束
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/kth-path/" title="k 短路" class="md-nav__link">
+      k 短路
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-13" type="checkbox" id="nav-8-13">
+    
+    <label class="md-nav__link" for="nav-8-13">
+      连通性相关
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-13">
+        连通性相关
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/scc/" title="强连通分量" class="md-nav__link">
+      强连通分量
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/bcc/" title="双连通分量" class="md-nav__link">
+      双连通分量
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/bridge/" title="割点和桥" class="md-nav__link">
+      割点和桥
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/2-sat/" title="2-SAT" class="md-nav__link">
+      2-SAT
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/euler/" title="欧拉图" class="md-nav__link">
+      欧拉图
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/hamilton/" title="哈密顿图" class="md-nav__link">
+      哈密顿图
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/bi-graph/" title="二分图" class="md-nav__link">
+      二分图
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/min-circle/" title="最小环" class="md-nav__link">
+      最小环
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/planar/" title="平面图" class="md-nav__link">
+      平面图
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/color/" title="图的着色" class="md-nav__link">
+      图的着色
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-20" type="checkbox" id="nav-8-20">
+    
+    <label class="md-nav__link" for="nav-8-20">
+      网络流
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-20">
+        网络流
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/flow/" title="网络流简介" class="md-nav__link">
+      网络流简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/flow/node/" title="拆点" class="md-nav__link">
+      拆点
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/flow/max-flow/" title="最大流" class="md-nav__link">
+      最大流
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/flow/min-cut/" title="最小割" class="md-nav__link">
+      最小割
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/flow/min-cost/" title="费用流" class="md-nav__link">
+      费用流
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/flow/bound/" title="上下界网络流" class="md-nav__link">
+      上下界网络流
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../graph/misc/" title="图论杂项" class="md-nav__link">
+      图论杂项
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      计算机视觉
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        计算机视觉
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../geometry/" title="计算几何部分简介" class="md-nav__link">
+      计算几何部分简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../geometry/2d/" title="二维计算几何基础" class="md-nav__link">
+      二维计算几何基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../geometry/3d/" title="三维计算几何基础" class="md-nav__link">
+      三维计算几何基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../geometry/distance/" title="距离" class="md-nav__link">
+      距离
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../geometry/pick/" title="Pick 定理" class="md-nav__link">
+      Pick 定理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../geometry/triangulation/" title="三角剖分" class="md-nav__link">
+      三角剖分
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../geometry/convex-hull/" title="凸包" class="md-nav__link">
+      凸包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../geometry/scanning/" title="扫描线" class="md-nav__link">
+      扫描线
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../geometry/rotating-calipers/" title="旋转卡壳" class="md-nav__link">
+      旋转卡壳
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../geometry/half-plane-intersection/" title="半平面交" class="md-nav__link">
+      半平面交
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../geometry/nearest-points/" title="平面最近点对" class="md-nav__link">
+      平面最近点对
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../geometry/magic/" title="计算几何杂项" class="md-nav__link">
+      计算几何杂项
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      NLP
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        NLP
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/" title="杂项简介" class="md-nav__link">
+      杂项简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/io/" title="读入、输出优化" class="md-nav__link">
+      读入、输出优化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/complexity/" title="复杂度" class="md-nav__link">
+      复杂度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/discrete/" title="离散化" class="md-nav__link">
+      离散化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10-5" type="checkbox" id="nav-10-5">
+    
+    <label class="md-nav__link" for="nav-10-5">
+      离线算法
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-10-5">
+        离线算法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/offline/" title="离线算法简介" class="md-nav__link">
+      离线算法简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/cdq-divide/" title="CDQ 分治" class="md-nav__link">
+      CDQ 分治
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/mo-algo/" title="莫队算法" class="md-nav__link">
+      莫队算法
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/fractional-programming/" title="分数规划" class="md-nav__link">
+      分数规划
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10-7" type="checkbox" id="nav-10-7">
+    
+    <label class="md-nav__link" for="nav-10-7">
+      随机化
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-10-7">
+        随机化
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/random/" title="随机函数" class="md-nav__link">
+      随机函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/hill-climbing/" title="爬山算法" class="md-nav__link">
+      爬山算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/simulated-annealing/" title="模拟退火" class="md-nav__link">
+      模拟退火
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/random-incremental/" title="随机增量法" class="md-nav__link">
+      随机增量法
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/largest-matrix/" title="悬线法" class="md-nav__link">
+      悬线法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/cc-basic/" title="计算理论基础" class="md-nav__link">
+      计算理论基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/endianness/" title="字节顺序" class="md-nav__link">
+      字节顺序
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11">
+    
+    <label class="md-nav__link" for="nav-11">
+      推荐系统
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-11">
+        推荐系统
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/" title="杂项简介" class="md-nav__link">
+      杂项简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/io/" title="读入、输出优化" class="md-nav__link">
+      读入、输出优化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/complexity/" title="复杂度" class="md-nav__link">
+      复杂度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/discrete/" title="离散化" class="md-nav__link">
+      离散化
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11-5" type="checkbox" id="nav-11-5">
+    
+    <label class="md-nav__link" for="nav-11-5">
+      离线算法
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-11-5">
+        离线算法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/offline/" title="离线算法简介" class="md-nav__link">
+      离线算法简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/cdq-divide/" title="CDQ 分治" class="md-nav__link">
+      CDQ 分治
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/mo-algo/" title="莫队算法" class="md-nav__link">
+      莫队算法
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/fractional-programming/" title="分数规划" class="md-nav__link">
+      分数规划
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11-7" type="checkbox" id="nav-11-7">
+    
+    <label class="md-nav__link" for="nav-11-7">
+      随机化
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-11-7">
+        随机化
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/random/" title="随机函数" class="md-nav__link">
+      随机函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/hill-climbing/" title="爬山算法" class="md-nav__link">
+      爬山算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/simulated-annealing/" title="模拟退火" class="md-nav__link">
+      模拟退火
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/random-incremental/" title="随机增量法" class="md-nav__link">
+      随机增量法
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/largest-matrix/" title="悬线法" class="md-nav__link">
+      悬线法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/cc-basic/" title="计算理论基础" class="md-nav__link">
+      计算理论基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../misc/endianness/" title="字节顺序" class="md-nav__link">
+      字节顺序
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../about/" title="关于" class="md-nav__link">
+      关于
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#logistic-regression" title="六、逻辑回归(Logistic Regression)" class="md-nav__link">
+    六、逻辑回归(Logistic Regression)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" title="6.1 分类问题" class="md-nav__link">
+    6.1 分类问题
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" title="6.2 假说表示" class="md-nav__link">
+    6.2 假说表示
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63" title="6.3 判定边界" class="md-nav__link">
+    6.3 判定边界
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64" title="6.4 代价函数" class="md-nav__link">
+    6.4 代价函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65" title="6.5 简化的成本函数和梯度下降" class="md-nav__link">
+    6.5 简化的成本函数和梯度下降
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#66" title="6.6 高级优化" class="md-nav__link">
+    6.6 高级优化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#67" title="6.7 多类别分类：一对多" class="md-nav__link">
+    6.7 多类别分类：一对多
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regularization" title="七、正则化(Regularization)" class="md-nav__link">
+    七、正则化(Regularization)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71" title="7.1 过拟合的问题" class="md-nav__link">
+    7.1 过拟合的问题
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72" title="7.2 代价函数" class="md-nav__link">
+    7.2 代价函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73" title="7.3 正则化线性回归" class="md-nav__link">
+    7.3 正则化线性回归
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74" title="7.4 正则化的逻辑回归模型" class="md-nav__link">
+    7.4 正则化的逻辑回归模型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="评论" class="md-nav__link md-nav__link--active">
+            评论
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/myourdream/aiwiki/blob/master/docs/Coursera_ML_AndrewNg/markdown/week3.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="3">第3周<a class="headerlink" href="#3" title="Permanent link">&para;</a></h1>
+<div class="toc">
+<ul>
+<li><a href="#3">第3周</a><ul>
+<li><a href="#logistic-regression">六、逻辑回归(Logistic Regression)</a><ul>
+<li><a href="#61">6.1 分类问题</a></li>
+<li><a href="#62">6.2 假说表示</a></li>
+<li><a href="#63">6.3 判定边界</a></li>
+<li><a href="#64">6.4 代价函数</a></li>
+<li><a href="#65">6.5 简化的成本函数和梯度下降</a></li>
+<li><a href="#66">6.6 高级优化</a></li>
+<li><a href="#67">6.7 多类别分类：一对多</a></li>
+</ul>
+</li>
+<li><a href="#regularization">七、正则化(Regularization)</a><ul>
+<li><a href="#71">7.1 过拟合的问题</a></li>
+<li><a href="#72">7.2 代价函数</a></li>
+<li><a href="#73">7.3 正则化线性回归</a></li>
+<li><a href="#74">7.4 正则化的逻辑回归模型</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="logistic-regression">六、逻辑回归(Logistic Regression)<a class="headerlink" href="#logistic-regression" title="Permanent link">&para;</a></h2>
+<h3 id="61">6.1 分类问题<a class="headerlink" href="#61" title="Permanent link">&para;</a></h3>
+<p>参考文档: 6 - 1 - Classification (8 min).mkv</p>
+<p>在这个以及接下来的几个视频中，开始介绍分类问题。</p>
+<p>在分类问题中，你要预测的变量 <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span> 是离散的值，我们将学习一种叫做逻辑回归 (<strong>Logistic Regression</strong>) 的算法，这是目前最流行使用最广泛的一种学习算法。</p>
+<p>在分类问题中，我们尝试预测的是结果是否属于某一个类（例如正确或错误）。分类问题的例子有：判断一封电子邮件是否是垃圾邮件；判断一次金融交易是否是欺诈；之前我们也谈到了肿瘤分类问题的例子，区别一个肿瘤是恶性的还是良性的。</p>
+<p><img alt="" src="../../images/a77886a6eff0f20f9d909975bb69a7ab.png" /></p>
+<p>我们从二元的分类问题开始讨论。</p>
+<p>我们将因变量(<strong>dependent variable</strong>)可能属于的两个类分别称为负向类（<strong>negative class</strong>）和正向类（<strong>positive class</strong>），则因变量<span><span class="MathJax_Preview">y\in { 0,1 \\}</span><script type="math/tex">y\in { 0,1 \\}</script></span> ，其中 0 表示负向类，1 表示正向类。</p>
+<p><img alt="" src="../../images/f86eacc2a74159c068e82ea267a752f7.png" /></p>
+<p><img alt="" src="../../images/e7f9a746894c4c7dfd10cfcd9c84b5f9.png" /></p>
+<p>如果我们要用线性回归算法来解决一个分类问题，对于分类， <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span> 取值为 0 或者1，但如果你使用的是线性回归，那么假设函数的输出值可能远大于 1，或者远小于0，即使所有训练样本的标签  <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span> 都等于 0 或 1。尽管我们知道标签应该取值0 或者1，但是如果算法得到的值远大于1或者远小于0的话，就会感觉很奇怪。所以我们在接下来的要研究的算法就叫做逻辑回归算法，这个算法的性质是：它的输出值永远在0到 1 之间。</p>
+<p>顺便说一下，逻辑回归算法是分类算法，我们将它作为分类算法使用。有时候可能因为这个算法的名字中出现了“回归”使你感到困惑，但逻辑回归算法实际上是一种分类算法，它适用于标签  <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span> 取值离散的情况，如：1 0 0 1。</p>
+<p>在接下来的视频中，我们将开始学习逻辑回归算法的细节。</p>
+<h3 id="62">6.2 假说表示<a class="headerlink" href="#62" title="Permanent link">&para;</a></h3>
+<p>参考视频: 6 - 2 - Hypothesis Representation (7 min).mkv</p>
+<p>在这段视频中，我要给你展示假设函数的表达式，也就是说，在分类问题中，要用什么样的函数来表示我们的假设。此前我们说过，希望我们的分类器的输出值在0和1之间，因此，我们希望想出一个满足某个性质的假设函数，这个性质是它的预测值要在0和1之间。</p>
+<p>回顾在一开始提到的乳腺癌分类问题，我们可以用线性回归的方法求出适合数据的一条直线：</p>
+<p><img alt="" src="../../images/29c12ee079c079c6408ee032870b2683.jpg" /></p>
+<p>根据线性回归模型我们只能预测连续的值，然而对于分类问题，我们需要输出0或1，我们可以预测：</p>
+<p>当<span><span class="MathJax_Preview">{h_\theta}\left( x \right)&gt;=0.5</span><script type="math/tex">{h_\theta}\left( x \right)>=0.5</script></span>时，预测 <span><span class="MathJax_Preview">y=1</span><script type="math/tex">y=1</script></span>。</p>
+<p>当<span><span class="MathJax_Preview">{h_\theta}\left( x \right)&lt;0.5</span><script type="math/tex">{h_\theta}\left( x \right)<0.5</script></span>时，预测 <span><span class="MathJax_Preview">y=0</span><script type="math/tex">y=0</script></span> 。</p>
+<p>对于上图所示的数据，这样的一个线性模型似乎能很好地完成分类任务。假使我们又观测到一个非常大尺寸的恶性肿瘤，将其作为实例加入到我们的训练集中来，这将使得我们获得一条新的直线。</p>
+<p><img alt="" src="../../images/d027a0612664ea460247c8637b25e306.jpg" /></p>
+<p>这时，再使用0.5作为阀值来预测肿瘤是良性还是恶性便不合适了。可以看出，线性回归模型，因为其预测的值可以超越[0,1]的范围，并不适合解决这样的问题。</p>
+<p>我们引入一个新的模型，逻辑回归，该模型的输出变量范围始终在0和1之间。
+逻辑回归模型的假设是： <span><span class="MathJax_Preview">h_\theta \left( x \right)=g\left(\theta^{T}X \right)</span><script type="math/tex">h_\theta \left( x \right)=g\left(\theta^{T}X \right)</script></span>
+其中：
+<span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span> 代表特征向量
+<span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span> 代表逻辑函数（<strong>logistic function</strong>)是一个常用的逻辑函数为<strong>S</strong>形函数（<strong>Sigmoid function</strong>），公式为： <span><span class="MathJax_Preview">g\left( z \right)=\frac{1}{1+{{e}^{-z}}}</span><script type="math/tex">g\left( z \right)=\frac{1}{1+{{e}^{-z}}}</script></span>。</p>
+<p><strong>python</strong>代码实现：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">sigmoid</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+
+   <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">z</span><span class="p">))</span>
+</pre></div>
+</td></tr></table>
+
+<p>该函数的图像为：</p>
+<p><img alt="" src="../../images/1073efb17b0d053b4f9218d4393246cc.jpg" /></p>
+<p>合起来，我们得到逻辑回归模型的假设：</p>
+<p>对模型的理解： <span><span class="MathJax_Preview">g\left( z \right)=\frac{1}{1+{{e}^{-z}}}</span><script type="math/tex">g\left( z \right)=\frac{1}{1+{{e}^{-z}}}</script></span>。</p>
+<p><span><span class="MathJax_Preview">h_\theta \left( x \right)</span><script type="math/tex">h_\theta \left( x \right)</script></span>的作用是，对于给定的输入变量，根据选择的参数计算输出变量=1的可能性（<strong>estimated probablity</strong>）即<span><span class="MathJax_Preview">h_\theta \left( x \right)=P\left( y=1|x;\theta \right)</span><script type="math/tex">h_\theta \left( x \right)=P\left( y=1|x;\theta \right)</script></span>
+例如，如果对于给定的<span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>，通过已经确定的参数计算得出<span><span class="MathJax_Preview">h_\theta \left( x \right)=0.7</span><script type="math/tex">h_\theta \left( x \right)=0.7</script></span>，则表示有70%的几率<span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>为正向类，相应地<span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>为负向类的几率为1-0.7=0.3。</p>
+<h3 id="63">6.3 判定边界<a class="headerlink" href="#63" title="Permanent link">&para;</a></h3>
+<p>参考视频: 6 - 3 - Decision Boundary (15 min).mkv</p>
+<p>现在讲下决策边界(<strong>decision boundary</strong>)的概念。这个概念能更好地帮助我们理解逻辑回归的假设函数在计算什么。</p>
+<p><img alt="" src="../../images/6590923ac94130a979a8ca1d911b68a3.png" /></p>
+<p>在逻辑回归中，我们预测：</p>
+<p>当<span><span class="MathJax_Preview">{h_\theta}\left( x \right)&gt;=0.5</span><script type="math/tex">{h_\theta}\left( x \right)>=0.5</script></span>时，预测 <span><span class="MathJax_Preview">y=1</span><script type="math/tex">y=1</script></span>。</p>
+<p>当<span><span class="MathJax_Preview">{h_\theta}\left( x \right)&lt;0.5</span><script type="math/tex">{h_\theta}\left( x \right)<0.5</script></span>时，预测 <span><span class="MathJax_Preview">y=0</span><script type="math/tex">y=0</script></span> 。</p>
+<p>根据上面绘制出的 <strong>S</strong> 形函数图像，我们知道当</p>
+<p><span><span class="MathJax_Preview">z=0</span><script type="math/tex">z=0</script></span> 时 <span><span class="MathJax_Preview">g(z)=0.5</span><script type="math/tex">g(z)=0.5</script></span></p>
+<p><span><span class="MathJax_Preview">z&gt;0</span><script type="math/tex">z>0</script></span> 时 <span><span class="MathJax_Preview">g(z)&gt;0.5</span><script type="math/tex">g(z)>0.5</script></span></p>
+<p><span><span class="MathJax_Preview">z&lt;0</span><script type="math/tex">z<0</script></span> 时 <span><span class="MathJax_Preview">g(z)&lt;0.5</span><script type="math/tex">g(z)<0.5</script></span></p>
+<p>又 <span><span class="MathJax_Preview">z={\theta^{T}}x</span><script type="math/tex">z={\theta^{T}}x</script></span> ，即：
+<span><span class="MathJax_Preview">{\theta^{T}}x&gt;=0</span><script type="math/tex">{\theta^{T}}x>=0</script></span>  时，预测 <span><span class="MathJax_Preview">y=1</span><script type="math/tex">y=1</script></span>
+<span><span class="MathJax_Preview">{\theta^{T}}x&lt;0</span><script type="math/tex">{\theta^{T}}x<0</script></span>  时，预测 <span><span class="MathJax_Preview">y=0</span><script type="math/tex">y=0</script></span></p>
+<p>现在假设我们有一个模型：</p>
+<p><img alt="" src="../../images/58d098bbb415f2c3797a63bd870c3b8f.png" /></p>
+<p>并且参数<span><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span> 是向量[-3 1 1]。 则当<span><span class="MathJax_Preview">-3+{x_1}+{x_2} \geq 0</span><script type="math/tex">-3+{x_1}+{x_2} \geq 0</script></span>，即<span><span class="MathJax_Preview">{x_1}+{x_2} \geq 3</span><script type="math/tex">{x_1}+{x_2} \geq 3</script></span>时，模型将预测 <span><span class="MathJax_Preview">y=1</span><script type="math/tex">y=1</script></span>。
+我们可以绘制直线<span><span class="MathJax_Preview">{x_1}+{x_2} = 3</span><script type="math/tex">{x_1}+{x_2} = 3</script></span>，这条线便是我们模型的分界线，将预测为1的区域和预测为 0的区域分隔开。</p>
+<p><img alt="" src="../../images/f71fb6102e1ceb616314499a027336dc.jpg" /></p>
+<p>假使我们的数据呈现这样的分布情况，怎样的模型才能适合呢？</p>
+<p><img alt="" src="../../images/197d605aa74bee1556720ea248bab182.jpg" /></p>
+<p>因为需要用曲线才能分隔 <span><span class="MathJax_Preview">y=0</span><script type="math/tex">y=0</script></span> 的区域和 <span><span class="MathJax_Preview">y=1</span><script type="math/tex">y=1</script></span> 的区域，我们需要二次方特征：<span><span class="MathJax_Preview">{h_\theta}\left( x \right)=g\left( {\theta_0}+{\theta_1}{x_1}+{\theta_{2}}{x_{2}}+{\theta_{3}}x_{1}^{2}+{\theta_{4}}x_{2}^{2} \right)</span><script type="math/tex">{h_\theta}\left( x \right)=g\left( {\theta_0}+{\theta_1}{x_1}+{\theta_{2}}{x_{2}}+{\theta_{3}}x_{1}^{2}+{\theta_{4}}x_{2}^{2} \right)</script></span>是[-1 0 0 1 1]，则我们得到的判定边界恰好是圆点在原点且半径为1的圆形。</p>
+<p>我们可以用非常复杂的模型来适应非常复杂形状的判定边界。</p>
+<h3 id="64">6.4 代价函数<a class="headerlink" href="#64" title="Permanent link">&para;</a></h3>
+<p>参考视频: 6 - 4 - Cost Function (11 min).mkv</p>
+<p>在这段视频中，我们要介绍如何拟合逻辑回归模型的参数<span><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span>。具体来说，我要定义用来拟合参数的优化目标或者叫代价函数，这便是监督学习问题中的逻辑回归模型的拟合问题。</p>
+<p><img alt="" src="../../images/f23eebddd70122ef05baa682f4d6bd0f.png" /></p>
+<p>对于线性回归模型，我们定义的代价函数是所有模型误差的平方和。理论上来说，我们也可以对逻辑回归模型沿用这个定义，但是问题在于，当我们将<span><span class="MathJax_Preview">{h_\theta}\left( x \right)=\frac{1}{1+{e^{-\theta^{T}x}}}</span><script type="math/tex">{h_\theta}\left( x \right)=\frac{1}{1+{e^{-\theta^{T}x}}}</script></span>带入到这样定义了的代价函数中时，我们得到的代价函数将是一个非凸函数（<strong>non-convexfunction</strong>）。</p>
+<p><img alt="" src="../../images/8b94e47b7630ac2b0bcb10d204513810.jpg" /></p>
+<p>这意味着我们的代价函数有许多局部最小值，这将影响梯度下降算法寻找全局最小值。</p>
+<p>线性回归的代价函数为：<span><span class="MathJax_Preview">J\left( \theta  \right)=\frac{1}{m}\sum\limits_{i=1}^{m}{\frac{1}{2}{{\left( {h_\theta}\left({x}^{\left( i \right)} \right)-{y}^{\left( i \right)} \right)}^{2}}}</span><script type="math/tex">J\left( \theta  \right)=\frac{1}{m}\sum\limits_{i=1}^{m}{\frac{1}{2}{{\left( {h_\theta}\left({x}^{\left( i \right)} \right)-{y}^{\left( i \right)} \right)}^{2}}}</script></span> 。
+我们重新定义逻辑回归的代价函数为：<span><span class="MathJax_Preview">J\left( \theta  \right)=\frac{1}{m}\sum\limits_{i=1}^{m}{{Cost}\left( {h_\theta}\left( {x}^{\left( i \right)} \right),{y}^{\left( i \right)} \right)}</span><script type="math/tex">J\left( \theta  \right)=\frac{1}{m}\sum\limits_{i=1}^{m}{{Cost}\left( {h_\theta}\left( {x}^{\left( i \right)} \right),{y}^{\left( i \right)} \right)}</script></span>，其中</p>
+<p><img alt="" src="../../images/54249cb51f0086fa6a805291bf2639f1.png" /></p>
+<p><span><span class="MathJax_Preview">{h_\theta}\left( x \right)</span><script type="math/tex">{h_\theta}\left( x \right)</script></span>与 <span><span class="MathJax_Preview">Cost\left( {h_\theta}\left( x \right),y \right)</span><script type="math/tex">Cost\left( {h_\theta}\left( x \right),y \right)</script></span>之间的关系如下图所示：</p>
+<p><img alt="" src="../../images/ffa56adcc217800d71afdc3e0df88378.jpg" /></p>
+<p>这样构建的<span><span class="MathJax_Preview">Cost\left( {h_\theta}\left( x \right),y \right)</span><script type="math/tex">Cost\left( {h_\theta}\left( x \right),y \right)</script></span>函数的特点是：当实际的  <span><span class="MathJax_Preview">y=1</span><script type="math/tex">y=1</script></span> 且<span><span class="MathJax_Preview">{h_\theta}\left( x \right)</span><script type="math/tex">{h_\theta}\left( x \right)</script></span>也为 1 时误差为 0，当 <span><span class="MathJax_Preview">y=1</span><script type="math/tex">y=1</script></span> 但<span><span class="MathJax_Preview">{h_\theta}\left( x \right)</span><script type="math/tex">{h_\theta}\left( x \right)</script></span>不为1时误差随着<span><span class="MathJax_Preview">{h_\theta}\left( x \right)</span><script type="math/tex">{h_\theta}\left( x \right)</script></span>变小而变大；当实际的 <span><span class="MathJax_Preview">y=0</span><script type="math/tex">y=0</script></span> 且<span><span class="MathJax_Preview">{h_\theta}\left( x \right)</span><script type="math/tex">{h_\theta}\left( x \right)</script></span>也为 0 时代价为 0，当<span><span class="MathJax_Preview">y=0</span><script type="math/tex">y=0</script></span> 但<span><span class="MathJax_Preview">{h_\theta}\left( x \right)</span><script type="math/tex">{h_\theta}\left( x \right)</script></span>不为 0时误差随着 <span><span class="MathJax_Preview">{h_\theta}\left( x \right)</span><script type="math/tex">{h_\theta}\left( x \right)</script></span>的变大而变大。
+将构建的 <span><span class="MathJax_Preview">Cost\left( {h_\theta}\left( x \right),y \right)</span><script type="math/tex">Cost\left( {h_\theta}\left( x \right),y \right)</script></span>简化如下： 
+<span><span class="MathJax_Preview">Cost\left( {h_\theta}\left( x \right),y \right)=-y\times log\left( {h_\theta}\left( x \right) \right)-(1-y)\times log\left( 1-{h_\theta}\left( x \right) \right)</span><script type="math/tex">Cost\left( {h_\theta}\left( x \right),y \right)=-y\times log\left( {h_\theta}\left( x \right) \right)-(1-y)\times log\left( 1-{h_\theta}\left( x \right) \right)</script></span>
+带入代价函数得到：
+<span><span class="MathJax_Preview">J\left( \theta  \right)=\frac{1}{m}\sum\limits_{i=1}^{m}{[-{{y}^{(i)}}\log \left( {h_\theta}\left( {{x}^{(i)}} \right) \right)-\left( 1-{{y}^{(i)}} \right)\log \left( 1-{h_\theta}\left( {{x}^{(i)}} \right) \right)]}</span><script type="math/tex">J\left( \theta  \right)=\frac{1}{m}\sum\limits_{i=1}^{m}{[-{{y}^{(i)}}\log \left( {h_\theta}\left( {{x}^{(i)}} \right) \right)-\left( 1-{{y}^{(i)}} \right)\log \left( 1-{h_\theta}\left( {{x}^{(i)}} \right) \right)]}</script></span>
+即：<span><span class="MathJax_Preview">J\left( \theta  \right)=-\frac{1}{m}\sum\limits_{i=1}^{m}{[{{y}^{(i)}}\log \left( {h_\theta}\left( {{x}^{(i)}} \right) \right)+\left( 1-{{y}^{(i)}} \right)\log \left( 1-{h_\theta}\left( {{x}^{(i)}} \right) \right)]}</span><script type="math/tex">J\left( \theta  \right)=-\frac{1}{m}\sum\limits_{i=1}^{m}{[{{y}^{(i)}}\log \left( {h_\theta}\left( {{x}^{(i)}} \right) \right)+\left( 1-{{y}^{(i)}} \right)\log \left( 1-{h_\theta}\left( {{x}^{(i)}} \right) \right)]}</script></span></p>
+<p><strong>Python</strong>代码实现：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">cost</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+
+  <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+  <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+  <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+  <span class="n">first</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="o">-</span><span class="n">y</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">X</span><span class="o">*</span> <span class="n">theta</span><span class="o">.</span><span class="n">T</span><span class="p">)))</span>
+  <span class="n">second</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">y</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">X</span><span class="o">*</span> <span class="n">theta</span><span class="o">.</span><span class="n">T</span><span class="p">)))</span>
+  <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">first</span> <span class="o">-</span> <span class="n">second</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+</pre></div>
+</td></tr></table>
+
+<p>在得到这样一个代价函数以后，我们便可以用梯度下降算法来求得能使代价函数最小的参数了。算法为：</p>
+<p><strong>Repeat</strong> {
+<span><span class="MathJax_Preview">\theta_j := \theta_j - \alpha \frac{\partial}{\partial\theta_j} J(\theta)</span><script type="math/tex">\theta_j := \theta_j - \alpha \frac{\partial}{\partial\theta_j} J(\theta)</script></span>
+(<strong>simultaneously update all</strong> )
+}</p>
+<p>求导后得到：</p>
+<p><strong>Repeat</strong> {
+<span><span class="MathJax_Preview">\theta_j := \theta_j - \alpha \frac{1}{m}\sum\limits_{i=1}^{m}{{\left( {h_\theta}\left( \mathop{x}^{\left( i \right)} \right)-\mathop{y}^{\left( i \right)} \right)}}\mathop{x}_{j}^{(i)}</span><script type="math/tex">\theta_j := \theta_j - \alpha \frac{1}{m}\sum\limits_{i=1}^{m}{{\left( {h_\theta}\left( \mathop{x}^{\left( i \right)} \right)-\mathop{y}^{\left( i \right)} \right)}}\mathop{x}_{j}^{(i)}</script></span> 
+<strong>(simultaneously update all</strong> )
+}</p>
+<p>在这个视频中，我们定义了单训练样本的代价函数，凸性分析的内容是超出这门课的范围的，但是可以证明我们所选的代价值函数会给我们一个凸优化问题。代价函数<span><span class="MathJax_Preview">J(\theta)</span><script type="math/tex">J(\theta)</script></span>会是一个凸函数，并且没有局部最优值。</p>
+<p>推导过程：</p>
+<p><span><span class="MathJax_Preview">J\left( \theta  \right)=-\frac{1}{m}\sum\limits_{i=1}^{m}{[{{y}^{(i)}}\log \left( {h_\theta}\left( {{x}^{(i)}} \right) \right)+\left( 1-{{y}^{(i)}} \right)\log \left( 1-{h_\theta}\left( {{x}^{(i)}} \right) \right)]}</span><script type="math/tex">J\left( \theta  \right)=-\frac{1}{m}\sum\limits_{i=1}^{m}{[{{y}^{(i)}}\log \left( {h_\theta}\left( {{x}^{(i)}} \right) \right)+\left( 1-{{y}^{(i)}} \right)\log \left( 1-{h_\theta}\left( {{x}^{(i)}} \right) \right)]}</script></span>
+考虑：
+<span><span class="MathJax_Preview">{h_\theta}\left( {{x}^{(i)}} \right)=\frac{1}{1+{{e}^{-{\theta^T}{{x}^{(i)}}}}}</span><script type="math/tex">{h_\theta}\left( {{x}^{(i)}} \right)=\frac{1}{1+{{e}^{-{\theta^T}{{x}^{(i)}}}}}</script></span>
+则：
+<span><span class="MathJax_Preview">{{y}^{(i)}}\log \left( {h_\theta}\left( {{x}^{(i)}} \right) \right)+\left( 1-{{y}^{(i)}} \right)\log \left( 1-{h_\theta}\left( {{x}^{(i)}} \right) \right)</span><script type="math/tex">{{y}^{(i)}}\log \left( {h_\theta}\left( {{x}^{(i)}} \right) \right)+\left( 1-{{y}^{(i)}} \right)\log \left( 1-{h_\theta}\left( {{x}^{(i)}} \right) \right)</script></span>
+<span><span class="MathJax_Preview">={{y}^{(i)}}\log \left( \frac{1}{1+{{e}^{-{\theta^T}{{x}^{(i)}}}}} \right)+\left( 1-{{y}^{(i)}} \right)\log \left( 1-\frac{1}{1+{{e}^{-{\theta^T}{{x}^{(i)}}}}} \right)</span><script type="math/tex">={{y}^{(i)}}\log \left( \frac{1}{1+{{e}^{-{\theta^T}{{x}^{(i)}}}}} \right)+\left( 1-{{y}^{(i)}} \right)\log \left( 1-\frac{1}{1+{{e}^{-{\theta^T}{{x}^{(i)}}}}} \right)</script></span>
+<span><span class="MathJax_Preview">=-{{y}^{(i)}}\log \left( 1+{{e}^{-{\theta^T}{{x}^{(i)}}}} \right)-\left( 1-{{y}^{(i)}} \right)\log \left( 1+{{e}^{{\theta^T}{{x}^{(i)}}}} \right)</span><script type="math/tex">=-{{y}^{(i)}}\log \left( 1+{{e}^{-{\theta^T}{{x}^{(i)}}}} \right)-\left( 1-{{y}^{(i)}} \right)\log \left( 1+{{e}^{{\theta^T}{{x}^{(i)}}}} \right)</script></span></p>
+<p>所以：
+<span><span class="MathJax_Preview">\frac{\partial }{\partial {\theta_{j}}}J\left( \theta  \right)=\frac{\partial }{\partial {\theta_{j}}}[-\frac{1}{m}\sum\limits_{i=1}^{m}{[-{{y}^{(i)}}\log \left( 1+{{e}^{-{\theta^{T}}{{x}^{(i)}}}} \right)-\left( 1-{{y}^{(i)}} \right)\log \left( 1+{{e}^{{\theta^{T}}{{x}^{(i)}}}} \right)]}]</span><script type="math/tex">\frac{\partial }{\partial {\theta_{j}}}J\left( \theta  \right)=\frac{\partial }{\partial {\theta_{j}}}[-\frac{1}{m}\sum\limits_{i=1}^{m}{[-{{y}^{(i)}}\log \left( 1+{{e}^{-{\theta^{T}}{{x}^{(i)}}}} \right)-\left( 1-{{y}^{(i)}} \right)\log \left( 1+{{e}^{{\theta^{T}}{{x}^{(i)}}}} \right)]}]</script></span>
+<span><span class="MathJax_Preview">=-\frac{1}{m}\sum\limits_{i=1}^{m}{[-{{y}^{(i)}}\frac{-x_{j}^{(i)}{{e}^{-{\theta^{T}}{{x}^{(i)}}}}}{1+{{e}^{-{\theta^{T}}{{x}^{(i)}}}}}-\left( 1-{{y}^{(i)}} \right)\frac{x_j^{(i)}{{e}^{{\theta^T}{{x}^{(i)}}}}}{1+{{e}^{{\theta^T}{{x}^{(i)}}}}}}]</span><script type="math/tex">=-\frac{1}{m}\sum\limits_{i=1}^{m}{[-{{y}^{(i)}}\frac{-x_{j}^{(i)}{{e}^{-{\theta^{T}}{{x}^{(i)}}}}}{1+{{e}^{-{\theta^{T}}{{x}^{(i)}}}}}-\left( 1-{{y}^{(i)}} \right)\frac{x_j^{(i)}{{e}^{{\theta^T}{{x}^{(i)}}}}}{1+{{e}^{{\theta^T}{{x}^{(i)}}}}}}]</script></span>
+<span><span class="MathJax_Preview">=-\frac{1}{m}\sum\limits_{i=1}^{m}{{y}^{(i)}}\frac{x_j^{(i)}}{1+{{e}^{{\theta^T}{{x}^{(i)}}}}}-\left( 1-{{y}^{(i)}} \right)\frac{x_j^{(i)}{{e}^{{\theta^T}{{x}^{(i)}}}}}{1+{{e}^{{\theta^T}{{x}^{(i)}}}}}]</span><script type="math/tex">=-\frac{1}{m}\sum\limits_{i=1}^{m}{{y}^{(i)}}\frac{x_j^{(i)}}{1+{{e}^{{\theta^T}{{x}^{(i)}}}}}-\left( 1-{{y}^{(i)}} \right)\frac{x_j^{(i)}{{e}^{{\theta^T}{{x}^{(i)}}}}}{1+{{e}^{{\theta^T}{{x}^{(i)}}}}}]</script></span>
+<span><span class="MathJax_Preview">=-\frac{1}{m}\sum\limits_{i=1}^{m}{\frac{{{y}^{(i)}}x_j^{(i)}-x_j^{(i)}{{e}^{{\theta^T}{{x}^{(i)}}}}+{{y}^{(i)}}x_j^{(i)}{{e}^{{\theta^T}{{x}^{(i)}}}}}{1+{{e}^{{\theta^T}{{x}^{(i)}}}}}}</span><script type="math/tex">=-\frac{1}{m}\sum\limits_{i=1}^{m}{\frac{{{y}^{(i)}}x_j^{(i)}-x_j^{(i)}{{e}^{{\theta^T}{{x}^{(i)}}}}+{{y}^{(i)}}x_j^{(i)}{{e}^{{\theta^T}{{x}^{(i)}}}}}{1+{{e}^{{\theta^T}{{x}^{(i)}}}}}}</script></span>
+<span><span class="MathJax_Preview">=-\frac{1}{m}\sum\limits_{i=1}^{m}{\frac{{{y}^{(i)}}\left( 1\text{+}{{e}^{{\theta^T}{{x}^{(i)}}}} \right)-{{e}^{{\theta^T}{{x}^{(i)}}}}}{1+{{e}^{{\theta^T}{{x}^{(i)}}}}}x_j^{(i)}}</span><script type="math/tex">=-\frac{1}{m}\sum\limits_{i=1}^{m}{\frac{{{y}^{(i)}}\left( 1\text{+}{{e}^{{\theta^T}{{x}^{(i)}}}} \right)-{{e}^{{\theta^T}{{x}^{(i)}}}}}{1+{{e}^{{\theta^T}{{x}^{(i)}}}}}x_j^{(i)}}</script></span>
+<span><span class="MathJax_Preview">=-\frac{1}{m}\sum\limits_{i=1}^{m}{({{y}^{(i)}}-\frac{{{e}^{{\theta^T}{{x}^{(i)}}}}}{1+{{e}^{{\theta^T}{{x}^{(i)}}}}})x_j^{(i)}}</span><script type="math/tex">=-\frac{1}{m}\sum\limits_{i=1}^{m}{({{y}^{(i)}}-\frac{{{e}^{{\theta^T}{{x}^{(i)}}}}}{1+{{e}^{{\theta^T}{{x}^{(i)}}}}})x_j^{(i)}}</script></span>
+<span><span class="MathJax_Preview">=-\frac{1}{m}\sum\limits_{i=1}^{m}{({{y}^{(i)}}-\frac{1}{1+{{e}^{-{\theta^T}{{x}^{(i)}}}}})x_j^{(i)}}</span><script type="math/tex">=-\frac{1}{m}\sum\limits_{i=1}^{m}{({{y}^{(i)}}-\frac{1}{1+{{e}^{-{\theta^T}{{x}^{(i)}}}}})x_j^{(i)}}</script></span>
+<span><span class="MathJax_Preview">=-\frac{1}{m}\sum\limits_{i=1}^{m}{[{{y}^{(i)}}-{h_\theta}\left( {{x}^{(i)}} \right)]x_j^{(i)}}</span><script type="math/tex">=-\frac{1}{m}\sum\limits_{i=1}^{m}{[{{y}^{(i)}}-{h_\theta}\left( {{x}^{(i)}} \right)]x_j^{(i)}}</script></span>
+<span><span class="MathJax_Preview">=\frac{1}{m}\sum\limits_{i=1}^{m}{[{h_\theta}\left( {{x}^{(i)}} \right)-{{y}^{(i)}}]x_j^{(i)}}</span><script type="math/tex">=\frac{1}{m}\sum\limits_{i=1}^{m}{[{h_\theta}\left( {{x}^{(i)}} \right)-{{y}^{(i)}}]x_j^{(i)}}</script></span></p>
+<p>注：虽然得到的梯度下降算法表面上看上去与线性回归的梯度下降算法一样，但是这里的<span><span class="MathJax_Preview">{h_\theta}\left( x \right)=g\left( {\theta^T}X \right)</span><script type="math/tex">{h_\theta}\left( x \right)=g\left( {\theta^T}X \right)</script></span>与线性回归中不同，所以实际上是不一样的。另外，在运行梯度下降算法之前，进行特征缩放依旧是非常必要的。</p>
+<p>一些梯度下降算法之外的选择：
+除了梯度下降算法以外，还有一些常被用来令代价函数最小的算法，这些算法更加复杂和优越，而且通常不需要人工选择学习率，通常比梯度下降算法要更加快速。这些算法有：<strong>共轭梯度</strong>（<strong>Conjugate Gradient</strong>），<strong>局部优化法</strong>(<strong>Broyden fletcher goldfarb shann,BFGS</strong>)和<strong>有限内存局部优化法</strong>(<strong>LBFGS</strong>) ，<strong>fminunc</strong>是 <strong>matlab</strong>和<strong>octave</strong> 中都带的一个最小值优化函数，使用时我们需要提供代价函数和每个参数的求导，下面是 <strong>octave</strong> 中使用 <strong>fminunc</strong> 函数的代码示例：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">function</span><span class="w"> </span>[jVal, gradient] <span class="p">=</span><span class="w"> </span><span class="nf">costFunction</span><span class="p">(</span>theta<span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">jVal</span> <span class="p">=</span> <span class="p">[...</span><span class="n">code</span> <span class="n">to</span> <span class="n">compute</span> <span class="n">J</span><span class="p">(</span><span class="n">theta</span><span class="p">)...];</span>
+    <span class="nb">gradient</span> <span class="p">=</span> <span class="p">[...</span><span class="n">code</span> <span class="n">to</span> <span class="n">compute</span> <span class="n">derivative</span> <span class="n">of</span> <span class="n">J</span><span class="p">(</span><span class="n">theta</span><span class="p">)...];</span>
+
+<span class="k">end</span>
+
+<span class="n">options</span> <span class="p">=</span> <span class="nb">optimset</span><span class="p">(</span><span class="s">&#39;GradObj&#39;</span><span class="p">,</span> <span class="s">&#39;on&#39;</span><span class="p">,</span> <span class="s">&#39;MaxIter&#39;</span><span class="p">,</span> <span class="s">&#39;100&#39;</span><span class="p">);</span>
+
+<span class="n">initialTheta</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="p">[</span><span class="n">optTheta</span><span class="p">,</span> <span class="n">functionVal</span><span class="p">,</span> <span class="n">exitFlag</span><span class="p">]</span> <span class="p">=</span> <span class="n">fminunc</span><span class="p">(@</span><span class="n">costFunction</span><span class="p">,</span> <span class="n">initialTheta</span><span class="p">,</span> <span class="n">options</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+
+<p>在下一个视频中，我们会把单训练样本的代价函数的这些理念进一步发展，然后给出整个训练集的代价函数的定义，我们还会找到一种比我们目前用的更简单的写法，基于这些推导出的结果，我们将应用梯度下降法得到我们的逻辑回归算法。</p>
+<h3 id="65">6.5 简化的成本函数和梯度下降<a class="headerlink" href="#65" title="Permanent link">&para;</a></h3>
+<p>参考视频: 6 - 5 - Simplified Cost Function and Gradient Descent (10 min).mkv</p>
+<p>在这段视频中，我们将会找出一种稍微简单一点的方法来写代价函数，来替换我们现在用的方法。同时我们还要弄清楚如何运用梯度下降法，来拟合出逻辑回归的参数。因此，听了这节课，你就应该知道如何实现一个完整的逻辑回归算法。</p>
+<p>这就是逻辑回归的代价函数：</p>
+<p><img alt="" src="../../images/eb69baa91c2fc6e7dd8ebdf6c79a6a6f.png" /></p>
+<p>这个式子可以合并成：</p>
+<p><span><span class="MathJax_Preview">Cost\left( {h_\theta}\left( x \right),y \right)=-y\times log\left( {h_\theta}\left( x \right) \right)-(1-y)\times log\left( 1-{h_\theta}\left( x \right) \right)</span><script type="math/tex">Cost\left( {h_\theta}\left( x \right),y \right)=-y\times log\left( {h_\theta}\left( x \right) \right)-(1-y)\times log\left( 1-{h_\theta}\left( x \right) \right)</script></span>
+即，逻辑回归的代价函数：
+<span><span class="MathJax_Preview">Cost\left( {h_\theta}\left( x \right),y \right)=-y\times log\left( {h_\theta}\left( x \right) \right)-(1-y)\times log\left( 1-{h_\theta}\left( x \right) \right)</span><script type="math/tex">Cost\left( {h_\theta}\left( x \right),y \right)=-y\times log\left( {h_\theta}\left( x \right) \right)-(1-y)\times log\left( 1-{h_\theta}\left( x \right) \right)</script></span>
+<span><span class="MathJax_Preview">=-\frac{1}{m}\sum\limits_{i=1}^{m}{[{{y}^{(i)}}\log \left( {h_\theta}\left( {{x}^{(i)}} \right) \right)+\left( 1-{{y}^{(i)}} \right)\log \left( 1-{h_\theta}\left( {{x}^{(i)}} \right) \right)]}</span><script type="math/tex">=-\frac{1}{m}\sum\limits_{i=1}^{m}{[{{y}^{(i)}}\log \left( {h_\theta}\left( {{x}^{(i)}} \right) \right)+\left( 1-{{y}^{(i)}} \right)\log \left( 1-{h_\theta}\left( {{x}^{(i)}} \right) \right)]}</script></span>
+根据这个代价函数，为了拟合出参数，该怎么做呢？我们要试图找尽量让<span><span class="MathJax_Preview">J\left( \theta  \right)</span><script type="math/tex">J\left( \theta  \right)</script></span> 取得最小值的参数<span><span class="MathJax_Preview">\theta <span><span class="MathJax_Preview">。
+<span><span class="MathJax_Preview">\underset{\theta}{\min }J\left( \theta  \right)</span><script type="math/tex">\underset{\theta}{\min }J\left( \theta  \right)</script></span> 
+所以我们想要尽量减小这一项，这将我们将得到某个参数 
+所以我们想要尽量减小这一项，这将我们将得到某个参数</span><script type="math/tex">。
+<span><span class="MathJax_Preview">\underset{\theta}{\min }J\left( \theta  \right)</span><script type="math/tex">\underset{\theta}{\min }J\left( \theta  \right)</script></span> 
+所以我们想要尽量减小这一项，这将我们将得到某个参数 
+所以我们想要尽量减小这一项，这将我们将得到某个参数</script></span>\theta \theta <span><span class="MathJax_Preview">。
+如果我们给出一个新的样本，假如某个特征 <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>，我们可以用拟合训练样本的参数，我们可以用拟合训练样本的参数</span><script type="math/tex">。
+如果我们给出一个新的样本，假如某个特征 <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>，我们可以用拟合训练样本的参数，我们可以用拟合训练样本的参数</script></span>\theta \theta <span><span class="MathJax_Preview">，来输出对假设的预测。
+另外，我们假设的输出，实际上就是这个概率值：</span><script type="math/tex">，来输出对假设的预测。
+另外，我们假设的输出，实际上就是这个概率值：</script></span>p(y=1|x;\theta)p(y=1|x;\theta)</span><script type="math/tex">\theta <span><span class="MathJax_Preview">。
+<span><span class="MathJax_Preview">\underset{\theta}{\min }J\left( \theta  \right)</span><script type="math/tex">\underset{\theta}{\min }J\left( \theta  \right)</script></span> 
+所以我们想要尽量减小这一项，这将我们将得到某个参数 
+所以我们想要尽量减小这一项，这将我们将得到某个参数</span><script type="math/tex">。
+<span><span class="MathJax_Preview">\underset{\theta}{\min }J\left( \theta  \right)</span><script type="math/tex">\underset{\theta}{\min }J\left( \theta  \right)</script></span> 
+所以我们想要尽量减小这一项，这将我们将得到某个参数 
+所以我们想要尽量减小这一项，这将我们将得到某个参数</script></span>\theta \theta <span><span class="MathJax_Preview">。
+如果我们给出一个新的样本，假如某个特征 <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>，我们可以用拟合训练样本的参数，我们可以用拟合训练样本的参数</span><script type="math/tex">。
+如果我们给出一个新的样本，假如某个特征 <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>，我们可以用拟合训练样本的参数，我们可以用拟合训练样本的参数</script></span>\theta \theta <span><span class="MathJax_Preview">，来输出对假设的预测。
+另外，我们假设的输出，实际上就是这个概率值：</span><script type="math/tex">，来输出对假设的预测。
+另外，我们假设的输出，实际上就是这个概率值：</script></span>p(y=1|x;\theta)p(y=1|x;\theta)</script></span>，就是关于 <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>以<span><span class="MathJax_Preview">\theta <span><span class="MathJax_Preview">为参数，</span><script type="math/tex">为参数，</script></span>y=1y=1</span><script type="math/tex">\theta <span><span class="MathJax_Preview">为参数，</span><script type="math/tex">为参数，</script></span>y=1y=1</script></span> 的概率，你可以认为我们的假设就是估计 <span><span class="MathJax_Preview">y=1</span><script type="math/tex">y=1</script></span> 的概率，所以，接下来就是弄清楚如何最大限度地最小化代价函数<span><span class="MathJax_Preview">J\left( \theta  \right)</span><script type="math/tex">J\left( \theta  \right)</script></span>，作为一个关于$\theta <span><span class="MathJax_Preview">的函数，这样我们才能为训练集拟合出参数</span><script type="math/tex">的函数，这样我们才能为训练集拟合出参数</script></span>\theta $。</p>
+<p>最小化代价函数的方法，是使用<strong>梯度下降法</strong>(<strong>gradient descent</strong>)。这是我们的代价函数：
+<span><span class="MathJax_Preview">J\left( \theta  \right)=-\frac{1}{m}\sum\limits_{i=1}^{m}{[{{y}^{(i)}}\log \left( {h_\theta}\left( {{x}^{(i)}} \right) \right)+\left( 1-{{y}^{(i)}} \right)\log \left( 1-{h_\theta}\left( {{x}^{(i)}} \right) \right)]}</span><script type="math/tex">J\left( \theta  \right)=-\frac{1}{m}\sum\limits_{i=1}^{m}{[{{y}^{(i)}}\log \left( {h_\theta}\left( {{x}^{(i)}} \right) \right)+\left( 1-{{y}^{(i)}} \right)\log \left( 1-{h_\theta}\left( {{x}^{(i)}} \right) \right)]}</script></span></p>
+<p>如果我们要最小化这个关于<span><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span>的函数值，这就是我们通常用的梯度下降法的模板。</p>
+<p><img alt="Want {{\min }_\theta}J(\theta ){{\min }_\theta}J(\theta )：" src="../../images/171031235527.png" /></p>
+<p>我们要反复更新每个参数，用这个式子来更新，就是用它自己减去学习率 <span><span class="MathJax_Preview">\alpha</span><script type="math/tex">\alpha</script></span>
+乘以后面的微分项。求导后得到：</p>
+<p><img alt="Want ：" src="../../images/171031235719.png" /></p>
+<p>如果你计算一下的话，你会得到这个等式：
+<span><span class="MathJax_Preview">{\theta_j}:={\theta_j}-\alpha \frac{1}{m}\sum\limits_{i=1}^{m}{({h_\theta}({{x}^{(i)}})-{{y}^{(i)}}){x_{j}}^{(i)}}</span><script type="math/tex">{\theta_j}:={\theta_j}-\alpha \frac{1}{m}\sum\limits_{i=1}^{m}{({h_\theta}({{x}^{(i)}})-{{y}^{(i)}}){x_{j}}^{(i)}}</script></span>
+我把它写在这里，将后面这个式子，在 <span><span class="MathJax_Preview">i=1</span><script type="math/tex">i=1</script></span>  到 <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> 上求和，其实就是预测误差乘以<span><span class="MathJax_Preview">x_j^{(i)}</span><script type="math/tex">x_j^{(i)}</script></span> ，所以你把这个偏导数项<span><span class="MathJax_Preview">\frac{\partial }{\partial {\theta_j}}J\left( \theta  \right)</span><script type="math/tex">\frac{\partial }{\partial {\theta_j}}J\left( \theta  \right)</script></span>放回到原来式子这里，我们就可以将梯度下降算法写作如下形式：
+<span><span class="MathJax_Preview">{\theta_j}:={\theta_j}-\alpha \frac{1}{m}\sum\limits_{i=1}^{m}{({h_\theta}({{x}^{(i)}})-{{y}^{(i)}}){x_{j}}^{(i)}}</span><script type="math/tex">{\theta_j}:={\theta_j}-\alpha \frac{1}{m}\sum\limits_{i=1}^{m}{({h_\theta}({{x}^{(i)}})-{{y}^{(i)}}){x_{j}}^{(i)}}</script></span></p>
+<p>所以，如果你有 <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> 个特征，也就是说：<img alt="" src="../../images/0171031235044.png" />，参数向量<span><span class="MathJax_Preview">\theta <span><span class="MathJax_Preview">包括</span><script type="math/tex">包括</script></span>{\theta_{0}}{\theta_{0}}</span><script type="math/tex">\theta <span><span class="MathJax_Preview">包括</span><script type="math/tex">包括</script></span>{\theta_{0}}{\theta_{0}}</script></span> <span><span class="MathJax_Preview">{\theta_{1}}</span><script type="math/tex">{\theta_{1}}</script></span> <span><span class="MathJax_Preview">{\theta_{2}}</span><script type="math/tex">{\theta_{2}}</script></span> 一直到<span><span class="MathJax_Preview">{\theta_{n}}</span><script type="math/tex">{\theta_{n}}</script></span>，那么你就需要用这个式子：</p>
+<p><span><span class="MathJax_Preview">{\theta_j}:={\theta_j}-\alpha \frac{1}{m}\sum\limits_{i=1}^{m}{({h_\theta}({{x}^{(i)}})-{{y}^{(i)}}){{x}_{j}}^{(i)}}</span><script type="math/tex">{\theta_j}:={\theta_j}-\alpha \frac{1}{m}\sum\limits_{i=1}^{m}{({h_\theta}({{x}^{(i)}})-{{y}^{(i)}}){{x}_{j}}^{(i)}}</script></span>来同时更新所有$\theta $的值。</p>
+<p>现在，如果你把这个更新规则和我们之前用在线性回归上的进行比较的话，你会惊讶地发现，这个式子正是我们用来做线性回归梯度下降的。</p>
+<p>那么，线性回归和逻辑回归是同一个算法吗？要回答这个问题，我们要观察逻辑回归看看发生了哪些变化。实际上，假设的定义发生了变化。</p>
+<p>对于线性回归假设函数：</p>
+<p><span><span class="MathJax_Preview">{h_\theta}\left( x \right)={\theta^T}X={\theta_{0}}{x_{0}}+{\theta_{1}}{x_{1}}+{\theta_{2}}{x_{2}}+...+{\theta_{n}}{x_{n}}</span><script type="math/tex">{h_\theta}\left( x \right)={\theta^T}X={\theta_{0}}{x_{0}}+{\theta_{1}}{x_{1}}+{\theta_{2}}{x_{2}}+...+{\theta_{n}}{x_{n}}</script></span></p>
+<p>而现在逻辑函数假设函数：</p>
+<p><span><span class="MathJax_Preview">{h_\theta}\left( x \right)=\frac{1}{1+{{e}^{-{\theta^T}X}}}</span><script type="math/tex">{h_\theta}\left( x \right)=\frac{1}{1+{{e}^{-{\theta^T}X}}}</script></span></p>
+<p>因此，即使更新参数的规则看起来基本相同，但由于假设的定义发生了变化，所以逻辑函数的梯度下降，跟线性回归的梯度下降实际上是两个完全不同的东西。</p>
+<p>在先前的视频中，当我们在谈论线性回归的梯度下降法时，我们谈到了如何监控梯度下降法以确保其收敛，我通常也把同样的方法用在逻辑回归中，来监测梯度下降，以确保它正常收敛。</p>
+<p>当使用梯度下降法来实现逻辑回归时，我们有这些不同的参数<span><span class="MathJax_Preview">\theta <span><span class="MathJax_Preview">，就是</span><script type="math/tex">，就是</script></span>{\theta_{0}}{\theta_{0}}</span><script type="math/tex">\theta <span><span class="MathJax_Preview">，就是</span><script type="math/tex">，就是</script></span>{\theta_{0}}{\theta_{0}}</script></span> <span><span class="MathJax_Preview">{\theta_{1}}</span><script type="math/tex">{\theta_{1}}</script></span> <span><span class="MathJax_Preview">{\theta_{2}}</span><script type="math/tex">{\theta_{2}}</script></span> 一直到<span><span class="MathJax_Preview">{\theta_{n}}</span><script type="math/tex">{\theta_{n}}</script></span>，我们需要用这个表达式来更新这些参数。我们还可以使用 <strong>for循环</strong>来更新这些参数值，用 <code>for i=1 to n</code>，或者 <code>for i=1 to n+1</code>。当然，不用 <strong>for循环</strong>也是可以的，理想情况下，我们更提倡使用向量化的实现，可以把所有这些 <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>个参数同时更新。</p>
+<p>最后还有一点，我们之前在谈线性回归时讲到的特征缩放，我们看到了特征缩放是如何提高梯度下降的收敛速度的，这个特征缩放的方法，也适用于逻辑回归。如果你的特征范围差距很大的话，那么应用特征缩放的方法，同样也可以让逻辑回归中，梯度下降收敛更快。</p>
+<p>就是这样，现在你知道如何实现逻辑回归，这是一种非常强大，甚至可能世界上使用最广泛的一种分类算法。</p>
+<h3 id="66">6.6 高级优化<a class="headerlink" href="#66" title="Permanent link">&para;</a></h3>
+<p>参考视频: 6 - 6 - Advanced Optimization (14 min).mkv</p>
+<p>在上一个视频中，我们讨论了用梯度下降的方法最小化逻辑回归中代价函数<span><span class="MathJax_Preview">J\left( \theta  \right)</span><script type="math/tex">J\left( \theta  \right)</script></span>。在本次视频中，我会教你们一些高级优化算法和一些高级的优化概念，利用这些方法，我们就能够使通过梯度下降，进行逻辑回归的速度大大提高，而这也将使算法更加适合解决大型的机器学习问题，比如，我们有数目庞大的特征量。
+现在我们换个角度来看什么是梯度下降，我们有个代价函数<span><span class="MathJax_Preview">J\left( \theta  \right)</span><script type="math/tex">J\left( \theta  \right)</script></span>，而我们想要使其最小化，那么我们需要做的是编写代码，当输入参数 <span><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span> 时，它们会计算出两样东西：<span><span class="MathJax_Preview">J\left( \theta  \right)</span><script type="math/tex">J\left( \theta  \right)</script></span> 以及<span><span class="MathJax_Preview">J</span><script type="math/tex">J</script></span> 等于 0、1直到 <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> 时的偏导数项。</p>
+<p><img alt="" src="../../images/394a1d763425c4ecf12f8f98a392067f.png" /></p>
+<p>假设我们已经完成了可以实现这两件事的代码，那么梯度下降所做的就是反复执行这些更新。
+另一种考虑梯度下降的思路是：我们需要写出代码来计算<span><span class="MathJax_Preview">J\left( \theta  \right)</span><script type="math/tex">J\left( \theta  \right)</script></span> 和这些偏导数，然后把这些插入到梯度下降中，然后它就可以为我们最小化这个函数。
+对于梯度下降来说，我认为从技术上讲，你实际并不需要编写代码来计算代价函数<span><span class="MathJax_Preview">J\left( \theta  \right)</span><script type="math/tex">J\left( \theta  \right)</script></span>。你只需要编写代码来计算导数项，但是，如果你希望代码还要能够监控这些<span><span class="MathJax_Preview">J\left( \theta  \right)</span><script type="math/tex">J\left( \theta  \right)</script></span> 的收敛性，那么我们就需要自己编写代码来计算代价函数<span><span class="MathJax_Preview">J(\theta)</span><script type="math/tex">J(\theta)</script></span>和偏导数项<span><span class="MathJax_Preview">\frac{\partial }{\partial {\theta_j}}J\left( \theta  \right)</span><script type="math/tex">\frac{\partial }{\partial {\theta_j}}J\left( \theta  \right)</script></span>。所以，在写完能够计算这两者的代码之后，我们就可以使用梯度下降。
+然而梯度下降并不是我们可以使用的唯一算法，还有其他一些算法，更高级、更复杂。如果我们能用这些方法来计算代价函数<span><span class="MathJax_Preview">J\left( \theta  \right)</span><script type="math/tex">J\left( \theta  \right)</script></span>和偏导数项<span><span class="MathJax_Preview">\frac{\partial }{\partial {\theta_j}}J\left( \theta  \right)</span><script type="math/tex">\frac{\partial }{\partial {\theta_j}}J\left( \theta  \right)</script></span>两个项的话，那么这些算法就是为我们优化代价函数的不同方法，<strong>共轭梯度法 BFGS</strong> (<strong>变尺度法</strong>) 和<strong>L-BFGS</strong> (<strong>限制变尺度法</strong>) 就是其中一些更高级的优化算法，它们需要有一种方法来计算 <span><span class="MathJax_Preview">J\left( \theta  \right)</span><script type="math/tex">J\left( \theta  \right)</script></span>，以及需要一种方法计算导数项，然后使用比梯度下降更复杂的算法来最小化代价函数。这三种算法的具体细节超出了本门课程的范畴。实际上你最后通常会花费很多天，或几周时间研究这些算法，你可以专门学一门课来提高数值计算能力，不过让我来告诉你他们的一些特性：</p>
+<p>这三种算法有许多优点：</p>
+<p>一个是使用这其中任何一个算法，你通常不需要手动选择学习率 <span><span class="MathJax_Preview">\alpha</span><script type="math/tex">\alpha</script></span>，所以对于这些算法的一种思路是，给出计算导数项和代价函数的方法，你可以认为算法有一个智能的内部循环，而且，事实上，他们确实有一个智能的内部循环，称为<strong>线性搜索</strong>(<strong>line search</strong>)算法，它可以自动尝试不同的学习速率 <span><span class="MathJax_Preview">\alpha</span><script type="math/tex">\alpha</script></span>，并自动选择一个好的学习速率 <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span>，因此它甚至可以为每次迭代选择不同的学习速率，那么你就不需要自己选择。这些算法实际上在做更复杂的事情，不仅仅是选择一个好的学习速率，所以它们往往最终比梯度下降收敛得快多了，不过关于它们到底做什么的详细讨论，已经超过了本门课程的范围。</p>
+<p>实际上，我过去使用这些算法已经很长一段时间了，也许超过十年了，使用得相当频繁，而直到几年前我才真正搞清楚<strong>共轭梯度法 BFGS</strong> 和 <strong>L-BFGS</strong>的细节。</p>
+<p>我们实际上完全有可能成功使用这些算法，并应用于许多不同的学习问题，而不需要真正理解这些算法的内环间在做什么，如果说这些算法有缺点的话，那么我想说主要缺点是它们比梯度下降法复杂多了，特别是你最好不要使用 <strong>L-BGFS</strong>、<strong>BFGS</strong>这些算法，除非你是数值计算方面的专家。实际上，我不会建议你们编写自己的代码来计算数据的平方根，或者计算逆矩阵，因为对于这些算法，我还是会建议你直接使用一个软件库，比如说，要求一个平方根，我们所能做的就是调用一些别人已经写好用来计算数字平方根的函数。幸运的是现在我们有<strong>Octave</strong> 和与它密切相关的 <strong>MATLAB</strong> 语言可以使用。</p>
+<p><strong>Octave</strong> 有一个非常理想的库用于实现这些先进的优化算法，所以，如果你直接调用它自带的库，你就能得到不错的结果。我必须指出这些算法实现得好或不好是有区别的，因此，如果你正在你的机器学习程序中使用一种不同的语言，比如如果你正在使用<strong>C</strong>、<strong>C++</strong>、<strong>Java</strong>等等，你可能会想尝试一些不同的库，以确保你找到一个能很好实现这些算法的库。因为在<strong>L-BFGS</strong>或者等高线梯度的实现上，表现得好与不太好是有差别的，因此现在让我们来说明：如何使用这些算法：</p>
+<p><img alt="" src="../../images/743a769317d584a66509fc394b4e6095.png" /></p>
+<p>比方说，你有一个含两个参数的问题，这两个参数是<span><span class="MathJax_Preview">{\theta_{0}}</span><script type="math/tex">{\theta_{0}}</script></span>和<span><span class="MathJax_Preview">{\theta_{1}}</span><script type="math/tex">{\theta_{1}}</script></span>，因此，通过这个代价函数，你可以得到<span><span class="MathJax_Preview">{\theta_{1}}</span><script type="math/tex">{\theta_{1}}</script></span>和 <span><span class="MathJax_Preview">{\theta_{2}}</span><script type="math/tex">{\theta_{2}}</script></span>的值，如果你将<span><span class="MathJax_Preview">J\left( \theta  \right)</span><script type="math/tex">J\left( \theta  \right)</script></span> 最小化的话，那么它的最小值将是<span><span class="MathJax_Preview">{\theta_{1}}=5</span><script type="math/tex">{\theta_{1}}=5</script></span> ，<span><span class="MathJax_Preview">{\theta_{2}}=5</span><script type="math/tex">{\theta_{2}}=5</script></span>。代价函数<span><span class="MathJax_Preview">J\left( \theta  \right)</span><script type="math/tex">J\left( \theta  \right)</script></span>的导数推出来就是这两个表达式：</p>
+<p><span><span class="MathJax_Preview">\frac{\partial }{\partial {{\theta }_{1}}}J(\theta)=2({{\theta }_{1}}-5)</span><script type="math/tex">\frac{\partial }{\partial {{\theta }_{1}}}J(\theta)=2({{\theta }_{1}}-5)</script></span></p>
+<p><span><span class="MathJax_Preview">\frac{\partial }{\partial {{\theta }_{2}}}J(\theta)=2({{\theta }_{2}}-5)</span><script type="math/tex">\frac{\partial }{\partial {{\theta }_{2}}}J(\theta)=2({{\theta }_{2}}-5)</script></span></p>
+<p>如果我们不知道最小值，但你想要代价函数找到这个最小值，是用比如梯度下降这些算法，但最好是用比它更高级的算法，你要做的就是运行一个像这样的<strong>Octave</strong> 函数：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">function</span><span class="w"> </span>[jVal, gradient]<span class="p">=</span><span class="nf">costFunction</span><span class="p">(</span>theta<span class="p">)</span><span class="w"></span>
+
+<span class="w">　　</span><span class="n">jVal</span><span class="p">=(</span><span class="n">theta</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span>^<span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="n">theta</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span>^<span class="mi">2</span><span class="p">;</span>
+
+　　<span class="nb">gradient</span><span class="p">=</span><span class="nb">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+
+　　<span class="nb">gradient</span><span class="p">(</span><span class="mi">1</span><span class="p">)=</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">theta</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="mi">5</span><span class="p">);</span>
+
+　　<span class="nb">gradient</span><span class="p">(</span><span class="mi">2</span><span class="p">)=</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">theta</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">-</span><span class="mi">5</span><span class="p">);</span>
+
+<span class="k">end</span>
+</pre></div>
+</td></tr></table>
+
+<p>这样就计算出这个代价函数，函数返回的第二个值是梯度值，梯度值应该是一个2×1的向量，梯度向量的两个元素对应这里的两个偏导数项，运行这个<strong>costFunction</strong> 函数后，你就可以调用高级的优化函数，这个函数叫
+<strong>fminunc</strong>，它表示<strong>Octave</strong> 里无约束最小化函数。调用它的方式如下：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">options</span><span class="p">=</span><span class="nb">optimset</span><span class="p">(</span><span class="s">&#39;GradObj&#39;</span><span class="p">,</span><span class="s">&#39;on&#39;</span><span class="p">,</span><span class="s">&#39;MaxIter&#39;</span><span class="p">,</span><span class="mi">100</span><span class="p">);</span>
+
+<span class="n">initialTheta</span><span class="p">=</span><span class="nb">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="p">[</span><span class="n">optTheta</span><span class="p">,</span> <span class="n">functionVal</span><span class="p">,</span> <span class="n">exitFlag</span><span class="p">]=</span><span class="n">fminunc</span><span class="p">(@</span><span class="n">costFunction</span><span class="p">,</span> <span class="n">initialTheta</span><span class="p">,</span> <span class="n">options</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+
+<p>你要设置几个<strong>options</strong>，这个 <strong>options</strong> 变量作为一个数据结构可以存储你想要的<strong>options</strong>，所以 <strong>GradObj</strong> 和<strong>On</strong>，这里设置梯度目标参数为打开(<strong>on</strong>)，这意味着你现在确实要给这个算法提供一个梯度，然后设置最大迭代次数，比方说100，我们给出一个<span><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span> 的猜测初始值，它是一个2×1的向量，那么这个命令就调用<strong>fminunc</strong>，这个@符号表示指向我们刚刚定义的<strong>costFunction</strong> 函数的指针。如果你调用它，它就会使用众多高级优化算法中的一个，当然你也可以把它当成梯度下降，只不过它能自动选择学习速率<span><span class="MathJax_Preview">\alpha</span><script type="math/tex">\alpha</script></span>，你不需要自己来做。然后它会尝试使用这些高级的优化算法，就像加强版的梯度下降法，为你找到最佳的<span><span class="MathJax_Preview">{\theta}</span><script type="math/tex">{\theta}</script></span>值。</p>
+<p>让我告诉你它在 <strong>Octave</strong> 里什么样：</p>
+<p><img alt="" src="../../images/bd074e119a52163691cff93c3f42a1ee.png" /></p>
+<p>所以我写了这个关于<strong>theta</strong>的 <strong>costFunction</strong> 函数，它计算出代价函数 <strong>jval</strong>以及梯度<strong>gradient</strong>，<strong>gradient</strong> 有两个元素，是代价函数对于<strong>theta(1)</strong> 和 <strong>theta(2)</strong>这两个参数的偏导数。</p>
+<p>我希望你们从这个幻灯片中学到的主要内容是：写一个函数，它能返回代价函数值、梯度值，因此要把这个应用到逻辑回归，或者甚至线性回归中，你也可以把这些优化算法用于线性回归，你需要做的就是输入合适的代码来计算这里的这些东西。</p>
+<p>现在你已经知道如何使用这些高级的优化算法，有了这些算法，你就可以使用一个复杂的优化库，它让算法使用起来更模糊一点。因此也许稍微有点难调试，不过由于这些算法的运行速度通常远远超过梯度下降。</p>
+<p>所以当我有一个很大的机器学习问题时，我会选择这些高级算法，而不是梯度下降。有了这些概念，你就应该能将逻辑回归和线性回归应用于更大的问题中，这就是高级优化的概念。</p>
+<p>在下一个视频，我想要告诉你如何修改你已经知道的逻辑回归算法，然后使它在多类别分类问题中也能正常运行。</p>
+<h3 id="67">6.7 多类别分类：一对多<a class="headerlink" href="#67" title="Permanent link">&para;</a></h3>
+<p>参考视频: 6 - 7 - Multiclass Classification_ One-vs-all (6 min).mkv</p>
+<p>在本节视频中，我们将谈到如何使用逻辑回归 (<strong>logistic regression</strong>)来解决多类别分类问题，具体来说，我想通过一个叫做"一对多" (<strong>one-vs-all</strong>) 的分类算法。</p>
+<p>先看这样一些例子。</p>
+<p>第一个例子：假如说你现在需要一个学习算法能自动地将邮件归类到不同的文件夹里，或者说可以自动地加上标签，那么，你也许需要一些不同的文件夹，或者不同的标签来完成这件事，来区分开来自工作的邮件、来自朋友的邮件、来自家人的邮件或者是有关兴趣爱好的邮件，那么，我们就有了这样一个分类问题：其类别有四个，分别用<span><span class="MathJax_Preview">y=1</span><script type="math/tex">y=1</script></span>、<span><span class="MathJax_Preview">y=2</span><script type="math/tex">y=2</script></span>、<span><span class="MathJax_Preview">y=3</span><script type="math/tex">y=3</script></span>、<span><span class="MathJax_Preview">y=4</span><script type="math/tex">y=4</script></span> 来代表。</p>
+<p>第二个例子是有关药物诊断的，如果一个病人因为鼻塞来到你的诊所，他可能并没有生病，用 <span><span class="MathJax_Preview">y=1</span><script type="math/tex">y=1</script></span> 这个类别来代表；或者患了感冒，用 <span><span class="MathJax_Preview">y=2</span><script type="math/tex">y=2</script></span> 来代表；或者得了流感用<span><span class="MathJax_Preview">y=3</span><script type="math/tex">y=3</script></span>来代表。</p>
+<p>第三个例子：如果你正在做有关天气的机器学习分类问题，那么你可能想要区分哪些天是晴天、多云、雨天、或者下雪天，对上述所有的例子，<span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span> 可以取一个很小的数值，一个相对"谨慎"的数值，比如1 到3、1到4或者其它数值，以上说的都是多类分类问题，顺便一提的是，对于下标是0 1 2 3，还是 1 2 3 4 都不重要，我更喜欢将分类从 1 开始标而不是0，其实怎样标注都不会影响最后的结果。</p>
+<p>然而对于之前的一个，二元分类问题，我们的数据看起来可能是像这样：</p>
+<p><img alt="" src="../../images/68f56679a2113c7857ab9dd2afebcba8.png" /></p>
+<p>对于一个多类分类问题，我们的数据集或许看起来像这样：</p>
+<p><img alt="" src="../../images/54d7903564b4416305b26f6ff2e13c04.png" /></p>
+<p>我用3种不同的符号来代表3个类别，问题就是给出3个类型的数据集，我们如何得到一个学习算法来进行分类呢？</p>
+<p>我们现在已经知道如何进行二元分类，可以使用逻辑回归，对于直线或许你也知道，可以将数据集一分为二为正类和负类。用一对多的分类思想，我们可以将其用在多类分类问题上。</p>
+<p>下面将介绍如何进行一对多的分类工作，有时这个方法也被称为"一对余"方法。</p>
+<p><img alt="" src="../../images/450a83c67732d254dbac2aeeb8ab910c.png" /></p>
+<p>现在我们有一个训练集，好比上图表示的有3个类别，我们用三角形表示 <span><span class="MathJax_Preview">y=1</span><script type="math/tex">y=1</script></span>，方框表示<span><span class="MathJax_Preview">y=2</span><script type="math/tex">y=2</script></span>，叉叉表示 <span><span class="MathJax_Preview">y=3</span><script type="math/tex">y=3</script></span>。我们下面要做的就是使用一个训练集，将其分成3个二元分类问题。</p>
+<p>我们先从用三角形代表的类别1开始，实际上我们可以创建一个，新的"伪"训练集，类型2和类型3定为负类，类型1设定为正类，我们创建一个新的训练集，如下图所示的那样，我们要拟合出一个合适的分类器。</p>
+<p><img alt="" src="../../images/b72863ce7f85cd491e5b940924ef5a5f.png" /></p>
+<p>这里的三角形是正样本，而圆形代表负样本。可以这样想，设置三角形的值为1，圆形的值为0，下面我们来训练一个标准的逻辑回归分类器，这样我们就得到一个正边界。</p>
+<p>为了能实现这样的转变，我们将多个类中的一个类标记为正向类（<span><span class="MathJax_Preview">y=1</span><script type="math/tex">y=1</script></span>），然后将其他所有类都标记为负向类，这个模型记作<span><span class="MathJax_Preview">h_\theta^{\left( 1 \right)}\left( x \right)</span><script type="math/tex">h_\theta^{\left( 1 \right)}\left( x \right)</script></span>。接着，类似地第我们选择另一个类标记为正向类（<span><span class="MathJax_Preview">y=2</span><script type="math/tex">y=2</script></span>），再将其它类都标记为负向类，将这个模型记作 <span><span class="MathJax_Preview">h_\theta^{\left( 2 \right)}\left( x \right)</span><script type="math/tex">h_\theta^{\left( 2 \right)}\left( x \right)</script></span>,依此类推。
+最后我们得到一系列的模型简记为： <span><span class="MathJax_Preview">h_\theta^{\left( i \right)}\left( x \right)=p\left( y=i|x;\theta  \right)</span><script type="math/tex">h_\theta^{\left( i \right)}\left( x \right)=p\left( y=i|x;\theta  \right)</script></span>其中：<span><span class="MathJax_Preview">i=\left( 1,2,3....k \right)</span><script type="math/tex">i=\left( 1,2,3....k \right)</script></span> </p>
+<p>最后，在我们需要做预测时，我们将所有的分类机都运行一遍，然后对每一个输入变量，都选择最高可能性的输出变量。</p>
+<p>总之，我们已经把要做的做完了，现在要做的就是训练这个逻辑回归分类器：<span><span class="MathJax_Preview">h_\theta^{\left( i \right)}\left( x \right)</span><script type="math/tex">h_\theta^{\left( i \right)}\left( x \right)</script></span>， 其中 <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 对应每一个可能的 <span><span class="MathJax_Preview">y=i</span><script type="math/tex">y=i</script></span>，最后，为了做出预测，我们给出输入一个新的 <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> 值，用这个做预测。我们要做的就是在我们三个分类器里面输入 <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>，然后我们选择一个让 <span><span class="MathJax_Preview">h_\theta^{\left( i \right)}\left( x \right)</span><script type="math/tex">h_\theta^{\left( i \right)}\left( x \right)</script></span> 最大的$ i<span><span class="MathJax_Preview">，即</span><script type="math/tex">，即</script></span>\mathop{\max}\limits_i\,h_\theta^{\left( i \right)}\left( x \right)$。</p>
+<p>你现在知道了基本的挑选分类器的方法，选择出哪一个分类器是可信度最高效果最好的，那么就可认为得到一个正确的分类，无论<span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>值是多少，我们都有最高的概率值，我们预测<span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>就是那个值。这就是多类别分类问题，以及一对多的方法，通过这个小方法，你现在也可以将逻辑回归分类器用在多类分类的问题上。</p>
+<h2 id="regularization">七、正则化(Regularization)<a class="headerlink" href="#regularization" title="Permanent link">&para;</a></h2>
+<h3 id="71">7.1 过拟合的问题<a class="headerlink" href="#71" title="Permanent link">&para;</a></h3>
+<p>参考视频: 7 - 1 - The Problem of Overfitting (10 min).mkv</p>
+<p>到现在为止，我们已经学习了几种不同的学习算法，包括线性回归和逻辑回归，它们能够有效地解决许多问题，但是当将它们应用到某些特定的机器学习应用时，会遇到过拟合(<strong>over-fitting</strong>)的问题，可能会导致它们效果很差。</p>
+<p>在这段视频中，我将为你解释什么是过度拟合问题，并且在此之后接下来的几个视频中，我们将谈论一种称为正则化(<strong>regularization</strong>)的技术，它可以改善或者减少过度拟合问题。</p>
+<p>如果我们有非常多的特征，我们通过学习得到的假设可能能够非常好地适应训练集（代价函数可能几乎为0），但是可能会不能推广到新的数据。</p>
+<p>下图是一个回归问题的例子：</p>
+<p><img alt="" src="../../images/72f84165fbf1753cd516e65d5e91c0d3.jpg" /></p>
+<p>第一个模型是一个线性模型，欠拟合，不能很好地适应我们的训练集；第三个模型是一个四次方的模型，过于强调拟合原始数据，而丢失了算法的本质：预测新数据。我们可以看出，若给出一个新的值使之预测，它将表现的很差，是过拟合，虽然能非常好地适应我们的训练集但在新输入变量进行预测时可能会效果不好；而中间的模型似乎最合适。</p>
+<p>分类问题中也存在这样的问题：</p>
+<p><img alt="" src="../../images/be39b497588499d671942cc15026e4a2.jpg" /></p>
+<p>就以多项式理解，<span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> 的次数越高，拟合的越好，但相应的预测的能力就可能变差。</p>
+<p>问题是，如果我们发现了过拟合问题，应该如何处理？</p>
+<ol>
+<li>
+<p>丢弃一些不能帮助我们正确预测的特征。可以是手工选择保留哪些特征，或者使用一些模型选择的算法来帮忙（例如<strong>PCA</strong>）</p>
+</li>
+<li>
+<p>正则化。 保留所有的特征，但是减少参数的大小（<strong>magnitude</strong>）。</p>
+</li>
+</ol>
+<h3 id="72">7.2 代价函数<a class="headerlink" href="#72" title="Permanent link">&para;</a></h3>
+<p>参考视频: 7 - 2 - Cost Function (10 min).mkv</p>
+<p>上面的回归问题中如果我们的模型是：
+<span><span class="MathJax_Preview">{h_\theta}\left( x \right)={\theta_{0}}+{\theta_{1}}{x_{1}}+{\theta_{2}}{x_{2}^2}+{\theta_{3}}{x_{3}^3}+{\theta_{4}}{x_{4}^4}</span><script type="math/tex">{h_\theta}\left( x \right)={\theta_{0}}+{\theta_{1}}{x_{1}}+{\theta_{2}}{x_{2}^2}+{\theta_{3}}{x_{3}^3}+{\theta_{4}}{x_{4}^4}</script></span>
+我们可以从之前的事例中看出，正是那些高次项导致了过拟合的产生，所以如果我们能让这些高次项的系数接近于0的话，我们就能很好的拟合了。
+所以我们要做的就是在一定程度上减小这些参数$\theta $ 的值，这就是正则化的基本方法。我们决定要减少<span><span class="MathJax_Preview">{\theta_{3}}</span><script type="math/tex">{\theta_{3}}</script></span>和<span><span class="MathJax_Preview">{\theta_{4}}</span><script type="math/tex">{\theta_{4}}</script></span>的大小，我们要做的便是修改代价函数，在其中<span><span class="MathJax_Preview">{\theta_{3}}</span><script type="math/tex">{\theta_{3}}</script></span>和<span><span class="MathJax_Preview">{\theta_{4}}</span><script type="math/tex">{\theta_{4}}</script></span> 设置一点惩罚。这样做的话，我们在尝试最小化代价时也需要将这个惩罚纳入考虑中，并最终导致选择较小一些的<span><span class="MathJax_Preview">{\theta_{3}}</span><script type="math/tex">{\theta_{3}}</script></span>和<span><span class="MathJax_Preview">{\theta_{4}}</span><script type="math/tex">{\theta_{4}}</script></span>。
+修改后的代价函数如下：<span><span class="MathJax_Preview">\underset{\theta }{\mathop{\min }}\,\frac{1}{2m}[\sum\limits_{i=1}^{m}{{{\left( {{h}_{\theta }}\left( {{x}^{(i)}} \right)-{{y}^{(i)}} \right)}^{2}}+1000\theta _{3}^{2}+10000\theta _{4}^{2}]}</span><script type="math/tex">\underset{\theta }{\mathop{\min }}\,\frac{1}{2m}[\sum\limits_{i=1}^{m}{{{\left( {{h}_{\theta }}\left( {{x}^{(i)}} \right)-{{y}^{(i)}} \right)}^{2}}+1000\theta _{3}^{2}+10000\theta _{4}^{2}]}</script></span></p>
+<p>通过这样的代价函数选择出的<span><span class="MathJax_Preview">{\theta_{3}}</span><script type="math/tex">{\theta_{3}}</script></span>和<span><span class="MathJax_Preview">{\theta_{4}}</span><script type="math/tex">{\theta_{4}}</script></span> 对预测结果的影响就比之前要小许多。假如我们有非常多的特征，我们并不知道其中哪些特征我们要惩罚，我们将对所有的特征进行惩罚，并且让代价函数最优化的软件来选择这些惩罚的程度。这样的结果是得到了一个较为简单的能防止过拟合问题的假设：<span><span class="MathJax_Preview">J\left( \theta  \right)=\frac{1}{2m}[\sum\limits_{i=1}^{m}{{{({h_\theta}({{x}^{(i)}})-{{y}^{(i)}})}^{2}}+\lambda \sum\limits_{j=1}^{n}{\theta_{j}^{2}}]}</span><script type="math/tex">J\left( \theta  \right)=\frac{1}{2m}[\sum\limits_{i=1}^{m}{{{({h_\theta}({{x}^{(i)}})-{{y}^{(i)}})}^{2}}+\lambda \sum\limits_{j=1}^{n}{\theta_{j}^{2}}]}</script></span></p>
+<p>其中<span><span class="MathJax_Preview">\lambda <span><span class="MathJax_Preview">又称为正则化参数（**Regularization Parameter**）。 注：根据惯例，我们不对</span><script type="math/tex">又称为正则化参数（**Regularization Parameter**）。 注：根据惯例，我们不对</script></span>{\theta_{0}}{\theta_{0}}</span><script type="math/tex">\lambda <span><span class="MathJax_Preview">又称为正则化参数（**Regularization Parameter**）。 注：根据惯例，我们不对</span><script type="math/tex">又称为正则化参数（**Regularization Parameter**）。 注：根据惯例，我们不对</script></span>{\theta_{0}}{\theta_{0}}</script></span> 进行惩罚。经过正则化处理的模型与原模型的可能对比如下图所示：</p>
+<p><img alt="" src="../../images/ea76cc5394cf298f2414f230bcded0bd.jpg" /></p>
+<p>如果选择的正则化参数<span><span class="MathJax_Preview">\lambda</span><script type="math/tex">\lambda</script></span> 过大，则会把所有的参数都最小化了，导致模型变成 <span><span class="MathJax_Preview">{h_\theta}\left( x \right)={\theta_{0}}</span><script type="math/tex">{h_\theta}\left( x \right)={\theta_{0}}</script></span>，也就是上图中红色直线所示的情况，造成欠拟合。
+那为什么增加的一项<span><span class="MathJax_Preview">\lambda =\sum\limits_{j=1}^{n}{\theta_j^{2}}</span><script type="math/tex">\lambda =\sum\limits_{j=1}^{n}{\theta_j^{2}}</script></span> 可以使$\theta $的值减小呢？
+因为如果我们令 <span><span class="MathJax_Preview">\lambda</span><script type="math/tex">\lambda</script></span> 的值很大的话，为了使<strong>Cost Function</strong> 尽可能的小，所有的 $\theta $ 的值（不包括<span><span class="MathJax_Preview">{\theta_{0}}</span><script type="math/tex">{\theta_{0}}</script></span>）都会在一定程度上减小。
+但若<span><span class="MathJax_Preview">\lambda</span><script type="math/tex">\lambda</script></span> 的值太大了，那么<span><span class="MathJax_Preview">\theta <span><span class="MathJax_Preview">（不包括</span><script type="math/tex">（不包括</script></span>{\theta_{0}}{\theta_{0}}</span><script type="math/tex">\theta <span><span class="MathJax_Preview">（不包括</span><script type="math/tex">（不包括</script></span>{\theta_{0}}{\theta_{0}}</script></span>）都会趋近于0，这样我们所得到的只能是一条平行于<span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>轴的直线。
+所以对于正则化，我们要取一个合理的 <span><span class="MathJax_Preview">\lambda</span><script type="math/tex">\lambda</script></span> 的值，这样才能更好的应用正则化。
+回顾一下代价函数，为了使用正则化，让我们把这些概念应用到到线性回归和逻辑回归中去，那么我们就可以让他们避免过度拟合了。</p>
+<h3 id="73">7.3 正则化线性回归<a class="headerlink" href="#73" title="Permanent link">&para;</a></h3>
+<p>参考视频: 7 - 3 - Regularized Linear Regression (11 min).mkv</p>
+<p>对于线性回归的求解，我们之前推导了两种学习算法：一种基于梯度下降，一种基于正规方程。</p>
+<p>正则化线性回归的代价函数为：</p>
+<p><span><span class="MathJax_Preview">J\left( \theta  \right)=\frac{1}{2m}\sum\limits_{i=1}^{m}{[({{({h_\theta}({{x}^{(i)}})-{{y}^{(i)}})}^{2}}+\lambda \sum\limits_{j=1}^{n}{\theta _{j}^{2}})]}</span><script type="math/tex">J\left( \theta  \right)=\frac{1}{2m}\sum\limits_{i=1}^{m}{[({{({h_\theta}({{x}^{(i)}})-{{y}^{(i)}})}^{2}}+\lambda \sum\limits_{j=1}^{n}{\theta _{j}^{2}})]}</script></span></p>
+<p>如果我们要使用梯度下降法令这个代价函数最小化，因为我们未对<span><span class="MathJax_Preview">\theta_0​</span><script type="math/tex">\theta_0​</script></span>进行正则化，所以梯度下降算法将分两种情形：</p>
+<p><span><span class="MathJax_Preview">Repeat</span><script type="math/tex">Repeat</script></span>  <span><span class="MathJax_Preview">until</span><script type="math/tex">until</script></span>  <span><span class="MathJax_Preview">convergence</span><script type="math/tex">convergence</script></span>{</p>
+<p>​                                                   <span><span class="MathJax_Preview">{\theta_0}:={\theta_0}-a\frac{1}{m}\sum\limits_{i=1}^{m}{(({h_\theta}({{x}^{(i)}})-{{y}^{(i)}})x_{0}^{(i)}})</span><script type="math/tex">{\theta_0}:={\theta_0}-a\frac{1}{m}\sum\limits_{i=1}^{m}{(({h_\theta}({{x}^{(i)}})-{{y}^{(i)}})x_{0}^{(i)}})</script></span> </p>
+<p>​                                                   <span><span class="MathJax_Preview">{\theta_j}:={\theta_j}-a[\frac{1}{m}\sum\limits_{i=1}^{m}{(({h_\theta}({{x}^{(i)}})-{{y}^{(i)}})x_{j}^{\left( i \right)}}+\frac{\lambda }{m}{\theta_j}]</span><script type="math/tex">{\theta_j}:={\theta_j}-a[\frac{1}{m}\sum\limits_{i=1}^{m}{(({h_\theta}({{x}^{(i)}})-{{y}^{(i)}})x_{j}^{\left( i \right)}}+\frac{\lambda }{m}{\theta_j}]</script></span> </p>
+<p>​                                                             <span><span class="MathJax_Preview">for</span><script type="math/tex">for</script></span> <span><span class="MathJax_Preview">j=1,2,...n</span><script type="math/tex">j=1,2,...n</script></span></p>
+<p>​                                                   }</p>
+<p>对上面的算法中$ j=1,2,...,n$ 时的更新式子进行调整可得：</p>
+<p><span><span class="MathJax_Preview">{\theta_j}:={\theta_j}(1-a\frac{\lambda }{m})-a\frac{1}{m}\sum\limits_{i=1}^{m}{({h_\theta}({{x}^{(i)}})-{{y}^{(i)}})x_{j}^{\left( i \right)}}​</span><script type="math/tex">{\theta_j}:={\theta_j}(1-a\frac{\lambda }{m})-a\frac{1}{m}\sum\limits_{i=1}^{m}{({h_\theta}({{x}^{(i)}})-{{y}^{(i)}})x_{j}^{\left( i \right)}}​</script></span> 
+可以看出，正则化线性回归的梯度下降算法的变化在于，每次都在原有算法更新规则的基础上令$\theta $值减少了一个额外的值。</p>
+<p>我们同样也可以利用正规方程来求解正则化线性回归模型，方法如下所示：</p>
+<p><img alt="" src="../../images/71d723ddb5863c943fcd4e6951114ee3.png" /></p>
+<p>图中的矩阵尺寸为 <span><span class="MathJax_Preview">(n+1)*(n+1)</span><script type="math/tex">(n+1)*(n+1)</script></span>。</p>
+<h3 id="74">7.4 正则化的逻辑回归模型<a class="headerlink" href="#74" title="Permanent link">&para;</a></h3>
+<p>参考视频: 7 - 4 - Regularized Logistic Regression (9 min).mkv</p>
+<p>针对逻辑回归问题，我们在之前的课程已经学习过两种优化算法：我们首先学习了使用梯度下降法来优化代价函数<span><span class="MathJax_Preview">J\left( \theta  \right)</span><script type="math/tex">J\left( \theta  \right)</script></span>，接下来学习了更高级的优化算法，这些高级优化算法需要你自己设计代价函数<span><span class="MathJax_Preview">J\left( \theta  \right)</span><script type="math/tex">J\left( \theta  \right)</script></span>。</p>
+<p><img alt="" src="../../images/2726da11c772fc58f0c85e40aaed14bd.png" /></p>
+<p>自己计算导数同样对于逻辑回归，我们也给代价函数增加一个正则化的表达式，得到代价函数：</p>
+<p><span><span class="MathJax_Preview">J\left( \theta  \right)=\frac{1}{m}\sum\limits_{i=1}^{m}{[-{{y}^{(i)}}\log \left( {h_\theta}\left( {{x}^{(i)}} \right) \right)-\left( 1-{{y}^{(i)}} \right)\log \left( 1-{h_\theta}\left( {{x}^{(i)}} \right) \right)]}+\frac{\lambda }{2m}\sum\limits_{j=1}^{n}{\theta _{j}^{2}}</span><script type="math/tex">J\left( \theta  \right)=\frac{1}{m}\sum\limits_{i=1}^{m}{[-{{y}^{(i)}}\log \left( {h_\theta}\left( {{x}^{(i)}} \right) \right)-\left( 1-{{y}^{(i)}} \right)\log \left( 1-{h_\theta}\left( {{x}^{(i)}} \right) \right)]}+\frac{\lambda }{2m}\sum\limits_{j=1}^{n}{\theta _{j}^{2}}</script></span></p>
+<p><strong>Python</strong>代码：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">costReg</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">learningRate</span><span class="p">):</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">first</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="o">-</span><span class="n">y</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">X</span><span class="o">*</span><span class="n">theta</span><span class="o">.</span><span class="n">T</span><span class="p">)))</span>
+    <span class="n">second</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">y</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">X</span><span class="o">*</span><span class="n">theta</span><span class="o">.</span><span class="n">T</span><span class="p">)))</span>
+    <span class="n">reg</span> <span class="o">=</span> <span class="p">(</span><span class="n">learningRate</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">))</span><span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">theta</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:</span><span class="n">theta</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span><span class="mi">2</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">first</span> <span class="o">-</span> <span class="n">second</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">))</span> <span class="o">+</span> <span class="n">reg</span>
+</pre></div>
+</td></tr></table>
+
+<p>要最小化该代价函数，通过求导，得出梯度下降算法为：</p>
+<p><span><span class="MathJax_Preview">Repeat</span><script type="math/tex">Repeat</script></span>  <span><span class="MathJax_Preview">until</span><script type="math/tex">until</script></span>  <span><span class="MathJax_Preview">convergence</span><script type="math/tex">convergence</script></span>{</p>
+<p>​                                                   <span><span class="MathJax_Preview">{\theta_0}:={\theta_0}-a\frac{1}{m}\sum\limits_{i=1}^{m}{(({h_\theta}({{x}^{(i)}})-{{y}^{(i)}})x_{0}^{(i)}})</span><script type="math/tex">{\theta_0}:={\theta_0}-a\frac{1}{m}\sum\limits_{i=1}^{m}{(({h_\theta}({{x}^{(i)}})-{{y}^{(i)}})x_{0}^{(i)}})</script></span></p>
+<p>​                                                  <span><span class="MathJax_Preview">{\theta_j}:={\theta_j}-a[\frac{1}{m}\sum\limits_{i=1}^{m}{({h_\theta}({{x}^{(i)}})-{{y}^{(i)}})x_{j}^{\left( i \right)}}+\frac{\lambda }{m}{\theta_j}]</span><script type="math/tex">{\theta_j}:={\theta_j}-a[\frac{1}{m}\sum\limits_{i=1}^{m}{({h_\theta}({{x}^{(i)}})-{{y}^{(i)}})x_{j}^{\left( i \right)}}+\frac{\lambda }{m}{\theta_j}]</script></span></p>
+<p>​                                                 <span><span class="MathJax_Preview">for</span><script type="math/tex">for</script></span> <span><span class="MathJax_Preview">j=1,2,...n</span><script type="math/tex">j=1,2,...n</script></span></p>
+<p>​                                                 }</p>
+<p>注：看上去同线性回归一样，但是知道 <span><span class="MathJax_Preview">{h_\theta}\left( x \right)=g\left( {\theta^T}X \right)​</span><script type="math/tex">{h_\theta}\left( x \right)=g\left( {\theta^T}X \right)​</script></span>，所以与线性回归不同。
+<strong>Octave</strong> 中，我们依旧可以用 <code>fminuc</code> 函数来求解代价函数最小化的参数，值得注意的是参数<span><span class="MathJax_Preview">{\theta_{0}}​</span><script type="math/tex">{\theta_{0}}​</script></span>的更新规则与其他情况不同。
+注意：</p>
+<ol>
+<li>
+<p>虽然正则化的逻辑回归中的梯度下降和正则化的线性回归中的表达式看起来一样，但由于两者的<span><span class="MathJax_Preview">{h_\theta}\left( x \right)​</span><script type="math/tex">{h_\theta}\left( x \right)​</script></span>不同所以还是有很大差别。</p>
+</li>
+<li>
+<p><span><span class="MathJax_Preview">{\theta_{0}}</span><script type="math/tex">{\theta_{0}}</script></span>不参与其中的任何一个正则化。</p>
+</li>
+</ol>
+<p>目前大家对机器学习算法可能还只是略懂，但是一旦你精通了线性回归、高级优化算法和正则化技术，坦率地说，你对机器学习的理解可能已经比许多工程师深入了。现在，你已经有了丰富的机器学习知识，目测比那些硅谷工程师还厉害，或者用机器学习算法来做产品。</p>
+<p>接下来的课程中，我们将学习一个非常强大的非线性分类器，无论是线性回归问题，还是逻辑回归问题，都可以构造多项式来解决。你将逐渐发现还有更强大的非线性分类器，可以用来解决多项式回归问题。我们接下来将将学会，比现在解决问题的方法强大N倍的学习算法。</p>
+                
+                  
+                
+              
+              
+                
+
+
+  <h2 id="__comments">评论</h2>
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://hai5g.cn/aiwiki/Coursera_ML_AndrewNg/markdown/week3/";
+      this.page.identifier =
+        "/Coursera_ML_AndrewNg/markdown/week3/";
+    };
+    (function() {
+      var d = document, s = d.createElement("script");
+      s.src = "//AI-Wiki.disqus.com/embed.js";
+      s.setAttribute("data-timestamp", +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../week2/" title="week2" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  后退
+                </span>
+                week2
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../week4/" title="week4" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  前进
+                </span>
+                week4
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 AI Wiki Team
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.39abc4af.js"></script>
+      
+        
+        
+          
+          <script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/ethantw/Han@3.3.0/dist/han.min.js"></script>
+      
+        <script src="../../../_static/js/extra.js?v=10"></script>
+      
+        <script src="https://cdnjs.loli.net/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
