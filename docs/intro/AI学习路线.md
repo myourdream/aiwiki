@@ -4,7 +4,7 @@
 * [重磅 | 完备的 AI 学习路线，最详细的资源整理！](https://github.com/apachecn/ai-roadmap/blob/master/ai-union-201904/README.md)
 * [AI 路线图 v0.2](https://github.com/apachecn/ai-roadmap/tree/master/v0.2)
 * [AI learning 资源](https://github.com/apachecn/AiLearning)
-* [apacheCN中文社区文档](http://www.apachecn.org/classification/)
+* [apacheCN中文社区文档](https://www.ibooker.org.cn/docs/)
 * [Kaggle 项目实战（教程） = 文档 + 代码 + 视频（欢迎参与）](https://github.com/apachecn/kaggle)
 * [机器学习算法全景图](https://feisky.xyz/machine-learning/)
 <!-- more -->

@@ -1,6 +1,6 @@
-[![Word Art](https://raw.githubusercontent.com/24OI/OI-wiki/master/docs/images/wordArt.png)](https://oi-wiki.org/)
+[![Word Art](wordArt.png)](https://hai5g.cn/aiwiki/)
 
-# 欢迎来到 **OI Wiki**！
+# 欢迎来到 **AI Wiki**！
 
 [![Travis](https://img.shields.io/travis/24OI/OI-wiki.svg?style=flat-square)](https://travis-ci.org/24OI/OI-wiki)
 [![Progress](https://img.shields.io/badge/Progress-84%25-brightgreen.svg?style=flat-square)](https://github.com/24OI/OI-wiki)
