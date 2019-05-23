@@ -1,0 +1,2328 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="AI Wiki 是一个编程竞赛知识整合站点，提供有趣又实用的编程竞赛知识以及其他有帮助的内容，帮助广大编程竞赛爱好者更快更深入地学习编程竞赛">
+      
+      
+        <link rel="canonical" href="https://hai5g.cn/aiwiki/hands-on-ml-zh/docs/5.支持向量机/">
+      
+      
+        <meta name="author" content="AI Wiki Team">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.2.0">
+    
+    
+      
+        <title>支持向量机 - AI Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.750b69bd.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.224b79ff.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:300,400,400i,700|Fira+Mono">
+        <style>body,input{font-family:"Fira Sans","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Fira Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+      <link rel="manifest" href="../../../manifest.webmanifest">
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ah@1.5.0/han.min.css">
+    
+      <link rel="stylesheet" href="../../../_static/css/extra.css?v=11">
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="red">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://hai5g.cn/aiwiki" title="AI Wiki" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">school</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              AI Wiki
+            </span>
+            <span class="md-header-nav__topic">
+              支持向量机
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/myourdream/aiwiki/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    aiwiki
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../.." title="简介" class="md-tabs__link">
+          简介
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../Coursera_ML_AndrewNg/" title="机器学习" class="md-tabs__link">
+          机器学习
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../qa500/" title="深度学习500问" class="md-tabs__link">
+          深度学习500问
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../lihang/" title="统计学习" class="md-tabs__link">
+          统计学习
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../README.old/" title="Sklearn与TensorFlow" class="md-tabs__link md-tabs__link--active">
+          Sklearn与TensorFlow
+        </a>
+      
+    </li>
+  
+
+      
+        
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://hai5g.cn/aiwiki" title="AI Wiki" class="md-nav__button md-logo">
+      
+        <i class="md-icon">school</i>
+      
+    </a>
+    AI Wiki
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/myourdream/aiwiki/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    aiwiki
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      简介
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        简介
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="Getting Started" class="md-nav__link">
+      Getting Started
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/AI学习路线/" title="AI学习路线1" class="md-nav__link">
+      AI学习路线1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/ai-roadmap/ai-union-201904/" title="AI学习路线2" class="md-nav__link">
+      AI学习路线2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/ai-roadmap/v0.1/" title="AI 路线图v0.1" class="md-nav__link">
+      AI 路线图v0.1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/ai-roadmap/v0.2/" title="AI 路线图v0.2" class="md-nav__link">
+      AI 路线图v0.2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/ai-roadmap/v1.0/" title="ApacheCN 人工智能知识树" class="md-nav__link">
+      ApacheCN 人工智能知识树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-7" type="checkbox" id="nav-1-7">
+    
+    <label class="md-nav__link" for="nav-1-7">
+      工具软件
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-1-7">
+        工具软件
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/judgers/" title="评测工具" class="md-nav__link">
+      评测工具
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/editors/" title="编辑工具" class="md-nav__link">
+      编辑工具
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/wsl/" title="WSL (Windows 10)" class="md-nav__link">
+      WSL (Windows 10)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/spj/" title="Special Judge" class="md-nav__link">
+      Special Judge
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-7-5" type="checkbox" id="nav-1-7-5">
+    
+    <label class="md-nav__link" for="nav-1-7-5">
+      Testlib
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-1-7-5">
+        Testlib
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/testlib/" title="Testlib 简介" class="md-nav__link">
+      Testlib 简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/testlib/general/" title="通用" class="md-nav__link">
+      通用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/testlib/generator/" title="Generator" class="md-nav__link">
+      Generator
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/testlib/validator/" title="Validator" class="md-nav__link">
+      Validator
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/testlib/interactor/" title="Interactor" class="md-nav__link">
+      Interactor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/testlib/checker/" title="Checker" class="md-nav__link">
+      Checker
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/docker-deploy/" title="Docker 部署" class="md-nav__link">
+      Docker 部署
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/about/" title="关于本项目" class="md-nav__link">
+      关于本项目
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/faq/" title="F.A.Q." class="md-nav__link">
+      F.A.Q.
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      机器学习
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        机器学习
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Coursera_ML_AndrewNg/" title="简介" class="md-nav__link">
+      简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Coursera_ML_AndrewNg/markdown/SUMMARY/" title="目录" class="md-nav__link">
+      目录
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Coursera_ML_AndrewNg/markdown/math/" title="数学基础" class="md-nav__link">
+      数学基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Coursera_ML_AndrewNg/markdown/week1/" title="week1" class="md-nav__link">
+      week1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Coursera_ML_AndrewNg/markdown/week2/" title="week2" class="md-nav__link">
+      week2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Coursera_ML_AndrewNg/markdown/week3/" title="week3" class="md-nav__link">
+      week3
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Coursera_ML_AndrewNg/markdown/week4/" title="week4" class="md-nav__link">
+      week4
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Coursera_ML_AndrewNg/markdown/week5/" title="week5" class="md-nav__link">
+      week5
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Coursera_ML_AndrewNg/markdown/week6/" title="week6" class="md-nav__link">
+      week6
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Coursera_ML_AndrewNg/markdown/week7/" title="week7" class="md-nav__link">
+      week7
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Coursera_ML_AndrewNg/markdown/week8/" title="week8" class="md-nav__link">
+      week8
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Coursera_ML_AndrewNg/markdown/week9/" title="week9" class="md-nav__link">
+      week9
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Coursera_ML_AndrewNg/markdown/week10/" title="week10" class="md-nav__link">
+      week10
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      深度学习500问
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        深度学习500问
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/" title="简介" class="md-nav__link">
+      简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/content/" title="目录" class="md-nav__link">
+      目录
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch01_math/ch01_math/" title="第一章_数学基础" class="md-nav__link">
+      第一章_数学基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch02_机器学习基础/第二章_机器学习基础/" title="第二章_机器学习基础" class="md-nav__link">
+      第二章_机器学习基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch03_深度学习基础/第三章_深度学习基础/" title="第三章_深度学习基础" class="md-nav__link">
+      第三章_深度学习基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch04_经典网络/第四章_经典网络/" title="第四章_经典网络" class="md-nav__link">
+      第四章_经典网络
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch05_卷积神经网络(CNN)/第五章 卷积神经网络（CNN）/" title="第五章 卷积神经网络（CNN）" class="md-nav__link">
+      第五章 卷积神经网络（CNN）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch06_循环神经网络(RNN)/第六章_循环神经网络(RNN)/" title="第六章_循环神经网络(RNN)" class="md-nav__link">
+      第六章_循环神经网络(RNN)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch07_生成对抗网络(GAN)/ch7/" title="第七章_生成对抗网络(GAN)" class="md-nav__link">
+      第七章_生成对抗网络(GAN)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch08_目标检测/第八章_目标检测/" title="第八章_目标检测" class="md-nav__link">
+      第八章_目标检测
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch09_图像分割/第九章_图像分割/" title="第九章_图像分割" class="md-nav__link">
+      第九章_图像分割
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch10_强化学习/第十章_强化学习/" title="第十章_强化学习" class="md-nav__link">
+      第十章_强化学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch11_迁移学习/第十一章_迁移学习/" title="第十一章_迁移学习" class="md-nav__link">
+      第十一章_迁移学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch12_网络搭建及训练/第十二章_网络搭建及训练/" title="第十二章_网络搭建及训练" class="md-nav__link">
+      第十二章_网络搭建及训练
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch13_优化算法/第十三章_优化算法/" title="第十三章_优化算法" class="md-nav__link">
+      第十三章_优化算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch14_超参数调整/第十四章_超参数调整/" title="第十四章_超参数调整" class="md-nav__link">
+      第十四章_超参数调整
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch15_GPU和框架选型/第十五章_异构运算、GPU及框架选型/" title="第十五章_异构运算、GPU及框架选型" class="md-nav__link">
+      第十五章_异构运算、GPU及框架选型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch16_自然语言处理(NLP)/第十六章_NLP/" title="第十六章_NLP" class="md-nav__link">
+      第十六章_NLP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch17_模型压缩、加速及移动端部署/第十七章_模型压缩、加速及移动端部署/" title="第十七章_模型压缩、加速及移动端部署" class="md-nav__link">
+      第十七章_模型压缩、加速及移动端部署
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch18_后端架构选型、离线及实时计算/第十八章_后端架构选型、离线及实时计算/" title="第十八章_后端架构选型、离线及实时计算" class="md-nav__link">
+      第十八章_后端架构选型、离线及实时计算
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch18_后端架构选型及应用场景/第十八章_后端架构选型及应用场景/" title="第十八章_后端架构选型及应用场景" class="md-nav__link">
+      第十八章_后端架构选型及应用场景
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      统计学习
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        统计学习
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/" title="简介" class="md-nav__link">
+      简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH01/" title="统计学习及监督学习概论" class="md-nav__link">
+      统计学习及监督学习概论
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH02/" title="感知机" class="md-nav__link">
+      感知机
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH03/" title="K近邻法" class="md-nav__link">
+      K近邻法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH04/" title="朴素贝叶斯法" class="md-nav__link">
+      朴素贝叶斯法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH05/" title="决策树" class="md-nav__link">
+      决策树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH06/" title="逻辑斯蒂回归与最大熵模型" class="md-nav__link">
+      逻辑斯蒂回归与最大熵模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH07/" title="支持向量机" class="md-nav__link">
+      支持向量机
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH08/" title="提升方法" class="md-nav__link">
+      提升方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH09/" title="EM算法及其推广" class="md-nav__link">
+      EM算法及其推广
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH10/" title="隐马尔可夫模型" class="md-nav__link">
+      隐马尔可夫模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH11/" title="条件随机场" class="md-nav__link">
+      条件随机场
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH12/" title="监督学习方法总结" class="md-nav__link">
+      监督学习方法总结
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH13/" title="无监督学习概论" class="md-nav__link">
+      无监督学习概论
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH14/" title="聚类方法" class="md-nav__link">
+      聚类方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH22/" title="无监督学习方法总结" class="md-nav__link">
+      无监督学习方法总结
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+    
+    <label class="md-nav__link" for="nav-5">
+      Sklearn与TensorFlow
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Sklearn与TensorFlow
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../README.old/" title="简介" class="md-nav__link">
+      简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0.前言/" title="前言" class="md-nav__link">
+      前言
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../1.机器学习概览/" title="机器学习概览" class="md-nav__link">
+      机器学习概览
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.一个完整的机器学习项目/" title="一个完整的机器学习项目" class="md-nav__link">
+      一个完整的机器学习项目
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../3.分类/" title="分类" class="md-nav__link">
+      分类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.训练模型/" title="训练模型" class="md-nav__link">
+      训练模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        支持向量机
+      </label>
+    
+    <a href="./" title="支持向量机" class="md-nav__link md-nav__link--active">
+      支持向量机
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="线性支持向量机分类" class="md-nav__link">
+    线性支持向量机分类
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" title="软间隔分类" class="md-nav__link">
+    软间隔分类
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" title="非线性支持向量机分类" class="md-nav__link">
+    非线性支持向量机分类
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" title="多项式核" class="md-nav__link">
+    多项式核
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" title="增加相似特征" class="md-nav__link">
+    增加相似特征
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rbf" title="高斯 RBF 核" class="md-nav__link">
+    高斯 RBF 核
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" title="计算复杂性" class="md-nav__link">
+    计算复杂性
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#svm" title="SVM 回归" class="md-nav__link">
+    SVM 回归
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" title="背后机制" class="md-nav__link">
+    背后机制
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" title="决策函数和预测" class="md-nav__link">
+    决策函数和预测
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" title="训练目标" class="md-nav__link">
+    训练目标
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" title="二次规划" class="md-nav__link">
+    二次规划
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" title="对偶问题" class="md-nav__link">
+    对偶问题
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" title="核化支持向量机" class="md-nav__link">
+    核化支持向量机
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" title="在线支持向量机" class="md-nav__link">
+    在线支持向量机
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" title="练习" class="md-nav__link">
+    练习
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="评论" class="md-nav__link md-nav__link--active">
+            评论
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../6.决策树/" title="决策树" class="md-nav__link">
+      决策树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../7.集成学习和随机森林/" title="集成学习和随机森林" class="md-nav__link">
+      集成学习和随机森林
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../9.启动并运行_TensorFlow/" title="启动并运行_TensorFlow" class="md-nav__link">
+      启动并运行_TensorFlow
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../10.人工神经网络介绍/" title="人工神经网络介绍" class="md-nav__link">
+      人工神经网络介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../11.训练深层神经网络/" title="训练深层神经网络" class="md-nav__link">
+      训练深层神经网络
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../12.设备和服务器上的分布式_TensorFlow/" title="设备和服务器上的分布式_TensorFlow" class="md-nav__link">
+      设备和服务器上的分布式_TensorFlow
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../13.卷积神经网络/" title="卷积神经网络" class="md-nav__link">
+      卷积神经网络
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../14.循环神经网络/" title="循环神经网络" class="md-nav__link">
+      循环神经网络
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../15.自编码器/" title="自编码器" class="md-nav__link">
+      自编码器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../16.强化学习/" title="强化学习" class="md-nav__link">
+      强化学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../B.机器学习项目清单/" title="机器学习项目清单" class="md-nav__link">
+      机器学习项目清单
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../C.SVM_对偶问题/" title="SVM_对偶问题" class="md-nav__link">
+      SVM_对偶问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../D.自动微分/" title="自动微分" class="md-nav__link">
+      自动微分
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../about/" title="关于" class="md-nav__link">
+      关于
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="线性支持向量机分类" class="md-nav__link">
+    线性支持向量机分类
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" title="软间隔分类" class="md-nav__link">
+    软间隔分类
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" title="非线性支持向量机分类" class="md-nav__link">
+    非线性支持向量机分类
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" title="多项式核" class="md-nav__link">
+    多项式核
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" title="增加相似特征" class="md-nav__link">
+    增加相似特征
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rbf" title="高斯 RBF 核" class="md-nav__link">
+    高斯 RBF 核
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" title="计算复杂性" class="md-nav__link">
+    计算复杂性
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#svm" title="SVM 回归" class="md-nav__link">
+    SVM 回归
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" title="背后机制" class="md-nav__link">
+    背后机制
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" title="决策函数和预测" class="md-nav__link">
+    决策函数和预测
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" title="训练目标" class="md-nav__link">
+    训练目标
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" title="二次规划" class="md-nav__link">
+    二次规划
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" title="对偶问题" class="md-nav__link">
+    对偶问题
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" title="核化支持向量机" class="md-nav__link">
+    核化支持向量机
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" title="在线支持向量机" class="md-nav__link">
+    在线支持向量机
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" title="练习" class="md-nav__link">
+    练习
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="评论" class="md-nav__link md-nav__link--active">
+            评论
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/myourdream/aiwiki/blob/master/docs/hands-on-ml-zh/docs/5.支持向量机.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="_1">五、支持向量机<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>译者：<a href="https://github.com/QiaoXie">@QiaoXie</a></p>
+<p>校对者：<a href="https://github.com/wizardforcel">@飞龙</a>、<a href="https://github.com/PeterHo">@PeterHo</a>、<a href="https://github.com/yanmengk">@yanmengk</a>、<a href="https://github.com/bigeyex">@YuWang</a></p>
+</blockquote>
+<p>支持向量机（SVM）是个非常强大并且有多种功能的机器学习模型，能够做线性或者非线性的分类，回归，甚至异常值检测。机器学习领域中最为流行的模型之一，是任何学习机器学习的人必备的工具。SVM 特别适合应用于复杂但中小规模数据集的分类问题。</p>
+<p>本章节将阐述支持向量机的核心概念，怎么使用这个强大的模型，以及它是如何工作的。</p>
+<h2 id="_2">线性支持向量机分类<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>SVM 的基本思想能够用一些图片来解释得很好，图 5-1 展示了我们在第4章结尾处介绍的鸢尾花数据集的一部分。这两个种类能够被非常清晰，非常容易的用一条直线分开（即线性可分的）。左边的图显示了三种可能的线性分类器的判定边界。其中用虚线表示的线性模型判定边界很差，甚至不能正确地划分类别。另外两个线性模型在这个数据集表现的很好，但是它们的判定边界很靠近样本点，在新的数据上可能不会表现的很好。相比之下，右边图中 SVM 分类器的判定边界实线，不仅分开了两种类别，而且还尽可能地远离了最靠近的训练数据点。你可以认为 SVM 分类器在两种类别之间保持了一条尽可能宽敞的街道（图中平行的虚线），其被称为最大间隔分类。</p>
+<p><img alt="" src="../../images/chapter_5/5-1.jpg" /></p>
+<p>我们注意到添加更多的样本点在“街道”外并不会影响到判定边界，因为判定边界是由位于“街道”边缘的样本点确定的，这些样本点被称为“支持向量”（图 5-1 中被圆圈圈起来的点）</p>
+<blockquote>
+<p>警告</p>
+<p>SVM 对特征缩放比较敏感，可以看到图 5-2：左边的图中，垂直的比例要更大于水平的比例，所以最宽的“街道”接近水平。但对特征缩放后（例如使用Scikit-Learn的StandardScaler），判定边界看起来要好得多，如右图。</p>
+</blockquote>
+<p><img alt="" src="../../images/chapter_5/5-2.jpg" /></p>
+<h3 id="_3">软间隔分类<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>如果我们严格地规定所有的数据都不在“街道”上，都在正确地两边，称为硬间隔分类，硬间隔分类有两个问题，第一，只对线性可分的数据起作用，第二，对异常点敏感。图 5-3 显示了只有一个异常点的鸢尾花数据集：左边的图中很难找到硬间隔，右边的图中判定边界和我们之前在图 5-1 中没有异常点的判定边界非常不一样，它很难一般化。</p>
+<p><img alt="" src="../../images/chapter_5/5-3.jpg" /></p>
+<p>为了避免上述的问题，我们更倾向于使用更加软性的模型。目的在保持“街道”尽可能大和避免间隔违规（例如：数据点出现在“街道”中央或者甚至在错误的一边）之间找到一个良好的平衡。这就是软间隔分类。</p>
+<p>在 Scikit-Learn 库的 SVM 类，你可以用<code>C</code>超参数（惩罚系数）来控制这种平衡：较小的<code>C</code>会导致更宽的“街道”，但更多的间隔违规。图 5-4 显示了在非线性可分隔的数据集上，两个软间隔SVM分类器的判定边界。左边图中，使用了较大的<code>C</code>值，导致更少的间隔违规，但是间隔较小。右边的图，使用了较小的<code>C</code>值，间隔变大了，但是许多数据点出现在了“街道”上。然而，第二个分类器似乎泛化地更好：事实上，在这个训练数据集上减少了预测错误，因为实际上大部分的间隔违规点出现在了判定边界正确的一侧。</p>
+<p><img alt="" src="../../images/chapter_5/5-4.jpg" /></p>
+<blockquote>
+<p>提示</p>
+<p>如果你的 SVM 模型过拟合，你可以尝试通过减小超参数<code>C</code>去调整。 </p>
+</blockquote>
+<p>以下的 Scikit-Learn 代码加载了内置的鸢尾花（Iris）数据集，缩放特征，并训练一个线性 SVM 模型（使用<code>LinearSVC</code>类，超参数<code>C=1</code>，hinge 损失函数）来检测 Virginica 鸢尾花，生成的模型在图 5-4 的右图。</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">LinearSVC</span>
+
+<span class="n">iris</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">iris</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">][:,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span> <span class="c1"># petal length, petal width</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">iris</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span> <span class="c1"># Iris-Virginica</span>
+
+<span class="n">svm_clf</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">((</span>
+        <span class="p">(</span><span class="s2">&quot;scaler&quot;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>
+        <span class="p">(</span><span class="s2">&quot;linear_svc&quot;</span><span class="p">,</span> <span class="n">LinearSVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;hinge&quot;</span><span class="p">)),</span>
+    <span class="p">))</span>
+
+<span class="n">svm_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">Then</span><span class="p">,</span> <span class="k">as</span> <span class="n">usual</span><span class="p">,</span> <span class="n">you</span> <span class="n">can</span> <span class="n">use</span> <span class="n">the</span> <span class="n">model</span> <span class="n">to</span> <span class="n">make</span> <span class="n">predictions</span><span class="p">:</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">svm_clf</span><span class="o">.</span><span class="n">predict</span><span class="p">([[</span><span class="mf">5.5</span><span class="p">,</span> <span class="mf">1.7</span><span class="p">]])</span>
+<span class="n">array</span><span class="p">([</span> <span class="mf">1.</span><span class="p">])</span>
+</pre></div>
+</td></tr></table>
+
+<blockquote>
+<p>注</p>
+<p>不同于 Logistic 回归分类器，SVM 分类器不会输出每个类别的概率。</p>
+</blockquote>
+<p>作为一种选择，你可以在 SVC 类，使用<code>SVC(kernel="linear", C=1)</code>，但是它比较慢，尤其在较大的训练集上，所以一般不被推荐。另一个选择是使用<code>SGDClassifier</code>类，即<code>SGDClassifier(loss="hinge", alpha=1/(m*C))</code>。它应用了随机梯度下降（SGD 见第四章）来训练一个线性 SVM 分类器。尽管它不会和<code>LinearSVC</code>一样快速收敛，但是对于处理那些不适合放在内存的大数据集是非常有用的，或者处理在线分类任务同样有用。</p>
+<blockquote>
+<p>提示</p>
+<p><code>LinearSVC</code>要使偏置项规范化，首先你应该集中训练集减去它的平均数。如果你使用了<code>StandardScaler</code>，那么它会自动处理。此外，确保你设置<code>loss</code>参数为<code>hinge</code>，因为它不是默认值。最后，为了得到更好的效果，你需要将<code>dual</code>参数设置为<code>False</code>，除非特征数比样本量多（我们将在本章后面讨论二元性）</p>
+</blockquote>
+<h2 id="_4">非线性支持向量机分类<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>尽管线性 SVM 分类器在许多案例上表现得出乎意料的好，但是很多数据集并不是线性可分的。一种处理非线性数据集方法是增加更多的特征，例如多项式特征（正如你在第4章所做的那样）；在某些情况下可以变成线性可分的数据。在图 5-5的左图中，它只有一个特征<code>x1</code>的简单的数据集，正如你看到的，该数据集不是线性可分的。但是如果你增加了第二个特征 <code>x2=(x1)^2</code>，产生的 2D 数据集就能很好的线性可分。</p>
+<p><img alt="" src="../../images/chapter_5/5-5.jpg" /></p>
+<p>为了实施这个想法，通过 Scikit-Learn，你可以创建一个流水线（Pipeline）去包含多项式特征（PolynomialFeatures）变换（在 121 页的“Polynomial Regression”中讨论），然后一个<code>StandardScaler</code>和<code>LinearSVC</code>。让我们在卫星数据集（moons datasets）测试一下效果。</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_moons</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
+
+<span class="n">polynomial_svm_clf</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">((</span>
+        <span class="p">(</span><span class="s2">&quot;poly_features&quot;</span><span class="p">,</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">3</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;scaler&quot;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>
+        <span class="p">(</span><span class="s2">&quot;svm_clf&quot;</span><span class="p">,</span> <span class="n">LinearSVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;hinge&quot;</span><span class="p">))</span>
+    <span class="p">))</span>
+
+<span class="n">polynomial_svm_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p><img alt="" src="../../images/chapter_5/5-6.jpg" /></p>
+<h3 id="_5">多项式核<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>添加多项式特征很容易实现，不仅仅在 SVM，在各种机器学习算法都有不错的表现，但是低次数的多项式不能处理非常复杂的数据集，而高次数的多项式却产生了大量的特征，会使模型变得慢。</p>
+<p>幸运的是，当你使用 SVM 时，你可以运用一个被称为“核技巧”（kernel trick）的神奇数学技巧。它可以取得就像你添加了许多多项式，甚至有高次数的多项式，一样好的结果。所以不会大量特征导致的组合爆炸，因为你并没有增加任何特征。这个技巧可以用 SVC 类来实现。让我们在卫星数据集测试一下效果。</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+<span class="n">poly_kernel_svm_clf</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">((</span>
+        <span class="p">(</span><span class="s2">&quot;scaler&quot;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>
+        <span class="p">(</span><span class="s2">&quot;svm_clf&quot;</span><span class="p">,</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;poly&quot;</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">coef0</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
+    <span class="p">))</span>
+<span class="n">poly_kernel_svm_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>这段代码用3阶的多项式核训练了一个 SVM 分类器，即图 5-7 的左图。右图是使用了10阶的多项式核 SVM 分类器。很明显，如果你的模型过拟合，你可以减小多项式核的阶数。相反的，如果是欠拟合，你可以尝试增大它。超参数<code>coef0</code>控制了高阶多项式与低阶多项式对模型的影响。</p>
+<p><img alt="" src="../../images/chapter_5/5-7.jpg" /></p>
+<p>通用的方法是用网格搜索（grid search 见第 2 章）去找到最优超参数。首先进行非常粗略的网格搜索一般会很快，然后在找到的最佳值进行更细的网格搜索。对每个超参数的作用有一个很好的理解可以帮助你在正确的超参数空间找到合适的值。</p>
+<h3 id="_6">增加相似特征<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>另一种解决非线性问题的方法是使用相似函数（similarity funtion）计算每个样本与特定地标（landmark）的相似度。例如，让我们来看看前面讨论过的一维数据集，并在<code>x1=-2</code>和<code>x1=1</code>之间增加两个地标（图 5-8 左图）。接下来，我们定义一个相似函数，即高斯径向基函数（Gaussian Radial Basis Function，RBF），设置<code>γ = 0.3</code>（见公式 5-1）</p>
+<p>公式 5-1 RBF</p>
+<p><img alt="\phi_{\gamma}(x, \ell) = exp(-\gamma |x - \ell |^2)" src="../../images/tex-8b908429a5b5ee2e519f8caa16f82ee1.gif" /></p>
+<p>它是个从 0 到 1 的钟型函数，值为 0 的离地标很远，值为 1 的在地标上。现在我们准备计算新特征。例如，我们看一下样本<code>x1=-1</code>：它距离第一个地标距离是 1，距离第二个地标是 2。因此它的新特征为<code>x2=exp(-0.3 × (1^2))≈0.74</code>和<code>x3=exp(-0.3 × (2^2))≈0.30</code>。图 5-8 右边的图显示了特征转换后的数据集（删除了原始特征），正如你看到的，它现在是线性可分了。</p>
+<p><img alt="" src="../../images/chapter_5/5-8.jpg" /></p>
+<p>你可能想知道如何选择地标。最简单的方法是在数据集中的每一个样本的位置创建地标。这将产生更多的维度从而增加了转换后数据集是线性可分的可能性。但缺点是，<code>m</code>个样本，<code>n</code>个特征的训练集被转换成了<code>m</code>个实例，<code>m</code>个特征的训练集（假设你删除了原始特征）。这样一来，如果你的训练集非常大，你最终会得到同样大的特征。</p>
+<h3 id="rbf">高斯 RBF 核<a class="headerlink" href="#rbf" title="Permanent link">&para;</a></h3>
+<p>就像多项式特征法一样，相似特征法对各种机器学习算法同样也有不错的表现。但是在所有额外特征上的计算成本可能很高，特别是在大规模的训练集上。然而，“核” 技巧再一次显现了它在 SVM 上的神奇之处：高斯核让你可以获得同样好的结果成为可能，就像你在相似特征法添加了许多相似特征一样，但事实上，你并不需要在RBF添加它们。我们使用 SVC 类的高斯 RBF 核来检验一下。</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">rbf_kernel_svm_clf</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">((</span>
+        <span class="p">(</span><span class="s2">&quot;scaler&quot;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>
+        <span class="p">(</span><span class="s2">&quot;svm_clf&quot;</span><span class="p">,</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;rbf&quot;</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mf">0.001</span><span class="p">))</span>
+    <span class="p">))</span>
+<span class="n">rbf_kernel_svm_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>这个模型在图 5-9 的左下角表示。其他的图显示了用不同的超参数<code>gamma (γ)</code>和<code>C</code>训练的模型。增大<code>γ</code>使钟型曲线更窄（图 5-8 左图），导致每个样本的影响范围变得更小：即判定边界最终变得更不规则，在单个样本周围环绕。相反的，较小的<code>γ</code>值使钟型曲线更宽，样本有更大的影响范围，判定边界最终则更加平滑。所以γ是可调整的超参数：如果你的模型过拟合，你应该减小<code>γ</code>值，若欠拟合，则增大<code>γ</code>（与超参数<code>C</code>相似）。</p>
+<p><img alt="" src="../../images/chapter_5/5-9.jpg" /></p>
+<p>还有其他的核函数，但很少使用。例如，一些核函数是专门用于特定的数据结构。在对文本文档或者 DNA 序列进行分类时，有时会使用字符串核（String kernels）（例如，使用 SSK 核（string subsequence kernel）或者基于编辑距离（Levenshtein distance）的核函数）。</p>
+<blockquote>
+<p>提示</p>
+<p>这么多可供选择的核函数，你如何决定使用哪一个？一般来说，你应该先尝试线性核函数（记住<code>LinearSVC</code>比<code>SVC(kernel="linear")</code>要快得多），尤其是当训练集很大或者有大量的特征的情况下。如果训练集不太大，你也可以尝试高斯径向基核（Gaussian RBF Kernel），它在大多数情况下都很有效。如果你有空闲的时间和计算能力，你还可以使用交叉验证和网格搜索来试验其他的核函数，特别是有专门用于你的训练集数据结构的核函数。</p>
+</blockquote>
+<h3 id="_7">计算复杂性<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p><code>LinearSVC</code>类基于<code>liblinear</code>库，它实现了线性 SVM 的优化算法。它并不支持核技巧，但是它样本和特征的数量几乎是线性的：训练时间复杂度大约为<code>O(m × n)</code>。</p>
+<p>如果你要非常高的精度，这个算法需要花费更多时间。这是由容差值超参数<code>ϵ</code>（在 Scikit-learn 称为<code>tol</code>）控制的。大多数分类任务中，使用默认容差值的效果是已经可以满足一般要求。</p>
+<p>SVC 类基于<code>libsvm</code>库，它实现了支持核技巧的算法。训练时间复杂度通常介<code>于O(m^2 × n)</code>和<code>O(m^3 × n)</code>之间。不幸的是，这意味着当训练样本变大时，它将变得极其慢（例如，成千上万个样本）。这个算法对于复杂但小型或中等数量的数据集表现是完美的。然而，它能对特征数量很好的缩放，尤其对稀疏特征来说（sparse features）（即每个样本都有一些非零特征）。在这个情况下，算法对每个样本的非零特征的平均数量进行大概的缩放。表 5-1 对 Scikit-learn 的 SVM 分类模型进行比较。</p>
+<p><img alt="" src="../../images/chapter_5/tb-5-1.jpg" /></p>
+<h2 id="svm">SVM 回归<a class="headerlink" href="#svm" title="Permanent link">&para;</a></h2>
+<p>正如我们之前提到的，SVM 算法应用广泛：不仅仅支持线性和非线性的分类任务，还支持线性和非线性的回归任务。技巧在于逆转我们的目标：限制间隔违规的情况下，不是试图在两个类别之间找到尽可能大的“街道”（即间隔）。SVM 回归任务是限制间隔违规情况下，尽量放置更多的样本在“街道”上。“街道”的宽度由超参数<code>ϵ</code>控制。图 5-10 显示了在一些随机生成的线性数据上，两个线性 SVM 回归模型的训练情况。一个有较大的间隔（<code>ϵ=1.5</code>），另一个间隔较小（<code>ϵ=0.5</code>）。</p>
+<p><img alt="" src="../../images/chapter_5/5-10.jpg" /></p>
+<p>添加更多的数据样本在间隔之内并不会影响模型的预测，因此，这个模型认为是不敏感的（ϵ-insensitive）。</p>
+<p>你可以使用 Scikit-Learn 的<code>LinearSVR</code>类去实现线性 SVM 回归。下面的代码产生的模型在图 5-10 左图（训练数据需要被中心化和标准化）</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">LinearSVR</span>
+<span class="n">svm_reg</span> <span class="o">=</span> <span class="n">LinearSVR</span><span class="p">(</span><span class="n">epsilon</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">svm_reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>处理非线性回归任务，你可以使用核化的 SVM 模型。比如，图 5-11 显示了在随机二次方的训练集，使用二次方多项式核函数的 SVM 回归。左图是较小的正则化（即更大的<code>C</code>值），右图则是更大的正则化（即小的<code>C</code>值）</p>
+<p><img alt="" src="../../images/chapter_5/5-11.jpg" /></p>
+<p>下面的代码的模型在图 5-11，其使用了 Scikit-Learn 的<code>SVR</code>类（支持核技巧）。在回归任务上，<code>SVR</code>类和<code>SVC</code>类是一样的，并且<code>LinearSVR</code>是和<code>LinearSVC</code>等价。<code>LinearSVR</code>类和训练集的大小成线性（就像<code>LinearSVC</code>类），当训练集变大，<code>SVR</code>会变的很慢（就像<code>SVC</code>类）</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVR</span>
+
+<span class="n">svm_poly_reg</span> <span class="o">=</span> <span class="n">SVR</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;poly&quot;</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">svm_poly_reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<blockquote>
+<p>注</p>
+<p>SVM 也可以用来做异常值检测，详情见 Scikit-Learn 文档</p>
+</blockquote>
+<h2 id="_8">背后机制<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>这个章节从线性 SVM 分类器开始，将解释 SVM 是如何做预测的并且算法是如何工作的。如果你是刚接触机器学习，你可以跳过这个章节，直接进入本章末尾的练习。等到你想深入了解 SVM，再回头研究这部分内容。</p>
+<p>首先，关于符号的约定：在第 4 章，我们将所有模型参数放在一个矢量<code>θ</code>里，包括偏置项<code>θ0</code>，<code>θ1</code>到<code>θn</code>的输入特征权重，和增加一个偏差输入<code>x0 = 1</code>到所有样本。在本章中，我们将使用一个不同的符号约定，在处理 SVM 上，这更方便，也更常见：偏置项被命名为<code>b</code>，特征权重向量被称为<code>w</code>，在输入特征向量中不再添加偏置特征。</p>
+<h3 id="_9">决策函数和预测<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>线性 SVM 分类器通过简单地计算决策函数 <img alt="w \cdot x+b = w_1 x_1 + ... + w_n x_n + b" src="../../images/tex-7781983bd977537b3c5d060e217ea82a.gif" /> 来预测新样本的类别：如果结果是正的，预测类别<code>ŷ</code>是正类，为 1，否则他就是负类，为 0。见公式 5-2</p>
+<p><img alt="" src="../../images/chapter_5/eq-5-2.gif" /></p>
+<p>图 5-12 显示了和图 5-4 右边图模型相对应的决策函数：因为这个数据集有两个特征（花瓣的宽度和花瓣的长度），所以是个二维的平面。决策边界是决策函数等于 0 的点的集合，图中两个平面的交叉处，即一条直线（图中的实线）</p>
+<p><img alt="" src="../../images/chapter_5/5-12.jpg" /></p>
+<p>虚线表示的是那些决策函数等于 1 或 -1 的点：它们平行，且到决策边界的距离相等，形成一个间隔。训练线性 SVM 分类器意味着找到<code>w</code>值和<code>b</code>值使得这一个间隔尽可能大，同时避免间隔违规（硬间隔）或限制它们（软间隔）</p>
+<h3 id="_10">训练目标<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>看下决策函数的斜率：它等于权重向量的范数 <img alt="|w|" src="../../images/tex-03549015bd48d379883d926e6857b448.gif" />。如果我们把这个斜率除于 2，决策函数等于 ±1 的点将会离决策边界原来的两倍大。换句话，即斜率除于 2，那么间隔将增加两倍。在图 5-13 中，2D 形式比较容易可视化。权重向量<code>w</code>越小，间隔越大。</p>
+<p><img alt="" src="../../images/chapter_5/5-13.jpg" /></p>
+<p>所以我们的目标是最小化 <img alt="|w|" src="../../images/tex-03549015bd48d379883d926e6857b448.gif" />，从而获得大的间隔。然而，如果我们想要避免间隔违规（硬间隔），对于正的训练样本，我们需要决策函数大于 1，对于负训练样本，小于 -1。若我们对负样本（即 <img alt="y^{(i)} = 0" src="../../images/tex-9694b9470a2a80b31bcc6584edf2bf07.gif" />）定义 <img alt="t^{(i)}=-1" src="../../images/tex-e9e1ea47451dc98fefd42615328d631b.gif" />，对正样本（即 <img alt="y^{(i)} = 1" src="../../images/tex-acd7569716837ec3ce2aa6e0a5ddd513.gif" />）定义 <img alt="t^{(i)}=1" src="../../images/tex-c19c0fd70a5476c3ffd036cdc186cd3d.gif" />，那么我们可以对所有的样本表示为 <img alt="t^{(i)} (w^T x^{(i)} + b) \ge 1" src="../../images/tex-90df7f0e34b9b6efed412669d8ab1581.gif" />。</p>
+<p>因此，我们可以将硬间隔线性 SVM 分类器表示为公式 5-3 中的约束优化问题</p>
+<p><img alt="" src="../../images/chapter_5/eq-5-3.gif" /></p>
+<blockquote>
+<p>注</p>
+<p><img alt="1/2 w^T w" src="../../images/tex-9a84ebda628c391e3046dfc2307e3c85.gif" /> 等于 <img alt="1/2 |w|^2" src="../../images/tex-98c822c91ab5af02c383eb03fa5b5446.gif" />，我们最小化 <img alt="1/2 w^T w" src="../../images/tex-9a84ebda628c391e3046dfc2307e3c85.gif" />，而不是最小化 <img alt="|w|" src="../../images/tex-03549015bd48d379883d926e6857b448.gif" />。这会给我们相同的结果（因为最小化<code>w</code>值和<code>b</code>值，也是最小化该值一半的平方），但是 <img alt="1/2 |w|^2" src="../../images/tex-98c822c91ab5af02c383eb03fa5b5446.gif" /> 有很好又简单的导数（只有<code>w</code>），<img alt="|w|" src="../../images/tex-03549015bd48d379883d926e6857b448.gif" /> 在<code>w=0</code>处是不可微的。优化算法在可微函数表现得更好。</p>
+</blockquote>
+<p>为了获得软间隔的目标，我们需要对每个样本应用一个松弛变量（slack variable）<img alt="\zeta^{(i)} \ge 0" src="../../images/tex-68c09d43aa56238535663931cc8887b9.gif" />。<img alt="\zeta^{(i)}" src="../../images/tex-328b39f0c7d087f501c1f45ed2b361e5.gif" /> 表示了第<code>i</code>个样本允许违规间隔的程度。我们现在有两个不一致的目标：一个是使松弛变量尽可能的小，从而减小间隔违规，另一个是使<code>1/2 w·w</code>尽量小，从而增大间隔。这时<code>C</code>超参数发挥作用：它允许我们在两个目标之间权衡。我们得到了公式 5-4 的约束优化问题。</p>
+<p><img alt="" src="../../images/chapter_5/eq-5-4.gif" /></p>
+<h3 id="_11">二次规划<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>硬间隔和软间隔都是线性约束的凸二次规划优化问题。这些问题被称之为二次规划（QP）问题。现在有许多解决方案可以使用各种技术来处理 QP 问题，但这超出了本书的范围。一般问题的公式在公式 5-5 给出。</p>
+<p><img alt="" src="../../images/chapter_5/eq-5-5.gif" /></p>
+<p>注意到表达式<code>Ap ≤ b</code>实际上定义了 <img alt="n_c" src="../../images/tex-ebce0f627b43a4894b355cc1d6811dab.gif" /> 约束： <img alt="p^T a^{(i)} \le b^{(i)}, for i = 1, 2, ..., n" src="../../images/tex-660caa34698a6b22aaae14095ab6b077.gif" />，<img alt="a^{(i)}" src="../../images/tex-300421691992dc61be5e7d43d5055f48.gif" /> 是个包含了<code>A</code>的第<code>i</code>行元素的向量，<img alt="b^{(i)}" src="../../images/tex-abfd626c49507d0f37b502fdfe6b73df.gif" />是<code>b</code>的第<code>i</code>个元素。 </p>
+<p>可以很容易地看到，如果你用以下的方式设置 QP 的参数，你将获得硬间隔线性 SVM 分类器的目标：</p>
+<ul>
+<li><img alt="n_p= n + 1" src="../../images/tex-4ea0442e4bfe65a2c6cc6c5be89101ae.gif" />，<code>n</code>表示特征的数量（+1 是偏置项）</li>
+<li><img alt="n_c= m" src="../../images/tex-7bfddb21b43536d1e561bf32044833c0.gif" />，<code>m</code>表示训练样本数量</li>
+<li><code>H</code>是 <img alt="n_p \times n_p" src="../../images/tex-d2df5469808d03891005c3789af8ac57.gif" /> 单位矩阵，除了左上角为 0（忽略偏置项）</li>
+<li><code>f = 0</code>，一个全为 0 的 <img alt="n_p" src="../../images/tex-01f3c699a2735a0d9a7311d672fd676c.gif" /> 维向量</li>
+<li><img alt="b = 1" src="../../images/tex-d8a35c47c0f29d1f868a2769cd3003c5.gif" />，一个全为 1 的 <img alt="n_c" src="../../images/tex-ebce0f627b43a4894b355cc1d6811dab.gif" /> 维向量</li>
+<li><img alt="a^{(i)} = –t^{(i)} \dot{x}^{(i)}" src="../../images/tex-e221a5a9ee284dda566835a7aadd0563.gif" />，<img alt="\dot{x}^{(i)}" src="../../images/tex-acfb59b31a57f80ecfd2636d12e08a81.gif" /> 等于 <img alt="x^{(i)}" src="../../images/tex-e8fa5b806940d1b4d0059fba40646506.gif" /> 带一个额外的偏置特征 <img alt="\dot{x}_0=1" src="../../images/tex-b6f161941bfaa3be7efd88f2aedb5f20.gif" />！</li>
+</ul>
+<p>所以训练硬间隔线性 SVM 分类器的一种方式是使用现有的 QP 解决方案，即上述的参数。由此产生的向量<code>p</code>将包含偏置项 <img alt="b=p_0" src="../../images/tex-477cbb96bb2678c1997aa41503661c04.gif" /> 和特征权重 <img alt="w_i=p_i (i=1,2,...m)" src="../../images/tex-a02df115b5738b62c1a168243f40448d.gif" />。同样的，你可以使用 QP 解决方案来解决软间隔问题（见本章最后的练习）</p>
+<p>然而，使用核技巧我们将会看到一个不同的约束优化问题。</p>
+<h3 id="_12">对偶问题<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p>给出一个约束优化问题，即原始问题（primal problem），它可能表示不同但是和另一个问题紧密相连，称为对偶问题（Dual Problem）。对偶问题的解通常是对原始问题的解给出一个下界约束，但在某些条件下，它们可以获得相同解。幸运的是，SVM 问题恰好满足这些条件，所以你可以选择解决原始问题或者对偶问题，两者将会有相同解。公式 5-6 表示了线性 SVM 的对偶形式（如果你对怎么从原始问题获得对偶问题感兴趣，可以看下附录 C）</p>
+<p><img alt="" src="../../images/chapter_5/eq-5-6.gif" /></p>
+<p>一旦你找到最小化公式的向量<code>α</code>（使用 QP 解决方案），你可以通过使用公式 5-7 的方法计算<code>w</code>和<code>b</code>，从而使原始问题最小化。</p>
+<p><img alt="" src="../../images/chapter_5/eq-5-7.gif" /></p>
+<p>当训练样本的数量比特征数量小的时候，对偶问题比原始问题要快得多。更重要的是，它让核技巧成为可能，而原始问题则不然。那么这个核技巧是怎么样的呢？</p>
+<h3 id="_13">核化支持向量机<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p>假设你想把一个 2 次多项式变换应用到二维空间的训练集（例如卫星数据集），然后在变换后的训练集上训练一个线性SVM分类器。公式 5-8 显示了你想应用的 2 次多项式映射函数<code>ϕ</code>。 </p>
+<p><img alt="" src="../../images/chapter_5/eq-5-8.gif" /></p>
+<p>注意到转换后的向量是 3 维的而不是 2 维。如果我们应用这个 2 次多项式映射，然后计算转换后向量的点积（见公式 5-9），让我们看下两个 2 维向量<code>a</code>和<code>b</code>会发生什么。</p>
+<p><img alt="" src="../../images/chapter_5/eq-5-9.gif" /></p>
+<p>转换后向量的点积等于原始向量点积的平方：<img alt="\phi(a)^T \phi(b) = (a^T b)^2" src="../../images/tex-fa93ecd1a735fe81cf235ec88018aec2.gif" /></p>
+<p>关键点是：如果你应用转换<code>ϕ</code>到所有训练样本，那么对偶问题（见公式 5-6）将会包含点积 <img alt="\phi(x^{(i)})^T \phi(x^{(j)})" src="../../images/tex-41597a9c5a695c5c787dd1662a8209f8.gif" />。但如果<code>ϕ</code>像在公式 5-8 定义的 2 次多项式转换，那么你可以将这个转换后的向量点积替换成 <img alt="(x^{(i)T} x^{(j)})^2" src="../../images/tex-6bc90165e5416ca4009cf453a3ff62d6.gif" />。所以实际上你根本不需要对训练样本进行转换：仅仅需要在公式 5-6 中，将点积替换成它点积的平方。结果将会和你经过麻烦的训练集转换并拟合出线性 SVM 算法得出的结果一样，但是这个技巧使得整个过程在计算上面更有效率。这就是核技巧的精髓。</p>
+<p>函数 <img alt="K(a, b) = (aT b)^2" src="../../images/tex-b5b7330fa0b89885f3c56d10a5786312.gif" /> 被称为二次多项式核（polynomial kernel）。在机器学习，核函数是一个能计算点积的函数，并只基于原始向量<code>a</code>和<code>b</code>，不需要计算（甚至知道）转换<code>ϕ</code>。公式 5-10 列举了一些最常用的核函数。</p>
+<p><img alt="" src="../../images/chapter_5/eq-5-10.gif" /></p>
+<blockquote>
+<p>Mercer 定理</p>
+<p>根据 Mercer 定理，如果函数<code>K(a, b)</code>满足一些 Mercer 条件的数学条件(<code>K</code>函数在参数内必须是连续，对称，即<code>K(a, b)=K(b, a)</code>，等)，那么存在函数<code>ϕ</code>，将<code>a</code>和<code>b</code>映射到另一个空间（可能有更高的维度），有 <img alt="K(a, b) = \phi(a)^T ϕ(b)" src="../../images/tex-e97a66a423ac77c7ae0e103af1f41932.gif" />。所以你可以用<code>K</code>作为核函数，即使你不知道<code>ϕ</code>是什么。使用高斯核（Gaussian RBF kernel）情况下，它实际是将每个训练样本映射到无限维空间，所以你不需要知道是怎么执行映射的也是一件好事。</p>
+<p>注意一些常用核函数（例如 Sigmoid 核函数）并不满足所有的 Mercer 条件，然而在实践中通常表现得很好。</p>
+</blockquote>
+<p>我们还有一个问题要解决。公式 5-7 展示了线性 SVM 分类器如何从对偶解到原始解，如果你应用了核技巧那么得到的公式会包含 <img alt="\phi(x^{(i)})" src="../../images/tex-0813d4c773da5a66df9cb7b0bfbd1b83.gif" />。事实上，<code>w</code>必须和 <img alt="\phi(x^{(i)})" src="../../images/tex-0813d4c773da5a66df9cb7b0bfbd1b83.gif" /> 有同样的维度，可能是巨大的维度或者无限的维度，所以你很难计算它。但怎么在不知道<code>w</code>的情况下做出预测？好消息是你可以将公式 5-7 的<code>w</code>代入到新的样本 <img alt="x^{(n)}" src="../../images/tex-992fd41f053d328db0ca0287eed0e2e9.gif" /> 的决策函数中，你会得到一个在输入向量之间只有点积的方程式。这时，核技巧将派上用场，见公式 5-11</p>
+<p><img alt="" src="../../images/chapter_5/eq-5-11.gif" /></p>
+<p>注意到支持向量才满足<code>α(i)≠0</code>，做出预测只涉及计算为支持向量部分的输入样本 <img alt="x^{(n)}" src="../../images/tex-992fd41f053d328db0ca0287eed0e2e9.gif" /> 的点积，而不是全部的训练样本。当然，你同样也需要使用同样的技巧来计算偏置项<code>b</code>，见公式 5-12</p>
+<p><img alt="" src="../../images/chapter_5/eq-5-12.gif" /></p>
+<p>如果你开始感到头痛，这很正常：因为这是核技巧一个不幸的副作用</p>
+<h3 id="_14">在线支持向量机<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p>在结束这一章之前，我们快速地了解一下在线 SVM 分类器（回想一下，在线学习意味着增量地学习，不断有新实例）。对于线性SVM分类器，一种方式是使用梯度下降（例如使用<code>SGDClassifire</code>）最小化代价函数，如从原始问题推导出的公式 5-13。不幸的是，它比基于 QP 方式收敛慢得多。</p>
+<p><img alt="" src="../../images/chapter_5/eq-5-13.gif" /></p>
+<p>代价函数第一个和会使模型有一个小的权重向量<code>w</code>，从而获得一个更大的间隔。第二个和计算所有间隔违规的总数。如果样本位于“街道”上和正确的一边，或它与“街道”正确一边的距离成比例，则间隔违规等于 0。最小化保证了模型的间隔违规尽可能小并且少。</p>
+<blockquote>
+<p>Hinge 损失</p>
+<p>函数<code>max(0, 1–t)</code>被称为 Hinge 损失函数（如下）。当<code>t≥1</code>时，Hinge 值为 0。如果<code>t&lt;1</code>,它的导数（斜率）为 -1，若<code>t&gt;1</code>，则等于0。在<code>t=1</code>处，它是不可微的，但就像套索回归（Lasso Regression）（参见 130 页套索回归）一样，你仍然可以在<code>t=0</code>时使用梯度下降法（即 -1 到 0 之间任何值）</p>
+<p><img alt="" src="../../images/chapter_5/5-hinge.jpg" /></p>
+</blockquote>
+<p>我们也可以实现在线核化的 SVM。例如使用“增量和递减 SVM 学习”或者“在线和主动的快速核分类器”。但是，这些都是用 Matlab 和 C++ 实现的。对于大规模的非线性问题，你可能需要考虑使用神经网络（见第二部分）</p>
+<h2 id="_15">练习<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>支持向量机背后的基本思想是什么</p>
+</li>
+<li>
+<p>什么是支持向量</p>
+</li>
+<li>
+<p>当使用 SVM 时，为什么标准化输入很重要？</p>
+</li>
+<li>
+<p>分类一个样本时，SVM 分类器能够输出一个置信值吗？概率呢？</p>
+</li>
+<li>
+<p>在一个有数百万训练样本和数百特征的训练集上，你是否应该使用 SVM 原始形式或对偶形式来训练一个模型？</p>
+</li>
+<li>
+<p>假设你用 RBF 核来训练一个 SVM 分类器，如果对训练集欠拟合：你应该增大或者减小<code>γ</code>吗？调整参数<code>C</code>呢？</p>
+</li>
+<li>
+<p>使用现有的 QP 解决方案，你应该怎么样设置 QP 参数（<code>H</code>，<code>f</code>，<code>A</code>，和<code>b</code>）去解决一个软间隔线性 SVM 分类器问题？</p>
+</li>
+<li>
+<p>在一个线性可分的数据集训练一个<code>LinearSVC</code>，并在同一个数据集上训练一个<code>SVC</code>和<code>SGDClassifier</code>，看它们是否产生了大致相同效果的模型。</p>
+</li>
+<li>
+<p>在 MNIST 数据集上训练一个 SVM 分类器。因为 SVM 分类器是二元的分类，你需要使用一对多（one-versus-all）来对 10 个数字进行分类。你可能需要使用小的验证集来调整超参数，以加快进程。最后你能达到多少准确度？</p>
+</li>
+<li>
+<p>在加利福尼亚住宅（California housing）数据集上训练一个 SVM 回归模型</p>
+</li>
+</ol>
+<p>这些练习的答案在附录 A。</p>
+                
+                  
+                
+              
+              
+                
+
+
+  <h2 id="__comments">评论</h2>
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://hai5g.cn/aiwiki/hands-on-ml-zh/docs/5.支持向量机/";
+      this.page.identifier =
+        "/hands-on-ml-zh/docs/5.支持向量机/";
+    };
+    (function() {
+      var d = document, s = d.createElement("script");
+      s.src = "//AI-Wiki.disqus.com/embed.js";
+      s.setAttribute("data-timestamp", +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../4.训练模型/" title="训练模型" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  后退
+                </span>
+                训练模型
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../6.决策树/" title="决策树" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  前进
+                </span>
+                决策树
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 AI Wiki Team
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.39abc4af.js"></script>
+      
+        
+        
+          
+          <script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/ethantw/Han@3.3.0/dist/han.min.js"></script>
+      
+        <script src="../../../_static/js/extra.js?v=10"></script>
+      
+        <script src="https://cdnjs.loli.net/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

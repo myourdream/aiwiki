@@ -1,0 +1,2565 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="AI Wiki 是一个编程竞赛知识整合站点，提供有趣又实用的编程竞赛知识以及其他有帮助的内容，帮助广大编程竞赛爱好者更快更深入地学习编程竞赛">
+      
+      
+        <link rel="canonical" href="https://hai5g.cn/aiwiki/hands-on-ml-zh/docs/10.人工神经网络介绍/">
+      
+      
+        <meta name="author" content="AI Wiki Team">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.2.0">
+    
+    
+      
+        <title>人工神经网络介绍 - AI Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.750b69bd.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.224b79ff.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:300,400,400i,700|Fira+Mono">
+        <style>body,input{font-family:"Fira Sans","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Fira Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+      <link rel="manifest" href="../../../manifest.webmanifest">
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ah@1.5.0/han.min.css">
+    
+      <link rel="stylesheet" href="../../../_static/css/extra.css?v=11">
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="red">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://hai5g.cn/aiwiki" title="AI Wiki" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">school</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              AI Wiki
+            </span>
+            <span class="md-header-nav__topic">
+              人工神经网络介绍
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/myourdream/aiwiki/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    aiwiki
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../.." title="简介" class="md-tabs__link">
+          简介
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../Coursera_ML_AndrewNg/" title="机器学习" class="md-tabs__link">
+          机器学习
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../qa500/" title="深度学习500问" class="md-tabs__link">
+          深度学习500问
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../lihang/" title="统计学习" class="md-tabs__link">
+          统计学习
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../README.old/" title="Sklearn与TensorFlow" class="md-tabs__link md-tabs__link--active">
+          Sklearn与TensorFlow
+        </a>
+      
+    </li>
+  
+
+      
+        
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://hai5g.cn/aiwiki" title="AI Wiki" class="md-nav__button md-logo">
+      
+        <i class="md-icon">school</i>
+      
+    </a>
+    AI Wiki
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/myourdream/aiwiki/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    aiwiki
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      简介
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        简介
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="Getting Started" class="md-nav__link">
+      Getting Started
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/AI学习路线/" title="AI学习路线1" class="md-nav__link">
+      AI学习路线1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/ai-roadmap/ai-union-201904/" title="AI学习路线2" class="md-nav__link">
+      AI学习路线2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/ai-roadmap/v0.1/" title="AI 路线图v0.1" class="md-nav__link">
+      AI 路线图v0.1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/ai-roadmap/v0.2/" title="AI 路线图v0.2" class="md-nav__link">
+      AI 路线图v0.2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/ai-roadmap/v1.0/" title="ApacheCN 人工智能知识树" class="md-nav__link">
+      ApacheCN 人工智能知识树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-7" type="checkbox" id="nav-1-7">
+    
+    <label class="md-nav__link" for="nav-1-7">
+      工具软件
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-1-7">
+        工具软件
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/judgers/" title="评测工具" class="md-nav__link">
+      评测工具
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/editors/" title="编辑工具" class="md-nav__link">
+      编辑工具
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/wsl/" title="WSL (Windows 10)" class="md-nav__link">
+      WSL (Windows 10)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/spj/" title="Special Judge" class="md-nav__link">
+      Special Judge
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-7-5" type="checkbox" id="nav-1-7-5">
+    
+    <label class="md-nav__link" for="nav-1-7-5">
+      Testlib
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-1-7-5">
+        Testlib
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/testlib/" title="Testlib 简介" class="md-nav__link">
+      Testlib 简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/testlib/general/" title="通用" class="md-nav__link">
+      通用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/testlib/generator/" title="Generator" class="md-nav__link">
+      Generator
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/testlib/validator/" title="Validator" class="md-nav__link">
+      Validator
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/testlib/interactor/" title="Interactor" class="md-nav__link">
+      Interactor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/testlib/checker/" title="Checker" class="md-nav__link">
+      Checker
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/docker-deploy/" title="Docker 部署" class="md-nav__link">
+      Docker 部署
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/about/" title="关于本项目" class="md-nav__link">
+      关于本项目
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/faq/" title="F.A.Q." class="md-nav__link">
+      F.A.Q.
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      机器学习
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        机器学习
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Coursera_ML_AndrewNg/" title="简介" class="md-nav__link">
+      简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Coursera_ML_AndrewNg/markdown/SUMMARY/" title="目录" class="md-nav__link">
+      目录
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Coursera_ML_AndrewNg/markdown/math/" title="数学基础" class="md-nav__link">
+      数学基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Coursera_ML_AndrewNg/markdown/week1/" title="week1" class="md-nav__link">
+      week1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Coursera_ML_AndrewNg/markdown/week2/" title="week2" class="md-nav__link">
+      week2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Coursera_ML_AndrewNg/markdown/week3/" title="week3" class="md-nav__link">
+      week3
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Coursera_ML_AndrewNg/markdown/week4/" title="week4" class="md-nav__link">
+      week4
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Coursera_ML_AndrewNg/markdown/week5/" title="week5" class="md-nav__link">
+      week5
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Coursera_ML_AndrewNg/markdown/week6/" title="week6" class="md-nav__link">
+      week6
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Coursera_ML_AndrewNg/markdown/week7/" title="week7" class="md-nav__link">
+      week7
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Coursera_ML_AndrewNg/markdown/week8/" title="week8" class="md-nav__link">
+      week8
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Coursera_ML_AndrewNg/markdown/week9/" title="week9" class="md-nav__link">
+      week9
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Coursera_ML_AndrewNg/markdown/week10/" title="week10" class="md-nav__link">
+      week10
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      深度学习500问
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        深度学习500问
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/" title="简介" class="md-nav__link">
+      简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/content/" title="目录" class="md-nav__link">
+      目录
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch01_math/ch01_math/" title="第一章_数学基础" class="md-nav__link">
+      第一章_数学基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch02_机器学习基础/第二章_机器学习基础/" title="第二章_机器学习基础" class="md-nav__link">
+      第二章_机器学习基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch03_深度学习基础/第三章_深度学习基础/" title="第三章_深度学习基础" class="md-nav__link">
+      第三章_深度学习基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch04_经典网络/第四章_经典网络/" title="第四章_经典网络" class="md-nav__link">
+      第四章_经典网络
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch05_卷积神经网络(CNN)/第五章 卷积神经网络（CNN）/" title="第五章 卷积神经网络（CNN）" class="md-nav__link">
+      第五章 卷积神经网络（CNN）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch06_循环神经网络(RNN)/第六章_循环神经网络(RNN)/" title="第六章_循环神经网络(RNN)" class="md-nav__link">
+      第六章_循环神经网络(RNN)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch07_生成对抗网络(GAN)/ch7/" title="第七章_生成对抗网络(GAN)" class="md-nav__link">
+      第七章_生成对抗网络(GAN)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch08_目标检测/第八章_目标检测/" title="第八章_目标检测" class="md-nav__link">
+      第八章_目标检测
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch09_图像分割/第九章_图像分割/" title="第九章_图像分割" class="md-nav__link">
+      第九章_图像分割
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch10_强化学习/第十章_强化学习/" title="第十章_强化学习" class="md-nav__link">
+      第十章_强化学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch11_迁移学习/第十一章_迁移学习/" title="第十一章_迁移学习" class="md-nav__link">
+      第十一章_迁移学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch12_网络搭建及训练/第十二章_网络搭建及训练/" title="第十二章_网络搭建及训练" class="md-nav__link">
+      第十二章_网络搭建及训练
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch13_优化算法/第十三章_优化算法/" title="第十三章_优化算法" class="md-nav__link">
+      第十三章_优化算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch14_超参数调整/第十四章_超参数调整/" title="第十四章_超参数调整" class="md-nav__link">
+      第十四章_超参数调整
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch15_GPU和框架选型/第十五章_异构运算、GPU及框架选型/" title="第十五章_异构运算、GPU及框架选型" class="md-nav__link">
+      第十五章_异构运算、GPU及框架选型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch16_自然语言处理(NLP)/第十六章_NLP/" title="第十六章_NLP" class="md-nav__link">
+      第十六章_NLP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch17_模型压缩、加速及移动端部署/第十七章_模型压缩、加速及移动端部署/" title="第十七章_模型压缩、加速及移动端部署" class="md-nav__link">
+      第十七章_模型压缩、加速及移动端部署
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch18_后端架构选型、离线及实时计算/第十八章_后端架构选型、离线及实时计算/" title="第十八章_后端架构选型、离线及实时计算" class="md-nav__link">
+      第十八章_后端架构选型、离线及实时计算
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch18_后端架构选型及应用场景/第十八章_后端架构选型及应用场景/" title="第十八章_后端架构选型及应用场景" class="md-nav__link">
+      第十八章_后端架构选型及应用场景
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      统计学习
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        统计学习
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/" title="简介" class="md-nav__link">
+      简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH01/" title="统计学习及监督学习概论" class="md-nav__link">
+      统计学习及监督学习概论
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH02/" title="感知机" class="md-nav__link">
+      感知机
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH03/" title="K近邻法" class="md-nav__link">
+      K近邻法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH04/" title="朴素贝叶斯法" class="md-nav__link">
+      朴素贝叶斯法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH05/" title="决策树" class="md-nav__link">
+      决策树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH06/" title="逻辑斯蒂回归与最大熵模型" class="md-nav__link">
+      逻辑斯蒂回归与最大熵模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH07/" title="支持向量机" class="md-nav__link">
+      支持向量机
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH08/" title="提升方法" class="md-nav__link">
+      提升方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH09/" title="EM算法及其推广" class="md-nav__link">
+      EM算法及其推广
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH10/" title="隐马尔可夫模型" class="md-nav__link">
+      隐马尔可夫模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH11/" title="条件随机场" class="md-nav__link">
+      条件随机场
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH12/" title="监督学习方法总结" class="md-nav__link">
+      监督学习方法总结
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH13/" title="无监督学习概论" class="md-nav__link">
+      无监督学习概论
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH14/" title="聚类方法" class="md-nav__link">
+      聚类方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH22/" title="无监督学习方法总结" class="md-nav__link">
+      无监督学习方法总结
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+    
+    <label class="md-nav__link" for="nav-5">
+      Sklearn与TensorFlow
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Sklearn与TensorFlow
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../README.old/" title="简介" class="md-nav__link">
+      简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0.前言/" title="前言" class="md-nav__link">
+      前言
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../1.机器学习概览/" title="机器学习概览" class="md-nav__link">
+      机器学习概览
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.一个完整的机器学习项目/" title="一个完整的机器学习项目" class="md-nav__link">
+      一个完整的机器学习项目
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../3.分类/" title="分类" class="md-nav__link">
+      分类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.训练模型/" title="训练模型" class="md-nav__link">
+      训练模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../5.支持向量机/" title="支持向量机" class="md-nav__link">
+      支持向量机
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../6.决策树/" title="决策树" class="md-nav__link">
+      决策树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../7.集成学习和随机森林/" title="集成学习和随机森林" class="md-nav__link">
+      集成学习和随机森林
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../9.启动并运行_TensorFlow/" title="启动并运行_TensorFlow" class="md-nav__link">
+      启动并运行_TensorFlow
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        人工神经网络介绍
+      </label>
+    
+    <a href="./" title="人工神经网络介绍" class="md-nav__link md-nav__link--active">
+      人工神经网络介绍
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="从生物到人工神经元" class="md-nav__link">
+    从生物到人工神经元
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="生物神经元" class="md-nav__link">
+    生物神经元
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" title="神经元的逻辑计算" class="md-nav__link">
+    神经元的逻辑计算
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" title="感知器" class="md-nav__link">
+    感知器
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" title="多层感知器与反向传播" class="md-nav__link">
+    多层感知器与反向传播
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tensorflow-api-mlp" title="用 TensorFlow 高级 API 训练 MLP" class="md-nav__link">
+    用 TensorFlow 高级 API 训练 MLP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tensorflow-dnn" title="使用普通 TensorFlow 训练 DNN" class="md-nav__link">
+    使用普通 TensorFlow 训练 DNN
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" title="构造阶段" class="md-nav__link">
+    构造阶段
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" title="执行阶段" class="md-nav__link">
+    执行阶段
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" title="使用神经网络" class="md-nav__link">
+    使用神经网络
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" title="微调神经网络超参数" class="md-nav__link">
+    微调神经网络超参数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" title="隐藏层数量" class="md-nav__link">
+    隐藏层数量
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" title="每层隐藏层的神经元数量" class="md-nav__link">
+    每层隐藏层的神经元数量
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" title="激活函数" class="md-nav__link">
+    激活函数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" title="完整代码" class="md-nav__link">
+    完整代码
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" title="练习" class="md-nav__link">
+    练习
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="评论" class="md-nav__link md-nav__link--active">
+            评论
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../11.训练深层神经网络/" title="训练深层神经网络" class="md-nav__link">
+      训练深层神经网络
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../12.设备和服务器上的分布式_TensorFlow/" title="设备和服务器上的分布式_TensorFlow" class="md-nav__link">
+      设备和服务器上的分布式_TensorFlow
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../13.卷积神经网络/" title="卷积神经网络" class="md-nav__link">
+      卷积神经网络
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../14.循环神经网络/" title="循环神经网络" class="md-nav__link">
+      循环神经网络
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../15.自编码器/" title="自编码器" class="md-nav__link">
+      自编码器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../16.强化学习/" title="强化学习" class="md-nav__link">
+      强化学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../B.机器学习项目清单/" title="机器学习项目清单" class="md-nav__link">
+      机器学习项目清单
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../C.SVM_对偶问题/" title="SVM_对偶问题" class="md-nav__link">
+      SVM_对偶问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../D.自动微分/" title="自动微分" class="md-nav__link">
+      自动微分
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../about/" title="关于" class="md-nav__link">
+      关于
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="从生物到人工神经元" class="md-nav__link">
+    从生物到人工神经元
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="生物神经元" class="md-nav__link">
+    生物神经元
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" title="神经元的逻辑计算" class="md-nav__link">
+    神经元的逻辑计算
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" title="感知器" class="md-nav__link">
+    感知器
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" title="多层感知器与反向传播" class="md-nav__link">
+    多层感知器与反向传播
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tensorflow-api-mlp" title="用 TensorFlow 高级 API 训练 MLP" class="md-nav__link">
+    用 TensorFlow 高级 API 训练 MLP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tensorflow-dnn" title="使用普通 TensorFlow 训练 DNN" class="md-nav__link">
+    使用普通 TensorFlow 训练 DNN
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" title="构造阶段" class="md-nav__link">
+    构造阶段
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" title="执行阶段" class="md-nav__link">
+    执行阶段
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" title="使用神经网络" class="md-nav__link">
+    使用神经网络
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" title="微调神经网络超参数" class="md-nav__link">
+    微调神经网络超参数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" title="隐藏层数量" class="md-nav__link">
+    隐藏层数量
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" title="每层隐藏层的神经元数量" class="md-nav__link">
+    每层隐藏层的神经元数量
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" title="激活函数" class="md-nav__link">
+    激活函数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" title="完整代码" class="md-nav__link">
+    完整代码
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" title="练习" class="md-nav__link">
+    练习
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="评论" class="md-nav__link md-nav__link--active">
+            评论
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/myourdream/aiwiki/blob/master/docs/hands-on-ml-zh/docs/10.人工神经网络介绍.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="_1">十、人工神经网络介绍<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>译者：<a href="https://github.com/wangxupeng">@akonwang</a>、<a href="https://github.com/friedhelm739">@friedhelm739</a></p>
+<p>校对者：<a href="https://github.com/wizardforcel">@飞龙</a>、<a href="https://github.com/bigeyex">@YuWang</a></p>
+</blockquote>
+<p>鸟类启发我们飞翔，牛蒡植物启发了尼龙绳，大自然也激发了许多其他发明。从逻辑上看，大脑是如何构建智能机器的灵感。这是启发人工神经网络（ANN）的关键思想。然而，尽管飞机受到鸟类的启发，但它们不必拍动翅膀。同样的，ANN 逐渐变得与他们的生物表兄弟有很大的不同。一些研究者甚至争辩说，我们应该完全放弃生物类比（例如，通过说“单位”而不是“神经元”），以免我们把我们的创造力限制在生物学的系统上。</p>
+<p>人工神经网络是深度学习的核心。它们具有通用性、强大性和可扩展性，使得它们能够很好地解决大型和高度复杂的机器学习任务，例如分类数十亿图像（例如，谷歌图像），强大的语音识别服务（例如，苹果的 Siri），通过每天追踪数百万的用户的行为推荐最好的视频（比如 YouTube），或者通过在游戏中击败世界冠军，通过学习数百万的游戏，然后与自己对抗（DeepMind 的 AlgFaGo）。</p>
+<p>在本章中，我们将介绍人工神经网络，从快速游览的第一个ANN架构开始。然后，我们将提出多层感知器（MLP），并基于TensorFlow实现MNIST数字分类问题（在第3章中介绍）。</p>
+<h2 id="_2">从生物到人工神经元<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>令人惊讶的是，人工神经网络已经存在了相当长的一段时间：它们最初是由神经生理学家 Warren McCulloch 和数学家 Walter Pitts 在 1943 提出。McCulloch 和 Pitts 在其里程碑式的论文中提出了“神经活动内在的逻辑演算”，提出了一个简化的计算模型，即生物神经元如何在动物大脑中协同工作，用逻辑进行复杂的计算。这是第一个人工神经网络体系结构。从那时起，正如我们将看到的，许多其他的神经元结构已经被发明，</p>
+<p>直到 20 世纪 60 年代，ANN 的早期成功才使人们普遍相信我们很快就会与真正的智能机器对话。当显然的这个承诺将不会被兑现（至少相当长一段时间）时，资金飞向别处，ANN 进入了一个漫长的黑暗时代。20 世纪 80 年代初，随着新的网络体系结构的发明和更好的训练技术的发展，人们对人工神经网络的兴趣也在重新燃起。但到了 20 世纪 90 年代，强大的可替代机器学习技术的，如支持向量机（见第5章）受到大多数研究者的青睐，因为它们似乎提供了更好的结果和更强的理论基础。最后，我们现在目睹了另一股对 ANN 感兴趣的浪潮。这波会像以前一样消失吗？有一些很好的理由相信，这一点是不同的，将会对我们的生活产生更深远的影响：</p>
+<ul>
+<li>
+<p>现在有大量的数据可用于训练神经网络，ANN 在许多非常复杂的问题上经常优于其他 ML 技术。</p>
+</li>
+<li>
+<p>自从 90 年代以来，计算能力的巨大增长使得在合理的时间内训练大型神经网络成为可能。这部分是由于穆尔定律，但也得益于游戏产业，它已经产生了数以百万计的强大的 GPU 显卡。</p>
+</li>
+<li>
+<p>改进了训练算法。公平地说，它们与上世纪 90 年代使用的略有不同，但这些相对较小的调整产生了巨大的正面影响。</p>
+</li>
+<li>
+<p>在实践中，人工神经网络的一些理论局限性是良性的。例如，许多人认为人工神经网络训练算法是注定的，因为它们很可能陷入局部最优，但事实证明，这在实践中是相当罕见的（或者如果它发生，它们也通常相当接近全局最优）。</p>
+</li>
+<li>
+<p>ANN 似乎已经进入了资金和进步的良性循环。基于 ANN 的惊人产品定期成为头条新闻，吸引了越来越多的关注和资金，导致越来越多的进步，甚至更惊人的产品。</p>
+</li>
+</ul>
+<h2 id="_3">生物神经元<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>在我们讨论人工神经元之前，让我们快速看一个生物神经元（如图 10-1 所示）。它是一种异常细胞，主要见于动物大脑皮层（例如，你的大脑），由包含细胞核和大多数细胞复杂成分的细胞体组成，许多分支扩展称为树突，加上一个非常长的延伸称为轴突。轴突的长度可能比细胞体长几倍，或长达几万倍。在它的末端附近，轴突分裂成许多称为 telodendria 的分支，在这些分支的顶端是微小的结构，称为突触末端（或简单的突触），它们连接到其他神经元的树突（或直接到细胞体）。生物神经元接收短的电脉冲，称为来自其他神经元的信号，通过这些突触。当神经元在几毫秒内接收到来自其他神经元的足够数量的信号时，它就发射出自己的信号。</p>
+<p><img alt="图10-1" src="../../images/chapter_10/10-1.png" /></p>
+<p>因此，个体的生物神经元似乎以一种相当简单的方式运行，但是它们组织在一个巨大的数十亿神经元的网络中，每个神经元通常连接到数千个其他神经元。高度复杂的计算可以由相当简单的神经元的巨大网络来完成，就像一个复杂的蚁穴可以由每个蚂蚁的努力构造出来。生物神经网络（BNN）的体系结构仍然是主动研究的主题，但是大脑的某些部分已经被映射，并且似乎神经元经常组织在连续的层中，如图 10-2 所示。</p>
+<p><img alt="图10-2" src="../../images/chapter_10/10-2.png" /></p>
+<h2 id="_4">神经元的逻辑计算<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>Warren McCulloch 和 Pitts 提出一个非常简单的生物神经元模型，这后来作为一个人工神经元成为众所周知：它有一个或更多的二进制（ON/OFF）输入和一个二进制输出。当超过一定数量的输入是激活时，人工神经元会激活其输出。McCulloch 和 Pitts 表明，即使用这样一个简化的模型，也有可能建立一个人工神经元网络来计算任何你想要的逻辑命题。例如，让我们构建一些执行各种逻辑计算的 ANN（见图 10-3），假设当至少两个输入是激活的时候神经元被激活。</p>
+<p><img alt="图10-3" src="../../images/chapter_10/10-3.png" /></p>
+<ul>
+<li>
+<p>左边的第一个网络仅仅是确认函数：如果神经元 A 被激活，那么神经元 C 也被激活（因为它接收来自神经元 A 的两个输入信号），但是如果神经元 A 关闭，那么神经元 C 也关闭。</p>
+</li>
+<li>
+<p>第二网络执行逻辑 AND：神经元 C 只有在激活神经元 A 和 B（单个输入信号不足以激活神经元 C）时才被激活。</p>
+</li>
+<li>
+<p>第三网络执行逻辑 OR：如果神经元 A 或神经元 B 被激活（或两者），神经元 C 被激活。</p>
+</li>
+<li>
+<p>最后，如果我们假设输入连接可以抑制神经元的活动（生物神经元是这样的情况），那么第四个网络计算一个稍微复杂的逻辑命题：如果神经元 B 关闭，只有当神经元A是激活的，神经元 C 才被激活。如果神经元 A 始终是激活的，那么你得到一个逻辑 NOT：神经元 C 在神经元 B 关闭时是激活的，反之亦然。</p>
+</li>
+</ul>
+<p>您可以很容易地想象如何将这些网络组合起来计算复杂的逻辑表达式（参见本章末尾的练习）。</p>
+<h2 id="_5">感知器<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>感知器是最简单的人工神经网络结构之一，由 Frank Rosenblatt 发明于 1957。它是基于一种稍微不同的人工神经元（见图 10-4），称为线性阈值单元（LTU）：输入和输出现在是数字（而不是二进制开/关值），并且每个输入连接都与权重相连。LTU计算其输入的加权和（<code>z = W1×1 + W2×2 + ... + + WN×n = Wt·x</code>），然后将阶跃函数应用于该和，并输出结果：<code>HW(x) = STEP(Z) = STEP(W^T·x)</code>。</p>
+<p><img alt="图10-4" src="../../images/chapter_10/10-4.png" /></p>
+<p>最常见的在感知器中使用的阶跃函数是 Heaviside 阶跃函数（见方程 10-1）。有时使用符号函数代替。</p>
+<p><img alt="图E10-1" src="../../images/chapter_10/E10-1.png" /></p>
+<p>单一的 LTU 可被用作简单线性二元分类。它计算输入的线性组合，如果结果超过阈值，它输出正类或者输出负类（就像一个逻辑回归分类或线性 SVM）。例如，你可以使用单一的 LTU 基于花瓣长度和宽度去分类鸢尾花（也可添加额外的偏置特征<code>x0=1</code>，就像我们在前一章所做的）。训练一个 LTU 意味着去寻找合适的<code>W0</code>和<code>W1</code>值，（训练算法稍后提到）。</p>
+<p>感知器简单地由一层 LTU 组成，每个神经元连接到所有输入。这些连接通常用特殊的被称为输入神经元的传递神经元来表示：它们只输出它们所输入的任何输入。此外，通常添加额外偏置特征（<code>X0=1</code>）。这种偏置特性通常用一种称为偏置神经元的特殊类型的神经元来表示，它总是输出 1。</p>
+<p>图 10-5 表示具有两个输入和三个输出的感知器。该感知器可以将实例同时分类为三个不同的二进制类，这使得它是一个多输出分类器。</p>
+<p><img alt="图10-5" src="../../images/chapter_10/10-5.png" /></p>
+<p>那么感知器是如何训练的呢？Frank Rosenblatt 提出的感知器训练算法在很大程度上受到 Hebb 规则的启发。在 1949 出版的《行为组织》一书中，Donald Hebb 提出，当一个生物神经元经常触发另一个神经元时，这两个神经元之间的联系就会变得更强。这个想法后来被 Siegrid Löwel 总结为一个吸引人的短语：“一起燃烧的细胞，汇合在一起。”这个规则后来被称为 Hebb 规则（或 HebBIN 学习）；也就是说，当两个神经元具有相同的输出时，它们之间的连接权重就会增加。使用这个规则的变体来训练感知器，该规则考虑了网络所犯的错误；它不加强导致错误输出的连接。更具体地，感知器一次被馈送一个训练实例，并且对于每个实例，它进行预测。对于每一个产生错误预测的输出神经元，它加强了输入的连接权重，这将有助于正确的预测。该规则在公式 10-2 中示出。</p>
+<p><img alt="图E10-2" src="../../images/chapter_10/E10-2.png" /></p>
+<ul>
+<li>
+<p>其中<code>Wi,j</code>是第<code>i</code>输入神经元与第<code>J</code>个输出神经元之间的连接权重。</p>
+</li>
+<li>
+<p><code>xi</code>是当前训练实例与输入值。</p>
+</li>
+<li>
+<p><code>Y</code>帽是当前训练实例的第<code>J</code>个输出神经元的输出。</p>
+</li>
+<li>
+<p><code>Yj</code>是当前训练实例的第<code>J</code>个输出神经元的目标输出。</p>
+</li>
+<li>
+<p><code>ε</code>是学习率。</p>
+</li>
+</ul>
+<p>每个输出神经元的决策边界是线性的，因此感知机不能学习复杂的模式（就像 Logistic 回归分类器）。然而，如果训练实例是线性可分离的，Rosenblatt 证明该算法将收敛到一个解。这被称为感知器收敛定理。</p>
+<p>sklearn 提供了一个感知器类，它实现了一个 LTU 网络。它可以像你所期望的那样使用，例如在 iris 数据集（第 4 章中介绍）：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span> 
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span> 
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Perceptron</span>
+<span class="n">iris</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span> 
+<span class="n">X</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">[:,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span>  <span class="c1"># 花瓣长度，宽度 </span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">target</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)</span> 
+<span class="n">per_clf</span> <span class="o">=</span> <span class="n">Perceptron</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span> 
+<span class="n">per_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">per_clf</span><span class="o">.</span><span class="n">predict</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]])</span>  
+</pre></div>
+</td></tr></table>
+
+<p>您可能已经认识到，感知器学习算法类似于随机梯度下降。事实上，sklearn 的感知器类相当于使用具有以下超参数的 SGD 分类器：<code>loss="perceptron"</code>，<code>learning_rate="constant"</code>（学习率），<code>eta0=1</code>，<code>penalty=None</code>（无正则化）。</p>
+<p>注意，与逻辑斯蒂回归分类器相反，感知机不输出类概率，而是基于硬阈值进行预测。这是你喜欢逻辑斯蒂回归很好的一个理由。</p>
+<p>在他们的 1969 个题为“感知者”的专著中，Marvin Minsky 和 Seymour Papert 强调了感知机的许多严重缺陷，特别是它们不能解决一些琐碎的问题（例如，异或（XOR）分类问题）；参见图 10-6 的左侧）。当然，其他的线性分类模型（如 Logistic 回归分类器）也都实现不了，但研究人员期望从感知器中得到更多，他们的失望是很大的：因此，许多研究人员放弃了联结主义（即神经网络的研究），这有利于更高层次的问题，如逻辑、问题解决和搜索。</p>
+<p>然而，事实证明，感知器的一些局限性可以通过堆叠多个感知器来消除。由此产生的人工神经网络被称为多层感知器（MLP）。特别地，MLP 可以解决 XOR 问题，因为你可以通过计算图 10-6 右侧所示的 MLP 的输出来验证输入的每一个组合：输入<code>(0, 0)</code>或<code>(1, 1)</code>网络输出 0，并且输入<code>(0, 1)</code>或<code>(1, 0)</code>它输出 1。</p>
+<p><img alt="图10-6" src="../../images/chapter_10/10-6.png" /></p>
+<h2 id="_6">多层感知器与反向传播<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>MLP 由一个（通过）输入层、一个或多个称为隐藏层的 LTU 组成，一个最终层 LTU 称为输出层（见图 10-7）。除了输出层之外的每一层包括偏置神经元，并且全连接到下一层。当人工神经网络有两个或多个隐含层时，称为深度神经网络（DNN）。</p>
+<p><img alt="图10-7" src="../../images/chapter_10/10-7.png" /></p>
+<p>多年来，研究人员努力寻找一种训练 MLP 的方法，但没有成功。但在 1986，D. E. Rumelhart 等人提出了反向传播训练算法。第 9 章我们将其描述为使用反向自动微分的梯度下降（第 4 章讨论了梯度下降，第 9 章讨论了自动微分）。</p>
+<p>对于每个训练实例，算法将其馈送到网络并计算每个连续层中的每个神经元的输出（这是向前传递，就像在进行预测时一样）。然后，它测量网络的输出误差（即，期望输出和网络实际输出之间的差值），并且计算最后隐藏层中的每个神经元对每个输出神经元的误差贡献多少。然后，继续测量这些误差贡献有多少来自先前隐藏层中的每个神经元等等，直到算法到达输入层。该反向通过有效地测量网络中所有连接权重的误差梯度，通过在网络中向后传播误差梯度（也是该算法的名称）。如果你查看一下附录 D 中的反向自动微分算法，你会发现反向传播的正向和反向通过简单地执行反向自动微分。反向传播算法的最后一步是使用较早测量的误差梯度对网络中的所有连接权值进行梯度下降步骤。</p>
+<p>让我们更简短一些：对于每个训练实例，反向传播算法首先进行预测（前向），测量误差，然后反向遍历每个层来测量每个连接（反向传递）的误差贡献，最后稍微调整连接器权值以减少误差（梯度下降步长）。</p>
+<p>为了使算法能够正常工作，作者对 MLP 的体系结构进行了一个关键性的改变：用 Logistic 函数代替了阶跃函数，<code>σ(z) = 1 / (1 + exp(–z))</code>。这是必要的，因为阶跃函数只包含平坦的段，因此没有梯度来工作（梯度下降不能在平面上移动），而 Logistic 函数到处都有一个定义良好的非零导数，允许梯度下降在每个步上取得一些进展。反向传播算法可以与其他激活函数一起使用，而不是 Logistic 函数。另外两个流行的激活函数是：</p>
+<ul>
+<li>
+<p>双曲正切函数 <code>tanh (z) = 2σ(2z) – 1</code></p>
+<ul>
+<li>就像 Logistic 函数，它是 S 形的、连续的、可微的，但是它的输出值范围从-1到1（不是在 Logistic 函数的 0 到 1），这往往使每个层的输出在训练开始时或多或少都正则化了（即以 0 为中心）。这常常有助于加快收敛速度。</li>
+</ul>
+</li>
+<li>
+<p>Relu 函数（在第 9 章中介绍）</p>
+<ul>
+<li><code>ReLU (z) = max (0, z)</code>。它是连续的，但不幸的是在<code>z=0</code>时不可微（斜率突然改变，这可以使梯度下降反弹）。然而，在实践中，它工作得很好，并且具有快速计算的优点。最重要的是，它没有最大输出值的事实也有助于减少梯度下降期间的一些问题（我们将在第 11 章中回顾这一点）。</li>
+</ul>
+</li>
+</ul>
+<p>这些流行的激活函数及其衍生物如图 10-8 所示。</p>
+<p><img alt="图10-8" src="../../images/chapter_10/10-8.png" /></p>
+<p>MLP 通常用于分类，每个输出对应于不同的二进制类（例如，垃圾邮件/正常邮件，紧急/非紧急，等等）。当类是多类的（例如，0 到 9 的数字图像分类）时，输出层通常通过用共享的 softmax 函数替换单独的激活函数来修改（见图 10-9）。第 4 章介绍了 softmax 函数。每个神经元的输出对应于相应类的估计概率。注意，信号只在一个方向上流动（从输入到输出），因此这种结构是前馈神经网络（FNN）的一个例子。</p>
+<p><img alt="图10-9" src="../../images/chapter_10/10-9.png" /></p>
+<p>生物神经元似乎是用 sigmoid（S 型）激活函数活动的，因此研究人员在很长一段时间内坚持 sigmoid 函数。但事实证明，Relu 激活函数通常在 ANN 工作得更好。这是生物研究误导的例子之一。</p>
+<h2 id="tensorflow-api-mlp">用 TensorFlow 高级 API 训练 MLP<a class="headerlink" href="#tensorflow-api-mlp" title="Permanent link">&para;</a></h2>
+<p>与 TensorFlow 一起训练 MLP 最简单的方法是使用高级 API TF.Learn，这与 sklearn 的 API 非常相似。<code>DNNClassifier</code>可以很容易训练具有任意数量隐层的深度神经网络，而 softmax 输出层输出估计的类概率。例如，下面的代码训练两个隐藏层的 DNN（一个具有 300 个神经元，另一个具有 100 个神经元）和一个具有 10 个神经元的 SOFTMax 输出层进行分类：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="kn">as</span> <span class="nn">tf</span>
+<span class="n">feature_columns</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">contrib</span><span class="o">.</span><span class="n">learn</span><span class="o">.</span><span class="n">infer_real_valued_columns_from_input</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> 
+<span class="n">dnn_clf</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">contrib</span><span class="o">.</span><span class="n">learn</span><span class="o">.</span><span class="n">DNNClassifier</span><span class="p">(</span><span class="n">hidden_units</span><span class="o">=</span><span class="p">[</span><span class="mi">300</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                                         <span class="n">feature_columns</span><span class="o">=</span><span class="n">feature_columns</span><span class="p">)</span> 
+<span class="n">dnn_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">steps</span><span class="o">=</span><span class="mi">40000</span><span class="p">)</span> 
+</pre></div>
+</td></tr></table>
+
+<p>如果你在 MNIST 数据集上运行这个代码（在缩放它之后，例如，通过使用 skLearn 的<code>StandardScaler</code>），你实际上可以得到一个在测试集上达到 98.1% 以上精度的模型！这比我们在第 3 章中训练的最好的模型都要好：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">dnn_clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span> 
+<span class="mf">0.98180000000000001</span> 
+</pre></div>
+</td></tr></table>
+
+<p>TF.Learn 学习库也为评估模型提供了一些方便的功能：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">dnn_clf</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> 
+<span class="p">{</span><span class="s1">&#39;accuracy&#39;</span><span class="p">:</span> <span class="mf">0.98180002</span><span class="p">,</span> <span class="s1">&#39;global_step&#39;</span><span class="p">:</span> <span class="mi">40000</span><span class="p">,</span> <span class="s1">&#39;loss&#39;</span><span class="p">:</span> <span class="mf">0.073678359</span><span class="p">}</span> 
+</pre></div>
+</td></tr></table>
+
+<p><code>DNNClassifier</code>基于 Relu 激活函数创建所有神经元层（我们可以通过设置超参数<code>activation_fn</code>来改变激活函数）。输出层基于 SoftMax 函数，损失函数是交叉熵（在第 4 章中介绍）。</p>
+<p>TF.EXCEL API 仍然是更新的，所以在这些例子中使用的一些名称和函数可能会在你读这本书的时候发生一些变化。但总的思想是不变。</p>
+<h2 id="tensorflow-dnn">使用普通 TensorFlow 训练 DNN<a class="headerlink" href="#tensorflow-dnn" title="Permanent link">&para;</a></h2>
+<p>如果您想要更好地控制网络架构，您可能更喜欢使用 TensorFlow 的较低级别的 Python API（在第 9 章中介绍）。 在本节中，我们将使用与之前的 API 相同的模型，我们将实施 Minibatch 梯度下降来在 MNIST 数据集上进行训练。 第一步是建设阶段，构建 TensorFlow 图。 第二步是执行阶段，您实际运行计算图谱来训练模型。</p>
+<h2 id="_7">构造阶段<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>开始吧。 首先我们需要导入<code>tensorflow</code>库。 然后我们必须指定输入和输出的数量，并设置每个层中隐藏的神经元数量：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="kn">as</span> <span class="nn">tf</span>
+<span class="n">n_inputs</span> <span class="o">=</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span> <span class="c1"># MNIST</span>
+<span class="n">n_hidden1</span> <span class="o">=</span> <span class="mi">300</span>
+<span class="n">n_hidden2</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">n_outputs</span> <span class="o">=</span> <span class="mi">10</span>
+</pre></div>
+</td></tr></table>
+
+<p>接下来，与第 9 章一样，您可以使用占位符节点来表示训练数据和目标。<code>X</code>的形状仅有部分被定义。 我们知道它将是一个 2D 张量（即一个矩阵），沿着第一个维度的实例和第二个维度的特征，我们知道特征的数量将是<code>28×28</code>（每像素一个特征） 但是我们不知道每个训练批次将包含多少个实例。 所以<code>X</code>的形状是<code>(None, n_inputs)</code>。 同样，我们知道<code>y</code>将是一个 1D 张量，每个实例有一个入口，但是我们再次不知道在这一点上训练批次的大小，所以形状<code>(None)</code>。</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">n_inputs</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">int64</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="bp">None</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>现在让我们创建一个实际的神经网络。 占位符<code>X</code>将作为输入层; 在执行阶段，它将一次更换一个训练批次（注意训练批中的所有实例将由神经网络同时处理）。 现在您需要创建两个隐藏层和输出层。 两个隐藏的层几乎相同：它们只是它们所连接的输入和它们包含的神经元的数量不同。 输出层也非常相似，但它使用 softmax 激活函数而不是 ReLU 激活函数。 所以让我们创建一个<code>neuron_layer()</code>函数，我们将一次创建一个图层。 它将需要参数来指定输入，神经元数量，激活函数和图层的名称：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">neuron_layer</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">n_neurons</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+        <span class="n">n_inputs</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">get_shape</span><span class="p">()[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">stddev</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n_inputs</span><span class="p">)</span>
+        <span class="n">init</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">truncated_normal</span><span class="p">((</span><span class="n">n_inputs</span><span class="p">,</span> <span class="n">n_neurons</span><span class="p">),</span> <span class="n">stddev</span><span class="o">=</span><span class="n">stddev</span><span class="p">)</span>
+        <span class="n">W</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">init</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;weights&quot;</span><span class="p">)</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">n_neurons</span><span class="p">]),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;biases&quot;</span><span class="p">)</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">W</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span>
+        <span class="k">if</span> <span class="n">activation</span> <span class="o">==</span> <span class="s2">&quot;relu&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">z</span>
+</pre></div>
+</td></tr></table>
+
+<p>我们逐行浏览这个代码：</p>
+<ol>
+<li>
+<p>首先，我们使用名称范围来创建每层的名称：它将包含该神经元层的所有计算节点。 这是可选的，但如果节点组织良好，则 TensorBoard 图形将会更加出色。</p>
+</li>
+<li>
+<p>接下来，我们通过查找输入矩阵的形状并获得第二个维度的大小来获得输入数量（第一个维度用于实例）。</p>
+</li>
+<li>
+<p>接下来的三行创建一个保存权重矩阵的<code>W</code>变量。 它将是包含每个输入和每个神经元之间的所有连接权重的2D张量；因此，它的形状将是<code>(n_inputs, n_neurons)</code>。它将被随机初始化，使用具有标准差为<code>2/√n</code>的截断的正态（高斯）分布(使用截断的正态分布而不是常规正态分布确保不会有任何大的权重，这可能会减慢训练。).使用这个特定的标准差有助于算法的收敛速度更快（我们将在第11章中进一步讨论这一点），这是对神经网络的微小调整之一，对它们的效率产生了巨大的影响）。 重要的是为所有隐藏层随机初始化连接权重，以避免梯度下降算法无法中断的任何对称性。（例如，如果将所有权重设置为 0，则所有神经元将输出 0，并且给定隐藏层中的所有神经元的误差梯度将相同。 然后，梯度下降步骤将在每个层中以相同的方式更新所有权重，因此它们将保持相等。 换句话说，尽管每层有数百个神经元，你的模型就像每层只有一个神经元一样。）</p>
+</li>
+<li>
+<p>下一行创建一个偏差的<code>b</code>变量，初始化为 0（在这种情况下无对称问题），每个神经元有一个偏置参数。</p>
+</li>
+<li>
+<p>然后我们创建一个子图来计算<code>z = X·W + b</code>。 该向量化实现将有效地计算输入的加权和加上层中每个神经元的偏置，对于批次中的所有实例，仅需一次.</p>
+</li>
+<li>
+<p>最后，如果激活参数设置为<code>relu</code>，则代码返回<code>relu(z)</code>（即<code>max(0,z)</code>），否则它只返回<code>z</code>。</p>
+</li>
+</ol>
+<p>好了，现在你有一个很好的函数来创建一个神经元层。 让我们用它来创建深层神经网络！ 第一个隐藏层以<code>X</code>为输入。 第二个将第一个隐藏层的输出作为其输入。 最后，输出层将第二个隐藏层的输出作为其输入。</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>    <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="s2">&quot;dnn&quot;</span><span class="p">):</span>
+        <span class="n">hidden1</span> <span class="o">=</span> <span class="n">neuron_layer</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">n_hidden1</span><span class="p">,</span> <span class="s2">&quot;hidden1&quot;</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">)</span>
+    <span class="n">hidden2</span> <span class="o">=</span> <span class="n">neuron_layer</span><span class="p">(</span><span class="n">hidden1</span><span class="p">,</span> <span class="n">n_hidden2</span><span class="p">,</span> <span class="s2">&quot;hidden2&quot;</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">)</span>
+    <span class="n">logits</span> <span class="o">=</span> <span class="n">neuron_layer</span><span class="p">(</span><span class="n">hidden2</span><span class="p">,</span> <span class="n">n_outputs</span><span class="p">,</span> <span class="s2">&quot;outputs&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>请注意，为了清楚起见，我们再次使用名称范围。 还要注意，logit 是在通过 softmax 激活函数之前神经网络的输出：为了优化，我们稍后将处理 softmax 计算。</p>
+<p>正如你所期望的，TensorFlow 有许多方便的功能来创建标准的神经网络层，所以通常不需要像我们刚才那样定义你自己的<code>neuron_layer()</code>函数。 例如，TensorFlow 的<code>fully_connected()</code>函数创建一个完全连接的层，其中所有输入都连接到图层中的所有神经元。 它使用正确的初始化策略来负责创建权重和偏置变量，并且默认情况下使用 ReLU 激活函数（我们可以使用<code>activate_fn</code>参数来更改它）。 正如我们将在第 11 章中看到的，它还支持正则化和归一化参数。 我们来调整上面的代码来使用<code>fully_connected()</code>函数，而不是我们的<code>neuron_layer()</code>函数。 只需导入该功能，并使用以下代码替换 dnn 构建部分：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>    <span class="kn">from</span> <span class="nn">tensorflow.contrib.layers</span> <span class="kn">import</span> <span class="n">fully_connected</span>
+    <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="s2">&quot;dnn&quot;</span><span class="p">):</span>
+        <span class="n">hidden1</span> <span class="o">=</span> <span class="n">fully_connected</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">n_hidden1</span><span class="p">,</span> <span class="n">scope</span><span class="o">=</span><span class="s2">&quot;hidden1&quot;</span><span class="p">)</span>
+        <span class="n">hidden2</span> <span class="o">=</span> <span class="n">fully_connected</span><span class="p">(</span><span class="n">hidden1</span><span class="p">,</span> <span class="n">n_hidden2</span><span class="p">,</span> <span class="n">scope</span><span class="o">=</span><span class="s2">&quot;hidden2&quot;</span><span class="p">)</span>
+        <span class="n">logits</span> <span class="o">=</span> <span class="n">fully_connected</span><span class="p">(</span><span class="n">hidden2</span><span class="p">,</span> <span class="n">n_outputs</span><span class="p">,</span> <span class="n">scope</span><span class="o">=</span><span class="s2">&quot;outputs&quot;</span><span class="p">,</span>
+                                    <span class="n">activation_fn</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p><code>tensorflow.contrib</code>包包含许多有用的功能，但它是一个尚未分级成为主要 TensorFlow API 一部分的实验代码的地方。 因此，<code>full_connected()</code>函数（和任何其他<code>contrib</code>代码）可能会在将来更改或移动。</p>
+<p>使用<code>dense()</code>代替<code>neuron_layer()</code></p>
+<p>注意：本书使用<code>tensorflow.contrib.layers.fully_connected()</code>而不是<code>tf.layers.dense()</code>（本章编写时不存在）。</p>
+<p>现在最好使用<code>tf.layers.dense()</code>，因为<code>contrib</code>模块中的任何内容可能会更改或删除，恕不另行通知。<code>dense()</code>函数与<code>fully_connected()</code>函数几乎相同，除了一些细微的差别：</p>
+<p>几个参数被重命名：<code>scope</code>变为名称，<code>activation_fn</code>变为激活（同样<code>_fn</code>后缀从其他参数（如<code>normalizer_fn</code>）中删除），<code>weights_initializer</code>成为<code>kernel_initializer</code>等。默认激活现在是无，而不是<code>tf.nn.relu</code>。 第 11 章还介绍了更多的差异。</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="s2">&quot;dnn&quot;</span><span class="p">):</span>
+    <span class="n">hidden1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">dense</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">n_hidden1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;hidden1&quot;</span><span class="p">,</span>
+                              <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">)</span>
+    <span class="n">hidden2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">dense</span><span class="p">(</span><span class="n">hidden1</span><span class="p">,</span> <span class="n">n_hidden2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;hidden2&quot;</span><span class="p">,</span>
+                              <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">)</span>
+    <span class="n">logits</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">dense</span><span class="p">(</span><span class="n">hidden2</span><span class="p">,</span> <span class="n">n_outputs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;outputs&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>现在我们已经有了神经网络模型，我们需要定义我们用来训练的损失函数。 正如我们在第 4 章中对 Softmax 回归所做的那样，我们将使用交叉熵。 正如我们之前讨论的，交叉熵将惩罚估计目标类的概率较低的模型。 TensorFlow 提供了几种计算交叉熵的功能。 我们将使用<code>sparse_softmax_cross_entropy_with_logits()</code>：它根据“logit”计算交叉熵（即，在通过 softmax 激活函数之前的网络输出），并且期望以 0 到 -1 数量的整数形式的标签（在我们的例子中，从 0 到 9）。 这将给我们一个包含每个实例的交叉熵的 1D 张量。 然后，我们可以使用 TensorFlow 的<code>reduce_mean()</code>函数来计算所有实例的平均交叉熵。</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="s2">&quot;loss&quot;</span><span class="p">):</span>
+    <span class="n">xentropy</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">sparse_softmax_cross_entropy_with_logits</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">logits</span><span class="o">=</span><span class="n">logits</span><span class="p">)</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">xentropy</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;loss&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>该<code>sparse_softmax_cross_entropy_with_logits()</code>函数等同于应用 SOFTMAX 激活函数，然后计算交叉熵，但它更高效，它妥善照顾的边界情况下，比如 logits 等于 0，这就是为什么我们没有较早的应用 SOFTMAX 激活函数。 还有称为<code>softmax_cross_entropy_with_logits()</code>的另一个函数，该函数在标签单热载体的形式（而不是整数 0 至类的数目减 1）。</p>
+<p>我们有神经网络模型，我们有损失函数，现在我们需要定义一个<code>GradientDescentOptimizer</code>来调整模型参数以最小化损失函数。没什么新鲜的; 就像我们在第 9 章中所做的那样：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.01</span>
+
+<span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="s2">&quot;train&quot;</span><span class="p">):</span>
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">GradientDescentOptimizer</span><span class="p">(</span><span class="n">learning_rate</span><span class="p">)</span>
+    <span class="n">training_op</span> <span class="o">=</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>建模阶段的最后一个重要步骤是指定如何评估模型。 我们将简单地将精度用作我们的绩效指标。 首先，对于每个实例，通过检查最高 logit 是否对应于目标类别来确定神经网络的预测是否正确。 为此，您可以使用<code>in_top_k()</code>函数。 这返回一个充满布尔值的 1D 张量，因此我们需要将这些布尔值转换为浮点数，然后计算平均值。 这将给我们网络的整体准确性.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="s2">&quot;eval&quot;</span><span class="p">):</span>
+    <span class="n">correct</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">in_top_k</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">accuracy</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">correct</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+</pre></div>
+</td></tr></table>
+
+<p>而且，像往常一样，我们需要创建一个初始化所有变量的节点，我们还将创建一个<code>Saver</code>来将我们训练有素的模型参数保存到磁盘中：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">init</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">global_variables_initializer</span><span class="p">()</span>
+<span class="n">saver</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">Saver</span><span class="p">()</span>
+</pre></div>
+</td></tr></table>
+
+<p>建模阶段结束。 这是不到 40 行代码，但相当激烈：我们为输入和目标创建占位符，我们创建了一个构建神经元层的函数，我们用它来创建 DNN，我们定义了损失函数，我们 创建了一个优化器，最后定义了性能指标。 现在到执行阶段。</p>
+<h2 id="_8">执行阶段<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>这部分要短得多，更简单。 首先，我们加载 MNIST。 我们可以像之前的章节那样使用 ScikitLearn，但是 TensorFlow 提供了自己的助手来获取数据，将其缩放（0 到 1 之间），将它洗牌，并提供一个简单的功能来一次加载一个小批量：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">tensorflow.examples.tutorials.mnist</span> <span class="kn">import</span> <span class="n">input_data</span>
+
+<span class="n">mnist</span> <span class="o">=</span> <span class="n">input_data</span><span class="o">.</span><span class="n">read_data_sets</span><span class="p">(</span><span class="s2">&quot;/tmp/data/&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>现在我们定义我们要运行的迭代数，以及小批量的大小：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">n_epochs</span> <span class="o">=</span> <span class="mi">10001</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">50</span>
+</pre></div>
+</td></tr></table>
+
+<p>现在我们去训练模型:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>
+    <span class="n">init</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_epochs</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">num_examples</span> <span class="o">//</span> <span class="n">batch_size</span><span class="p">):</span>
+            <span class="n">X_batch</span><span class="p">,</span> <span class="n">y_batch</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">next_batch</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)</span>
+            <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">training_op</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X</span><span class="p">:</span> <span class="n">X_batch</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">y_batch</span><span class="p">})</span>
+        <span class="n">acc_train</span> <span class="o">=</span> <span class="n">accuracy</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X</span><span class="p">:</span> <span class="n">X_batch</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">y_batch</span><span class="p">})</span>
+        <span class="n">acc_test</span> <span class="o">=</span> <span class="n">accuracy</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X</span><span class="p">:</span> <span class="n">mnist</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">images</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">mnist</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">labels</span><span class="p">})</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">epoch</span><span class="p">,</span> <span class="s2">&quot;Train accuracy:&quot;</span><span class="p">,</span> <span class="n">acc_train</span><span class="p">,</span> <span class="s2">&quot;Test accuracy:&quot;</span><span class="p">,</span> <span class="n">acc_test</span><span class="p">)</span>
+
+    <span class="n">save_path</span> <span class="o">=</span> <span class="n">saver</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">sess</span><span class="p">,</span> <span class="s2">&quot;./my_model_final.ckpt&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>该代码打开一个 TensorFlow 会话，并运行初始化所有变量的<code>init</code>节点。 然后它运行的主要训练循环：在每个时期，通过一些小批次的对应于训练集的大小的代码进行迭代。 每个小批量通过<code>next_batch()</code>方法获取，然后代码简单地运行训练操作，为当前的小批量输入数据和目标提供。 接下来，在每个时期结束时，代码评估最后一个小批量和完整训练集上的模型，并打印出结果。 最后，模型参数保存到磁盘。</p>
+<h2 id="_9">使用神经网络<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<p>现在神经网络被训练了，你可以用它进行预测。 为此，您可以重复使用相同的建模阶段，但是更改执行阶段，如下所示：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>
+    <span class="n">saver</span><span class="o">.</span><span class="n">restore</span><span class="p">(</span><span class="n">sess</span><span class="p">,</span> <span class="s2">&quot;./my_model_final.ckpt&quot;</span><span class="p">)</span> <span class="c1"># or better, use save_path</span>
+    <span class="n">X_new_scaled</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">images</span><span class="p">[:</span><span class="mi">20</span><span class="p">]</span>
+    <span class="n">Z</span> <span class="o">=</span> <span class="n">logits</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X</span><span class="p">:</span> <span class="n">X_new_scaled</span><span class="p">})</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>首先，代码从磁盘加载模型参数。 然后加载一些您想要分类的新图像。 记住应用与训练数据相同的特征缩放（在这种情况下，将其从 0 缩放到 1）。 然后代码评估对数点节点。 如果您想知道所有估计的类概率，则需要将<code>softmax()</code>函数应用于对数，但如果您只想预测一个类，则可以简单地选择具有最高 logit 值的类（使用<code>argmax()</code>函数做的伎俩）。</p>
+<h2 id="_10">微调神经网络超参数<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p>神经网络的灵活性也是其主要缺点之一：有很多超参数要进行调整。 不仅可以使用任何可想象的网络拓扑（如何神经元互连），而且即使在简单的 MLP 中，您可以更改层数，每层神经元数，每层使用的激活函数类型，权重初始化逻辑等等。 你怎么知道什么组合的超参数是最适合你的任务？</p>
+<p>当然，您可以使用具有交叉验证的网格搜索来查找正确的超参数，就像您在前几章中所做的那样，但是由于要调整许多超参数，并且由于在大型数据集上训练神经网络需要很多时间， 您只能在合理的时间内探索超参数空间的一小部分。 正如我们在第2章中讨论的那样，使用<a href="http://www.jmlr.org/papers/volume13/bergstra12a/bergstra12a.pdf">随机搜索</a>要好得多。另一个选择是使用诸如 Oscar 之类的工具，它可以实现更复杂的算法，以帮助您快速找到一组好的超参数.</p>
+<p>它有助于了解每个超级参数的值是合理的，因此您可以限制搜索空间。 我们从隐藏层数开始。</p>
+<h2 id="_11">隐藏层数量<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<p>对于许多问题，您只需从单个隐藏层开始，您将获得合理的结果。 实际上已经表明，只有一个隐藏层的 MLP 可以建模甚至最复杂的功能，只要它具有足够的神经元。 长期以来，这些事实说服了研究人员，没有必要调查任何更深层次的神经网络。 但是他们忽略了这样一个事实：深层网络具有比浅层网络更高的参数效率：他们可以使用比浅网格更少的神经元来建模复杂的函数，使得训练更快。</p>
+<p>要了解为什么，假设您被要求使用一些绘图软件绘制一个森林，但是您被禁止使用复制/粘贴。 你必须单独绘制每棵树，每枝分枝，每叶叶。 如果你可以画一个叶，复制/粘贴它来绘制一个分支，然后复制/粘贴该分支来创建一个树，最后复制/粘贴这个树来制作一个林，你将很快完成。 现实世界的数据通常以这样一种分层的方式进行结构化，DNN 自动利用这一事实：较低的隐藏层模拟低级结构（例如，各种形状和方向的线段），中间隐藏层将这些低级结构组合到 模型中级结构（例如，正方形，圆形）和最高隐藏层和输出层将这些中间结构组合在一起，以模拟高级结构（如面）。</p>
+<p>这种分层架构不仅可以帮助 DNN 更快地融合到一个很好的解决方案，而且还可以提高其将其推广到新数据集的能力。 例如，如果您已经训练了模型以识别图片中的脸部，并且您现在想要训练一个新的神经网络来识别发型，那么您可以通过重新使用第一个网络的较低层次来启动训练。 而不是随机初始化新神经网络的前几层的权重和偏置，您可以将其初始化为第一个网络的较低层的权重和偏置的值。这样，网络将不必从大多数图片中低结构中从头学习；它只需要学习更高层次的结构（例如发型）。</p>
+<p>总而言之，对于许多问题，您可以从一个或两个隐藏层开始，它可以正常工作（例如，您可以使用只有一个隐藏层和几百个神经元，在 MNIST 数据集上容易达到 97% 以上的准确度使用两个具有相同总神经元数量的隐藏层，在大致相同的训练时间量中精确度为 98%）。对于更复杂的问题，您可以逐渐增加隐藏层的数量，直到您开始覆盖训练集。非常复杂的任务，例如大型图像分类或语音识别，通常需要具有数十个层（或甚至数百个但不完全相连的网络）的网络，正如我们将在第 13 章中看到的那样），并且需要大量的训练数据。但是，您将很少从头开始训练这样的网络：重用预先训练的最先进的网络执行类似任务的部分更为常见。训练将会更快，需要更少的数据（我们将在第 11 章中进行讨论）</p>
+<h2 id="_12">每层隐藏层的神经元数量<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<p>显然，输入和输出层中神经元的数量由您的任务需要的输入和输出类型决定。例如，MNIST 任务需要<code>28×28 = 784</code>个输入神经元和 10 个输出神经元。对于隐藏的层次来说，通常的做法是将其设置为形成一个漏斗，每个层面上的神经元越来越少，原因在于许多低级别功能可以合并成更少的高级功能。例如，MNIST 的典型神经网络可能具有两个隐藏层，第一个具有 300 个神经元，第二个具有 100 个。但是，这种做法现在并不常见，您可以为所有隐藏层使用相同的大小 - 例如，所有隐藏的层与 150 个神经元：这样只用调整一次超参数而不是每层都需要调整（因为如果每层一样，比如 150，之后调就每层都调成 160）。就像层数一样，您可以尝试逐渐增加神经元的数量，直到网络开始过度拟合。一般来说，通过增加每层的神经元数量，可以增加层数，从而获得更多的消耗。不幸的是，正如你所看到的，找到完美的神经元数量仍然是黑色的艺术.</p>
+<p>一个更简单的方法是选择一个具有比实际需要的更多层次和神经元的模型，然后使用早期停止来防止它过度拟合（以及其他正则化技术，特别是 drop out，我们将在第 11 章中看到）。 这被称为“拉伸裤”的方法：而不是浪费时间寻找完美匹配您的大小的裤子，只需使用大型伸缩裤，缩小到合适的尺寸。</p>
+<h2 id="_13">激活函数<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<p>在大多数情况下，您可以在隐藏层中使用 ReLU 激活函数（或其中一个变体，我们将在第 11 章中看到）。 与其他激活函数相比，计算速度要快一些，而梯度下降在局部最高点上并不会被卡住，因为它不会对大的输入值饱和（与逻辑函数或双曲正切函数相反, 他们容易在 1 饱和)</p>
+<p>对于输出层，softmax 激活函数通常是分类任务的良好选择（当这些类是互斥的时）。 对于回归任务，您完全可以不使用激活函数。</p>
+<p>这就是人造神经网络的这个介绍。 在接下来的章节中，我们将讨论训练非常深的网络的技术，并分发多个服务器和 GPU 的训练。 然后我们将探讨一些其他流行的神经网络架构：卷积神经网络，循环神经网络和自动编码器。</p>
+<h2 id="_14">完整代码<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">tensorflow.examples.tutorials.mnist</span> <span class="kn">import</span> <span class="n">input_data</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="kn">as</span> <span class="nn">tf</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">n_inputs</span> <span class="o">=</span> <span class="mi">28</span> <span class="o">*</span> <span class="mi">28</span>
+    <span class="n">n_hidden1</span> <span class="o">=</span> <span class="mi">300</span>
+    <span class="n">n_hidden2</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="n">n_outputs</span> <span class="o">=</span> <span class="mi">10</span>
+
+    <span class="n">mnist</span> <span class="o">=</span> <span class="n">input_data</span><span class="o">.</span><span class="n">read_data_sets</span><span class="p">(</span><span class="s2">&quot;/tmp/data/&quot;</span><span class="p">)</span>
+
+    <span class="n">X_train</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">images</span>
+    <span class="n">X_test</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">images</span>
+    <span class="n">y_train</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">labels</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;int&quot;</span><span class="p">)</span>
+    <span class="n">y_test</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">labels</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;int&quot;</span><span class="p">)</span>
+
+    <span class="n">X</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span> <span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">n_inputs</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">int64</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="bp">None</span><span class="p">),</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;y&#39;</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="s1">&#39;dnn&#39;</span><span class="p">):</span>
+        <span class="n">hidden1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">dense</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">n_hidden1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span>
+                                  <span class="p">,</span><span class="n">name</span><span class="o">=</span> <span class="s1">&#39;hidden1&#39;</span><span class="p">)</span>
+
+        <span class="n">hidden2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">dense</span><span class="p">(</span><span class="n">hidden1</span><span class="p">,</span> <span class="n">n_hidden2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;hidden2&#39;</span><span class="p">,</span>
+                                  <span class="n">activation</span><span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">)</span>
+
+        <span class="n">logits</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">dense</span><span class="p">(</span><span class="n">hidden2</span><span class="p">,</span> <span class="n">n_outputs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;outputs&#39;</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="s1">&#39;loss&#39;</span><span class="p">):</span>
+        <span class="n">xentropy</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">sparse_softmax_cross_entropy_with_logits</span><span class="p">(</span><span class="n">labels</span> <span class="o">=</span> <span class="n">y</span><span class="p">,</span>
+                                                                  <span class="n">logits</span> <span class="o">=</span> <span class="n">logits</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">xentropy</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;loss&#39;</span><span class="p">)</span><span class="c1">#所有值求平均</span>
+
+    <span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.01</span>
+
+    <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="s1">&#39;train&#39;</span><span class="p">):</span>
+        <span class="n">optimizer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">GradientDescentOptimizer</span><span class="p">(</span><span class="n">learning_rate</span><span class="p">)</span>
+        <span class="n">training_op</span> <span class="o">=</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="s1">&#39;eval&#39;</span><span class="p">):</span>
+        <span class="n">correct</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">in_top_k</span><span class="p">(</span><span class="n">logits</span> <span class="p">,</span><span class="n">y</span> <span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="c1">#是否与真值一致 返回布尔值</span>
+        <span class="n">accuracy</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">correct</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span> <span class="c1">#tf.cast将数据转化为0,1序列</span>
+
+    <span class="n">init</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">global_variables_initializer</span><span class="p">()</span>
+
+    <span class="n">n_epochs</span> <span class="o">=</span> <span class="mi">20</span>
+    <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">50</span>
+    <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>
+        <span class="n">init</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_epochs</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">num_examples</span> <span class="o">//</span> <span class="n">batch_size</span><span class="p">):</span>
+                <span class="n">X_batch</span><span class="p">,</span> <span class="n">y_batch</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">next_batch</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)</span>
+                <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">training_op</span><span class="p">,</span><span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X</span><span class="p">:</span><span class="n">X_batch</span><span class="p">,</span>
+                                                <span class="n">y</span><span class="p">:</span> <span class="n">y_batch</span><span class="p">})</span>
+            <span class="n">acc_train</span> <span class="o">=</span> <span class="n">accuracy</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X</span><span class="p">:</span><span class="n">X_batch</span><span class="p">,</span>
+                                                <span class="n">y</span><span class="p">:</span> <span class="n">y_batch</span><span class="p">})</span>
+            <span class="n">acc_test</span> <span class="o">=</span> <span class="n">accuracy</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X</span><span class="p">:</span> <span class="n">mnist</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">images</span><span class="p">,</span>
+                                                <span class="n">y</span><span class="p">:</span> <span class="n">mnist</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">labels</span><span class="p">})</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">epoch</span><span class="p">,</span> <span class="s2">&quot;Train accuracy:&quot;</span><span class="p">,</span> <span class="n">acc_train</span><span class="p">,</span> <span class="s2">&quot;Test accuracy:&quot;</span><span class="p">,</span> <span class="n">acc_test</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<h2 id="_15">练习<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>使用原始的人工神经元（如图 10-3 中的一个）来计算神经网络，计算<code>A ⊕ B</code>（<code>⊕</code>表示 XOR 运算）。提示：<code>A ⊕ B = (A ∧ ¬ B) ∨ (¬ A ∧ B)</code>。</p>
+</li>
+<li>
+<p>为什么通常使用逻辑斯蒂回归分类器而不是经典感知器（即使用感知器训练算法训练单层的线性阈值单元）？你如何调整感知器使之等同于逻辑回归分类器？</p>
+</li>
+<li>
+<p>为什么激活函数是训练第一个 MLP 的关键因素？</p>
+</li>
+<li>
+<p>说出三种流行的激活函数。你能画出它们吗？</p>
+</li>
+<li>
+<p>假设有一个 MLP 有一个 10 个神经元组成的输入层，接着是一个 50 个神经元的隐藏层，最后一个 3 个神经元输出层。所有人工神经元使用 Relu 激活函数。</p>
+<ul>
+<li>
+<p>输入矩阵<code>X</code>的形状是什么？</p>
+</li>
+<li>
+<p>隐藏层的权重向量的形状以及它的偏置向量的形状如何？</p>
+</li>
+<li>
+<p>输出层的权重向量和它的偏置向量的形状是什么？</p>
+</li>
+<li>
+<p>网络的输出矩阵<code>Y</code>是什么形状？</p>
+</li>
+<li>
+<p>写出计算网络输出矩阵的方程</p>
+</li>
+</ul>
+</li>
+<li>
+<p>如果你想把电子邮件分类成垃圾邮件或正常邮件，你需要在输出层中有多少个神经元？在输出层中应该使用什么样的激活函数？如果你想解决 MNIST 问题，你需要多少神经元在输出层，使用什么激活函数？如第 2 章，一样让你的网络预测房屋价格。</p>
+</li>
+<li>
+<p>什么是反向传播，它是如何工作的？反向传播与反向自动微分有什么区别？</p>
+</li>
+<li>
+<p>你能列出所有可以在 MLP 中调整的超参数吗？如果 MLP 与训练数据相匹配，你如何调整这些超参数来解决这个问题？</p>
+</li>
+<li>
+<p>在 MNIST 数据集上训练一个深层 MLP 并查看是否可以超过 98% 的精度。就像在第 9 章的最后一次练习中，尝试添加所有的铃声和哨子（即，保存检查点，在中断的情况下恢复最后一个检查点，添加摘要，使用 TensorBoard 绘制学习曲线，等等）。</p>
+</li>
+</ol>
+<p>练习的答案请参照附录 A</p>
+                
+                  
+                
+              
+              
+                
+
+
+  <h2 id="__comments">评论</h2>
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://hai5g.cn/aiwiki/hands-on-ml-zh/docs/10.人工神经网络介绍/";
+      this.page.identifier =
+        "/hands-on-ml-zh/docs/10.人工神经网络介绍/";
+    };
+    (function() {
+      var d = document, s = d.createElement("script");
+      s.src = "//AI-Wiki.disqus.com/embed.js";
+      s.setAttribute("data-timestamp", +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../9.启动并运行_TensorFlow/" title="启动并运行_TensorFlow" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  后退
+                </span>
+                启动并运行_TensorFlow
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../11.训练深层神经网络/" title="训练深层神经网络" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  前进
+                </span>
+                训练深层神经网络
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 AI Wiki Team
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.39abc4af.js"></script>
+      
+        
+        
+          
+          <script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/ethantw/Han@3.3.0/dist/han.min.js"></script>
+      
+        <script src="../../../_static/js/extra.js?v=10"></script>
+      
+        <script src="https://cdnjs.loli.net/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

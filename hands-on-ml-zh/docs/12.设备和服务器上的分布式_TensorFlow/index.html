@@ -1,0 +1,2400 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="AI Wiki 是一个编程竞赛知识整合站点，提供有趣又实用的编程竞赛知识以及其他有帮助的内容，帮助广大编程竞赛爱好者更快更深入地学习编程竞赛">
+      
+      
+        <link rel="canonical" href="https://hai5g.cn/aiwiki/hands-on-ml-zh/docs/12.设备和服务器上的分布式_TensorFlow/">
+      
+      
+        <meta name="author" content="AI Wiki Team">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.2.0">
+    
+    
+      
+        <title>设备和服务器上的分布式_TensorFlow - AI Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.750b69bd.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.224b79ff.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:300,400,400i,700|Fira+Mono">
+        <style>body,input{font-family:"Fira Sans","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Fira Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+      <link rel="manifest" href="../../../manifest.webmanifest">
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ah@1.5.0/han.min.css">
+    
+      <link rel="stylesheet" href="../../../_static/css/extra.css?v=11">
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="red">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#tensorflow" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://hai5g.cn/aiwiki" title="AI Wiki" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">school</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              AI Wiki
+            </span>
+            <span class="md-header-nav__topic">
+              设备和服务器上的分布式_TensorFlow
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/myourdream/aiwiki/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    aiwiki
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../.." title="简介" class="md-tabs__link">
+          简介
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../Coursera_ML_AndrewNg/" title="机器学习" class="md-tabs__link">
+          机器学习
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../qa500/" title="深度学习500问" class="md-tabs__link">
+          深度学习500问
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../lihang/" title="统计学习" class="md-tabs__link">
+          统计学习
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../README.old/" title="Sklearn与TensorFlow" class="md-tabs__link md-tabs__link--active">
+          Sklearn与TensorFlow
+        </a>
+      
+    </li>
+  
+
+      
+        
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://hai5g.cn/aiwiki" title="AI Wiki" class="md-nav__button md-logo">
+      
+        <i class="md-icon">school</i>
+      
+    </a>
+    AI Wiki
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/myourdream/aiwiki/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    aiwiki
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      简介
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        简介
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="Getting Started" class="md-nav__link">
+      Getting Started
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/AI学习路线/" title="AI学习路线1" class="md-nav__link">
+      AI学习路线1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/ai-roadmap/ai-union-201904/" title="AI学习路线2" class="md-nav__link">
+      AI学习路线2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/ai-roadmap/v0.1/" title="AI 路线图v0.1" class="md-nav__link">
+      AI 路线图v0.1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/ai-roadmap/v0.2/" title="AI 路线图v0.2" class="md-nav__link">
+      AI 路线图v0.2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/ai-roadmap/v1.0/" title="ApacheCN 人工智能知识树" class="md-nav__link">
+      ApacheCN 人工智能知识树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-7" type="checkbox" id="nav-1-7">
+    
+    <label class="md-nav__link" for="nav-1-7">
+      工具软件
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-1-7">
+        工具软件
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/judgers/" title="评测工具" class="md-nav__link">
+      评测工具
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/editors/" title="编辑工具" class="md-nav__link">
+      编辑工具
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/wsl/" title="WSL (Windows 10)" class="md-nav__link">
+      WSL (Windows 10)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/spj/" title="Special Judge" class="md-nav__link">
+      Special Judge
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-7-5" type="checkbox" id="nav-1-7-5">
+    
+    <label class="md-nav__link" for="nav-1-7-5">
+      Testlib
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-1-7-5">
+        Testlib
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/testlib/" title="Testlib 简介" class="md-nav__link">
+      Testlib 简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/testlib/general/" title="通用" class="md-nav__link">
+      通用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/testlib/generator/" title="Generator" class="md-nav__link">
+      Generator
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/testlib/validator/" title="Validator" class="md-nav__link">
+      Validator
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/testlib/interactor/" title="Interactor" class="md-nav__link">
+      Interactor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/testlib/checker/" title="Checker" class="md-nav__link">
+      Checker
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/docker-deploy/" title="Docker 部署" class="md-nav__link">
+      Docker 部署
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/about/" title="关于本项目" class="md-nav__link">
+      关于本项目
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../intro/faq/" title="F.A.Q." class="md-nav__link">
+      F.A.Q.
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      机器学习
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        机器学习
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Coursera_ML_AndrewNg/" title="简介" class="md-nav__link">
+      简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Coursera_ML_AndrewNg/markdown/SUMMARY/" title="目录" class="md-nav__link">
+      目录
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Coursera_ML_AndrewNg/markdown/math/" title="数学基础" class="md-nav__link">
+      数学基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Coursera_ML_AndrewNg/markdown/week1/" title="week1" class="md-nav__link">
+      week1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Coursera_ML_AndrewNg/markdown/week2/" title="week2" class="md-nav__link">
+      week2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Coursera_ML_AndrewNg/markdown/week3/" title="week3" class="md-nav__link">
+      week3
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Coursera_ML_AndrewNg/markdown/week4/" title="week4" class="md-nav__link">
+      week4
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Coursera_ML_AndrewNg/markdown/week5/" title="week5" class="md-nav__link">
+      week5
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Coursera_ML_AndrewNg/markdown/week6/" title="week6" class="md-nav__link">
+      week6
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Coursera_ML_AndrewNg/markdown/week7/" title="week7" class="md-nav__link">
+      week7
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Coursera_ML_AndrewNg/markdown/week8/" title="week8" class="md-nav__link">
+      week8
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Coursera_ML_AndrewNg/markdown/week9/" title="week9" class="md-nav__link">
+      week9
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Coursera_ML_AndrewNg/markdown/week10/" title="week10" class="md-nav__link">
+      week10
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      深度学习500问
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        深度学习500问
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/" title="简介" class="md-nav__link">
+      简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/content/" title="目录" class="md-nav__link">
+      目录
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch01_math/ch01_math/" title="第一章_数学基础" class="md-nav__link">
+      第一章_数学基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch02_机器学习基础/第二章_机器学习基础/" title="第二章_机器学习基础" class="md-nav__link">
+      第二章_机器学习基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch03_深度学习基础/第三章_深度学习基础/" title="第三章_深度学习基础" class="md-nav__link">
+      第三章_深度学习基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch04_经典网络/第四章_经典网络/" title="第四章_经典网络" class="md-nav__link">
+      第四章_经典网络
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch05_卷积神经网络(CNN)/第五章 卷积神经网络（CNN）/" title="第五章 卷积神经网络（CNN）" class="md-nav__link">
+      第五章 卷积神经网络（CNN）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch06_循环神经网络(RNN)/第六章_循环神经网络(RNN)/" title="第六章_循环神经网络(RNN)" class="md-nav__link">
+      第六章_循环神经网络(RNN)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch07_生成对抗网络(GAN)/ch7/" title="第七章_生成对抗网络(GAN)" class="md-nav__link">
+      第七章_生成对抗网络(GAN)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch08_目标检测/第八章_目标检测/" title="第八章_目标检测" class="md-nav__link">
+      第八章_目标检测
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch09_图像分割/第九章_图像分割/" title="第九章_图像分割" class="md-nav__link">
+      第九章_图像分割
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch10_强化学习/第十章_强化学习/" title="第十章_强化学习" class="md-nav__link">
+      第十章_强化学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch11_迁移学习/第十一章_迁移学习/" title="第十一章_迁移学习" class="md-nav__link">
+      第十一章_迁移学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch12_网络搭建及训练/第十二章_网络搭建及训练/" title="第十二章_网络搭建及训练" class="md-nav__link">
+      第十二章_网络搭建及训练
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch13_优化算法/第十三章_优化算法/" title="第十三章_优化算法" class="md-nav__link">
+      第十三章_优化算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch14_超参数调整/第十四章_超参数调整/" title="第十四章_超参数调整" class="md-nav__link">
+      第十四章_超参数调整
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch15_GPU和框架选型/第十五章_异构运算、GPU及框架选型/" title="第十五章_异构运算、GPU及框架选型" class="md-nav__link">
+      第十五章_异构运算、GPU及框架选型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch16_自然语言处理(NLP)/第十六章_NLP/" title="第十六章_NLP" class="md-nav__link">
+      第十六章_NLP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch17_模型压缩、加速及移动端部署/第十七章_模型压缩、加速及移动端部署/" title="第十七章_模型压缩、加速及移动端部署" class="md-nav__link">
+      第十七章_模型压缩、加速及移动端部署
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch18_后端架构选型、离线及实时计算/第十八章_后端架构选型、离线及实时计算/" title="第十八章_后端架构选型、离线及实时计算" class="md-nav__link">
+      第十八章_后端架构选型、离线及实时计算
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../qa500/ch18_后端架构选型及应用场景/第十八章_后端架构选型及应用场景/" title="第十八章_后端架构选型及应用场景" class="md-nav__link">
+      第十八章_后端架构选型及应用场景
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      统计学习
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        统计学习
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/" title="简介" class="md-nav__link">
+      简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH01/" title="统计学习及监督学习概论" class="md-nav__link">
+      统计学习及监督学习概论
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH02/" title="感知机" class="md-nav__link">
+      感知机
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH03/" title="K近邻法" class="md-nav__link">
+      K近邻法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH04/" title="朴素贝叶斯法" class="md-nav__link">
+      朴素贝叶斯法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH05/" title="决策树" class="md-nav__link">
+      决策树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH06/" title="逻辑斯蒂回归与最大熵模型" class="md-nav__link">
+      逻辑斯蒂回归与最大熵模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH07/" title="支持向量机" class="md-nav__link">
+      支持向量机
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH08/" title="提升方法" class="md-nav__link">
+      提升方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH09/" title="EM算法及其推广" class="md-nav__link">
+      EM算法及其推广
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH10/" title="隐马尔可夫模型" class="md-nav__link">
+      隐马尔可夫模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH11/" title="条件随机场" class="md-nav__link">
+      条件随机场
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH12/" title="监督学习方法总结" class="md-nav__link">
+      监督学习方法总结
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH13/" title="无监督学习概论" class="md-nav__link">
+      无监督学习概论
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH14/" title="聚类方法" class="md-nav__link">
+      聚类方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lihang/CH22/" title="无监督学习方法总结" class="md-nav__link">
+      无监督学习方法总结
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+    
+    <label class="md-nav__link" for="nav-5">
+      Sklearn与TensorFlow
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Sklearn与TensorFlow
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../README.old/" title="简介" class="md-nav__link">
+      简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0.前言/" title="前言" class="md-nav__link">
+      前言
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../1.机器学习概览/" title="机器学习概览" class="md-nav__link">
+      机器学习概览
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.一个完整的机器学习项目/" title="一个完整的机器学习项目" class="md-nav__link">
+      一个完整的机器学习项目
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../3.分类/" title="分类" class="md-nav__link">
+      分类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.训练模型/" title="训练模型" class="md-nav__link">
+      训练模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../5.支持向量机/" title="支持向量机" class="md-nav__link">
+      支持向量机
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../6.决策树/" title="决策树" class="md-nav__link">
+      决策树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../7.集成学习和随机森林/" title="集成学习和随机森林" class="md-nav__link">
+      集成学习和随机森林
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../9.启动并运行_TensorFlow/" title="启动并运行_TensorFlow" class="md-nav__link">
+      启动并运行_TensorFlow
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../10.人工神经网络介绍/" title="人工神经网络介绍" class="md-nav__link">
+      人工神经网络介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../11.训练深层神经网络/" title="训练深层神经网络" class="md-nav__link">
+      训练深层神经网络
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        设备和服务器上的分布式_TensorFlow
+      </label>
+    
+    <a href="./" title="设备和服务器上的分布式_TensorFlow" class="md-nav__link md-nav__link--active">
+      设备和服务器上的分布式_TensorFlow
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="一台机器上多设备" class="md-nav__link">
+    一台机器上多设备
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" title="安装" class="md-nav__link">
+    安装
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gpu" title="管理 GPU 内存" class="md-nav__link">
+    管理 GPU 内存
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="设备布置操作" class="md-nav__link">
+    设备布置操作
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" title="简单放置" class="md-nav__link">
+    简单放置
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" title="记录放置位置" class="md-nav__link">
+    记录放置位置
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" title="动态放置功能" class="md-nav__link">
+    动态放置功能
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" title="操作和内核" class="md-nav__link">
+    操作和内核
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" title="软放置" class="md-nav__link">
+    软放置
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" title="并行运行" class="md-nav__link">
+    并行运行
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" title="控制依赖关系" class="md-nav__link">
+    控制依赖关系
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" title="多个服务器的多个设备" class="md-nav__link">
+    多个服务器的多个设备
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" title="开始一个会话" class="md-nav__link">
+    开始一个会话
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" title="主机和辅助服务" class="md-nav__link">
+    主机和辅助服务
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" title="固定任务的操作" class="md-nav__link">
+    固定任务的操作
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" title="跨多个参数服务器的分片变量" class="md-nav__link">
+    跨多个参数服务器的分片变量
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="评论" class="md-nav__link md-nav__link--active">
+            评论
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../13.卷积神经网络/" title="卷积神经网络" class="md-nav__link">
+      卷积神经网络
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../14.循环神经网络/" title="循环神经网络" class="md-nav__link">
+      循环神经网络
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../15.自编码器/" title="自编码器" class="md-nav__link">
+      自编码器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../16.强化学习/" title="强化学习" class="md-nav__link">
+      强化学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../B.机器学习项目清单/" title="机器学习项目清单" class="md-nav__link">
+      机器学习项目清单
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../C.SVM_对偶问题/" title="SVM_对偶问题" class="md-nav__link">
+      SVM_对偶问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../D.自动微分/" title="自动微分" class="md-nav__link">
+      自动微分
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../about/" title="关于" class="md-nav__link">
+      关于
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="一台机器上多设备" class="md-nav__link">
+    一台机器上多设备
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" title="安装" class="md-nav__link">
+    安装
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gpu" title="管理 GPU 内存" class="md-nav__link">
+    管理 GPU 内存
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="设备布置操作" class="md-nav__link">
+    设备布置操作
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" title="简单放置" class="md-nav__link">
+    简单放置
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" title="记录放置位置" class="md-nav__link">
+    记录放置位置
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" title="动态放置功能" class="md-nav__link">
+    动态放置功能
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" title="操作和内核" class="md-nav__link">
+    操作和内核
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" title="软放置" class="md-nav__link">
+    软放置
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" title="并行运行" class="md-nav__link">
+    并行运行
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" title="控制依赖关系" class="md-nav__link">
+    控制依赖关系
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" title="多个服务器的多个设备" class="md-nav__link">
+    多个服务器的多个设备
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" title="开始一个会话" class="md-nav__link">
+    开始一个会话
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" title="主机和辅助服务" class="md-nav__link">
+    主机和辅助服务
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" title="固定任务的操作" class="md-nav__link">
+    固定任务的操作
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" title="跨多个参数服务器的分片变量" class="md-nav__link">
+    跨多个参数服务器的分片变量
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="评论" class="md-nav__link md-nav__link--active">
+            评论
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/myourdream/aiwiki/blob/master/docs/hands-on-ml-zh/docs/12.设备和服务器上的分布式_TensorFlow.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="tensorflow">十二、设备和服务器上的分布式 TensorFlow<a class="headerlink" href="#tensorflow" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>译者：<a href="https://github.com/yhcheer">@空白</a></p>
+<p>校对者：<a href="https://github.com/wizardforcel">@飞龙</a></p>
+</blockquote>
+<p>在第 11 章，我们讨论了几种可以明显加速训练的技术：更好的权重初始化，批量标准化，复杂的优化器等等。 但是，即使采用了所有这些技术，在具有单个 CPU 的单台机器上训练大型神经网络可能需要几天甚至几周的时间。</p>
+<p>在本章中，我们将看到如何使用 TensorFlow 在多个设备（CPU 和 GPU）上分配计算并将它们并行运行（参见图 12-1）。 首先，我们会先在一台机器上的多个设备上分配计算，然后在多台机器上的多个设备上分配计算。</p>
+<p><img alt="1524821340342" src="../../images/chapter_12/1.png?raw=true" /></p>
+<p>与其他神经网络框架相比，TensorFlow 对分布式计算的支持是其主要亮点之一。 它使您可以完全控制如何跨设备和服务器分布（或复制）您的计算图，并且可以让您以灵活的方式并行和同步操作，以便您可以在各种并行方法之间进行选择。</p>
+<p>我们来看一些最流行的方法来并行执行和训练一个神经网络，这让我们不再需要等待数周才能完成训练算法，而最终可能只会等待几个小时。 这不仅可以节省大量时间，还意味着您可以更轻松地尝试各种模型，并经常重新训练模型上的新数据。</p>
+<p>还有其他很好的并行化例子，包括当我们在微调模型时可以探索更大的超参数空间，并有效地运行大规模神经网络。</p>
+<p>但我们必须先学会走路才能跑步。 我们先从一台机器上的几个 GPU 上并行化简单图形开始。</p>
+<h2 id="_1">一台机器上多设备<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>只需添加 GPU 卡到单个机器，您就可以获得主要的性能提升。 事实上，在很多情况下，这就足够了。 你根本不需要使用多台机器。 例如，通常在单台机器上使用 8 个 GPU，而不是在多台机器上使用 16 个 GPU（由于多机器设置中的网络通信带来的额外延迟），可以同样快地训练神经网络。</p>
+<p>在本节中，我们将介绍如何设置您的环境，以便 TensorFlow 可以在一台机器上使用多个 GPU 卡。 然后，我们将看看如何在可用设备上进行分布操作，并且并行执行它们。</p>
+<h3 id="_2">安装<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>为了在多个 GPU 卡上运行 TensorFlow，首先需要确保 GPU 卡具有 NVidia 计算能力（大于或等于3.0）。 这包括 Nvidia 的 Titan，Titan X，K20 和 K40（如果你拥有另一张卡，你可以在 <a href="https://developer.nvidia.com/cuda-gpus">https://developer.nvidia.com/cuda-gpus</a> 查看它的兼容性）。</p>
+<p>如果您不拥有任何 GPU 卡，则可以使用具有 GPU 功能的主机服务器，如 Amazon AWS。 在 ŽigaAvsec 的<a href="https://goo.gl/kbge5b">博客文章</a>中，提供了在 Amazon AWS GPU 实例上使用 Python 3.5 设置 TensorFlow 0.9 的详细说明。将它更新到最新版本的 TensorFlow 应该不会太难。 Google 还发布了一项名为 Cloud Machine Learning 的云服务来运行 TensorFlow 图表。 2016 年 5 月，他们宣布他们的平台现在包括配备张量处理器（TPU）的服务器，专门用于机器学习的处理器，比许多 GPU 处理 ML 任务要快得多。 当然，另一种选择只是购买你自己的 GPU 卡。 Tim Dettmers 写了一篇很棒的博客文章来帮助你选择，他会定期更新它。</p>
+<p>您必须下载并安装相应版本的 CUDA 和 cuDNN 库（如果您使用的是 TensorFlow 1.0.0，则为 CUDA 8.0 和 cuDNN 5.1），并设置一些环境变量，以便 TensorFlow 知道在哪里可以找到 CUDA 和 cuDNN。 详细的安装说明可能会相当迅速地更改，因此最好按照 TensorFlow 网站上的说明进行操作。</p>
+<p>Nvidia 的 CUDA 允许开发者使用支持 CUDA 的 GPU 进行各种计算（不仅仅是图形加速）。 Nvidia 的 CUDA 深度神经网络库（cuDNN）是针对 DNN 的 GPU 加速原语库。 它提供了常用 DNN 计算的优化实现，例如激活层，归一化，前向和后向卷积以及池化（参见第 13 章）。 它是 Nvidia Deep Learning SDK 的一部分（请注意，它需要创建一个 Nvidia 开发者帐户才能下载它）。 TensorFlow 使用 CUDA 和 cuDNN 来控制 GPU 卡并加速计算（见图 12-2）。</p>
+<p><img alt="1524830422813" src="../../images/chapter_12/2.png?raw=true" /></p>
+<p>您可以使用<code>nvidia-smi</code>命令来检查 CUDA 是否已正确安装。 它列出了可用的 GPU 卡以及每张卡上运行的进程：</p>
+<p><img alt="1524830581469" src="../../images/chapter_12/2-2.png?raw=true" /></p>
+<p>最后，您必须安装支持 GPU 的 TensorFlow。 如果你使用<code>virtualenv</code>创建了一个独立的环境，你首先需要激活它：</p>
+<pre><code>
+&#x24; cd &#x24;ML_PATH               
+# Your ML working directory (e.g., HOME/ml) 
+&#x24; source env/bin/activate
+</code></pre>
+
+<p>然后安装合适的支持 GPU 的 TensorFlow 版本：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>$ pip3 install --upgrade tensorflow-gpu
+</pre></div>
+</td></tr></table>
+
+<p>现在您可以打开一个 Python shell 并通过导入 TensorFlow 并创建一个会话来检查 TensorFlow 是否正确检测并使用 CUDA 和 cuDNN：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>&gt;&gt;&gt; import tensorflow as tf 
+I [...]/dso_loader.cc:108] successfully opened CUDA library libcublas.so locally 
+I [...]/dso_loader.cc:108] successfully opened CUDA library libcudnn.so locally 
+I [...]/dso_loader.cc:108] successfully opened CUDA library libcufft.so locally 
+I [...]/dso_loader.cc:108] successfully opened CUDA library libcuda.so.1 locally 
+I [...]/dso_loader.cc:108] successfully opened CUDA library libcurand.so locally 
+</pre></div>
+</td></tr></table>
+
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>&gt;&gt;&gt; sess = tf.Session() 
+[...] 
+I [...]/gpu_init.cc:102] Found device 0 with properties: 
+name: GRID K520 
+major: 3 minor: 0 memoryClockRate (GHz) 0.797 
+pciBusID 0000:00:03.0 
+Total memory: 4.00GiB 
+Free memory: 3.95GiB 
+I [...]/gpu_init.cc:126] DMA: 0 
+I [...]/gpu_init.cc:136] 0:   Y 
+I [...]/gpu_device.cc:839] Creating TensorFlow device 
+(/gpu:0) -&gt; (device: 0, name: GRID K520, pci bus id: 0000:00:03.0)
+</pre></div>
+</td></tr></table>
+
+<p>看起来不错！TensorFlow 检测到 CUDA 和 cuDNN 库，并使用 CUDA 库来检测 GPU 卡（在这种情况下是 Nvidia Grid K520 卡）。</p>
+<h2 id="gpu">管理 GPU 内存<a class="headerlink" href="#gpu" title="Permanent link">&para;</a></h2>
+<p>默认情况下，TensorFlow 会在您第一次运行图形时自动获取所有可用 GPU 中的所有 RAM，因此当第一个程序仍在运行时，您将无法启动第二个 TensorFlow 程序。 如果你尝试，你会得到以下错误：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>E [...]/cuda_driver.cc:965] failed to allocate 3.66G (3928915968 bytes) from device: CUDA_ERROR_OUT_OF_MEMORY
+</pre></div>
+</td></tr></table>
+
+<p>一种解决方案是在不同的 GPU 卡上运行每个进程。 为此，最简单的选择是设置<code>CUDA_VISIBLE_DEVICES</code>环境变量，以便每个进程只能看到对应的 GPU 卡。 例如，你可以像这样启动两个程序：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>$ CUDA_VISIBLE_DEVICES=0,1 python3 program_1.py 
+# and in another terminal: 
+$ CUDA_VISIBLE_DEVICES=3,2 python3 program_2.py
+</pre></div>
+</td></tr></table>
+
+<p>程序 #1 只会看到 GPU 卡 0 和 1（分别编号为 0 和 1），程序 #2 只会看到 GPU 卡 2 和 3（分别编号为 1 和 0）。 一切都会正常工作（见图 12-3）。</p>
+<p><img alt="1524831933410" src="../../images/chapter_12/3.png?raw=true" /></p>
+<p>另一种选择是告诉 TensorFlow 只抓取一小部分内存。 例如，要使 TensorFlow 只占用每个 GPU 内存的 40%，您必须创建一个<code>ConfigProto</code>对象，将其<code>gpu_options.per_process_gpu_memory_fraction</code>选项设置为 0.4，并使用以下配置创建<code>session</code>：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">ConfigProto</span><span class="p">()</span> 
+<span class="n">config</span><span class="o">.</span><span class="n">gpu_options</span><span class="o">.</span><span class="n">per_process_gpu_memory_fraction</span> <span class="o">=</span> <span class="mf">0.4</span> 
+<span class="n">session</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>现在像这样的两个程序可以使用相同的 GPU 卡并行运行（但不是三个，因为<code>3×0.4&gt; 1</code>）。 见图 12-4。</p>
+<p><img alt="1524832121806" src="../../images/chapter_12/4.png?raw=true" /></p>
+<p>如果在两个程序都运行时运行<code>nvidia-smi</code>命令，则应该看到每个进程占用每个卡的总 RAM 大约 40%：</p>
+<p><img alt="1524832269888" src="../../images/chapter_12/4-2.png?raw=true" /></p>
+<p>另一种选择是告诉 TensorFlow 只在需要时才抓取内存。 为此，您必须将<code>config.gpu_options.allow_growth</code>设置为<code>True</code>。但是，TensorFlow 一旦抓取内存就不会释放内存（以避免内存碎片），因此您可能会在一段时间后内存不足。 是否使用此选项可能难以确定，因此一般而言，您可能想要坚持之前的某个选项。</p>
+<p>好的，现在你已经有了一个支持 GPU 的 TensorFlow 安装。 让我们看看如何使用它！</p>
+<h2 id="_3">设备布置操作<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>TensorFlow 白皮书介绍了一种友好的动态布置器算法，该算法能够自动将操作分布到所有可用设备上，并考虑到以前运行图中所测量的计算时间，估算每次操作的输入和输出张量的大小， 每个设备可用的 RAM，传输数据进出设备时的通信延迟，来自用户的提示和约束等等。 不幸的是，这种复杂的算法是谷歌内部的，它并没有在 TensorFlow 的开源版本中发布。它被排除在外的原因似乎是，由用户指定的一小部分放置规则实际上比动态放置器放置的更有效。 然而，TensorFlow 团队正在努力改进它，并且最终可能会被开放。</p>
+<p>在此之前，TensorFlow都是简单的放置，它（如其名称所示）非常基本。</p>
+<h3 id="_4">简单放置<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>无论何时运行图形，如果 TensorFlow 需要求值尚未放置在设备上的节点，则它会使用简单放置器将其放置在未放置的所有其他节点上。 简单放置尊重以下规则：</p>
+<ul>
+<li>如果某个节点已经放置在图形的上一次运行中的某个设备上，则该节点将保留在该设备上。</li>
+<li>否则，如果用户将一个节点固定到设备上（下面介绍），则放置器将其放置在该设备上。</li>
+<li>否则，它默认为 GPU#0，如果没有 GPU，则默认为 CPU。</li>
+</ul>
+<p>正如您所看到的，将操作放在适当的设备上主要取决于您。 如果您不做任何事情，整个图表将被放置在默认设备上。 要将节点固定到设备上，您必须使用<code>device()</code>函数创建一个设备块。 例如，以下代码将变量<code>a</code>和常量<code>b</code>固定在 CPU 上，但乘法节点<code>c</code>不固定在任何设备上，因此将放置在默认设备上：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;/cpu:0&quot;</span><span class="p">):</span>    
+    <span class="n">a</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span>    
+    <span class="n">b</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">4.0</span><span class="p">)</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+</pre></div>
+</td></tr></table>
+
+<p>其中，<code>"/cpu:0"</code>设备合计多 CPU 系统上的所有 CPU。 目前没有办法在特定 CPU 上固定节点或仅使用所有 CPU 的子集。</p>
+<h3 id="_5">记录放置位置<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>让我们检查一下简单的放置器是否遵守我们刚刚定义的布局约束条件。 为此，您可以将<code>log_device_placement</code>选项设置为<code>True</code>；这告诉放置器在放置节点时记录消息。例如：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>&gt;&gt;&gt; config = tf.ConfigProto() 
+&gt;&gt;&gt; config.log_device_placement = True 
+&gt;&gt;&gt; sess = tf.Session(config=config) 
+I [...] Creating TensorFlow device (/gpu:0) -&gt; (device: 0, name: GRID K520, pci bus id: 0000:00:03.0) 
+[...] 
+&gt;&gt;&gt; x.initializer.run(session=sess) 
+I [...] a: /job:localhost/replica:0/task:0/cpu:0 
+I [...] a/read: /job:localhost/replica:0/task:0/cpu:0 
+I [...] mul: /job:localhost/replica:0/task:0/gpu:0 
+I [...] a/Assign: /job:localhost/replica:0/task:0/cpu:0 
+I [...] b: /job:localhost/replica:0/task:0/cpu:0 
+I [...] a/initial_value: /job:localhost/replica:0/task:0/cpu:0 
+&gt;&gt;&gt; sess.run(c) 
+12
+</pre></div>
+</td></tr></table>
+
+<p><code>Info</code>中以大写字母<code>I</code>开头的行是日志消息。 当我们创建一个会话时，TensorFlow 会记录一条消息，告诉我们它已经找到了一个 GPU 卡（在这个例子中是 Grid K520 卡）。 然后，我们第一次运行图形（在这种情况下，当初始化变量<code>a</code>时），简单布局器运行，并将每个节点放置在分配给它的设备上。正如预期的那样，日志消息显示所有节点都放在<code>"/cpu:0"</code>上，除了乘法节点，它以默认设备<code>"/gpu:0"</code>结束（您可以先忽略前缀：<code>/job:localhost/replica:0/task:0;</code>我们将在一会儿讨论它）。 注意，我们第二次运行图（计算<code>c</code>）时，由于 TensorFlow 需要计算的所有节点<code>c</code>都已经放置，所以不使用布局器。</p>
+<h3 id="_6">动态放置功能<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>创建设备块时，可以指定一个函数，而不是设备名称。TensorFlow 会调用这个函数来进行每个需要放置在设备块中的操作，并且该函数必须返回设备的名称来固定操作。 例如，以下代码将固定所有变量节点到<code>"/cpu:0"</code>（在本例中只是变量<code>a</code>）和所有其他节点到<code>"/gpu:0"</code>：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">variables_on_cpu</span><span class="p">(</span><span class="n">op</span><span class="p">):</span>    
+    <span class="k">if</span> <span class="n">op</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;Variable&quot;</span><span class="p">:</span>        
+        <span class="k">return</span> <span class="s2">&quot;/cpu:0&quot;</span>    
+    <span class="k">else</span><span class="p">:</span>        
+        <span class="k">return</span> <span class="s2">&quot;/gpu:0&quot;</span>
+
+<span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="n">variables_on_cpu</span><span class="p">):</span> 
+    <span class="n">a</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">4.0</span><span class="p">)</span>    
+    <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+</pre></div>
+</td></tr></table>
+
+<p>您可以轻松实现更复杂的算法，例如以循环方式用GPU锁定变量。</p>
+<h3 id="_7">操作和内核<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>对于在设备上运行的 TensorFlow 操作，它需要具有该设备的实现；这被称为内核。 许多操作对于 CPU 和 GPU 都有内核，但并非全部都是。 例如，TensorFlow 没有用于整数变量的 GPU 内核，因此当 TensorFlow 尝试将变量i放置到 GPU#0 时，以下代码将失败：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>&gt;&gt;&gt; with tf.device(&quot;/gpu:0&quot;):
+...     i = tf.Variable(3) 
+[...] 
+&gt;&gt;&gt; sess.run(i.initializer) 
+Traceback (most recent call last): 
+[...] 
+tensorflow.python.framework.errors.InvalidArgumentError: Cannot assign a device to node &#39;Variable&#39;: Could not satisfy explicit device specification
+</pre></div>
+</td></tr></table>
+
+<p>请注意，TensorFlow 推断变量必须是<code>int32</code>类型，因为初始化值是一个整数。 如果将初始化值更改为 3.0 而不是 3，或者如果在创建变量时显式设置<code>dtype = tf.float32</code>，则一切正常。</p>
+<h3 id="_8">软放置<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>默认情况下，如果您尝试在操作没有内核的设备上固定操作，则当 TensorFlow 尝试将操作放置在设备上时，您会看到前面显示的异常。 如果您更喜欢 TensorFlow 回退到 CPU，则可以将<code>allow_soft_placement</code>配置选项设置为<code>True</code>：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;/gpu:0&quot;</span><span class="p">):</span>    
+    <span class="n">i</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">ConfigProto</span><span class="p">()</span> 
+<span class="n">config</span><span class="o">.</span><span class="n">allow_soft_placement</span> <span class="o">=</span> <span class="bp">True</span> 
+<span class="n">sess</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span> 
+<span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">initializer</span><span class="p">)</span>  <span class="c1"># the placer runs and falls back to /cpu:0 </span>
+</pre></div>
+</td></tr></table>
+
+<p>到目前为止，我们已经讨论了如何在不同设备上放置节点。 现在让我们看看 TensorFlow 如何并行运行这些节点。</p>
+<h2 id="_9">并行运行<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<p>当 TensorFlow 运行图时，它首先找出需要求值的节点列表，然后计算每个节点有多少依赖关系。 然后 TensorFlow 开始求值具有零依赖关系的节点（即源节点）。 如果这些节点被放置在不同的设备上，它们显然会被并行求值。 如果它们放在同一个设备上，它们将在不同的线程中进行求值，因此它们也可以并行运行（在单独的 GPU 线程或 CPU 内核中）。</p>
+<p>TensorFlow 管理每个设备上的线程池以并行化操作（参见图 12-5）。 这些被称为 inter-op 线程池。 有些操作具有多线程内核：它们可以使用其他线程池（每个设备一个）称为 intra-op 线程池（下面写成内部线程池）。</p>
+<p><img alt="1525242329728" src="../../images/chapter_12/5.png?raw=true" /></p>
+<p>例如，在图 12-5 中，操作<code>A</code>，<code>B</code>和<code>C</code>是源操作，因此可以立即进行求值。 操作<code>A</code>和<code>B</code>放置在 GPU#0 上，因此它们被发送到该设备的内部线程池，并立即进行并行求值。 操作A正好有一个多线程内核; 它的计算被分成三部分，这些部分由内部线程池并行执行。 操作<code>C</code>转到 GPU#1 的内部线程池。</p>
+<p>一旦操作<code>C</code>完成，操作<code>D</code>和<code>E</code>的依赖性计数器将递减并且都将达到 0，因此这两个操作将被发送到操作内线程池以执行。</p>
+<p>您可以通过设置<code>inter_op_parallelism_threads</code>选项来控制内部线程池的线程数。 请注意，您开始的第一个会话将创建内部线程池。 除非您将<code>use_per_session_threads</code>选项设置为<code>True</code>，否则所有其他会话都将重用它们。 您可以通过设置<code>intra_op_parallelism_threads</code>选项来控制每个内部线程池的线程数。</p>
+<h2 id="_10">控制依赖关系<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p>在某些情况下，即使所有依赖的操作都已执行，推迟对操作的求值可能也是明智之举。例如，如果它使用大量内存，但在图形中只需要更多内存，则最好在最后一刻对其进行求值，以避免不必要地占用其他操作可能需要的 RAM。 另一个例子是依赖位于设备外部的数据的一组操作。 如果它们全部同时运行，它们可能会使设备的通信带宽达到饱和，并最终导致所有等待 I/O。 其他需要传递数据的操作也将被阻止。 顺序执行这些通信繁重的操作将是比较好的，这样允许设备并行执行其他操作。</p>
+<p>推迟对某些节点的求值，一个简单的解决方案是添加控制依赖关系。 例如，下面的代码告诉 TensorFlow 仅在求值完<code>a</code>和<code>b</code>之后才求值<code>x</code>和<code>y</code>：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span> 
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="mf">2.0</span>
+
+<span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">control_dependencies</span><span class="p">([</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">]):</span>    
+    <span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span>    
+    <span class="n">y</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">4.0</span><span class="p">)</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+</pre></div>
+</td></tr></table>
+
+<p>显然，由于<code>z</code>依赖于<code>x</code>和<code>y</code>，所以求值<code>z</code>也意味着等待<code>a</code>和<code>b</code>进行求值，即使它并未显式存在于<code>control_dependencies()</code>块中。 此外，由于<code>b</code>依赖于<code>a</code>，所以我们可以通过在<code>[b]</code>而不是<code>[a,b]</code>上创建控制依赖关系来简化前面的代码，但在某些情况下，“显式比隐式更好”。</p>
+<p>很好！现在你知道了：</p>
+<ul>
+<li>如何以任何您喜欢的方式在多个设备上进行操作</li>
+<li>这些操作如何并行执行</li>
+<li>如何创建控制依赖性来优化并行执行</li>
+</ul>
+<p>是时候将计算分布在多个服务器上了！</p>
+<h2 id="_11">多个服务器的多个设备<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<p>要跨多台服务器运行图形，首先需要定义一个集群。 一个集群由一个或多个 TensorFlow 服务器组成，称为任务，通常分布在多台机器上（见图 12-6）。 每项任务都属于一项作业。 作业只是一组通常具有共同作用的任务，例如跟踪模型参数（例如，参数服务器通常命名为<code>"ps"</code>，parameter server）或执行计算（这样的作业通常被命名为<code>"worker"</code>）。</p>
+<p><img alt="1525243820277" src="../../images/chapter_12/6.png?raw=true" /></p>
+<p>以下集群规范定义了两个作业<code>"ps"</code>和<code>"worker"</code>，分别包含一个任务和两个任务。 在这个例子中，机器A托管着两个 TensorFlow 服务器（即任务），监听不同的端口：一个是<code>"ps"</code>作业的一部分，另一个是<code>"worker"</code>作业的一部分。 机器B仅托管一台 TensorFlow 服务器，这是<code>"worker"</code>作业的一部分。</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">cluster_spec</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">ClusterSpec</span><span class="p">({</span>    
+    <span class="s2">&quot;ps&quot;</span><span class="p">:</span> <span class="p">[</span>        
+        <span class="s2">&quot;machine-a.example.com:2221&quot;</span><span class="p">,</span>  <span class="c1"># /job:ps/task:0    </span>
+        <span class="p">],</span>    
+    <span class="s2">&quot;worker&quot;</span><span class="p">:</span> <span class="p">[</span>        
+        <span class="s2">&quot;machine-a.example.com:2222&quot;</span><span class="p">,</span>  <span class="c1"># /job:worker/task:0        </span>
+        <span class="s2">&quot;machine-b.example.com:2222&quot;</span><span class="p">,</span>  <span class="c1"># /job:worker/task:1    </span>
+        <span class="p">]})</span> 
+</pre></div>
+</td></tr></table>
+
+<p>要启动 TensorFlow 服务器，您必须创建一个服务器对象，并向其传递集群规范（以便它可以与其他服务器通信）以及它自己的作业名称和任务编号。 例如，要启动第一个辅助任务，您需要在机器 A 上运行以下代码：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">server</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">Server</span><span class="p">(</span><span class="n">cluster_spec</span><span class="p">,</span> <span class="n">job_name</span><span class="o">=</span><span class="s2">&quot;worker&quot;</span><span class="p">,</span> <span class="n">task_index</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> 
+</pre></div>
+</td></tr></table>
+
+<p>每台机器只运行一个任务通常比较简单，但前面的例子表明 TensorFlow 允许您在同一台机器上运行多个任务（如果需要的话）。 如果您在一台机器上安装了多台服务器，则需要确保它们不会全部尝试抓取每个 GPU 的所有 RAM，如前所述。 例如，在图12-6中，<code>"ps"</code>任务没有看到 GPU 设备，想必其进程是使用<code>CUDA_VISIBLE_DEVICES =""</code>启动的。 请注意，CPU由位于同一台计算机上的所有任务共享。</p>
+<p>如果您希望进程除了运行 TensorFlow 服务器之外什么都不做，您可以通过告诉它等待服务器使用<code>join()</code>方法来完成，从而阻塞主线程（否则服务器将在您的主线程退出）。 由于目前没有办法阻止服务器，这实际上会永远阻止：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">server</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>  <span class="c1"># blocks until the server stops (i.e., never) </span>
+</pre></div>
+</td></tr></table>
+
+<h2 id="_12">开始一个会话<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<p>一旦所有任务启动并运行（但还什么都没做），您可以从位于任何机器上的任何进程（甚至是运行中的进程）中的客户机上的任何服务器上打开会话，并使用该会话像普通的本地会议一样。比如：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span> 
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">2</span> 
+<span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="mi">3</span>
+
+<span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">(</span><span class="s2">&quot;grpc://machine-b.example.com:2222&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>    
+    <span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">eval</span><span class="p">())</span>  <span class="c1"># 9.0 </span>
+</pre></div>
+</td></tr></table>
+
+<p>这个客户端代码首先创建一个简单的图形，然后在位于机器 B（我们称之为主机）上的 TensorFlow 服务器上打开一个会话，并指示它求值<code>c</code>。 主设备首先将操作放在适当的设备上。 在这个例子中，因为我们没有在任何设备上进行任何操作，所以主设备只将它们全部放在它自己的默认设备上 - 在这种情况下是机器 B 的 GPU 设备。 然后它只是按照客户的指示求值<code>c</code>，并返回结果。</p>
+<h2 id="_13">主机和辅助服务<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<p>客户端使用 gRPC 协议（Google Remote Procedure Call）与服务器进行通信。 这是一个高效的开源框架，可以调用远程函数，并通过各种平台和语言获取它们的输出。它基于 HTTP2，打开一个连接并在整个会话期间保持打开状态，一旦建立连接就可以进行高效的双向通信。</p>
+<p>数据以协议缓冲区的形式传输，这是另一种开源 Google 技术。 这是一种轻量级的二进制数据交换格式。</p>
+<p>TensorFlow 集群中的所有服务器都可能与集群中的任何其他服务器通信，因此请确保在防火墙上打开适当的端口。</p>
+<p>每台 TensorFlow 服务器都提供两种服务：主服务和辅助服务。 主服务允许客户打开会话并使用它们来运行图形。 它协调跨任务的计算，依靠辅助服务实际执行其他任务的计算并获得结果。</p>
+<h2 id="_14">固定任务的操作<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<p>通过指定作业名称，任务索引，设备类型和设备索引，可以使用设备块来锁定由任何任务管理的任何设备上的操作。 例如，以下代码将<code>a</code>固定在<code>"ps"</code>作业（即机器 A 上的 CPU）中第一个任务的 CPU，并将<code>b</code>固定在<code>"worker"</code>作业的第一个任务管理的第二个 GPU （这是 A 机上的 GPU#1）。 最后，<code>c</code>没有固定在任何设备上，所以主设备将它放在它自己的默认设备上（机器 B 的 GPU#0 设备）。</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;/job:ps/task:0/cpu:0&quot;</span><span class="p">)</span>    
+    <span class="n">a</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;/job:worker/task:0/gpu:1&quot;</span><span class="p">)</span>    
+    <span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">2</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</pre></div>
+</td></tr></table>
+
+<p>如前所述，如果您省略设备类型和索引，则 TensorFlow 将默认为该任务的默认设备; 例如，将操作固定到<code>"/job:ps/task:0"</code>会将其放置在<code>"ps"</code>作业（机器 A 的 CPU）的第一个任务的默认设备上。 如果您还省略了任务索引（例如，<code>"/job:ps"</code>），则 TensorFlow 默认为<code>"/task:0"</code>。如果省略作业名称和任务索引，则 TensorFlow 默认为会话的主任务。</p>
+<h2 id="_15">跨多个参数服务器的分片变量<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<p>正如我们很快会看到的那样，在分布式设置上训练神经网络时，常见模式是将模型参数存储在一组参数服务器上（即<code>"ps"</code>作业中的任务），而其他任务则集中在计算上（即 ，<code>"worker"</code>工作中的任务）。 对于具有数百万参数的大型模型，在多个参数服务器上分割这些参数非常有用，可以降低饱和单个参数服务器网卡的风险。 如果您要将每个变量手动固定到不同的参数服务器，那将非常繁琐。 幸运的是，TensorFlow 提供了<code>replica_device_setter()</code>函数，它以循环方式在所有<code>"ps"</code>任务中分配变量。 例如，以下代码将五个变量引入两个参数服务器：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">replica_device_setter</span><span class="p">(</span><span class="n">ps_tasks</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>    
+    <span class="n">v1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>  <span class="c1"># pinned to /job:ps/task:0    </span>
+    <span class="n">v2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>  <span class="c1"># pinned to /job:ps/task:1    </span>
+    <span class="n">v3</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span>  <span class="c1"># pinned to /job:ps/task:0    </span>
+    <span class="n">v4</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="mf">4.0</span><span class="p">)</span>  <span class="c1"># pinned to /job:ps/task:1    </span>
+    <span class="n">v5</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="mf">5.0</span><span class="p">)</span>  <span class="c1"># pinned to /job:ps/task:0</span>
+</pre></div>
+</td></tr></table>
+
+<p>您不必传递<code>ps_tasks</code>的数量，您可以传递集群<code>spec = cluster_spec</code>，TensorFlow 将简单计算<code>"ps"</code>作业中的任务数。</p>
+<p>如果您在块中创建其他操作，则不仅仅是变量，TensorFlow 会自动将它们连接到<code>"/job:worker"</code>，默认为第一个由<code>"worker"</code>作业中第一个任务管理的设备。 您可以通过设置<code>worker_device</code>参数将它们固定到其他设备，但更好的方法是使用嵌入式设备块。 内部设备块可以覆盖在外部块中定义的作业，任务或设备。 例如：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">replica_device_setter</span><span class="p">(</span><span class="n">ps_tasks</span><span class="o">=</span><span class="mi">2</span><span class="p">)):</span>    
+    <span class="n">v1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>  <span class="c1"># pinned to /job:ps/task:0 (+ defaults to /cpu:0)    </span>
+    <span class="n">v2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>  <span class="c1"># pinned to /job:ps/task:1 (+ defaults to /cpu:0)    </span>
+    <span class="n">v3</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span>  <span class="c1"># pinned to /job:ps/task:0 (+ defaults to /cpu:0)    </span>
+    <span class="p">[</span><span class="o">...</span><span class="p">]</span>    
+    <span class="n">s</span> <span class="o">=</span> <span class="n">v1</span> <span class="o">+</span> <span class="n">v2</span>            <span class="c1"># pinned to /job:worker (+ defaults to task:0/gpu:0)    </span>
+    <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;/gpu:1&quot;</span><span class="p">):</span>        
+        <span class="n">p1</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">s</span>         <span class="c1"># pinned to /job:worker/gpu:1 (+ defaults to /task:0)        </span>
+        <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;/task:1&quot;</span><span class="p">):</span>            
+            <span class="n">p2</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">s</span>     <span class="c1"># pinned to /job:worker/task:1/gpu:1</span>
+</pre></div>
+</td></tr></table>
+
+<p>这个例子假设参数服务器是纯 CPU 的，这通常是这种情况，因为它们只需要存储和传送参数，而不是执行密集计算。</p>
+<p>（未完成）</p>
+                
+                  
+                
+              
+              
+                
+
+
+  <h2 id="__comments">评论</h2>
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://hai5g.cn/aiwiki/hands-on-ml-zh/docs/12.设备和服务器上的分布式_TensorFlow/";
+      this.page.identifier =
+        "/hands-on-ml-zh/docs/12.设备和服务器上的分布式_TensorFlow/";
+    };
+    (function() {
+      var d = document, s = d.createElement("script");
+      s.src = "//AI-Wiki.disqus.com/embed.js";
+      s.setAttribute("data-timestamp", +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../11.训练深层神经网络/" title="训练深层神经网络" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  后退
+                </span>
+                训练深层神经网络
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../13.卷积神经网络/" title="卷积神经网络" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  前进
+                </span>
+                卷积神经网络
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 AI Wiki Team
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.39abc4af.js"></script>
+      
+        
+        
+          
+          <script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/ethantw/Han@3.3.0/dist/han.min.js"></script>
+      
+        <script src="../../../_static/js/extra.js?v=10"></script>
+      
+        <script src="https://cdnjs.loli.net/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
