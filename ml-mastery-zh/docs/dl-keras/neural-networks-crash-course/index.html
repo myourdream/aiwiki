@@ -1,0 +1,1994 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="AI Wiki 是一个编程竞赛知识整合站点，提供有趣又实用的编程竞赛知识以及其他有帮助的内容，帮助广大编程竞赛爱好者更快更深入地学习编程竞赛">
+      
+      
+        <link rel="canonical" href="https://hai5g.cn/aiwiki/ml-mastery-zh/docs/dl-keras/neural-networks-crash-course/">
+      
+      
+        <meta name="author" content="AI Wiki Team">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../../../favicon.ico">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.2.0">
+    
+    
+      
+        <title>多层感知器神经网络速成课程 - AI Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/application.750b69bd.css">
+      
+        <link rel="stylesheet" href="../../../../assets/stylesheets/application-palette.224b79ff.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../../../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:300,400,400i,700|Fira+Mono">
+        <style>body,input{font-family:"Fira Sans","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Fira Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../../assets/fonts/material-icons.css">
+    
+      <link rel="manifest" href="../../../../manifest.webmanifest">
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ah@1.5.0/han.min.css">
+    
+      <link rel="stylesheet" href="../../../../_static/css/extra.css?v=11">
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="red">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://hai5g.cn/aiwiki" title="AI Wiki" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">school</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              AI Wiki
+            </span>
+            <span class="md-header-nav__topic">
+              多层感知器神经网络速成课程
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/myourdream/aiwiki/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    aiwiki
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+<nav class="md-tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../.." title="简介" class="md-tabs__link">
+          简介
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../../Coursera_ML_AndrewNg/" title="机器学习" class="md-tabs__link">
+          机器学习
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../../qa500/" title="深度学习500问" class="md-tabs__link">
+          深度学习500问
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../../lihang/" title="统计学习" class="md-tabs__link">
+          统计学习
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../../hands-on-ml-zh/README.old/" title="Sklearn与TensorFlow" class="md-tabs__link">
+          Sklearn与TensorFlow
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../" title="Mastery博客" class="md-tabs__link">
+          Mastery博客
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://hai5g.cn/aiwiki" title="AI Wiki" class="md-nav__button md-logo">
+      
+        <i class="md-icon">school</i>
+      
+    </a>
+    AI Wiki
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/myourdream/aiwiki/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    aiwiki
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      简介
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        简介
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../.." title="Getting Started" class="md-nav__link">
+      Getting Started
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../intro/AI学习路线/" title="AI学习路线1" class="md-nav__link">
+      AI学习路线1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../intro/ai-roadmap/ai-union-201904/" title="AI学习路线2" class="md-nav__link">
+      AI学习路线2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../intro/ai-roadmap/v0.1/" title="AI 路线图v0.1" class="md-nav__link">
+      AI 路线图v0.1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../intro/ai-roadmap/v0.2/" title="AI 路线图v0.2" class="md-nav__link">
+      AI 路线图v0.2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../intro/ai-roadmap/v1.0/" title="ApacheCN 人工智能知识树" class="md-nav__link">
+      ApacheCN 人工智能知识树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-7" type="checkbox" id="nav-1-7">
+    
+    <label class="md-nav__link" for="nav-1-7">
+      工具软件
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-1-7">
+        工具软件
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../intro/judgers/" title="评测工具" class="md-nav__link">
+      评测工具
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../intro/editors/" title="编辑工具" class="md-nav__link">
+      编辑工具
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../intro/wsl/" title="WSL (Windows 10)" class="md-nav__link">
+      WSL (Windows 10)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../intro/spj/" title="Special Judge" class="md-nav__link">
+      Special Judge
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-7-5" type="checkbox" id="nav-1-7-5">
+    
+    <label class="md-nav__link" for="nav-1-7-5">
+      Testlib
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-1-7-5">
+        Testlib
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../intro/testlib/" title="Testlib 简介" class="md-nav__link">
+      Testlib 简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../intro/testlib/general/" title="通用" class="md-nav__link">
+      通用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../intro/testlib/generator/" title="Generator" class="md-nav__link">
+      Generator
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../intro/testlib/validator/" title="Validator" class="md-nav__link">
+      Validator
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../intro/testlib/interactor/" title="Interactor" class="md-nav__link">
+      Interactor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../intro/testlib/checker/" title="Checker" class="md-nav__link">
+      Checker
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../intro/docker-deploy/" title="Docker 部署" class="md-nav__link">
+      Docker 部署
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../intro/about/" title="关于本项目" class="md-nav__link">
+      关于本项目
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../intro/faq/" title="F.A.Q." class="md-nav__link">
+      F.A.Q.
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      机器学习
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        机器学习
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Coursera_ML_AndrewNg/" title="简介" class="md-nav__link">
+      简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Coursera_ML_AndrewNg/markdown/SUMMARY/" title="目录" class="md-nav__link">
+      目录
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Coursera_ML_AndrewNg/markdown/math/" title="数学基础" class="md-nav__link">
+      数学基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Coursera_ML_AndrewNg/markdown/week1/" title="week1" class="md-nav__link">
+      week1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Coursera_ML_AndrewNg/markdown/week2/" title="week2" class="md-nav__link">
+      week2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Coursera_ML_AndrewNg/markdown/week3/" title="week3" class="md-nav__link">
+      week3
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Coursera_ML_AndrewNg/markdown/week4/" title="week4" class="md-nav__link">
+      week4
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Coursera_ML_AndrewNg/markdown/week5/" title="week5" class="md-nav__link">
+      week5
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Coursera_ML_AndrewNg/markdown/week6/" title="week6" class="md-nav__link">
+      week6
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Coursera_ML_AndrewNg/markdown/week7/" title="week7" class="md-nav__link">
+      week7
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Coursera_ML_AndrewNg/markdown/week8/" title="week8" class="md-nav__link">
+      week8
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Coursera_ML_AndrewNg/markdown/week9/" title="week9" class="md-nav__link">
+      week9
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Coursera_ML_AndrewNg/markdown/week10/" title="week10" class="md-nav__link">
+      week10
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      深度学习500问
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        深度学习500问
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/" title="简介" class="md-nav__link">
+      简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/content/" title="目录" class="md-nav__link">
+      目录
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/ch01_math/ch01_math/" title="第一章_数学基础" class="md-nav__link">
+      第一章_数学基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/ch02_机器学习基础/第二章_机器学习基础/" title="第二章_机器学习基础" class="md-nav__link">
+      第二章_机器学习基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/ch03_深度学习基础/第三章_深度学习基础/" title="第三章_深度学习基础" class="md-nav__link">
+      第三章_深度学习基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/ch04_经典网络/第四章_经典网络/" title="第四章_经典网络" class="md-nav__link">
+      第四章_经典网络
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/ch05_卷积神经网络(CNN)/第五章 卷积神经网络（CNN）/" title="第五章 卷积神经网络（CNN）" class="md-nav__link">
+      第五章 卷积神经网络（CNN）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/ch06_循环神经网络(RNN)/第六章_循环神经网络(RNN)/" title="第六章_循环神经网络(RNN)" class="md-nav__link">
+      第六章_循环神经网络(RNN)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/ch07_生成对抗网络(GAN)/ch7/" title="第七章_生成对抗网络(GAN)" class="md-nav__link">
+      第七章_生成对抗网络(GAN)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/ch08_目标检测/第八章_目标检测/" title="第八章_目标检测" class="md-nav__link">
+      第八章_目标检测
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/ch09_图像分割/第九章_图像分割/" title="第九章_图像分割" class="md-nav__link">
+      第九章_图像分割
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/ch10_强化学习/第十章_强化学习/" title="第十章_强化学习" class="md-nav__link">
+      第十章_强化学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/ch11_迁移学习/第十一章_迁移学习/" title="第十一章_迁移学习" class="md-nav__link">
+      第十一章_迁移学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/ch12_网络搭建及训练/第十二章_网络搭建及训练/" title="第十二章_网络搭建及训练" class="md-nav__link">
+      第十二章_网络搭建及训练
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/ch13_优化算法/第十三章_优化算法/" title="第十三章_优化算法" class="md-nav__link">
+      第十三章_优化算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/ch14_超参数调整/第十四章_超参数调整/" title="第十四章_超参数调整" class="md-nav__link">
+      第十四章_超参数调整
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/ch15_GPU和框架选型/第十五章_异构运算、GPU及框架选型/" title="第十五章_异构运算、GPU及框架选型" class="md-nav__link">
+      第十五章_异构运算、GPU及框架选型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/ch16_自然语言处理(NLP)/第十六章_NLP/" title="第十六章_NLP" class="md-nav__link">
+      第十六章_NLP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/ch17_模型压缩、加速及移动端部署/第十七章_模型压缩、加速及移动端部署/" title="第十七章_模型压缩、加速及移动端部署" class="md-nav__link">
+      第十七章_模型压缩、加速及移动端部署
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/ch18_后端架构选型、离线及实时计算/第十八章_后端架构选型、离线及实时计算/" title="第十八章_后端架构选型、离线及实时计算" class="md-nav__link">
+      第十八章_后端架构选型、离线及实时计算
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/ch18_后端架构选型及应用场景/第十八章_后端架构选型及应用场景/" title="第十八章_后端架构选型及应用场景" class="md-nav__link">
+      第十八章_后端架构选型及应用场景
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      统计学习
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        统计学习
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lihang/" title="简介" class="md-nav__link">
+      简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lihang/CH01/" title="统计学习及监督学习概论" class="md-nav__link">
+      统计学习及监督学习概论
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lihang/CH02/" title="感知机" class="md-nav__link">
+      感知机
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lihang/CH03/" title="K近邻法" class="md-nav__link">
+      K近邻法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lihang/CH04/" title="朴素贝叶斯法" class="md-nav__link">
+      朴素贝叶斯法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lihang/CH05/" title="决策树" class="md-nav__link">
+      决策树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lihang/CH06/" title="逻辑斯蒂回归与最大熵模型" class="md-nav__link">
+      逻辑斯蒂回归与最大熵模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lihang/CH07/" title="支持向量机" class="md-nav__link">
+      支持向量机
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lihang/CH08/" title="提升方法" class="md-nav__link">
+      提升方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lihang/CH09/" title="EM算法及其推广" class="md-nav__link">
+      EM算法及其推广
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lihang/CH10/" title="隐马尔可夫模型" class="md-nav__link">
+      隐马尔可夫模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lihang/CH11/" title="条件随机场" class="md-nav__link">
+      条件随机场
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lihang/CH12/" title="监督学习方法总结" class="md-nav__link">
+      监督学习方法总结
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lihang/CH13/" title="无监督学习概论" class="md-nav__link">
+      无监督学习概论
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lihang/CH14/" title="聚类方法" class="md-nav__link">
+      聚类方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lihang/CH22/" title="无监督学习方法总结" class="md-nav__link">
+      无监督学习方法总结
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Sklearn与TensorFlow
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Sklearn与TensorFlow
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hands-on-ml-zh/README.old/" title="简介" class="md-nav__link">
+      简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hands-on-ml-zh/docs/0.前言/" title="前言" class="md-nav__link">
+      前言
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hands-on-ml-zh/docs/1.机器学习概览/" title="机器学习概览" class="md-nav__link">
+      机器学习概览
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hands-on-ml-zh/docs/2.一个完整的机器学习项目/" title="一个完整的机器学习项目" class="md-nav__link">
+      一个完整的机器学习项目
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hands-on-ml-zh/docs/3.分类/" title="分类" class="md-nav__link">
+      分类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hands-on-ml-zh/docs/4.训练模型/" title="训练模型" class="md-nav__link">
+      训练模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hands-on-ml-zh/docs/5.支持向量机/" title="支持向量机" class="md-nav__link">
+      支持向量机
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hands-on-ml-zh/docs/6.决策树/" title="决策树" class="md-nav__link">
+      决策树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hands-on-ml-zh/docs/7.集成学习和随机森林/" title="集成学习和随机森林" class="md-nav__link">
+      集成学习和随机森林
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hands-on-ml-zh/docs/9.启动并运行_TensorFlow/" title="启动并运行_TensorFlow" class="md-nav__link">
+      启动并运行_TensorFlow
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hands-on-ml-zh/docs/10.人工神经网络介绍/" title="人工神经网络介绍" class="md-nav__link">
+      人工神经网络介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hands-on-ml-zh/docs/11.训练深层神经网络/" title="训练深层神经网络" class="md-nav__link">
+      训练深层神经网络
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hands-on-ml-zh/docs/12.设备和服务器上的分布式_TensorFlow/" title="设备和服务器上的分布式_TensorFlow" class="md-nav__link">
+      设备和服务器上的分布式_TensorFlow
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hands-on-ml-zh/docs/13.卷积神经网络/" title="卷积神经网络" class="md-nav__link">
+      卷积神经网络
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hands-on-ml-zh/docs/14.循环神经网络/" title="循环神经网络" class="md-nav__link">
+      循环神经网络
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hands-on-ml-zh/docs/15.自编码器/" title="自编码器" class="md-nav__link">
+      自编码器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hands-on-ml-zh/docs/16.强化学习/" title="强化学习" class="md-nav__link">
+      强化学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hands-on-ml-zh/docs/B.机器学习项目清单/" title="B.机器学习项目清单" class="md-nav__link">
+      B.机器学习项目清单
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hands-on-ml-zh/docs/C.SVM_对偶问题/" title="C.SVM_对偶问题" class="md-nav__link">
+      C.SVM_对偶问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hands-on-ml-zh/docs/D.自动微分/" title="D.自动微分" class="md-nav__link">
+      D.自动微分
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Mastery博客
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Mastery博客
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../" title="简介" class="md-nav__link">
+      简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../xgboost/SUMMARY/" title="XGBoost" class="md-nav__link">
+      XGBoost
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../SUMMARY/" title="深度学习（Keras）" class="md-nav__link">
+      深度学习（Keras）
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="速成课程概述" class="md-nav__link">
+    速成课程概述
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" title="1.多层感知器" class="md-nav__link">
+    1.多层感知器
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" title="2.神经元" class="md-nav__link">
+    2.神经元
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" title="神经元重量" class="md-nav__link">
+    神经元重量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" title="激活" class="md-nav__link">
+    激活
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" title="3.神经元网络" class="md-nav__link">
+    3.神经元网络
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" title="输入或可见层" class="md-nav__link">
+    输入或可见层
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" title="隐藏层" class="md-nav__link">
+    隐藏层
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" title="输出层" class="md-nav__link">
+    输出层
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" title="4.训练网络" class="md-nav__link">
+    4.训练网络
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" title="数据准备" class="md-nav__link">
+    数据准备
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" title="随机梯度下降" class="md-nav__link">
+    随机梯度下降
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" title="重量更新" class="md-nav__link">
+    重量更新
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" title="预测" class="md-nav__link">
+    预测
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" title="更多资源" class="md-nav__link">
+    更多资源
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" title="摘要" class="md-nav__link">
+    摘要
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="评论" class="md-nav__link md-nav__link--active">
+            评论
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/myourdream/aiwiki/blob/master/docs/ml-mastery-zh/docs/dl-keras/neural-networks-crash-course.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="_1">多层感知器神经网络速成课程<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>原文： <a href="https://machinelearningmastery.com/neural-networks-crash-course/">https://machinelearningmastery.com/neural-networks-crash-course/</a></p>
+</blockquote>
+<p>人工神经网络是一个迷人的研究领域，尽管它们在刚开始时可能会令人生畏。</p>
+<p>在描述该领域中使用的数据结构和算法时，使用了许多专门术语。</p>
+<p>在这篇文章中，您将获得在多层感知器人工神经网络领域中使用的术语和过程的速成课程。阅读这篇文章后你会知道：</p>
+<ul>
+<li>神经网络的构建块，包括神经元，权重和激活函数。</li>
+<li>如何在层中使用构建块来创建网络。</li>
+<li>如何从示例数据中训练网络。</li>
+</ul>
+<p>让我们开始吧。</p>
+<p><img alt="Crash Course In Neural Networks" src="../img/9cf44410774b0c5f0b4c55ecc97e2692.png" /></p>
+<p>神经网络中的速成课程
+摄影： <a href="https://www.flickr.com/photos/joestump/2357729981/">Joe Stump</a> ，保留一些权利。</p>
+<h2 id="_2">速成课程概述<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>我们将在这篇文章中很快介绍很多内容。以下是对未来发展的看法：</p>
+<ol>
+<li>多层感知。</li>
+<li>神经元，重量和激活。</li>
+<li>神经元网络。</li>
+<li>训练网络。</li>
+</ol>
+<p>我们将从概述多层感知器开始。</p>
+<h2 id="1">1.多层感知器<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>人工神经网络领域通常被称为神经网络或多层感知器，可能是最有用的神经网络类型。感知器是单个神经元模型，是较大神经网络的前身。</p>
+<p>这是一个研究生物大脑的简单模型如何用于解决困难计算任务的领域，例如我们在机器学习中看到的预测建模任务。目标不是创建大脑的真实模型，而是开发可用于模拟难题的稳健算法和数据结构。</p>
+<p>神经网络的力量来自于他们学习训练数据中的表示以及如何将其与您想要预测的输出变量最佳联系的能力。从这个意义上说，神经网络学习映射。在数学上，它们能够学习任何映射函数，并且已经被证明是一种通用的近似算法。</p>
+<p>神经网络的预测能力来自网络的分层或多层结构。数据结构可以选择（学会表示）不同比例或分辨率的特征，并将它们组合成更高阶的特征。例如，从线条到线条到形状的集合。</p>
+<h2 id="2">2.神经元<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<p>神经网络的构建块是人工神经元。</p>
+<p>这些是具有加权输入信号并使用激活功能产生输出信号的简单计算单元。</p>
+<p><img alt="Model of a Simple Neuron" src="../img/498ab2d8740c6a44a78ade60a46c95a9.png" /></p>
+<p>简单神经元的模型</p>
+<h3 id="_3">神经元重量<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>您可能熟悉线性回归，在这种情况下，输入上的权重非常类似于回归方程中使用的系数。</p>
+<p>像线性回归一样，每个神经元也有一个偏差，可以认为它是一个总是具有 1.0 值的输入，它也必须加权。</p>
+<p>例如，神经元可能有两个输入，在这种情况下它需要三个权重。每个输入一个，偏差一个。</p>
+<p>虽然可以使用更复杂的初始化方案，但是权重通常被初始化为小的随机值，例如 0 到 0.3 范围内的值。</p>
+<p>与线性回归一样，较大的权重表明复杂性和脆弱性增加。期望将网络中的权重保持较小并且可以使用正则化技术。</p>
+<h3 id="_4">激活<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>加权输入相加并通过激活函数，有时称为传递函数。</p>
+<p>激活函数是求和加权输入与神经元输出的简单映射。它被称为激活函数，因为它控制神经元激活的阈值和输出信号的强度。</p>
+<p>使用历史上简单的步骤激活函数，其中如果求和输入高于阈值，例如 0.5，则神经元将输出值 1.0，否则将输出 0.0。</p>
+<p>传统上使用非线性激活函数。这允许网络以更复杂的方式组合输入，从而在他们可以建模的功能中提供更丰富的功能。使用非线性函数，如 logistic 函数，也称为 sigmoid 函数，输出 0 到 1 之间的值，具有 s 形分布，双曲正切函数也称为 tanh，在-1 到+1 范围内输出相同的分布。</p>
+<p>最近，整流器激活功能已被证明可提供更好的结果。</p>
+<h2 id="3">3.神经元网络<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<p>神经元被排列成神经元网络。</p>
+<p>一行神经元称为层，一个网络可以有多个层。网络中神经元的体系结构通常称为网络拓扑。</p>
+<p><img alt="Model of a Simple Network" src="../img/efb0b72bb3c64da47744e0d5c7a8aeac.png" /></p>
+<p>简单网络的模型</p>
+<h3 id="_5">输入或可见层<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>从数据集获取输入的底层称为可见层，因为它是网络的公开部分。通常，神经网络使用可见层绘制，每个输入值或数据集中的列具有一个神经元。这些不是如上所述的神经元，而是简单地将输入值传递到下一层。</p>
+<h3 id="_6">隐藏层<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>输入层之后的层称为隐藏层，因为它们不直接暴露给输入。最简单的网络结构是在隐藏层中有一个直接输出值的神经元。</p>
+<p>鉴于计算能力和高效库的增加，可以构建非常深的神经网络。深度学习可以指神经网络中有许多隐藏层。它们很深，因为它们在历史上训练起来会非常缓慢，但可能需要几秒钟或几分钟才能使用现代技术和硬件进行训练。</p>
+<h3 id="_7">输出层<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>最后的隐藏层称为输出层，它负责输出与问题所需格式相对应的值或值向量。</p>
+<p>输出层中激活函数的选择受到您正在建模的问题类型的严格限制。例如：</p>
+<ul>
+<li>回归问题可能具有单个输出神经元，并且神经元可能没有激活功能。</li>
+<li>二元分类问题可能有一个输出神经元，并使用 sigmoid 激活函数输出 0 到 1 之间的值，以表示预测类 1 的值的概率。这可以通过使用阈值转换为清晰的类值 0.5 和小于阈值的捕捉值为 0，否则为 1。</li>
+<li>多类分类问题可能在输出层中具有多个神经元，每个类一个（例如，着名的<a href="https://en.wikipedia.org/wiki/Iris_flower_data_set">虹膜花分类问题</a>中的三个类别的三个神经元）。在这种情况下，softmax 激活函数可用于输出网络预测每个类值的概率。选择具有最高概率的输出可用于产生清晰的类别分类值。</li>
+</ul>
+<h2 id="4">4.训练网络<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<p>配置完成后，需要在数据集上训练神经网络。</p>
+<h3 id="_8">数据准备<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>您必须首先准备数据以进行神经网络的训练。</p>
+<p>数据必须是数字，例如实数值。如果您有分类数据，例如值为“male”和“female”的性别属性，则可以将其转换为称为<a href="https://en.wikipedia.org/wiki/One-hot">一个热编码</a>的实值表示。这是为每个类值添加一个新列的位置（在男性和女性的性别情况下为两列），并且每行添加 0 或 1，具体取决于该行的类值。</p>
+<p>对于具有多个类的分类问题，可以在输出变量上使用相同的热编码。这将从单个列创建一个二进制向量，该向量很容易直接与网络输出层中神经元的输出进行比较，如上所述，将为每个类输出一个值。</p>
+<p>神经网络要求输入以一致的方式缩放。您可以将其重新调整到 0 到 1 之间的范围，称为标准化。另一种流行的技术是将其标准化，使每列的分布均值为零，标准偏差为 1。</p>
+<p>缩放也适用于图像像素数据。诸如单词的数据可以被转换为整数，诸如数据集中的单词的流行度等级以及其他编码技术。</p>
+<h3 id="_9">随机梯度下降<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>用于神经网络的经典且仍然优选的训练算法称为随机梯度下降。</p>
+<p>这是一行数据作为输入一次暴露给网络的地方。当网络最终产生输出值时，网络处理输入向上激活神经元。这称为网络上的前向传递。它是在训练网络之后使用的传递类型，以便对新数据进行预测。</p>
+<p>将网络输出与预期输出进行比较，并计算误差。然后，该错误通过网络传播回来，一次一层，并根据它们对错误的贡献量来更新权重。这个聪明的数学运算称为<a href="https://en.wikipedia.org/wiki/Backpropagation">反向传播算法</a>。</p>
+<p>对训练数据中的所有示例重复该过程。更新整个训练数据集的网络之一称为迭代。可以训练网络数十，数百或数千个时期。</p>
+<h3 id="_10">重量更新<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>可以从针对每个训练示例计算的误差更新网络中的权重，这称为在线学习。它可能导致网络快速但又混乱的变化。</p>
+<p>或者，可以在所有训练示例中保存错误，并且最后可以更新网络。这称为批量学习，通常更稳定。</p>
+<p>通常，因为数据集如此之大并且由于计算效率，批量的大小，在更新之前显示网络的示例的数量通常减少到少量，例如数十或数百个示例。</p>
+<p>更新权重的数量由称为学习率的配置参数控制。它也称为步长，控制给定错误对网络权重的步骤或更改。通常使用小的重量尺寸，例如 0.1 或 0.01 或更小。</p>
+<p>可以使用您可以设置的其他配置项补充更新等式。</p>
+<ul>
+<li>动量是一个术语，它包含先前重量更新的属性，以允许权重在相同方向上继续变化，即使计算的误差较少。</li>
+<li>学习率衰减用于降低时期上的学习率，以允许网络在开始时对权重进行大的改变，并且在训练时间表中稍后进行较小的微调改变。</li>
+</ul>
+<h3 id="_11">预测<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>一旦神经网络被训练，它就可以用于进行预测。</p>
+<p>您可以对测试或验证数据进行预测，以便估计模型对未见数据的技能。您还可以在操作上部署它并使用它来连续进行预测。</p>
+<p>您需要从模型中保存网络拓扑和最终权重集。通过向网络提供输入并执行前向传递来进行预测，从而允许它生成可用作预测的输出。</p>
+<h2 id="_12">更多资源<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<p>关于人工神经网络的主题有数十年的论文和书籍。</p>
+<p>如果您是该领域的新手，我建议您阅读以下资源：</p>
+<ul>
+<li><a href="http://www.amazon.com/dp/0262527014?tag=inspiredalgor-20">Neural Smithing：前馈人工神经网络中的监督学习</a></li>
+<li><a href="http://www.amazon.com/dp/0198538642?tag=inspiredalgor-20">模式识别神经网络</a></li>
+<li><a href="http://www.amazon.com/dp/1857285034?tag=inspiredalgor-20">神经网络简介</a></li>
+</ul>
+<h2 id="_13">摘要<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<p>在这篇文章中，您发现了用于机器学习的人工神经网络</p>
+<p>阅读本文后，您现在知道：</p>
+<ul>
+<li>神经网络如何不是大脑的模型，而是解决复杂机器学习问题的计算模型。</li>
+<li>神经网络由具有权重和激活功能的神经元组成。</li>
+<li>网络被组织成神经元层，并使用随机梯度下降进行训练。</li>
+<li>在训练神经网络模型之前准备数据是个好主意。</li>
+</ul>
+<p>你对神经网络或这篇文章有任何疑问吗？在评论中提出您的问题，我会尽力回答。</p>
+                
+                  
+                
+              
+              
+                
+
+
+  <h2 id="__comments">评论</h2>
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://hai5g.cn/aiwiki/ml-mastery-zh/docs/dl-keras/neural-networks-crash-course/";
+      this.page.identifier =
+        "/ml-mastery-zh/docs/dl-keras/neural-networks-crash-course/";
+    };
+    (function() {
+      var d = document, s = d.createElement("script");
+      s.src = "//AI-Wiki.disqus.com/embed.js";
+      s.setAttribute("data-timestamp", +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 AI Wiki Team
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../../assets/javascripts/application.39abc4af.js"></script>
+      
+        
+        
+          
+          <script src="../../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../../.."}})</script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/ethantw/Han@3.3.0/dist/han.min.js"></script>
+      
+        <script src="../../../../_static/js/extra.js?v=10"></script>
+      
+        <script src="https://cdnjs.loli.net/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

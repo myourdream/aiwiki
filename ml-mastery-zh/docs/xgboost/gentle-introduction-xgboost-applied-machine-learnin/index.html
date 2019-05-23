@@ -1,0 +1,2079 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="AI Wiki 是一个编程竞赛知识整合站点，提供有趣又实用的编程竞赛知识以及其他有帮助的内容，帮助广大编程竞赛爱好者更快更深入地学习编程竞赛">
+      
+      
+        <link rel="canonical" href="https://hai5g.cn/aiwiki/ml-mastery-zh/docs/xgboost/gentle-introduction-xgboost-applied-machine-learnin/">
+      
+      
+        <meta name="author" content="AI Wiki Team">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../../../favicon.ico">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.2.0">
+    
+    
+      
+        <title>应用机器学习的 XGBoost 简介 - AI Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/application.750b69bd.css">
+      
+        <link rel="stylesheet" href="../../../../assets/stylesheets/application-palette.224b79ff.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../../../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:300,400,400i,700|Fira+Mono">
+        <style>body,input{font-family:"Fira Sans","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Fira Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../../assets/fonts/material-icons.css">
+    
+      <link rel="manifest" href="../../../../manifest.webmanifest">
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ah@1.5.0/han.min.css">
+    
+      <link rel="stylesheet" href="../../../../_static/css/extra.css?v=11">
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="red">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#xgboost" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://hai5g.cn/aiwiki" title="AI Wiki" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">school</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              AI Wiki
+            </span>
+            <span class="md-header-nav__topic">
+              应用机器学习的 XGBoost 简介
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/myourdream/aiwiki/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    aiwiki
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+<nav class="md-tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../.." title="简介" class="md-tabs__link">
+          简介
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../../Coursera_ML_AndrewNg/" title="机器学习" class="md-tabs__link">
+          机器学习
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../../qa500/" title="深度学习500问" class="md-tabs__link">
+          深度学习500问
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../../lihang/" title="统计学习" class="md-tabs__link">
+          统计学习
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../../hands-on-ml-zh/README.old/" title="Sklearn与TensorFlow" class="md-tabs__link">
+          Sklearn与TensorFlow
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../" title="Mastery博客" class="md-tabs__link">
+          Mastery博客
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://hai5g.cn/aiwiki" title="AI Wiki" class="md-nav__button md-logo">
+      
+        <i class="md-icon">school</i>
+      
+    </a>
+    AI Wiki
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/myourdream/aiwiki/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    aiwiki
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      简介
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        简介
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../.." title="Getting Started" class="md-nav__link">
+      Getting Started
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../intro/AI学习路线/" title="AI学习路线1" class="md-nav__link">
+      AI学习路线1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../intro/ai-roadmap/ai-union-201904/" title="AI学习路线2" class="md-nav__link">
+      AI学习路线2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../intro/ai-roadmap/v0.1/" title="AI 路线图v0.1" class="md-nav__link">
+      AI 路线图v0.1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../intro/ai-roadmap/v0.2/" title="AI 路线图v0.2" class="md-nav__link">
+      AI 路线图v0.2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../intro/ai-roadmap/v1.0/" title="ApacheCN 人工智能知识树" class="md-nav__link">
+      ApacheCN 人工智能知识树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-7" type="checkbox" id="nav-1-7">
+    
+    <label class="md-nav__link" for="nav-1-7">
+      工具软件
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-1-7">
+        工具软件
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../intro/judgers/" title="评测工具" class="md-nav__link">
+      评测工具
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../intro/editors/" title="编辑工具" class="md-nav__link">
+      编辑工具
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../intro/wsl/" title="WSL (Windows 10)" class="md-nav__link">
+      WSL (Windows 10)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../intro/spj/" title="Special Judge" class="md-nav__link">
+      Special Judge
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-7-5" type="checkbox" id="nav-1-7-5">
+    
+    <label class="md-nav__link" for="nav-1-7-5">
+      Testlib
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-1-7-5">
+        Testlib
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../intro/testlib/" title="Testlib 简介" class="md-nav__link">
+      Testlib 简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../intro/testlib/general/" title="通用" class="md-nav__link">
+      通用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../intro/testlib/generator/" title="Generator" class="md-nav__link">
+      Generator
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../intro/testlib/validator/" title="Validator" class="md-nav__link">
+      Validator
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../intro/testlib/interactor/" title="Interactor" class="md-nav__link">
+      Interactor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../intro/testlib/checker/" title="Checker" class="md-nav__link">
+      Checker
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../intro/docker-deploy/" title="Docker 部署" class="md-nav__link">
+      Docker 部署
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../intro/about/" title="关于本项目" class="md-nav__link">
+      关于本项目
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../intro/faq/" title="F.A.Q." class="md-nav__link">
+      F.A.Q.
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      机器学习
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        机器学习
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Coursera_ML_AndrewNg/" title="简介" class="md-nav__link">
+      简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Coursera_ML_AndrewNg/markdown/SUMMARY/" title="目录" class="md-nav__link">
+      目录
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Coursera_ML_AndrewNg/markdown/math/" title="数学基础" class="md-nav__link">
+      数学基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Coursera_ML_AndrewNg/markdown/week1/" title="week1" class="md-nav__link">
+      week1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Coursera_ML_AndrewNg/markdown/week2/" title="week2" class="md-nav__link">
+      week2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Coursera_ML_AndrewNg/markdown/week3/" title="week3" class="md-nav__link">
+      week3
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Coursera_ML_AndrewNg/markdown/week4/" title="week4" class="md-nav__link">
+      week4
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Coursera_ML_AndrewNg/markdown/week5/" title="week5" class="md-nav__link">
+      week5
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Coursera_ML_AndrewNg/markdown/week6/" title="week6" class="md-nav__link">
+      week6
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Coursera_ML_AndrewNg/markdown/week7/" title="week7" class="md-nav__link">
+      week7
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Coursera_ML_AndrewNg/markdown/week8/" title="week8" class="md-nav__link">
+      week8
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Coursera_ML_AndrewNg/markdown/week9/" title="week9" class="md-nav__link">
+      week9
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Coursera_ML_AndrewNg/markdown/week10/" title="week10" class="md-nav__link">
+      week10
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      深度学习500问
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        深度学习500问
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/" title="简介" class="md-nav__link">
+      简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/content/" title="目录" class="md-nav__link">
+      目录
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/ch01_math/ch01_math/" title="第一章_数学基础" class="md-nav__link">
+      第一章_数学基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/ch02_机器学习基础/第二章_机器学习基础/" title="第二章_机器学习基础" class="md-nav__link">
+      第二章_机器学习基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/ch03_深度学习基础/第三章_深度学习基础/" title="第三章_深度学习基础" class="md-nav__link">
+      第三章_深度学习基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/ch04_经典网络/第四章_经典网络/" title="第四章_经典网络" class="md-nav__link">
+      第四章_经典网络
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/ch05_卷积神经网络(CNN)/第五章 卷积神经网络（CNN）/" title="第五章 卷积神经网络（CNN）" class="md-nav__link">
+      第五章 卷积神经网络（CNN）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/ch06_循环神经网络(RNN)/第六章_循环神经网络(RNN)/" title="第六章_循环神经网络(RNN)" class="md-nav__link">
+      第六章_循环神经网络(RNN)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/ch07_生成对抗网络(GAN)/ch7/" title="第七章_生成对抗网络(GAN)" class="md-nav__link">
+      第七章_生成对抗网络(GAN)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/ch08_目标检测/第八章_目标检测/" title="第八章_目标检测" class="md-nav__link">
+      第八章_目标检测
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/ch09_图像分割/第九章_图像分割/" title="第九章_图像分割" class="md-nav__link">
+      第九章_图像分割
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/ch10_强化学习/第十章_强化学习/" title="第十章_强化学习" class="md-nav__link">
+      第十章_强化学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/ch11_迁移学习/第十一章_迁移学习/" title="第十一章_迁移学习" class="md-nav__link">
+      第十一章_迁移学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/ch12_网络搭建及训练/第十二章_网络搭建及训练/" title="第十二章_网络搭建及训练" class="md-nav__link">
+      第十二章_网络搭建及训练
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/ch13_优化算法/第十三章_优化算法/" title="第十三章_优化算法" class="md-nav__link">
+      第十三章_优化算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/ch14_超参数调整/第十四章_超参数调整/" title="第十四章_超参数调整" class="md-nav__link">
+      第十四章_超参数调整
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/ch15_GPU和框架选型/第十五章_异构运算、GPU及框架选型/" title="第十五章_异构运算、GPU及框架选型" class="md-nav__link">
+      第十五章_异构运算、GPU及框架选型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/ch16_自然语言处理(NLP)/第十六章_NLP/" title="第十六章_NLP" class="md-nav__link">
+      第十六章_NLP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/ch17_模型压缩、加速及移动端部署/第十七章_模型压缩、加速及移动端部署/" title="第十七章_模型压缩、加速及移动端部署" class="md-nav__link">
+      第十七章_模型压缩、加速及移动端部署
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/ch18_后端架构选型、离线及实时计算/第十八章_后端架构选型、离线及实时计算/" title="第十八章_后端架构选型、离线及实时计算" class="md-nav__link">
+      第十八章_后端架构选型、离线及实时计算
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../qa500/ch18_后端架构选型及应用场景/第十八章_后端架构选型及应用场景/" title="第十八章_后端架构选型及应用场景" class="md-nav__link">
+      第十八章_后端架构选型及应用场景
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      统计学习
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        统计学习
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lihang/" title="简介" class="md-nav__link">
+      简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lihang/CH01/" title="统计学习及监督学习概论" class="md-nav__link">
+      统计学习及监督学习概论
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lihang/CH02/" title="感知机" class="md-nav__link">
+      感知机
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lihang/CH03/" title="K近邻法" class="md-nav__link">
+      K近邻法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lihang/CH04/" title="朴素贝叶斯法" class="md-nav__link">
+      朴素贝叶斯法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lihang/CH05/" title="决策树" class="md-nav__link">
+      决策树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lihang/CH06/" title="逻辑斯蒂回归与最大熵模型" class="md-nav__link">
+      逻辑斯蒂回归与最大熵模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lihang/CH07/" title="支持向量机" class="md-nav__link">
+      支持向量机
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lihang/CH08/" title="提升方法" class="md-nav__link">
+      提升方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lihang/CH09/" title="EM算法及其推广" class="md-nav__link">
+      EM算法及其推广
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lihang/CH10/" title="隐马尔可夫模型" class="md-nav__link">
+      隐马尔可夫模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lihang/CH11/" title="条件随机场" class="md-nav__link">
+      条件随机场
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lihang/CH12/" title="监督学习方法总结" class="md-nav__link">
+      监督学习方法总结
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lihang/CH13/" title="无监督学习概论" class="md-nav__link">
+      无监督学习概论
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lihang/CH14/" title="聚类方法" class="md-nav__link">
+      聚类方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lihang/CH22/" title="无监督学习方法总结" class="md-nav__link">
+      无监督学习方法总结
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Sklearn与TensorFlow
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Sklearn与TensorFlow
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hands-on-ml-zh/README.old/" title="简介" class="md-nav__link">
+      简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hands-on-ml-zh/docs/0.前言/" title="前言" class="md-nav__link">
+      前言
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hands-on-ml-zh/docs/1.机器学习概览/" title="机器学习概览" class="md-nav__link">
+      机器学习概览
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hands-on-ml-zh/docs/2.一个完整的机器学习项目/" title="一个完整的机器学习项目" class="md-nav__link">
+      一个完整的机器学习项目
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hands-on-ml-zh/docs/3.分类/" title="分类" class="md-nav__link">
+      分类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hands-on-ml-zh/docs/4.训练模型/" title="训练模型" class="md-nav__link">
+      训练模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hands-on-ml-zh/docs/5.支持向量机/" title="支持向量机" class="md-nav__link">
+      支持向量机
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hands-on-ml-zh/docs/6.决策树/" title="决策树" class="md-nav__link">
+      决策树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hands-on-ml-zh/docs/7.集成学习和随机森林/" title="集成学习和随机森林" class="md-nav__link">
+      集成学习和随机森林
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hands-on-ml-zh/docs/9.启动并运行_TensorFlow/" title="启动并运行_TensorFlow" class="md-nav__link">
+      启动并运行_TensorFlow
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hands-on-ml-zh/docs/10.人工神经网络介绍/" title="人工神经网络介绍" class="md-nav__link">
+      人工神经网络介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hands-on-ml-zh/docs/11.训练深层神经网络/" title="训练深层神经网络" class="md-nav__link">
+      训练深层神经网络
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hands-on-ml-zh/docs/12.设备和服务器上的分布式_TensorFlow/" title="设备和服务器上的分布式_TensorFlow" class="md-nav__link">
+      设备和服务器上的分布式_TensorFlow
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hands-on-ml-zh/docs/13.卷积神经网络/" title="卷积神经网络" class="md-nav__link">
+      卷积神经网络
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hands-on-ml-zh/docs/14.循环神经网络/" title="循环神经网络" class="md-nav__link">
+      循环神经网络
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hands-on-ml-zh/docs/15.自编码器/" title="自编码器" class="md-nav__link">
+      自编码器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hands-on-ml-zh/docs/16.强化学习/" title="强化学习" class="md-nav__link">
+      强化学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hands-on-ml-zh/docs/B.机器学习项目清单/" title="B.机器学习项目清单" class="md-nav__link">
+      B.机器学习项目清单
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hands-on-ml-zh/docs/C.SVM_对偶问题/" title="C.SVM_对偶问题" class="md-nav__link">
+      C.SVM_对偶问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hands-on-ml-zh/docs/D.自动微分/" title="D.自动微分" class="md-nav__link">
+      D.自动微分
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Mastery博客
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Mastery博客
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../" title="简介" class="md-nav__link">
+      简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../SUMMARY/" title="XGBoost" class="md-nav__link">
+      XGBoost
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../dl-keras/SUMMARY/" title="深度学习（Keras）" class="md-nav__link">
+      深度学习（Keras）
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#xgboost_1" title="什么是 XGBoost？" class="md-nav__link">
+    什么是 XGBoost？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xgboost_2" title="XGBoost 功能" class="md-nav__link">
+    XGBoost 功能
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" title="型号特点" class="md-nav__link">
+    型号特点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" title="系统功能" class="md-nav__link">
+    系统功能
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" title="算法特征" class="md-nav__link">
+    算法特征
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xgboost_3" title="为什么要使用 XGBoost？" class="md-nav__link">
+    为什么要使用 XGBoost？
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#146-xgboost" title="1. XGBoost 执行速度" class="md-nav__link">
+    1. XGBoost 执行速度
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#246-xgboost" title="2. XGBoost 模型表现" class="md-nav__link">
+    2. XGBoost 模型表现
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xgboost_4" title="XGBoost 使用什么算法？" class="md-nav__link">
+    XGBoost 使用什么算法？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xgboost_5" title="官方 XGBoost 资源" class="md-nav__link">
+    官方 XGBoost 资源
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xgboost_6" title="谈谈 XGBoost" class="md-nav__link">
+    谈谈 XGBoost
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xgboost_7" title="XGBoost：可扩展的树提升系统" class="md-nav__link">
+    XGBoost：可扩展的树提升系统
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xgboostextreme-gradient-boosting" title="XGBoost：eXtreme Gradient Boosting" class="md-nav__link">
+    XGBoost：eXtreme Gradient Boosting
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xgboost_8" title="安装 XGBoost" class="md-nav__link">
+    安装 XGBoost
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#r-xgboost" title="R 中的 XGBoost" class="md-nav__link">
+    R 中的 XGBoost
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python-xgboost" title="Python 中的 XGBoost" class="md-nav__link">
+    Python 中的 XGBoost
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" title="摘要" class="md-nav__link">
+    摘要
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="评论" class="md-nav__link md-nav__link--active">
+            评论
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/myourdream/aiwiki/blob/master/docs/ml-mastery-zh/docs/xgboost/gentle-introduction-xgboost-applied-machine-learnin.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="xgboost">应用机器学习的 XGBoost 简介<a class="headerlink" href="#xgboost" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>原文： <a href="https://machinelearningmastery.com/gentle-introduction-xgboost-applied-machine-learning/">https://machinelearningmastery.com/gentle-introduction-xgboost-applied-machine-learning/</a></p>
+</blockquote>
+<p>XGBoost 是一种算法，最近一直主导应用机器学习和 Kaggle 竞争结构化或表格数据。</p>
+<p>XGBoost 是为速度和表现而设计的梯度提升决策树的实现。</p>
+<p>在这篇文章中，您将发现 XGBoost 并轻松了解它的来源，来自何处以及如何了解更多信息。</p>
+<p>阅读这篇文章后你会知道：</p>
+<ul>
+<li>XGBoost 是什么以及项目的目标。</li>
+<li>为什么 XGBoost 必须与您的机器学习工具包分开。</li>
+<li>在下一个机器学习项目中，您可以了解更多信息以开始使用 XGBoost。</li>
+</ul>
+<p>让我们开始吧。</p>
+<p><img alt="A Gentle Introduction to XGBoost for Applied Machine Learning" src="../img/2bb9abbef6f07700041dc880c95acda8.jpg" /></p>
+<p>应用机器学习的 XGBoost 的温和介绍
+<a href="https://www.flickr.com/photos/sigfridlundberg/14945045482/">Sigfrid Lundberg</a> 的照片，保留一些权利。</p>
+<h2 id="xgboost_1">什么是 XGBoost？<a class="headerlink" href="#xgboost_1" title="Permanent link">&para;</a></h2>
+<p>XGBoost 代表 e <strong>X</strong> treme <strong>G</strong> radient <strong>B</strong> oosting。</p>
+<blockquote>
+<p>但是，名称 xgboost 实际上指的是推动增强树算法的计算资源限制的工程目标。这就是为什么许多人使用 xgboost 的原因。</p>
+</blockquote>
+<ul>
+<li>陈天琪回答问题“ <a href="https://www.quora.com/What-is-the-difference-between-the-R-gbm-gradient-boosting-machine-and-xgboost-extreme-gradient-boosting">R gbm（梯度提升机）和 xgboost（极限梯度提升）有什么区别？</a> “在 Quora 上</li>
+</ul>
+<p>它是 <a href="http://homes.cs.washington.edu/~tqchen/">Tianqi Chen</a> 创建的梯度提升机的实现，现在得到了许多开发人员的贡献。它属于分布式机器学习社区或 <a href="http://dmlc.ml/">DMLC</a> 旗下的更广泛的工具集，他们也是流行的 <a href="https://github.com/dmlc/mxnet">mxnet 深度学习库</a>的创建者。</p>
+<p>Tianqi Chen 在后期<a href="http://homes.cs.washington.edu/~tqchen/2016/03/10/story-and-lessons-behind-the-evolution-of-xgboost.html">故事和 XGBoost 演变背后的教训</a>中提供了关于 XGBoost 创作的简短而有趣的背景故事。</p>
+<p>XGBoost 是一个软件库，您可以在您的机器上下载和安装，然后从各种界面进行访问。具体来说，XGBoost 支持以下主要接口：</p>
+<ul>
+<li>命令行界面（CLI）。</li>
+<li>C ++（编写库的语言）。</li>
+<li>Python 界面以及 scikit-learn 中的模型。</li>
+<li>R 接口以及插入符号包中的模型。</li>
+<li>朱莉娅。</li>
+<li>像 Scala 这样的 Java 和 JVM 语言以及像 Hadoop 这样的平台。</li>
+</ul>
+<h2 id="xgboost_2">XGBoost 功能<a class="headerlink" href="#xgboost_2" title="Permanent link">&para;</a></h2>
+<p>该库激光专注于计算速度和模型表现，因此几乎没有多余的装饰。尽管如此，它确实提供了许多高级功能。</p>
+<h3 id="_1">型号特点<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>该模型的实现支持 scikit-learn 和 R 实现的功能，以及正规化等新增功能。支持三种主要形式的梯度提升：</p>
+<ul>
+<li><strong>Gradient Boosting</strong> 算法也称为梯度提升机，包括学习率。</li>
+<li><strong>随机梯度提升</strong>，每个分割级别在行，列和列处进行子采样。</li>
+<li><strong>正则化梯度提升</strong>同时具有 L1 和 L2 正则化。</li>
+</ul>
+<h3 id="_2">系统功能<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>该库提供了一个在各种计算环境中使用的系统，尤其是：</p>
+<ul>
+<li><strong>在训练期间使用所有 CPU 内核构建树的并行化</strong>。</li>
+<li><strong>分布式计算</strong>用于使用一组机器训练超大型模型。</li>
+<li><strong>非核心计算</strong>适用于不适合内存的超大型数据集。</li>
+<li><strong>缓存优化</strong>的数据结构和算法，以充分利用硬件。</li>
+</ul>
+<h3 id="_3">算法特征<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>该算法的实现是为了提高计算时间和内存资源的效率而设计的。设计目标是充分利用可用资源来训练模型。一些关键的算法实现功能包括：</p>
+<ul>
+<li><strong>稀疏感知</strong>实现，自动处理缺失的数据值。</li>
+<li><strong>块结构</strong>支持树形结构的并行化。</li>
+<li><strong>继续训练</strong>，以便您可以进一步提升已安装的新数据模型。</li>
+</ul>
+<p>XGBoost 是免费的开源软件，可在许可的 Apache-2 许可下使用。</p>
+<h2 id="xgboost_3">为什么要使用 XGBoost？<a class="headerlink" href="#xgboost_3" title="Permanent link">&para;</a></h2>
+<p>使用 XGBoost 的两个原因也是该项目的两个目标：</p>
+<ol>
+<li>执行速度。</li>
+<li>模特表演。</li>
+</ol>
+<h3 id="146-xgboost">1. XGBoost 执行速度<a class="headerlink" href="#146-xgboost" title="Permanent link">&para;</a></h3>
+<p>通常，XGBoost 很快。与梯度提升的其他实现相比，真的很快。</p>
+<p><a href="https://www.linkedin.com/in/szilard">Szilard Pafka</a> 进行了一些客观的基准测试，比较了 XGBoost 与梯度提升和袋装决策树的其他实现的表现。他在 2015 年 5 月的博客文章“<a href="http://datascience.la/benchmarking-random-forest-implementations/">基准随机森林实施基准</a>”中写下了他的结果。</p>
+<p>他还提供了 <a href="https://github.com/szilard/benchm-ml">GitHub</a> 上的所有代码以及更为广泛的硬数字结果报告。</p>
+<p><img alt="Benchmark Performance of XGBoost" src="../img/6198624aaad562ea913e9dd529a072e5.jpg" /></p>
+<p>XGBoost 的基准表现，取自<a href="http://datascience.la/benchmarking-random-forest-implementations/">基准随机森林实施</a>。</p>
+<p>他的结果显示 XGBoost 几乎总是比 R，Python Spark 和 H2O 的其他基准测试实现更快。</p>
+<p>从他的实验中，他评论说：</p>
+<blockquote>
+<p>我也尝试过 xgboost，一个流行的增强库，它也可以构建随机森林。它速度快，内存效率高，精度高</p>
+</blockquote>
+<ul>
+<li>Szilard Pafka，<a href="http://datascience.la/benchmarking-random-forest-implementations/">基准随机森林实施基准</a>。</li>
+</ul>
+<h3 id="246-xgboost">2. XGBoost 模型表现<a class="headerlink" href="#246-xgboost" title="Permanent link">&para;</a></h3>
+<p>XGBoost 在分类和回归预测建模问题上支配结构化或表格数据集。</p>
+<p>有证据表明，它是 Kaggle 竞争数据科学平台竞赛获胜者的首选算法。</p>
+<p>例如，有一个不完整的第一，第二和第三名比赛获胜者名单，标题为： <a href="https://github.com/dmlc/xgboost/tree/master/demo#machine-learning-challenge-winning-solutions">XGBoost：机器学习挑战获胜解决方案</a>。</p>
+<p>为了使这一点更加切实，下面是来自 Kaggle 比赛获胜者的一些有见地的引用：</p>
+<blockquote>
+<p>作为越来越多的 Kaggle 比赛的赢家，XGBoost 再次向我们展示了一个值得在您的工具箱中使用的全面算法。</p>
+</blockquote>
+<ul>
+<li><a href="http://blog.kaggle.com/2015/12/03/dato-winners-interview-1st-place-mad-professors/">拿督获奖者专访：第一名，疯狂教授</a></li>
+</ul>
+<blockquote>
+<p>如有疑问，请使用 xgboost。</p>
+</blockquote>
+<ul>
+<li><a href="http://blog.kaggle.com/2015/08/26/avito-winners-interview-1st-place-owen-zhang/">Avito Winner 的访谈：第一名，Owen Zhang</a></li>
+</ul>
+<blockquote>
+<p>我喜欢单人模特做得很好，我最好的单人模特是 XGBoost，可以自己获得第 10 名。</p>
+</blockquote>
+<ul>
+<li><a href="http://blog.kaggle.com/2015/09/22/caterpillar-winners-interview-1st-place-gilberto-josef-leustagos-mario/">卡特彼勒获奖者专访：第一名</a></li>
+</ul>
+<blockquote>
+<p>我只用过 XGBoost。</p>
+</blockquote>
+<ul>
+<li><a href="http://blog.kaggle.com/2015/09/28/liberty-mutual-property-inspection-winners-interview-qingchen-wang/">Liberty Mutual Property Inspection，获奖者专访：第一名，王清晨</a></li>
+</ul>
+<blockquote>
+<p>我使用的唯一监督学习方法是梯度提升，在优秀的 xgboost 包中实现。</p>
+</blockquote>
+<ul>
+<li><a href="http://blog.kaggle.com/2015/10/21/recruit-coupon-purchase-winners-interview-2nd-place-halla-yang/">招募优惠券购买获奖者专访：第二名，Halla Yang</a></li>
+</ul>
+<h2 id="xgboost_4">XGBoost 使用什么算法？<a class="headerlink" href="#xgboost_4" title="Permanent link">&para;</a></h2>
+<p>XGBoost 库实现<a href="https://en.wikipedia.org/wiki/Gradient_boosting">梯度提升决策树算法</a>。</p>
+<p>该算法有许多不同的名称，例如梯度提升，多重加性回归树，随机梯度提升或梯度提升机器。</p>
+<p>Boosting 是一种集合技术，其中添加了新模型以纠正现有模型所产生的错误。依次添加模型，直到不能进一步改进。一个流行的例子是 <a href="http://machinelearningmastery.com/boosting-and-adaboost-for-machine-learning/">AdaBoost 算法</a>，它对很难预测的数据点进行加权。</p>
+<p>梯度提升是一种方法，其中创建新模型以预测先前模型的残差或误差，然后将其加在一起以进行最终预测。它被称为梯度提升，因为它使用梯度下降算法来最小化添加新模型时的损失。</p>
+<p>该方法支持回归和分类预测建模问题。</p>
+<p>有关增强和梯度提升的更多信息，请参阅 Trevor Hastie 关于<a href="https://www.youtube.com/watch?v=wPqtzj5VZus">梯度提升机器学习</a>的演讲。</p>
+<p>&lt;iframe allowfullscreen="" frameborder="0" height="281" src="<a href="https://www.youtube.com/embed/wPqtzj5VZus?feature=oembed">https://www.youtube.com/embed/wPqtzj5VZus?feature=oembed</a>" width="500"&gt;&lt;/iframe&gt;</p>
+<h2 id="xgboost_5">官方 XGBoost 资源<a class="headerlink" href="#xgboost_5" title="Permanent link">&para;</a></h2>
+<p>关于 XGBoost 的最佳信息来源是项目的<a href="https://github.com/dmlc/xgboost">官方 GitHub 存储库。</a></p>
+<p>从那里，您可以访问<a href="https://github.com/dmlc/xgboost/issues">问题跟踪器</a>和<a href="https://groups.google.com/forum/#!forum/xgboost-user/">用户组</a>，可用于提问和报告错误。</p>
+<p><a href="https://github.com/dmlc/xgboost/tree/master/demo">Awesome XGBoost 页面</a>是一个很好的链接，带有示例代码和帮助。</p>
+<p>还有一个<a href="https://xgboost.readthedocs.io/en/latest/">官方文档页面</a>，其中包含一系列不同语言的入门指南，教程，操作指南等。</p>
+<p>关于 XGBoost 的一些更正式的论文值得阅读，以获得更多关于图书馆的背景知识：</p>
+<ul>
+<li><a href="http://jmlr.org/proceedings/papers/v42/chen14.pdf">Higgs Boson Discovery with Boosted Trees</a> ，2014。</li>
+<li><a href="http://arxiv.org/abs/1603.02754">XGBoost：可扩展的树木升压系统</a>，2016。</li>
+</ul>
+<h2 id="xgboost_6">谈谈 XGBoost<a class="headerlink" href="#xgboost_6" title="Permanent link">&para;</a></h2>
+<p>当开始使用像 XGBoost 这样的新工具时，在深入研究代码之前，先回顾一下有关该主题的一些讨论会很有帮助。</p>
+<h3 id="xgboost_7">XGBoost：可扩展的树提升系统<a class="headerlink" href="#xgboost_7" title="Permanent link">&para;</a></h3>
+<p>图书馆的创建者田天琪于 2016 年 6 月与洛杉矶数据科学小组进行了一次题为“ <a href="https://www.youtube.com/watch?v=Vly8xGnNiWs">XGBoost：可扩展的树木增强系统</a>”的讨论。</p>
+<p>&lt;iframe allowfullscreen="" frameborder="0" height="281" src="<a href="https://www.youtube.com/embed/Vly8xGnNiWs?feature=oembed">https://www.youtube.com/embed/Vly8xGnNiWs?feature=oembed</a>" width="500"&gt;&lt;/iframe&gt;</p>
+<p>您可以在此处查看他演讲中的幻灯片：</p>
+<p>&lt;iframe allowfullscreen="true" allowtransparency="true" frameborder="0" height="345" id="talk_frame_345261" mozallowfullscreen="true" src="//speakerdeck.com/player/5c6dab45648344208185d2b1ab4fdc95" style="border:0; padding:0; margin:0; background:transparent;" webkitallowfullscreen="true" width="500"&gt;&lt;/iframe&gt;</p>
+<p>有关 <a href="http://datascience.la/xgboost-workshop-and-meetup-talk-with-tianqi-chen/">DataScience LA 博客</a>的更多信息。</p>
+<h3 id="xgboostextreme-gradient-boosting">XGBoost：eXtreme Gradient Boosting<a class="headerlink" href="#xgboostextreme-gradient-boosting" title="Permanent link">&para;</a></h3>
+<p>2015 年 12 月在纽约数据科学学院举办的题为“ <a href="https://www.youtube.com/watch?v=ufHo8vbk6g4">XGBoost：极限梯度提升</a>”的纽约数据科学学院发表演讲。</p>
+<p>&lt;iframe allowfullscreen="" frameborder="0" height="281" src="<a href="https://www.youtube.com/embed/ufHo8vbk6g4?feature=oembed">https://www.youtube.com/embed/ufHo8vbk6g4?feature=oembed</a>" width="500"&gt;&lt;/iframe&gt;</p>
+<p>You can review the slides from his talk here:</p>
+<p>&lt;iframe allowfullscreen="" frameborder="0" height="356" marginheight="0" marginwidth="0" scrolling="no" src="<a href="https://www.slideshare.net/slideshow/embed_code/key/lhcV8LfZ8RfrG">https://www.slideshare.net/slideshow/embed_code/key/lhcV8LfZ8RfrG</a>" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" width="427"&gt;&lt;/iframe&gt;</p>
+<p><strong><a href="https://www.slideshare.net/ShangxuanZhang/xgboost-55872323" title="Xgboost">Xgboost</a></strong> from <strong><a href="http://www.slideshare.net/ShangxuanZhang">Vivian Shangxuan Zhang</a></strong></p>
+<p>有关此演讲的更多信息，请访问<a href="http://blog.nycdatascience.com/faculty/kaggle-winning-solution-xgboost-algorithm-let-us-learn-from-its-author-3/">纽约数据科学学院博客</a>。</p>
+<h2 id="xgboost_8">安装 XGBoost<a class="headerlink" href="#xgboost_8" title="Permanent link">&para;</a></h2>
+<p><a href="http://xgboost.readthedocs.io/en/latest/build.html">XGBoost 文档网站</a>上有一个全面的安装指南。</p>
+<p>它涵盖了 Linux，Mac OS X 和 Windows 的安装。</p>
+<p>它还包括在 R 和 Python 等平台上的安装。</p>
+<h3 id="r-xgboost">R 中的 XGBoost<a class="headerlink" href="#r-xgboost" title="Permanent link">&para;</a></h3>
+<p>如果您是 R 用户，最好的入门地点是 xgboost 包的 <a href="https://cran.r-project.org/web/packages/xgboost/index.html">CRAN 页面。</a></p>
+<p>在此页面中，您可以访问 <a href="https://cran.r-project.org/web/packages/xgboost/xgboost.pdf">R vignette Package'xgboost'</a> [pdf]。</p>
+<p>此页面还链接了一些优秀的 R 教程，以帮助您入门：</p>
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/xgboost/vignettes/discoverYourData.html">发现您的数据</a></li>
+<li><a href="https://cran.r-project.org/web/packages/xgboost/vignettes/xgboostPresentation.html">XGBoost 演示文稿</a></li>
+<li><a href="https://cran.r-project.org/web/packages/xgboost/vignettes/xgboost.pdf">xgboost：eXtreme Gradient Boosting</a> [pdf]</li>
+</ul>
+<p>还有官方的 <a href="http://xgboost.readthedocs.io/en/latest/R-package/xgboostPresentation.html">XGBoost R 教程</a>和<a href="http://xgboost.readthedocs.io/en/latest/R-package/discoverYourData.html">用 XGBoost</a> 教程了解你的数据集。</p>
+<h3 id="python-xgboost">Python 中的 XGBoost<a class="headerlink" href="#python-xgboost" title="Permanent link">&para;</a></h3>
+<p>安装说明可在 XGBoost 安装指南的 <a href="https://github.com/dmlc/xgboost/blob/master/doc/build.md#python-package-installation">Python 部分找到。</a></p>
+<p>官方 <a href="http://xgboost.readthedocs.io/en/latest/python/python_intro.html">Python 包简介</a>是在 Python 中使用 XGBoost 时最好的起点。</p>
+<p>要快速入门，您可以输入：</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">sudo</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">xgboost</span>
+</pre></div>
+</td></tr></table>
+
+<p>在 <a href="https://github.com/tqchen/xgboost/tree/master/demo/guide-python">XGBoost Python 功能演练</a>中，Python 中还有一个很好的示例源代码列表。</p>
+<h2 id="_4">摘要<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>在这篇文章中，您发现了应用机器学习的 XGBoost 算法。</p>
+<p>你了解到：</p>
+<ul>
+<li>XGBoost 是一个用于开发快速和高表现梯度提升树模型的库。</li>
+<li>XGBoost 在一系列困难的机器学习任务中实现了最佳表现。</li>
+<li>您可以从命令行，Python 和 R 使用此库以及如何开始使用。</li>
+</ul>
+<p>你用过 XGBoost 吗？在下面的评论中分享您的经验。</p>
+<p>您对 XGBoost 或该帖子有任何疑问吗？在下面的评论中提出您的问题，我会尽力回答。</p>
+                
+                  
+                
+              
+              
+                
+
+
+  <h2 id="__comments">评论</h2>
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://hai5g.cn/aiwiki/ml-mastery-zh/docs/xgboost/gentle-introduction-xgboost-applied-machine-learnin/";
+      this.page.identifier =
+        "/ml-mastery-zh/docs/xgboost/gentle-introduction-xgboost-applied-machine-learnin/";
+    };
+    (function() {
+      var d = document, s = d.createElement("script");
+      s.src = "//AI-Wiki.disqus.com/embed.js";
+      s.setAttribute("data-timestamp", +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 AI Wiki Team
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../../assets/javascripts/application.39abc4af.js"></script>
+      
+        
+        
+          
+          <script src="../../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../../.."}})</script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/ethantw/Han@3.3.0/dist/han.min.js"></script>
+      
+        <script src="../../../../_static/js/extra.js?v=10"></script>
+      
+        <script src="https://cdnjs.loli.net/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

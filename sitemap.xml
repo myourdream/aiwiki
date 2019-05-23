@@ -445,4 +445,19 @@
      <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
+    <url>
+     <loc>https://hai5g.cn/aiwiki/ml-mastery-zh/</loc>
+     <lastmod>2019-05-23</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://hai5g.cn/aiwiki/ml-mastery-zh/docs/xgboost/SUMMARY/</loc>
+     <lastmod>2019-05-23</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://hai5g.cn/aiwiki/ml-mastery-zh/docs/dl-keras/SUMMARY/</loc>
+     <lastmod>2019-05-23</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
 </urlset>
